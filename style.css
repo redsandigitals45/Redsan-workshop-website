@@ -1356,3 +1356,110 @@ footer {
   border: 1px solid rgba(229, 9, 20, 0.1);
   padding: 12px;
 }
+
+/* ============================================================
+   INFINITE MARQUEE CAROUSEL (SECTION 7)
+   ============================================================ */
+.marquee-section {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 50px;
+  padding: 20px 0;
+  pointer-events: none; /* Prevents clicks, hover pausing, or manual stopping */
+  user-select: none;
+  background: linear-gradient(180deg, transparent 0%, rgba(229, 9, 20, 0.03) 50%, transparent 100%);
+}
+
+.marquee-section::before,
+.marquee-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee-section::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-deep, #000) 0%, transparent 100%);
+}
+
+.marquee-section::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-deep, #000) 0%, transparent 100%);
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: marqueeScroll 40s linear infinite;
+}
+
+.marquee-card {
+  width: 240px;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--text-mid, #a3a3a3);
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 13px;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  padding: 16px;
+}
+
+.marquee-card .card-icon {
+  font-size: 28px;
+  opacity: 0.6;
+}
+
+.marquee-card .card-label {
+  font-weight: 700;
+  color: var(--text-hi, #fff);
+  letter-spacing: 0.5px;
+}
+
+.marquee-card .card-sub {
+  font-size: 11px;
+  color: var(--text-dim, #737373);
+}
+
+.marquee-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+}
+
+@media (max-width: 768px) {
+  .marquee-card {
+    width: 180px;
+  }
+  .marquee-track {
+    gap: 14px;
+    animation-duration: 30s;
+  }
+}
