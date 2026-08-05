@@ -571,6 +571,22 @@
   @media (prefers-reduced-motion: reduce){
     #redsan-attention-hero .rah-scroll-cue{ animation:none; }
   }
+
+  /* --- Mobile Hero Bifurcation --- */
+  .mobile-hero {
+    display: none;
+  }
+  @media (max-width: 880px) {
+    #preloader { display: none !important; }
+    #top { display: none !important; } /* Hides the 3D hero wrapper */
+    .mobile-hero { display: block; }
+    #main-content {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      transition: none !important;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -600,6 +616,29 @@
 </nav>
 
 <!-- HERO -->
+<!-- HERO -->
+<section class="hero mobile-hero">
+  <div class="marquee-track">
+    <div class="seq">
+      <span class="item"><b>SEO</b> · <b>AEO</b> · <b>GEO</b> · AI WEB DESIGN & DEVELOPMENT · SOCIAL MEDIA MANAGEMENT · CONTENT CREATION · META &amp; GOOGLE ADS · VIBE CODING · STARTUP CONSULTING · PERFORMANCE MARKETING ·</span>
+      <span class="item"><b>SEO</b> · <b>AEO</b> · <b>GEO</b> · AI WEB DESIGN & DEVELOPMENT · SOCIAL MEDIA MANAGEMENT · CONTENT CREATION · META &amp; GOOGLE ADS · VIBE CODING · STARTUP CONSULTING · PERFORMANCE MARKETING ·</span>
+    </div>
+  </div>
+  <div class="wrap hero-main">
+    <div class="eyebrow">Full-Stack Marketing Company</div>
+    <h1 style="margin-top:22px;">WE TURN <span class="cut">ATTENTION</span><br>INTO REVENUE.</h1>
+    <p class="hero-sub">Redsan Digitals is the AI-powered marketing crew behind brands that refuse to blend in — websites, ads, content, and code, built to actually perform.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">Let's Build Something →</a>
+      <a href="https://wa.me/910000000000" class="btn btn-ghost">Chat on WhatsApp</a>
+    </div>
+    <div class="hero-visual">
+      <div id="hero-lottie" role="img" aria-label="Animated preview of Redsan Digitals services — website dev, SEO/AEO/GEO, Meta &amp; Google ads, social media, and shoot &amp; editing"></div>
+      <noscript><img src="assets/hero-services-visual.svg" alt="Redsan Digitals services overview"></noscript>
+    </div>
+  </div>
+</section>
+
 <div id="top">
 <section id="redsan-attention-hero">
   <div class="rah-track" id="rah-track">
@@ -1198,7 +1237,13 @@ function spawnBurstSafe() {
   if (scene3d && !reduceMotion) scene3d.spawnBurst();
 }
 
-scene3d = buildScene();
+
+const isMobile = window.innerWidth <= 880;
+if (isMobile) {
+  root.classList.add('rah-no-webgl');
+} else {
+  scene3d = buildScene();
+
 if (!scene3d) root.classList.add('rah-no-webgl');
 
 /* ---- main loop ---- */
@@ -1226,6 +1271,19 @@ function tick(now) {
   requestAnimationFrame(tick);
 }
 requestAnimationFrame(tick);
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+<script>
+  if (window.innerWidth <= 880) {
+    lottie.loadAnimation({
+      container: document.getElementById('hero-lottie'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'assets/hero-services-animation.json'
+    });
+  }
 </script>
 </body>
 </html>
