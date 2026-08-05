@@ -139,13 +139,19 @@
   /* ===== STATS ===== */
   .stats{background:var(--paper);border-bottom:1px solid var(--line);}
   .stats-inner{
-    display:flex;flex-wrap:wrap;gap:0;
-    padding:30px 0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+    padding:40px 0;
+    justify-content:center;
+    text-align:center;
   }
-  .stat{flex:1 1 200px;padding:14px 24px;border-left:1px solid var(--line);}
-  .stat:first-child{border-left:none;padding-left:0;}
-  .stat .num{font-family:var(--mono);font-size:30px;font-weight:600;color:var(--red);}
-  .stat .lbl{font-size:13px;color:var(--slate);margin-top:4px;}
+  .stat{
+    flex:1 1 200px;
+    max-width:280px;
+  }
+  .stat .num{font-family:var(--mono);font-size:36px;font-weight:600;color:var(--red);}
+  .stat .lbl{font-size:14px;color:var(--slate);margin-top:6px;}
 
   /* ===== SECTION SHELL ===== */
   section{padding:110px 0;}
