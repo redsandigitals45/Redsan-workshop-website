@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>Redsan Digitals — Full-Stack Marketing, Engineered for Growth</title>
-<meta name="description" content="Redsan Digitals is the AI-powered marketing crew behind brands that refuse to blend in — websites, ads, content, and code, built to actually perform.">
+<title>Redsan Digitals ÔÇö Full-Stack Marketing, Engineered for Growth</title>
+<meta name="description" content="Redsan Digitals is the AI-powered marketing crew behind brands that refuse to blend in ÔÇö websites, ads, content, and code, built to actually perform.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -319,257 +319,48 @@
     box-shadow:0 10px 24px rgba(0,0,0,0.25);
   }
 
-  /* --- Redsan Attention Hero Styles --- */
+  /* --- PRELOADER --- */
+  #preloader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #0B0B0C; z-index: 99999;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+  #preloader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+  .pl-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 42px; letter-spacing: 0.05em; color: #fff;
+    opacity: 0; transform: scale(0.9);
+    animation: pl-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .pl-logo span { color: #E2231A; }
+  @keyframes pl-reveal {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* --- Redsan Attention Hero --- */
   block into the site's global stylesheet, or
      keep it as a <style> tag right before </head>. All rules are scoped
      under #redsan-attention-hero, so it will not leak into the rest of
      the page's CSS.
   3. COPY the <section id="redsan-attention-hero"> ... </section> block
-     and paste it as the FIRST thing inside <body>, above the existing
+     and paste it as the FIRST thing inside <body>
+
+<div id="preloader"><div class="pl-logo">REDSAN<span>.</span></div></div>
+<script>
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('preloader').classList.add('hide');
+    }, 1200);
+  });
+</script>
+, above the existing
      header/hero content. It occupies 500vh of scroll (5 pinned "scenes")
      before releasing the scroll back to the rest of the page.
   4. COPY the <script type="importmap"> and the <script type="module">
      at the bottom into the page as well (they can sit right after the
-     section, or before <script type="importmap">
-{
-  "imports": {
-    "three": "https://unpkg.com/three@0.164.0/build/three.module.js"
-  }
-}
-</script>
-
-<script type="module">
-import * as THREE from 'three';
-
-const track      = document.getElementById('rah-track');
-const canvas     = document.getElementById('rah-canvas');
-const panels     = Array.from(document.querySelectorAll('#redsan-attention-hero .rah-panel'));
-const hudLabel   = document.getElementById('rah-hud-label');
-const hudCoord   = document.getElementById('rah-hud-coord');
-const progressEl = document.getElementById('rah-progress-fill');
-const reticle    = document.getElementById('rah-reticle');
-const root       = document.getElementById('redsan-attention-hero');
-
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const isSmall = window.matchMedia('(max-width: 680px)').matches;
-
-const labels = ['ORIGIN', 'VEIN 01 — INTELLIGENCE', 'VEIN 02 — CONTENT', 'VEIN 03 — CONVERSION', 'YIELD'];
-
-/* ---- reticle follows pointer subtly (works even without WebGL) ---- */
-window.addEventListener('pointermove', (e) => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 24;
-  const y = (e.clientY / window.innerHeight - 0.5) * 24;
-  reticle.style.transform = `translate(${x}px, ${y}px)`;
-});
-
-/* ---- scroll progress (0..1 across the 500vh track) ---- */
-let targetProgress = 0;
-let progress = 0;
-
-function computeProgress() {
-  const rect = track.getBoundingClientRect();
-  const total = track.offsetHeight - window.innerHeight;
-  const scrolled = -rect.top;
-  targetProgress = THREE.MathUtils.clamp(total > 0 ? scrolled / total : 0, 0, 1);
-}
-window.addEventListener('scroll', computeProgress, { passive: true });
-window.addEventListener('resize', computeProgress);
-computeProgress();
-
-/* ---- panel crossfade driven purely by progress, no IntersectionObserver needed ---- */
-let lastActiveIdx = -1;
-function updatePanels(p) {
-  const n = panels.length;
-  panels.forEach((panel, i) => {
-    const center = (i + 0.5) / n;
-    const band = 0.5 / n;
-    const dist = Math.abs(p - center);
-    const fade = 1 - THREE.MathUtils.clamp((dist - band * 0.35) / (band * 0.65), 0, 1);
-    panel.style.opacity = fade;
-    panel.style.transform = `translateY(${(1 - fade) * 22}px)`;
-    panel.style.pointerEvents = fade > 0.5 ? 'auto' : 'none';
-  });
-  const activeIdx = Math.min(n - 1, Math.floor(p * n));
-  if (activeIdx !== lastActiveIdx) {
-    lastActiveIdx = activeIdx;
-    hudLabel.textContent = labels[activeIdx];
-    if (activeIdx > 0) spawnBurstSafe();
-  }
-}
-
-/* ---- 3D scene (guarded — page still works with no WebGL) ---- */
-let scene3d = null;
-
-function buildScene() {
-  let renderer;
-  try {
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-  } catch (e) {
-    return null;
-  }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setClearColor(0x000000, 1);
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
-
-  /* -- the "ore" — a raw, irregular crystal made of attention data points -- */
-  const detail = isSmall ? 2 : 3;
-  const geo = new THREE.IcosahedronGeometry(1.4, detail);
-  const pos = geo.attributes.position;
-  for (let i = 0; i < pos.count; i++) {
-    const s = 0.85 + Math.random() * 0.3;
-    pos.setXYZ(i, pos.getX(i) * s, pos.getY(i) * s, pos.getZ(i) * s);
-  }
-  pos.needsUpdate = true;
-  geo.computeVertexNormals();
-
-  const red = new THREE.Color('#E2231A');
-  const white = new THREE.Color('#ffffff');
-  const colors = new Float32Array(pos.count * 3);
-  for (let i = 0; i < pos.count; i++) {
-    const t = THREE.MathUtils.clamp((pos.getY(i) + 1.6) / 3.2, 0, 1);
-    const c = red.clone().lerp(white, t * 0.55);
-    colors[i * 3] = c.r; colors[i * 3 + 1] = c.g; colors[i * 3 + 2] = c.b;
-  }
-  geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-  const crystalPoints = new THREE.Points(
-    geo,
-    new THREE.PointsMaterial({ size: 0.028, vertexColors: true, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending, depthWrite: false })
-  );
-  scene.add(crystalPoints);
-
-  const crystalEdges = new THREE.LineSegments(
-    new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.42, 1)),
-    new THREE.LineBasicMaterial({ color: 0xE2231A, transparent: true, opacity: 0.25 })
-  );
-  scene.add(crystalEdges);
-
-  /* -- ambient dust field for depth -- */
-  const dustCount = isSmall ? 260 : 600;
-  const dustPos = new Float32Array(dustCount * 3);
-  for (let i = 0; i < dustCount; i++) {
-    const r = 6 + Math.random() * 10;
-    const theta = Math.random() * Math.PI * 2;
-    const phi = Math.acos(2 * Math.random() - 1);
-    dustPos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-    dustPos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-    dustPos[i * 3 + 2] = r * Math.cos(phi);
-  }
-  const dustGeo = new THREE.BufferGeometry();
-  dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
-  const dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.02, transparent: true, opacity: 0.32 }));
-  scene.add(dust);
-
-  /* -- mining sparks pool, fired each time a new "vein" becomes active -- */
-  const SPARK_MAX = 120;
-  const sparkPos = new Float32Array(SPARK_MAX * 3);
-  const sparkVel = new Float32Array(SPARK_MAX * 3);
-  const sparkLife = new Float32Array(SPARK_MAX);
-  const sparkGeo = new THREE.BufferGeometry();
-  sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPos, 3));
-  const sparks = new THREE.Points(sparkGeo, new THREE.PointsMaterial({ color: 0xE2231A, size: 0.05, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }));
-  scene.add(sparks);
-  let cursor = 0;
-
-  function spawnBurst() {
-    for (let n = 0; n < 24; n++) {
-      const i = cursor % SPARK_MAX; cursor++;
-      const dir = new THREE.Vector3(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
-      sparkPos[i * 3] = dir.x; sparkPos[i * 3 + 1] = dir.y; sparkPos[i * 3 + 2] = dir.z;
-      sparkVel[i * 3] = dir.x * 0.6; sparkVel[i * 3 + 1] = dir.y * 0.6 + 0.15; sparkVel[i * 3 + 2] = dir.z * 0.6;
-      sparkLife[i] = 1.0;
-    }
-  }
-
-  function updateSparks(dt) {
-    const arr = sparkGeo.attributes.position.array;
-    for (let i = 0; i < SPARK_MAX; i++) {
-      if (sparkLife[i] > 0) {
-        sparkLife[i] -= dt * 0.5;
-        arr[i * 3] += sparkVel[i * 3] * dt;
-        arr[i * 3 + 1] += sparkVel[i * 3 + 1] * dt;
-        arr[i * 3 + 2] += sparkVel[i * 3 + 2] * dt;
-      }
-    }
-    sparkGeo.attributes.position.needsUpdate = true;
-  }
-
-  /* -- camera path through 5 keyframes, one per scene -- */
-  const kf = [
-    { pos: new THREE.Vector3(0, 0, 6.2), look: new THREE.Vector3(0, 0, 0) },
-    { pos: new THREE.Vector3(3.1, 0.9, 2.1), look: new THREE.Vector3(0.6, 0, 0) },
-    { pos: new THREE.Vector3(-3.2, -0.6, 2.3), look: new THREE.Vector3(-0.6, 0.1, 0) },
-    { pos: new THREE.Vector3(0.2, 2.6, 2.6), look: new THREE.Vector3(0, 0.2, 0) },
-    { pos: new THREE.Vector3(0, 0, 4.4), look: new THREE.Vector3(0, 0, 0) },
-  ];
-  const curve = new THREE.CatmullRomCurve3(kf.map(k => k.pos), false, 'catmullrom', 0.5);
-
-  function lookAtLerp(t) {
-    const segT = t * (kf.length - 1);
-    const idx = Math.min(Math.floor(segT), kf.length - 2);
-    const localT = segT - idx;
-    return kf[idx].look.clone().lerp(kf[idx + 1].look, localT);
-  }
-
-  function resize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
-  return {
-    spawnBurst,
-    render(p, dt, now) {
-      const camPos = curve.getPointAt(p);
-      camera.position.copy(camPos);
-      camera.lookAt(lookAtLerp(p));
-
-      if (!reduceMotion) {
-        crystalPoints.rotation.y += dt * 0.08;
-        crystalEdges.rotation.y += dt * 0.08;
-        crystalEdges.rotation.x += dt * 0.02;
-        dust.rotation.y -= dt * 0.015;
-      }
-      const pulse = 1 + Math.sin(now * 0.0012) * 0.015;
-      crystalPoints.scale.setScalar(pulse);
-      crystalEdges.scale.setScalar(pulse);
-
-      updateSparks(dt);
-
-      hudCoord.textContent = `${(p * 100).toFixed(1)}% · X${camPos.x.toFixed(2)} Y${camPos.y.toFixed(2)}`;
-      renderer.render(scene, camera);
-    }
-  };
-}
-
-function spawnBurstSafe() {
-  if (scene3d && !reduceMotion) scene3d.spawnBurst();
-}
-
-scene3d = buildScene();
-if (!scene3d) root.classList.add('rah-no-webgl');
-
-/* ---- main loop ---- */
-let last = performance.now();
-function tick(now) {
-  const dt = Math.min((now - last) / 1000, 0.05);
-  last = now;
-
-  progress += (targetProgress - progress) * 0.08;
-  updatePanels(progress);
-  progressEl.style.height = (progress * 100) + '%';
-
-  if (scene3d) scene3d.render(progress, dt, now);
-
-  requestAnimationFrame(tick);
-}
-requestAnimationFrame(tick);
-</script>
-</body>).
+     section, or before </body>).
   5. UPDATE the CTA link in scene 5 (search for "START MINING") to point
      wherever you want it to go — workshop.redsan.in, a contact section,
      etc. It currently points to "#contact".
@@ -592,7 +383,7 @@ requestAnimationFrame(tick);
     --rah-bg:#000;
     --rah-red:#E2231A;
     --rah-white:#fff;
-    --rah-dim:rgba(255,255,255,.56);
+    --rah-dim:rgba(255,255,255,0.95);
     --rah-line:rgba(255,255,255,.14);
     position:relative;
     background:var(--rah-bg);
@@ -713,6 +504,7 @@ requestAnimationFrame(tick);
     margin:0 0 18px;
   }
   #redsan-attention-hero .rah-h1{
+    text-shadow: 0 4px 24px rgba(226,35,26,0.3);
     font-family:'Anton',sans-serif;
     font-weight:400;
     text-transform:uppercase;
@@ -795,8 +587,8 @@ requestAnimationFrame(tick);
       <a href="#blog">Blog</a>
       <a href="#contact">Contact Us</a>
     </nav>
-    <a href="#contact" class="nav-cta">Let's Talk →</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <a href="#contact" class="nav-cta">Let's Talk ÔåÆ</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">Ôÿ░</button>
   </div>
 </header>
 <nav class="mobile-nav" id="mobileNav">
@@ -805,7 +597,7 @@ requestAnimationFrame(tick);
   <a href="#workshop">Workshop</a>
   <a href="#blog">Blog</a>
   <a href="#contact">Contact Us</a>
-  <a href="#contact" class="cta">Let's Talk →</a>
+  <a href="#contact" class="cta">Let's Talk ÔåÆ</a>
 </nav>
 
 <!-- HERO -->
@@ -888,6 +680,8 @@ requestAnimationFrame(tick);
 </noscript>
 </div>
 
+
+<div id="main-content" style="opacity: 0; pointer-events: none; transition: opacity 1.5s ease;">
 <!-- STATS -->
 <div class="stats">
   <div class="wrap stats-inner">
@@ -904,7 +698,7 @@ requestAnimationFrame(tick);
     <div class="section-head">
       <div class="eyebrow">Who We Are</div>
       <h2>A Marketing Company, Built Like a Product Team.</h2>
-      <p>Redsan Digitals runs on the same principle every brand we work with is chasing — move fast, build well, and let the results do the talking. We're not a portfolio site. We're the team behind the growth.</p>
+      <p>Redsan Digitals runs on the same principle every brand we work with is chasing ÔÇö move fast, build well, and let the results do the talking. We're not a portfolio site. We're the team behind the growth.</p>
     </div>
   </div>
 </section>
@@ -924,8 +718,8 @@ requestAnimationFrame(tick);
       </div>
       <div class="service-row">
         <div class="service-num">02</div>
-        <div class="service-name">SEO · AEO · GEO</div>
-        <div class="service-desc">Ranked on Google, cited by AI answers — visible wherever people are actually searching now.</div>
+        <div class="service-name">SEO ┬À AEO ┬À GEO</div>
+        <div class="service-desc">Ranked on Google, cited by AI answers ÔÇö visible wherever people are actually searching now.</div>
       </div>
       <div class="service-row">
         <div class="service-num">03</div>
@@ -1014,15 +808,15 @@ requestAnimationFrame(tick);
   <div class="wrap">
     <div class="workshop-card">
       <div>
-        <div class="eyebrow" style="color:var(--red);">Learn → Launch</div>
+        <div class="eyebrow" style="color:var(--red);">Learn ÔåÆ Launch</div>
         <h2 style="margin-top:16px;">Learnt the Theory. Now Get the Results.</h2>
-        <p>Our Workshop is where students turn cold DMs into paid retainers — real frameworks, real case studies, ₹49 to start.</p>
-        <a href="/workshop" class="btn btn-primary">Explore the Workshop →</a>
+        <p>Our Workshop is where students turn cold DMs into paid retainers ÔÇö real frameworks, real case studies, Ôé╣49 to start.</p>
+        <a href="/workshop" class="btn btn-primary">Explore the Workshop ÔåÆ</a>
       </div>
       <div class="workshop-side">
         <div class="quote-tag">From the Workshop</div>
         <div class="quote">"I wasn't looking for brands that needed help. I was looking for brands where the gap was obvious in the first three seconds of scrolling their grid."</div>
-        <div style="font-family:var(--mono);font-size:12px;color:var(--slate);">— A 2nd-year student, on landing her first ₹15,000 retainer</div>
+        <div style="font-family:var(--mono);font-size:12px;color:var(--slate);">ÔÇö A 2nd-year student, on landing her first Ôé╣15,000 retainer</div>
       </div>
     </div>
   </div>
@@ -1037,23 +831,23 @@ requestAnimationFrame(tick);
     </div>
     <div class="blog-grid">
       <a href="/blog/2nd-year-student-15000-retainer" class="mag-card">
-        <div class="mag-cover"><span class="crosshair tl"></span><span class="crosshair br"></span><div class="cover-icon">🗣️</div><span class="flair">Case Study</span></div>
+        <div class="mag-cover"><span class="crosshair tl"></span><span class="crosshair br"></span><div class="cover-icon">­ƒùú´©Å</div><span class="flair">Case Study</span></div>
         <div class="mag-body">
           <div class="tag">Sales &amp; Pitching</div>
-          <h3>How a 2nd-Year Student Landed Her First ₹15,000 Retainer With One Cold DM</h3>
-          <p>No agency, no portfolio, no connections — just a message framework and the guts to hit send.</p>
+          <h3>How a 2nd-Year Student Landed Her First Ôé╣15,000 Retainer With One Cold DM</h3>
+          <p>No agency, no portfolio, no connections ÔÇö just a message framework and the guts to hit send.</p>
         </div>
       </a>
       <a href="/blog/3-line-objection-handler" class="mag-card">
-        <div class="mag-cover"><span class="crosshair tl"></span><span class="crosshair br"></span><div class="cover-icon">🗣️</div><span class="flair">Teaching</span></div>
+        <div class="mag-cover"><span class="crosshair tl"></span><span class="crosshair br"></span><div class="cover-icon">­ƒùú´©Å</div><span class="flair">Teaching</span></div>
         <div class="mag-body">
           <div class="tag">Sales &amp; Pitching</div>
           <h3>The 3-Line Objection Handler We Teach in Every Workshop</h3>
-          <p>"It's too expensive" isn't a rejection — it's a request for more context.</p>
+          <p>"It's too expensive" isn't a rejection ÔÇö it's a request for more context.</p>
         </div>
       </a>
       <a href="/blog/cold-dm-vs-warm-intro-vs-referral" class="mag-card">
-        <div class="mag-cover"><span class="crosshair tl"></span><span class="crosshair br"></span><div class="cover-icon">🗣️</div><span class="flair">Data</span></div>
+        <div class="mag-cover"><span class="crosshair tl"></span><span class="crosshair br"></span><div class="cover-icon">­ƒùú´©Å</div><span class="flair">Data</span></div>
         <div class="mag-body">
           <div class="tag">Sales &amp; Pitching</div>
           <h3>Cold DM, Warm Intro, or Referral? The Real Math on Which Converts Fastest</h3>
@@ -1070,7 +864,7 @@ requestAnimationFrame(tick);
     <div class="section-head" style="margin-bottom:36px;">
       <div class="eyebrow">Credibility</div>
       <h2>Certified. Partnered. Accountable.</h2>
-      <p>Placeholder slots below — send over the ISO certificate and MoU logos and I'll drop them in at consistent size.</p>
+      <p>Placeholder slots below ÔÇö send over the ISO certificate and MoU logos and I'll drop them in at consistent size.</p>
     </div>
     <div class="certs-grid">
       <div class="cert-badge"><div class="ph-icon">ISO</div><div class="cert-label">ISO Certified</div></div>
@@ -1091,18 +885,18 @@ requestAnimationFrame(tick);
     <div class="testi-grid">
       <div class="testi-card">
         <div class="quote-mark">"</div>
-        <p class="quote-text">[Placeholder — send over the real testimonial text and we'll drop it in exactly as written.]</p>
+        <p class="quote-text">[Placeholder ÔÇö send over the real testimonial text and we'll drop it in exactly as written.]</p>
         <div class="testi-name">Client Name</div>
         <div class="testi-role">Designation, Company</div>
       </div>
       <div class="testi-card">
         <div class="quote-mark">"</div>
-        <p class="quote-text">[Placeholder — send over the real testimonial text and we'll drop it in exactly as written.]</p>
+        <p class="quote-text">[Placeholder ÔÇö send over the real testimonial text and we'll drop it in exactly as written.]</p>
         <div class="testi-name">Client Name</div>
         <div class="testi-role">Designation, Company</div>
       </div>
     </div>
-    <div class="testi-note">Note: swap these two placeholders for your real quotes — happy to add more as a scrollable row if you have 3+.</div>
+    <div class="testi-note">Note: swap these two placeholders for your real quotes ÔÇö happy to add more as a scrollable row if you have 3+.</div>
   </div>
 </section>
 
@@ -1112,14 +906,14 @@ requestAnimationFrame(tick);
     <div class="contact-left">
       <div class="eyebrow">Get In Touch</div>
       <h2 style="margin-top:16px;">Got an Idea?<br>We've Got the Engine.</h2>
-      <p>Tell us what you're building — we'll tell you how fast we can make it real.</p>
+      <p>Tell us what you're building ÔÇö we'll tell you how fast we can make it real.</p>
       <div class="contact-info">
         <a href="mailto:hello@redsandigitals.com">hello@redsandigitals.com</a>
         <a href="tel:+910000000000">+91 00000 00000</a>
-        <a href="https://wa.me/910000000000">WhatsApp Us Directly →</a>
+        <a href="https://wa.me/910000000000">WhatsApp Us Directly ÔåÆ</a>
       </div>
     </div>
-    <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submitted — connect this to your backend / form service.');">
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submitted ÔÇö connect this to your backend / form service.');">
       <div class="form-field">
         <label for="name">Name</label>
         <input id="name" type="text" placeholder="Your name" required>
@@ -1148,7 +942,7 @@ requestAnimationFrame(tick);
         <label for="message">Message</label>
         <textarea id="message" placeholder="Tell us a bit about your project..."></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Let's Get Weird With It →</button>
+      <button type="submit" class="btn btn-primary">Let's Get Weird With It ÔåÆ</button>
     </form>
   </div>
 </section>
@@ -1173,18 +967,18 @@ requestAnimationFrame(tick);
       <a href="#contact">Contact Us</a>
     </nav>
   </div>
-  <div class="wrap foot-bottom">© 2026 Redsan Digitals Pvt. Ltd. All rights reserved.</div>
+  <div class="wrap foot-bottom">┬® 2026 Redsan Digitals Pvt. Ltd. All rights reserved.</div>
 </footer>
+</div><!-- /#main-content -->
 
-<a href="https://wa.me/910000000000" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+
+<a href="https://wa.me/910000000000" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">­ƒÆ¼</a>
 
 <script>
   const navToggle = document.getElementById('navToggle');
   const mobileNav = document.getElementById('mobileNav');
   navToggle.addEventListener('click', () => mobileNav.classList.toggle('open'));
 </script>
-
-
 <script type="importmap">
 {
   "imports": {
@@ -1419,6 +1213,16 @@ function tick(now) {
   progressEl.style.height = (progress * 100) + '%';
 
   if (scene3d) scene3d.render(progress, dt, now);
+
+  
+  // Trigger main content reveal at end of scroll
+  if (progress > 0.98) {
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+      mainContent.style.opacity = '1';
+      mainContent.style.pointerEvents = 'auto';
+    }
+  }
 
   requestAnimationFrame(tick);
 }
