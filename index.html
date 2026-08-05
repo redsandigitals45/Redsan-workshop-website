@@ -318,6 +318,468 @@
     display:flex;align-items:center;justify-content:center;font-size:24px;
     box-shadow:0 10px 24px rgba(0,0,0,0.25);
   }
+
+  /* --- Redsan Attention Hero Styles --- */
+  block into the site's global stylesheet, or
+     keep it as a <style> tag right before </head>. All rules are scoped
+     under #redsan-attention-hero, so it will not leak into the rest of
+     the page's CSS.
+  3. COPY the <section id="redsan-attention-hero"> ... </section> block
+     and paste it as the FIRST thing inside <body>, above the existing
+     header/hero content. It occupies 500vh of scroll (5 pinned "scenes")
+     before releasing the scroll back to the rest of the page.
+  4. COPY the <script type="importmap"> and the <script type="module">
+     at the bottom into the page as well (they can sit right after the
+     section, or before <script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.164.0/build/three.module.js"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+
+const track      = document.getElementById('rah-track');
+const canvas     = document.getElementById('rah-canvas');
+const panels     = Array.from(document.querySelectorAll('#redsan-attention-hero .rah-panel'));
+const hudLabel   = document.getElementById('rah-hud-label');
+const hudCoord   = document.getElementById('rah-hud-coord');
+const progressEl = document.getElementById('rah-progress-fill');
+const reticle    = document.getElementById('rah-reticle');
+const root       = document.getElementById('redsan-attention-hero');
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isSmall = window.matchMedia('(max-width: 680px)').matches;
+
+const labels = ['ORIGIN', 'VEIN 01 — INTELLIGENCE', 'VEIN 02 — CONTENT', 'VEIN 03 — CONVERSION', 'YIELD'];
+
+/* ---- reticle follows pointer subtly (works even without WebGL) ---- */
+window.addEventListener('pointermove', (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 24;
+  const y = (e.clientY / window.innerHeight - 0.5) * 24;
+  reticle.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+/* ---- scroll progress (0..1 across the 500vh track) ---- */
+let targetProgress = 0;
+let progress = 0;
+
+function computeProgress() {
+  const rect = track.getBoundingClientRect();
+  const total = track.offsetHeight - window.innerHeight;
+  const scrolled = -rect.top;
+  targetProgress = THREE.MathUtils.clamp(total > 0 ? scrolled / total : 0, 0, 1);
+}
+window.addEventListener('scroll', computeProgress, { passive: true });
+window.addEventListener('resize', computeProgress);
+computeProgress();
+
+/* ---- panel crossfade driven purely by progress, no IntersectionObserver needed ---- */
+let lastActiveIdx = -1;
+function updatePanels(p) {
+  const n = panels.length;
+  panels.forEach((panel, i) => {
+    const center = (i + 0.5) / n;
+    const band = 0.5 / n;
+    const dist = Math.abs(p - center);
+    const fade = 1 - THREE.MathUtils.clamp((dist - band * 0.35) / (band * 0.65), 0, 1);
+    panel.style.opacity = fade;
+    panel.style.transform = `translateY(${(1 - fade) * 22}px)`;
+    panel.style.pointerEvents = fade > 0.5 ? 'auto' : 'none';
+  });
+  const activeIdx = Math.min(n - 1, Math.floor(p * n));
+  if (activeIdx !== lastActiveIdx) {
+    lastActiveIdx = activeIdx;
+    hudLabel.textContent = labels[activeIdx];
+    if (activeIdx > 0) spawnBurstSafe();
+  }
+}
+
+/* ---- 3D scene (guarded — page still works with no WebGL) ---- */
+let scene3d = null;
+
+function buildScene() {
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+  } catch (e) {
+    return null;
+  }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 1);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+
+  /* -- the "ore" — a raw, irregular crystal made of attention data points -- */
+  const detail = isSmall ? 2 : 3;
+  const geo = new THREE.IcosahedronGeometry(1.4, detail);
+  const pos = geo.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    const s = 0.85 + Math.random() * 0.3;
+    pos.setXYZ(i, pos.getX(i) * s, pos.getY(i) * s, pos.getZ(i) * s);
+  }
+  pos.needsUpdate = true;
+  geo.computeVertexNormals();
+
+  const red = new THREE.Color('#E2231A');
+  const white = new THREE.Color('#ffffff');
+  const colors = new Float32Array(pos.count * 3);
+  for (let i = 0; i < pos.count; i++) {
+    const t = THREE.MathUtils.clamp((pos.getY(i) + 1.6) / 3.2, 0, 1);
+    const c = red.clone().lerp(white, t * 0.55);
+    colors[i * 3] = c.r; colors[i * 3 + 1] = c.g; colors[i * 3 + 2] = c.b;
+  }
+  geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+  const crystalPoints = new THREE.Points(
+    geo,
+    new THREE.PointsMaterial({ size: 0.028, vertexColors: true, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending, depthWrite: false })
+  );
+  scene.add(crystalPoints);
+
+  const crystalEdges = new THREE.LineSegments(
+    new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.42, 1)),
+    new THREE.LineBasicMaterial({ color: 0xE2231A, transparent: true, opacity: 0.25 })
+  );
+  scene.add(crystalEdges);
+
+  /* -- ambient dust field for depth -- */
+  const dustCount = isSmall ? 260 : 600;
+  const dustPos = new Float32Array(dustCount * 3);
+  for (let i = 0; i < dustCount; i++) {
+    const r = 6 + Math.random() * 10;
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.acos(2 * Math.random() - 1);
+    dustPos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+    dustPos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+    dustPos[i * 3 + 2] = r * Math.cos(phi);
+  }
+  const dustGeo = new THREE.BufferGeometry();
+  dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+  const dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.02, transparent: true, opacity: 0.32 }));
+  scene.add(dust);
+
+  /* -- mining sparks pool, fired each time a new "vein" becomes active -- */
+  const SPARK_MAX = 120;
+  const sparkPos = new Float32Array(SPARK_MAX * 3);
+  const sparkVel = new Float32Array(SPARK_MAX * 3);
+  const sparkLife = new Float32Array(SPARK_MAX);
+  const sparkGeo = new THREE.BufferGeometry();
+  sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPos, 3));
+  const sparks = new THREE.Points(sparkGeo, new THREE.PointsMaterial({ color: 0xE2231A, size: 0.05, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }));
+  scene.add(sparks);
+  let cursor = 0;
+
+  function spawnBurst() {
+    for (let n = 0; n < 24; n++) {
+      const i = cursor % SPARK_MAX; cursor++;
+      const dir = new THREE.Vector3(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
+      sparkPos[i * 3] = dir.x; sparkPos[i * 3 + 1] = dir.y; sparkPos[i * 3 + 2] = dir.z;
+      sparkVel[i * 3] = dir.x * 0.6; sparkVel[i * 3 + 1] = dir.y * 0.6 + 0.15; sparkVel[i * 3 + 2] = dir.z * 0.6;
+      sparkLife[i] = 1.0;
+    }
+  }
+
+  function updateSparks(dt) {
+    const arr = sparkGeo.attributes.position.array;
+    for (let i = 0; i < SPARK_MAX; i++) {
+      if (sparkLife[i] > 0) {
+        sparkLife[i] -= dt * 0.5;
+        arr[i * 3] += sparkVel[i * 3] * dt;
+        arr[i * 3 + 1] += sparkVel[i * 3 + 1] * dt;
+        arr[i * 3 + 2] += sparkVel[i * 3 + 2] * dt;
+      }
+    }
+    sparkGeo.attributes.position.needsUpdate = true;
+  }
+
+  /* -- camera path through 5 keyframes, one per scene -- */
+  const kf = [
+    { pos: new THREE.Vector3(0, 0, 6.2), look: new THREE.Vector3(0, 0, 0) },
+    { pos: new THREE.Vector3(3.1, 0.9, 2.1), look: new THREE.Vector3(0.6, 0, 0) },
+    { pos: new THREE.Vector3(-3.2, -0.6, 2.3), look: new THREE.Vector3(-0.6, 0.1, 0) },
+    { pos: new THREE.Vector3(0.2, 2.6, 2.6), look: new THREE.Vector3(0, 0.2, 0) },
+    { pos: new THREE.Vector3(0, 0, 4.4), look: new THREE.Vector3(0, 0, 0) },
+  ];
+  const curve = new THREE.CatmullRomCurve3(kf.map(k => k.pos), false, 'catmullrom', 0.5);
+
+  function lookAtLerp(t) {
+    const segT = t * (kf.length - 1);
+    const idx = Math.min(Math.floor(segT), kf.length - 2);
+    const localT = segT - idx;
+    return kf[idx].look.clone().lerp(kf[idx + 1].look, localT);
+  }
+
+  function resize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  return {
+    spawnBurst,
+    render(p, dt, now) {
+      const camPos = curve.getPointAt(p);
+      camera.position.copy(camPos);
+      camera.lookAt(lookAtLerp(p));
+
+      if (!reduceMotion) {
+        crystalPoints.rotation.y += dt * 0.08;
+        crystalEdges.rotation.y += dt * 0.08;
+        crystalEdges.rotation.x += dt * 0.02;
+        dust.rotation.y -= dt * 0.015;
+      }
+      const pulse = 1 + Math.sin(now * 0.0012) * 0.015;
+      crystalPoints.scale.setScalar(pulse);
+      crystalEdges.scale.setScalar(pulse);
+
+      updateSparks(dt);
+
+      hudCoord.textContent = `${(p * 100).toFixed(1)}% · X${camPos.x.toFixed(2)} Y${camPos.y.toFixed(2)}`;
+      renderer.render(scene, camera);
+    }
+  };
+}
+
+function spawnBurstSafe() {
+  if (scene3d && !reduceMotion) scene3d.spawnBurst();
+}
+
+scene3d = buildScene();
+if (!scene3d) root.classList.add('rah-no-webgl');
+
+/* ---- main loop ---- */
+let last = performance.now();
+function tick(now) {
+  const dt = Math.min((now - last) / 1000, 0.05);
+  last = now;
+
+  progress += (targetProgress - progress) * 0.08;
+  updatePanels(progress);
+  progressEl.style.height = (progress * 100) + '%';
+
+  if (scene3d) scene3d.render(progress, dt, now);
+
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+</script>
+</body>).
+  5. UPDATE the CTA link in scene 5 (search for "START MINING") to point
+     wherever you want it to go — workshop.redsan.in, a contact section,
+     etc. It currently points to "#contact".
+  6. This uses vanilla Three.js loaded from a CDN via import map — no
+     build step, no bundler, works as a plain static file on
+     Netlify/Vercel.
+
+  Brand tokens used (do not need re-confirmation): black background,
+  #E2231A red accent, white secondary, Anton / Manrope / IBM Plex Mono,
+  crosshair / surveyor's-reticle motif.
+  ============================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  #redsan-attention-hero{
+    --rah-bg:#000;
+    --rah-red:#E2231A;
+    --rah-white:#fff;
+    --rah-dim:rgba(255,255,255,.56);
+    --rah-line:rgba(255,255,255,.14);
+    position:relative;
+    background:var(--rah-bg);
+    color:var(--rah-white);
+    font-family:'Manrope',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  #redsan-attention-hero *{ box-sizing:border-box; }
+
+  #redsan-attention-hero .rah-track{
+    position:relative;
+    height:500vh;
+  }
+
+  #redsan-attention-hero .rah-sticky{
+    position:sticky;
+    top:0;
+    height:100vh;
+    width:100%;
+    overflow:hidden;
+  }
+
+  #redsan-attention-hero canvas.rah-canvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+  }
+
+  /* corner brackets — surveyor / crosshair motif */
+  #redsan-attention-hero .rah-bracket{
+    position:absolute;
+    width:26px;
+    height:26px;
+    border:1.5px solid var(--rah-red);
+    opacity:.7;
+    z-index:3;
+    pointer-events:none;
+  }
+  #redsan-attention-hero .rah-bracket.tl{ top:24px; left:24px; border-right:none; border-bottom:none; }
+  #redsan-attention-hero .rah-bracket.br{ bottom:24px; right:24px; border-left:none; border-top:none; }
+
+  /* reticle */
+  #redsan-attention-hero .rah-reticle{
+    position:absolute;
+    top:50%; left:50%;
+    width:34px; height:34px;
+    margin:-17px 0 0 -17px;
+    z-index:3;
+    pointer-events:none;
+    opacity:.85;
+    transition:transform .15s ease-out;
+  }
+  #redsan-attention-hero .rah-reticle svg{ width:100%; height:100%; display:block; }
+
+  /* HUD */
+  #redsan-attention-hero .rah-hud{
+    position:absolute;
+    top:24px; right:24px;
+    z-index:3;
+    text-align:right;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.06em;
+    color:var(--rah-dim);
+    pointer-events:none;
+  }
+  #redsan-attention-hero .rah-hud .rah-hud-label{
+    color:var(--rah-red);
+    font-weight:500;
+    display:block;
+    margin-bottom:4px;
+  }
+
+  /* progress rail */
+  #redsan-attention-hero .rah-progress{
+    position:absolute;
+    right:24px;
+    top:96px;
+    bottom:96px;
+    width:1px;
+    background:var(--rah-line);
+    z-index:3;
+    pointer-events:none;
+  }
+  #redsan-attention-hero .rah-progress-fill{
+    position:absolute;
+    top:0; left:0; width:100%;
+    height:0%;
+    background:var(--rah-red);
+  }
+
+  /* panels */
+  #redsan-attention-hero .rah-panels{
+    position:absolute;
+    inset:0;
+    z-index:2;
+  }
+  #redsan-attention-hero .rah-panel{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:0 7vw;
+    max-width:920px;
+    opacity:0;
+    will-change:opacity, transform;
+  }
+  #redsan-attention-hero .rah-eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--rah-red);
+    margin:0 0 18px;
+  }
+  #redsan-attention-hero .rah-h1{
+    font-family:'Anton',sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    line-height:.96;
+    letter-spacing:.005em;
+    font-size:clamp(2.6rem, 6.4vw, 5.6rem);
+    margin:0 0 22px;
+  }
+  #redsan-attention-hero .rah-h1 .rah-accent{ color:var(--rah-red); }
+  #redsan-attention-hero .rah-body{
+    font-family:'Manrope',sans-serif;
+    font-weight:400;
+    font-size:clamp(1rem, 1.5vw, 1.15rem);
+    line-height:1.6;
+    color:var(--rah-dim);
+    max-width:44ch;
+    margin:0;
+  }
+  #redsan-attention-hero .rah-scroll-cue{
+    position:absolute;
+    bottom:40px; left:7vw;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    color:var(--rah-dim);
+    animation:rah-bob 2s ease-in-out infinite;
+  }
+  @keyframes rah-bob{
+    0%,100%{ transform:translateY(0); opacity:.55; }
+    50%{ transform:translateY(6px); opacity:1; }
+  }
+
+  #redsan-attention-hero .rah-cta{
+    margin-top:32px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    width:fit-content;
+    padding:16px 26px;
+    background:var(--rah-red);
+    color:#fff;
+    text-decoration:none;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    border:1px solid var(--rah-red);
+    transition:background .2s ease, color .2s ease;
+  }
+  #redsan-attention-hero .rah-cta:hover{
+    background:transparent;
+    color:var(--rah-red);
+  }
+
+  /* no-webgl fallback: still readable, just static */
+  #redsan-attention-hero.rah-no-webgl canvas.rah-canvas{ display:none; }
+
+  @media (max-width: 680px){
+    #redsan-attention-hero .rah-hud{ display:none; }
+    #redsan-attention-hero .rah-progress{ display:none; }
+    #redsan-attention-hero .rah-panel{ padding:0 6vw; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    #redsan-attention-hero .rah-scroll-cue{ animation:none; }
+  }
 </style>
 </head>
 <body>
@@ -347,27 +809,84 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="top">
-  <div class="marquee-track">
-    <div class="seq">
-      <span class="item"><b>SEO</b> · <b>AEO</b> · <b>GEO</b> · AI WEB DESIGN & DEVELOPMENT · SOCIAL MEDIA MANAGEMENT · CONTENT CREATION · META &amp; GOOGLE ADS · VIBE CODING · STARTUP CONSULTING · PERFORMANCE MARKETING ·</span>
-      <span class="item"><b>SEO</b> · <b>AEO</b> · <b>GEO</b> · AI WEB DESIGN & DEVELOPMENT · SOCIAL MEDIA MANAGEMENT · CONTENT CREATION · META &amp; GOOGLE ADS · VIBE CODING · STARTUP CONSULTING · PERFORMANCE MARKETING ·</span>
-    </div>
-  </div>
-  <div class="wrap hero-main">
-    <div class="eyebrow">Full-Stack Marketing Company</div>
-    <h1 style="margin-top:22px;">WE TURN <span class="cut">ATTENTION</span><br>INTO REVENUE.</h1>
-    <p class="hero-sub">Redsan Digitals is the AI-powered marketing crew behind brands that refuse to blend in — websites, ads, content, and code, built to actually perform.</p>
-    <div class="hero-ctas">
-      <a href="#contact" class="btn btn-primary">Let's Build Something →</a>
-      <a href="https://wa.me/910000000000" class="btn btn-ghost">Chat on WhatsApp</a>
-    </div>
-    <div class="hero-visual">
-      <div id="hero-lottie" role="img" aria-label="Animated preview of Redsan Digitals services — website dev, SEO/AEO/GEO, Meta &amp; Google ads, social media, and shoot &amp; editing"></div>
-      <noscript><img src="assets/hero-services-visual.svg" alt="Redsan Digitals services overview"></noscript>
+<div id="top">
+<section id="redsan-attention-hero">
+  <div class="rah-track" id="rah-track">
+    <div class="rah-sticky">
+
+      <canvas class="rah-canvas" id="rah-canvas"></canvas>
+
+      <div class="rah-bracket tl"></div>
+      <div class="rah-bracket br"></div>
+
+      <div class="rah-reticle" id="rah-reticle">
+        <svg viewBox="0 0 34 34" fill="none">
+          <circle cx="17" cy="17" r="10" stroke="#E2231A" stroke-width="1"/>
+          <line x1="17" y1="0" x2="17" y2="9" stroke="#E2231A" stroke-width="1"/>
+          <line x1="17" y1="25" x2="17" y2="34" stroke="#E2231A" stroke-width="1"/>
+          <line x1="0" y1="17" x2="9" y2="17" stroke="#E2231A" stroke-width="1"/>
+          <line x1="25" y1="17" x2="34" y2="17" stroke="#E2231A" stroke-width="1"/>
+          <circle cx="17" cy="17" r="1.4" fill="#E2231A"/>
+        </svg>
+      </div>
+
+      <div class="rah-hud">
+        <span class="rah-hud-label" id="rah-hud-label">ORIGIN</span>
+        <span id="rah-hud-coord">0.0% · X0.00 Y0.00</span>
+      </div>
+
+      <div class="rah-progress">
+        <div class="rah-progress-fill" id="rah-progress-fill"></div>
+      </div>
+
+      <div class="rah-panels" id="rah-panels">
+
+        <!-- SCENE 0 — HERO -->
+        <div class="rah-panel" data-index="0">
+          <p class="rah-eyebrow">Redsan Digitals · Est. 2019 · ISO 9001:2015 Certified</p>
+          <h1 class="rah-h1">Attention is<br>the new <span class="rah-accent">currency</span></h1>
+          <p class="rah-body">Every scroll, every glance, every three seconds of eye contact is ore in the ground. Most brands let it sit there. Redsan exists to mine it, refine it, and turn it into customers.</p>
+          <span class="rah-scroll-cue">Scroll to mine ↓</span>
+        </div>
+
+        <!-- SCENE 1 — INTELLIGENCE -->
+        <div class="rah-panel" data-index="1">
+          <p class="rah-eyebrow">Vein 01 — Intelligence</p>
+          <h1 class="rah-h1">We find where<br>the <span class="rah-accent">attention</span> is</h1>
+          <p class="rah-body">AI-driven research maps the exact platforms, searches, and moments your audience is already paying attention to — before a single rupee is spent trying to reach them.</p>
+        </div>
+
+        <!-- SCENE 2 — CONTENT -->
+        <div class="rah-panel" data-index="2">
+          <p class="rah-eyebrow">Vein 02 — Content</p>
+          <h1 class="rah-h1">Then we <span class="rah-accent">refine</span><br>it into content</h1>
+          <p class="rah-body">SEO, AEO and GEO-optimised articles, campaigns and creative — engineered to earn attention on search, on social, and inside AI answers, not just chase impressions.</p>
+        </div>
+
+        <!-- SCENE 3 — CONVERSION -->
+        <div class="rah-panel" data-index="3">
+          <p class="rah-eyebrow">Vein 03 — Conversion</p>
+          <h1 class="rah-h1">And <span class="rah-accent">convert</span> it<br>into customers</h1>
+          <p class="rah-body">Funnels, landing pages and sales systems built to turn a scroll-stopping moment into a paying customer — the same playbook we teach first-hand in Sell With Confidence.</p>
+        </div>
+
+        <!-- SCENE 4 — CTA -->
+        <div class="rah-panel" data-index="4">
+          <p class="rah-eyebrow">The Yield</p>
+          <h1 class="rah-h1">Your audience's<br>attention is <span class="rah-accent">already</span><br>being mined</h1>
+          <p class="rah-body">By someone. Make sure it's you. Let's talk about what Redsan Digitals can build for your brand.</p>
+          <a href="#contact" class="rah-cta">Start mining →</a>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
+
+<noscript>
+  <style>#redsan-attention-hero .rah-track{ height:auto; } #redsan-attention-hero .rah-sticky{ position:relative; height:auto; } #redsan-attention-hero .rah-panel{ position:relative; opacity:1; padding:80px 7vw; }</style>
+</noscript>
+</div>
 
 <!-- STATS -->
 <div class="stats">
@@ -664,15 +1183,246 @@
   const mobileNav = document.getElementById('mobileNav');
   navToggle.addEventListener('click', () => mobileNav.classList.toggle('open'));
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
-<script>
-  lottie.loadAnimation({
-    container: document.getElementById('hero-lottie'),
-    renderer: 'svg',
-    loop: true,
-    autoplay: true,
-    path: 'assets/hero-services-animation.json'
+
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.164.0/build/three.module.js"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+
+const track      = document.getElementById('rah-track');
+const canvas     = document.getElementById('rah-canvas');
+const panels     = Array.from(document.querySelectorAll('#redsan-attention-hero .rah-panel'));
+const hudLabel   = document.getElementById('rah-hud-label');
+const hudCoord   = document.getElementById('rah-hud-coord');
+const progressEl = document.getElementById('rah-progress-fill');
+const reticle    = document.getElementById('rah-reticle');
+const root       = document.getElementById('redsan-attention-hero');
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isSmall = window.matchMedia('(max-width: 680px)').matches;
+
+const labels = ['ORIGIN', 'VEIN 01 — INTELLIGENCE', 'VEIN 02 — CONTENT', 'VEIN 03 — CONVERSION', 'YIELD'];
+
+/* ---- reticle follows pointer subtly (works even without WebGL) ---- */
+window.addEventListener('pointermove', (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 24;
+  const y = (e.clientY / window.innerHeight - 0.5) * 24;
+  reticle.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+/* ---- scroll progress (0..1 across the 500vh track) ---- */
+let targetProgress = 0;
+let progress = 0;
+
+function computeProgress() {
+  const rect = track.getBoundingClientRect();
+  const total = track.offsetHeight - window.innerHeight;
+  const scrolled = -rect.top;
+  targetProgress = THREE.MathUtils.clamp(total > 0 ? scrolled / total : 0, 0, 1);
+}
+window.addEventListener('scroll', computeProgress, { passive: true });
+window.addEventListener('resize', computeProgress);
+computeProgress();
+
+/* ---- panel crossfade driven purely by progress, no IntersectionObserver needed ---- */
+let lastActiveIdx = -1;
+function updatePanels(p) {
+  const n = panels.length;
+  panels.forEach((panel, i) => {
+    const center = (i + 0.5) / n;
+    const band = 0.5 / n;
+    const dist = Math.abs(p - center);
+    const fade = 1 - THREE.MathUtils.clamp((dist - band * 0.35) / (band * 0.65), 0, 1);
+    panel.style.opacity = fade;
+    panel.style.transform = `translateY(${(1 - fade) * 22}px)`;
+    panel.style.pointerEvents = fade > 0.5 ? 'auto' : 'none';
   });
+  const activeIdx = Math.min(n - 1, Math.floor(p * n));
+  if (activeIdx !== lastActiveIdx) {
+    lastActiveIdx = activeIdx;
+    hudLabel.textContent = labels[activeIdx];
+    if (activeIdx > 0) spawnBurstSafe();
+  }
+}
+
+/* ---- 3D scene (guarded — page still works with no WebGL) ---- */
+let scene3d = null;
+
+function buildScene() {
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+  } catch (e) {
+    return null;
+  }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 1);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+
+  /* -- the "ore" — a raw, irregular crystal made of attention data points -- */
+  const detail = isSmall ? 2 : 3;
+  const geo = new THREE.IcosahedronGeometry(1.4, detail);
+  const pos = geo.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    const s = 0.85 + Math.random() * 0.3;
+    pos.setXYZ(i, pos.getX(i) * s, pos.getY(i) * s, pos.getZ(i) * s);
+  }
+  pos.needsUpdate = true;
+  geo.computeVertexNormals();
+
+  const red = new THREE.Color('#E2231A');
+  const white = new THREE.Color('#ffffff');
+  const colors = new Float32Array(pos.count * 3);
+  for (let i = 0; i < pos.count; i++) {
+    const t = THREE.MathUtils.clamp((pos.getY(i) + 1.6) / 3.2, 0, 1);
+    const c = red.clone().lerp(white, t * 0.55);
+    colors[i * 3] = c.r; colors[i * 3 + 1] = c.g; colors[i * 3 + 2] = c.b;
+  }
+  geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+  const crystalPoints = new THREE.Points(
+    geo,
+    new THREE.PointsMaterial({ size: 0.028, vertexColors: true, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending, depthWrite: false })
+  );
+  scene.add(crystalPoints);
+
+  const crystalEdges = new THREE.LineSegments(
+    new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.42, 1)),
+    new THREE.LineBasicMaterial({ color: 0xE2231A, transparent: true, opacity: 0.25 })
+  );
+  scene.add(crystalEdges);
+
+  /* -- ambient dust field for depth -- */
+  const dustCount = isSmall ? 260 : 600;
+  const dustPos = new Float32Array(dustCount * 3);
+  for (let i = 0; i < dustCount; i++) {
+    const r = 6 + Math.random() * 10;
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.acos(2 * Math.random() - 1);
+    dustPos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+    dustPos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+    dustPos[i * 3 + 2] = r * Math.cos(phi);
+  }
+  const dustGeo = new THREE.BufferGeometry();
+  dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+  const dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.02, transparent: true, opacity: 0.32 }));
+  scene.add(dust);
+
+  /* -- mining sparks pool, fired each time a new "vein" becomes active -- */
+  const SPARK_MAX = 120;
+  const sparkPos = new Float32Array(SPARK_MAX * 3);
+  const sparkVel = new Float32Array(SPARK_MAX * 3);
+  const sparkLife = new Float32Array(SPARK_MAX);
+  const sparkGeo = new THREE.BufferGeometry();
+  sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPos, 3));
+  const sparks = new THREE.Points(sparkGeo, new THREE.PointsMaterial({ color: 0xE2231A, size: 0.05, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }));
+  scene.add(sparks);
+  let cursor = 0;
+
+  function spawnBurst() {
+    for (let n = 0; n < 24; n++) {
+      const i = cursor % SPARK_MAX; cursor++;
+      const dir = new THREE.Vector3(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).normalize();
+      sparkPos[i * 3] = dir.x; sparkPos[i * 3 + 1] = dir.y; sparkPos[i * 3 + 2] = dir.z;
+      sparkVel[i * 3] = dir.x * 0.6; sparkVel[i * 3 + 1] = dir.y * 0.6 + 0.15; sparkVel[i * 3 + 2] = dir.z * 0.6;
+      sparkLife[i] = 1.0;
+    }
+  }
+
+  function updateSparks(dt) {
+    const arr = sparkGeo.attributes.position.array;
+    for (let i = 0; i < SPARK_MAX; i++) {
+      if (sparkLife[i] > 0) {
+        sparkLife[i] -= dt * 0.5;
+        arr[i * 3] += sparkVel[i * 3] * dt;
+        arr[i * 3 + 1] += sparkVel[i * 3 + 1] * dt;
+        arr[i * 3 + 2] += sparkVel[i * 3 + 2] * dt;
+      }
+    }
+    sparkGeo.attributes.position.needsUpdate = true;
+  }
+
+  /* -- camera path through 5 keyframes, one per scene -- */
+  const kf = [
+    { pos: new THREE.Vector3(0, 0, 6.2), look: new THREE.Vector3(0, 0, 0) },
+    { pos: new THREE.Vector3(3.1, 0.9, 2.1), look: new THREE.Vector3(0.6, 0, 0) },
+    { pos: new THREE.Vector3(-3.2, -0.6, 2.3), look: new THREE.Vector3(-0.6, 0.1, 0) },
+    { pos: new THREE.Vector3(0.2, 2.6, 2.6), look: new THREE.Vector3(0, 0.2, 0) },
+    { pos: new THREE.Vector3(0, 0, 4.4), look: new THREE.Vector3(0, 0, 0) },
+  ];
+  const curve = new THREE.CatmullRomCurve3(kf.map(k => k.pos), false, 'catmullrom', 0.5);
+
+  function lookAtLerp(t) {
+    const segT = t * (kf.length - 1);
+    const idx = Math.min(Math.floor(segT), kf.length - 2);
+    const localT = segT - idx;
+    return kf[idx].look.clone().lerp(kf[idx + 1].look, localT);
+  }
+
+  function resize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  return {
+    spawnBurst,
+    render(p, dt, now) {
+      const camPos = curve.getPointAt(p);
+      camera.position.copy(camPos);
+      camera.lookAt(lookAtLerp(p));
+
+      if (!reduceMotion) {
+        crystalPoints.rotation.y += dt * 0.08;
+        crystalEdges.rotation.y += dt * 0.08;
+        crystalEdges.rotation.x += dt * 0.02;
+        dust.rotation.y -= dt * 0.015;
+      }
+      const pulse = 1 + Math.sin(now * 0.0012) * 0.015;
+      crystalPoints.scale.setScalar(pulse);
+      crystalEdges.scale.setScalar(pulse);
+
+      updateSparks(dt);
+
+      hudCoord.textContent = `${(p * 100).toFixed(1)}% · X${camPos.x.toFixed(2)} Y${camPos.y.toFixed(2)}`;
+      renderer.render(scene, camera);
+    }
+  };
+}
+
+function spawnBurstSafe() {
+  if (scene3d && !reduceMotion) scene3d.spawnBurst();
+}
+
+scene3d = buildScene();
+if (!scene3d) root.classList.add('rah-no-webgl');
+
+/* ---- main loop ---- */
+let last = performance.now();
+function tick(now) {
+  const dt = Math.min((now - last) / 1000, 0.05);
+  last = now;
+
+  progress += (targetProgress - progress) * 0.08;
+  updatePanels(progress);
+  progressEl.style.height = (progress * 100) + '%';
+
+  if (scene3d) scene3d.render(progress, dt, now);
+
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
 </script>
 </body>
 </html>
