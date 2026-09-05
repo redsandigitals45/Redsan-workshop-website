@@ -1163,6 +1163,7 @@
       gap: 30px;
       padding-bottom: 60px;
     }
+  }
   /* ============================================================
      MARTECH GROWTH ANIMATED HERO (3D Character + Glassmorphism)
      ============================================================ */
@@ -1176,7 +1177,7 @@
 
   .martech-hero-card {
     position: relative;
-    min-height: 920px;
+    min-height: 1050px;
     overflow: hidden;
     border-radius: 34px;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1499,12 +1500,11 @@
     80%, 100% { color: #666; text-shadow: none; }
   }
 
-  /* SCROLL REVEAL FOR MARTECH SECTION */
+  /* SCROLL REVEAL FOR MARTECH SECTION: Fully visible by default so content never fails to appear */
   .martech-section .reveal {
-    opacity: 0;
-    transform: translateY(35px) scale(0.98);
+    opacity: 1;
+    transform: translateY(0) scale(1);
     transition: opacity 0.85s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
-    transition-delay: var(--delay, 0s);
   }
   .martech-section .reveal.is-visible,
   .martech-section .reveal.in {
@@ -3121,9 +3121,7 @@ function initMartechHero() {
     entrance = 0;
   };
 
-  const imageSrc = (window.MARTECH_CHARACTER_B64 && (window.location.protocol === 'file:' || !navigator.onLine))
-    ? window.MARTECH_CHARACTER_B64
-    : "assets/martech-character.png";
+  const imageSrc = window.MARTECH_CHARACTER_B64 || "assets/martech-character.png";
 
   loader.load(
     imageSrc,
@@ -3210,8 +3208,8 @@ function initMartechHero() {
     if (entrance < 1) {
       entrance += 0.022;
       const eased = 1 - Math.pow(1 - entrance, 3);
-      portraitGroup.scale.multiplyScalar(eased);
-      portraitGroup.position.y -= (1 - eased) * 0.45;
+      portraitGroup.scale.set(breathing * Math.max(0.01, eased), breathing * Math.max(0.01, eased), breathing * Math.max(0.01, eased));
+      portraitGroup.position.y -= (1 - eased) * 0.35;
     }
 
     renderer.render(scene, camera);
