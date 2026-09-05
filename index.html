@@ -668,6 +668,310 @@
   }
 
 
+  /* ============================================================
+     PREVIEW SECTION (SEO-Optimized & Data-Driven Showcase)
+     ============================================================ */
+  .preview-section {
+    position: relative;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 100px 32px 60px;
+    overflow: hidden;
+    background: transparent;
+    color: #F8F7F4;
+    z-index: 2;
+  }
+
+  .preview-section .hero-title {
+    margin: 0 0 30px;
+    text-align: center;
+    font-family: var(--display);
+    font-size: clamp(56px, 10.5vw, 150px);
+    line-height: .84;
+    letter-spacing: 0.01em;
+    font-weight: 400;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #fff;
+    background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 45%, #777777 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: .95;
+    user-select: none;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+  }
+
+  /* Three overlapping circles */
+  .preview-section .cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+    margin: 20px auto 68px;
+    padding-top: 12px;
+  }
+
+  .preview-section .circle {
+    width: min(30vw, 400px);
+    height: min(30vw, 400px);
+    min-width: 250px;
+    min-height: 250px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: -32px;
+    cursor: pointer;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, filter .35s ease, opacity .75s ease;
+    box-shadow: 0 20px 45px rgba(0,0,0,.65);
+    opacity: 1;
+  }
+
+  .preview-section .circle:first-child { margin-left: 0; }
+  .preview-section .circle:hover {
+    transform: translateY(-16px) scale(1.04);
+    box-shadow: 0 32px 64px rgba(0,0,0,.8);
+    filter: saturate(1.08);
+  }
+  .preview-section .circle.active .metric,
+  .preview-section .circle.active .copy,
+  .preview-section .circle.active .wordmark,
+  .preview-section .circle.active .tag {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .preview-section .circle.left {
+    background: #FFFFFF;
+    color: #0B0B0C;
+    z-index: 1;
+  }
+
+  .preview-section .circle.middle {
+    background: #E5E5E7;
+    color: #0B0B0C;
+    z-index: 2;
+  }
+
+  .preview-section .circle.right {
+    background: var(--red);
+    color: #FFFFFF;
+    z-index: 3;
+  }
+
+  .preview-section .circle-content {
+    width: 76%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .preview-section .metric {
+    color: var(--red);
+    font-family: var(--display);
+    font-size: clamp(44px, 5.2vw, 76px);
+    line-height: .9;
+    letter-spacing: 0.01em;
+    margin-bottom: 14px;
+  }
+
+  .preview-section .circle.right .metric {
+    color: #FFFFFF;
+  }
+
+  .preview-section .copy {
+    margin: 0 auto;
+    max-width: 290px;
+    font-family: var(--body);
+    font-size: clamp(15px, 1.35vw, 20px);
+    line-height: 1.25;
+    font-weight: 700;
+    color: #111;
+  }
+
+  .preview-section .wordmark {
+    font-family: var(--display);
+    font-size: clamp(48px, 5.8vw, 84px);
+    line-height: .86;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #fff;
+  }
+
+  .preview-section .tag {
+    position: absolute;
+    background: #0B0B0C;
+    color: #FFFFFF;
+    border-radius: 30px;
+    padding: 8px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    box-shadow: 0 5px 14px rgba(0,0,0,.35);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .preview-section .focus { left: 4%; top: 6%; }
+  .preview-section .strong { right: 0; top: 26%; }
+  .preview-section .optimization { right: 0; bottom: 8%; }
+
+  /* Circle shine */
+  .preview-section .circle .circle-content::after {
+    content: "";
+    position: absolute;
+    inset: -35%;
+    background: linear-gradient(
+      110deg,
+      transparent 40%,
+      rgba(255,255,255,.32) 50%,
+      transparent 60%
+    );
+    transform: translateX(-130%) rotate(8deg);
+    pointer-events: none;
+  }
+  .preview-section .circle:hover .circle-content::after,
+  .preview-section .circle.active .circle-content::after {
+    animation: p-shine .8s ease forwards;
+  }
+  @keyframes p-shine {
+    to { transform: translateX(130%) rotate(8deg); }
+  }
+
+  /* About area within preview */
+  .preview-section .small-label {
+    color: var(--red);
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 4px 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .preview-section .small-label::before {
+    content: "";
+    width: 18px;
+    height: 1px;
+    background: var(--red);
+    display: inline-block;
+  }
+
+  .preview-section .about-label {
+    color: var(--red);
+    font-family: var(--display);
+    text-align: right;
+    font-size: clamp(48px, 5.6vw, 82px);
+    line-height: .84;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin: 0 0 48px;
+  }
+
+  .preview-section .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: end;
+    padding-bottom: 90px;
+  }
+
+  .preview-section .headline {
+    margin: 0;
+    font-family: var(--display);
+    font-size: clamp(32px, 3.8vw, 56px);
+    line-height: .96;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .preview-section .headline .red { color: var(--red); }
+
+  .preview-section .body-copy {
+    max-width: 580px;
+    margin: 0;
+    font-family: var(--body);
+    font-size: clamp(16px, 1.35vw, 20px);
+    line-height: 1.6;
+    color: #D1D1D6;
+  }
+
+  .preview-section .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 34px;
+    padding: 14px 28px;
+    border: 2px solid var(--red);
+    border-radius: 40px;
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: .25s ease;
+    background: rgba(226,35,26,0.08);
+  }
+  .preview-section .cta span { color: var(--red); font-size: 20px; line-height: .8; transition: transform .2s ease; }
+  .preview-section .cta:hover {
+    background: var(--red);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(226,35,26,0.35);
+  }
+  .preview-section .cta:hover span { color: #fff; transform: translateX(4px); }
+
+  /* Diagonal footer stripes */
+  .preview-section .footer-stripes {
+    position: relative;
+    width: 106%;
+    left: -3%;
+    height: 64px;
+    margin-top: 20px;
+    transform: rotate(-2.5deg);
+    transform-origin: left bottom;
+    display: flex;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .preview-section .stripe { height: 100%; }
+  .preview-section .s1 { width: 45%; background: #FFFFFF; }
+  .preview-section .s2 { width: 15%; background: #E5E5E7; }
+  .preview-section .s3 { width: 14%; background: var(--red); }
+  .preview-section .s4 { width: 13%; background: #9E150F; }
+  .preview-section .s5 { width: 13%; background: #0B0B0C; }
+
+  @media(max-width: 850px){
+    .preview-section { padding: 40px 18px 20px; }
+    .preview-section .hero-title { font-size: 14vw; }
+    .preview-section .cards {
+      flex-direction: column;
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+    .preview-section .circle {
+      width: min(76vw, 340px);
+      height: min(76vw, 340px);
+      margin-left: 0 !important;
+      margin-top: -36px;
+    }
+    .preview-section .circle:first-child { margin-top: 0; }
+    .preview-section .about-label { margin-bottom: 35px; }
+    .preview-section .about-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding-bottom: 60px;
+    }
+    .preview-section .footer-stripes { height: 42px; }
+  }
+
 /* --- CINEMATIC REVEAL --- */
 
 
@@ -679,6 +983,7 @@
 
     position:fixed; /* see integration note 3 */
     inset:0;
+    z-index: 99999;
     background:#000;
     display:flex;
     align-items:center;
@@ -942,6 +1247,30 @@
 <body>
 <canvas id="space-bg-canvas"></canvas>
 
+<!-- CINEMATIC REVEAL OVERLAY -->
+<div id="rsd-cinema">
+  <div class="rsd-bar top"></div>
+  <div class="rsd-bar bottom"></div>
+  <div class="rsd-grain"></div>
+  <div class="rsd-vignette"></div>
+  <div class="rsd-embers">
+    <span class="rsd-ember"></span><span class="rsd-ember"></span><span class="rsd-ember"></span>
+    <span class="rsd-ember"></span><span class="rsd-ember"></span><span class="rsd-ember"></span>
+    <span class="rsd-ember"></span><span class="rsd-ember"></span><span class="rsd-ember"></span>
+    <span class="rsd-ember"></span>
+  </div>
+  <div class="rsd-glow"></div>
+
+  <div class="rsd-stage">
+    <p class="rsd-kicker">Est. 2019 · ISO 9001:2015 Certified</p>
+    <div class="rsd-word-wrap">
+      <h1 class="rsd-word" data-text="Redsan Digitals">Redsan Digitals</h1>
+    </div>
+    <div class="rsd-rule"></div>
+    <p class="rsd-tagline">Attention, <span>Mined.</span></p>
+  </div>
+</div>
+
 <!-- NAV -->
 <header class="nav">
   <div class="wrap nav-inner">
@@ -1079,6 +1408,65 @@
 
 
 <div id="main-content">
+
+<!-- PREVIEW SHOWCASE (SEO-OPTIMIZED & DATA-DRIVEN MARKETING) -->
+<section class="preview-section" id="preview-showcase">
+  <div class="wrap">
+    <h2 class="hero-title"><span>SEO-OPTIMIZED</span></h2>
+
+    <div class="cards" aria-label="Marketing statistics">
+      <article class="circle left" tabindex="0">
+        <div class="circle-content">
+          <div class="metric">100k+</div>
+          <p class="copy">Backlinks<br>generated for<br>organic growth</p>
+        </div>
+      </article>
+
+      <article class="circle middle" tabindex="0">
+        <div class="circle-content">
+          <div class="metric">1000+</div>
+          <p class="copy">Content<br>produced for<br>digital presence</p>
+        </div>
+      </article>
+
+      <article class="circle right" tabindex="0">
+        <div class="circle-content">
+          <div class="wordmark">GRO-<br>WITH</div>
+          <span class="tag focus">Focus</span>
+          <span class="tag strong">Strong</span>
+          <span class="tag optimization">Optimization</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="small-label">What's</div>
+    <div class="about-label">ABOUT?</div>
+
+    <div class="about-grid">
+      <div>
+        <h3 class="headline">
+          DATA-DRIVEN MARKETING<br>
+          <span class="red">FOR MEASURABLE RESULTS</span>
+        </h3>
+        <a class="cta" href="#contact">GET STARTED <span>→</span></a>
+      </div>
+
+      <div>
+        <p class="body-copy">
+          We’re not just marketers; we’re data analysts. By leveraging cutting-edge tools and techniques, we turn data into actionable insights that fuel your digital success.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-stripes" aria-hidden="true">
+    <div class="stripe s1"></div>
+    <div class="stripe s2"></div>
+    <div class="stripe s3"></div>
+    <div class="stripe s4"></div>
+    <div class="stripe s5"></div>
+  </div>
+</section>
 <!-- STATS -->
 <div class="stats">
   <div class="wrap stats-inner">
@@ -1799,6 +2187,17 @@ document.addEventListener("DOMContentLoaded", function() {
       }, 6500);
     }
   }
+
+  // Preview Showcase circle interaction
+  document.querySelectorAll(".preview-section .circle").forEach(function(circle) {
+    circle.addEventListener("click", function() {
+      const wasActive = circle.classList.contains("active");
+      document.querySelectorAll(".preview-section .circle.active").forEach(function(el) {
+        el.classList.remove("active");
+      });
+      if (!wasActive) circle.classList.add("active");
+    });
+  });
 });
 </script>
 
