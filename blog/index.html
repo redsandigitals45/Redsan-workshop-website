@@ -7,33 +7,32 @@
 <meta name="description" content="Case studies, teardowns and no-fluff playbooks on Digital Marketing with AI, Entrepreneurship & Startups, and Sales & Pitching: from Redsan Digitals.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/blog/blog.css">
+<link rel="stylesheet" href="blog.css">
 </head>
 <body>
+<canvas id="space-bg-canvas"></canvas>
 
 <!-- NAV -->
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="index.html#top" class="nav-logo"><img src="../logo.png" alt="Redsan Digitals"></a>
+    <a href="../index.html" class="nav-logo" aria-label="Redsan Digitals Home"><img src="../assets/redsan_logo.png" alt="Redsan Digitals Logo" class="brand-logo-img"></a>
     <nav class="nav-links">
-      <a href="index.html#top">Home</a>
-      <a href="index.html#courses">Courses</a>
-      <a href="index.html#about">About Us</a>
-      <a href="blog.html" class="active">Blog</a>
-      <a href="index.html#faq">FAQ</a>
+      <a href="../index.html">Home</a>
+      <a href="../workshop/index.html">Workshop</a>
+      <a href="index.html" class="active">Blog</a>
+      <a href="../index.html#contact">Contact Us</a>
     </nav>
-    <a href="index.html#checkout" class="nav-cta">Enroll: ₹49rs</a>
+    <a href="../index.html#contact" class="nav-cta">Let's Talk →</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
   </div>
 </header>
 
 <nav class="mobile-nav" id="mobileNav">
-  <a href="index.html#top">Home</a>
-  <a href="index.html#courses">Courses</a>
-  <a href="index.html#about">About Us</a>
-  <a href="blog.html" class="active">Blog</a>
-  <a href="index.html#faq">FAQ</a>
-  <a href="index.html#checkout" class="nav-cta">Enroll: ₹49</a>
+  <a href="../index.html">Home</a>
+  <a href="../workshop/index.html">Workshop</a>
+  <a href="index.html" class="active">Blog</a>
+  <a href="../index.html#contact">Contact Us</a>
+  <a href="../index.html#contact" class="nav-cta">Let's Talk →</a>
 </nav>
 
 <!-- MASTHEAD -->
@@ -305,21 +304,19 @@
 <footer>
   <div class="wrap foot-inner">
     <div class="foot-left">
-      <img src="Redsan_logo.png" alt="Redsan Digitals" class="foot-logo">
+      <img src="../assets/redsan_logo.png" alt="Redsan Digitals Logo" class="brand-logo-img foot-logo-img">
       <p>Building brands &amp; founders since 2019.</p>
       <div class="foot-social">
         <a href="#" aria-label="Instagram">IG</a>
         <a href="#" aria-label="LinkedIn">IN</a>
-        <a href="https://wa.me/910000000000" aria-label="WhatsApp">WA</a>
+        <a href="https://wa.me/919664365954" aria-label="WhatsApp" target="_blank" rel="noopener">WA</a>
       </div>
     </div>
     <nav class="foot-nav">
-      <a href="index.html#top">Home</a>
-      <a href="index.html#courses">Courses</a>
-      <a href="blog.html">Blog</a>
-      <a href="index.html#faq">FAQ</a>
-      <a href="#">Terms &amp; Conditions</a>
-      <a href="#">Refund Policy</a>
+      <a href="../index.html">Home</a>
+      <a href="../workshop/index.html">Workshop</a>
+      <a href="index.html">Blog</a>
+      <a href="../index.html#contact">Contact Us</a>
     </nav>
   </div>
   <div class="wrap foot-bottom">© 2026 Redsan Digitals Pvt. Ltd. All rights reserved. Built for students, by builders.</div>
@@ -327,11 +324,14 @@
 
 <div class="sticky-bar" id="stickyBar">
   <div class="txt">Workshop Access: <b>₹49</b></div>
-  <a href="index.html#checkout" class="sticky-btn">Enroll Now</a>
+  <a href="../workshop/index.html#checkout" class="sticky-btn">Enroll Now</a>
 </div>
 
-<a href="https://wa.me/910000000000" class="wa-float" target="_blank" rel="noopener">💬</a>
+<a href="https://wa.me/919664365954" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
 
-<script src="/blog/blog.js"></script>
+<!-- THREE.JS & SPACE BACKGROUND -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="../assets/space-bg.js"></script>
+<script src="blog.js"></script>
 </body>
 </html>

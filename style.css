@@ -1587,3 +1587,27 @@ footer {
   color: #fff;
   border-radius: 100px;
 }
+
+/* ============================================================
+   GLOBAL SPACE BACKGROUND CANVAS
+   ============================================================ */
+#space-bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
+/* Ensure all content sits above space canvas with dark space transparency */
+body {
+  background: #000000;
+}
+header.hero, section, footer, .nav, .mobile-nav, .wa-float, #checkout {
+  position: relative;
+  z-index: 1;
+}
+
