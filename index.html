@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="assets/martech-character-data.js"></script>
 <style>
   :root{
     --ink:#0B0B0C;
@@ -677,11 +676,21 @@
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     position: relative;
   }
-  .mobile-shirt-glass iframe {
+  .mobile-shirt-glass iframe, #redsan-attention-hero .rah-shirt-glass iframe {
+    display: none;
+  }
+  @keyframes shirtFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(1deg); }
+  }
+  .floating-shirt-img {
     width: 100%;
     height: 100%;
-    border: none;
+    object-fit: contain;
     display: block;
+    animation: shirtFloat 4.8s ease-in-out infinite;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.7));
+    pointer-events: none;
   }
 
   @media (max-width: 880px) {
@@ -872,50 +881,57 @@
   }
 
   /* About area within preview */
+  .preview-section .about-header-wrap {
+    text-align: center;
+    margin: 0 auto 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   .preview-section .small-label {
     color: var(--red);
     font-family: var(--mono);
     font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    margin: 0 0 4px 4px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    margin: 0 0 6px;
+    text-align: center;
+    display: block;
   }
   .preview-section .small-label::before {
-    content: "";
-    width: 18px;
-    height: 1px;
-    background: var(--red);
-    display: inline-block;
+    display: none; /* Dash removed */
   }
 
   .preview-section .about-label {
     color: var(--red);
     font-family: var(--display);
-    text-align: right;
+    text-align: center;
     font-size: clamp(48px, 5.6vw, 82px);
-    line-height: .84;
+    line-height: .88;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    margin: 0 0 48px;
+    margin: 0 0 10px;
   }
 
   .preview-section .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 70px;
-    align-items: end;
-    padding-bottom: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 840px;
+    margin: 0 auto;
+    gap: 22px;
+    padding-bottom: 80px;
   }
 
   .preview-section .headline {
     margin: 0;
+    text-align: center;
     font-family: var(--display);
     font-size: clamp(32px, 3.8vw, 56px);
-    line-height: .96;
+    line-height: 1.05;
     letter-spacing: 0.01em;
     text-transform: uppercase;
     color: #fff;
@@ -923,11 +939,12 @@
   .preview-section .headline .red { color: var(--red); }
 
   .preview-section .body-copy {
-    max-width: 580px;
-    margin: 0;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
     font-family: var(--body);
     font-size: clamp(16px, 1.35vw, 20px);
-    line-height: 1.6;
+    line-height: 1.65;
     color: #D1D1D6;
   }
 
@@ -1322,31 +1339,32 @@
     min-height: 230px;
     padding: 22px;
     border-radius: 20px;
-    border: 1px solid rgba(255,50,58,0.45);
-    background: linear-gradient(145deg, rgba(28,18,20,0.88), rgba(8,8,10,0.85));
+    border: 1px solid rgba(34, 197, 94, 0.45);
+    background: linear-gradient(145deg, rgba(14,24,18,0.88), rgba(8,12,10,0.88));
     box-shadow: 0 24px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08);
     backdrop-filter: blur(14px);
     cursor: pointer;
     text-align: left;
-    transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.5s ease, border-color 0.5s ease;
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.22s ease;
   }
 
+  /* Pop animation on mouseover */
   .martech-card:hover {
-    transform: translateY(-10px) rotate(0deg) scale(1.04) !important;
-    border-color: #ff333b;
-    box-shadow: 0 30px 80px rgba(255,0,15,0.3), 0 0 40px rgba(255,0,15,0.15);
+    transform: translateY(-10px) scale(1.04) !important;
+    border-color: #22c55e !important;
+    box-shadow: 0 25px 65px rgba(0,0,0,0.8), 0 0 35px rgba(34, 197, 94, 0.3) !important;
   }
 
   .martech-card.card-left {
     left: 3.5%;
     top: 410px;
-    transform: rotate(9deg);
+    transform: rotate(6deg);
   }
 
   .martech-card.card-right {
     right: 3.5%;
     top: 400px;
-    transform: rotate(-9deg);
+    transform: rotate(-6deg);
   }
 
   .martech-card .card-top {
@@ -1387,7 +1405,7 @@
   }
 
   .martech-card .metric-growth {
-    color: #ff333b;
+    color: #22c55e;
     font-size: 10px;
     margin-top: 4px;
     font-weight: 600;
@@ -1407,15 +1425,21 @@
     display: block;
   }
 
-  .martech-card .chart .fill {
-    fill: url(#redGradient);
+  .martech-card.card-left .chart .fill {
+    fill: url(#greenGradient1);
+    opacity: 0.58;
+  }
+
+  .martech-card.card-right .chart .fill {
+    fill: url(#greenGradient2);
     opacity: 0.58;
   }
 
   .martech-card .chart .line {
     fill: none;
-    stroke: #ff252e;
-    stroke-width: 2;
+    stroke: #22c55e;
+    stroke-width: 2.2;
+    filter: drop-shadow(0 2px 8px rgba(34, 197, 94, 0.45));
   }
 
   .martech-card .metric-glow {
@@ -1428,27 +1452,25 @@
     pointer-events: none;
   }
 
-  /* 3D CHARACTER STAGE: Positioned ABOVE all content and dashboard cards */
-  #three-stage {
+  /* CHARACTER DISPLAY: Clean lightweight WebP image (No Three.js script) */
+  .martech-character-center {
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: 0;
-    height: 420px;
+    height: 400px;
     z-index: 15;
     pointer-events: none;
-    overflow: hidden;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
   }
-
-  #three-stage canvas {
-    position: absolute;
-    inset: 0;
-    width: 100% !important;
-    height: 100% !important;
+  .martech-character-img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
     display: block;
-    pointer-events: none;
+    filter: drop-shadow(0 0 35px rgba(255, 17, 27, 0.45));
   }
 
   /* BOTTOM TAGLINE: Positioned ABOVE the 3D Character in a Curved Glass Capsule */
@@ -1515,23 +1537,10 @@
   .martech-card.card-left.is-visible,
   .martech-card.card-left.in {
     opacity: 1 !important;
-    transform: rotate(9deg) translateY(0) !important;
-    animation: floatLeft 6.5s ease-in-out infinite 0.9s;
   }
   .martech-card.card-right.is-visible,
   .martech-card.card-right.in {
     opacity: 1 !important;
-    transform: rotate(-9deg) translateY(0) !important;
-    animation: floatRight 7.2s ease-in-out infinite 1s;
-  }
-
-  @keyframes floatLeft {
-    0%, 100% { margin-top: 0; }
-    50% { margin-top: -12px; }
-  }
-  @keyframes floatRight {
-    0%, 100% { margin-top: 0; }
-    50% { margin-top: 12px; }
   }
 
   /* FUNKY MEME FLOATING BADGES AROUND 3D CHARACTER */
@@ -2065,7 +2074,7 @@
     </div>
     <div class="mobile-shirt-container">
       <div class="rah-shirt-glass mobile-shirt-glass">
-        <iframe src="interactive_floating_shirt.html" title="Interactive Floating Shirt" loading="lazy" allowtransparency="true"></iframe>
+        <img src="assets/floating-flannel-shirt.webp" alt="Impactful Internet T-Shirt" class="floating-shirt-img" loading="lazy">
       </div>
       <p class="rah-shirt-caption">If you remember this t-shirt, you know how <em>impactful</em> the internet is.</p>
     </div>
@@ -2105,7 +2114,7 @@
       <!-- FLOATING SHIRT (glass container + caption, right side) -->
       <div class="rah-shirt-wrapper" id="rah-shirt-wrapper">
         <div class="rah-shirt-glass" id="rah-shirt-glass">
-          <iframe src="interactive_floating_shirt.html" title="Interactive Floating Shirt" loading="lazy" allowtransparency="true"></iframe>
+          <img src="assets/floating-flannel-shirt.webp" alt="Impactful Internet T-Shirt" class="floating-shirt-img" loading="lazy">
         </div>
         <p class="rah-shirt-caption">If you remember this t-shirt, you know how <em>impactful</em> the internet is.</p>
       </div>
@@ -2192,23 +2201,20 @@
       </article>
     </div>
 
-    <div class="small-label">What's</div>
-    <div class="about-label">ABOUT?</div>
+    <div class="about-header-wrap">
+      <div class="small-label">WHAT'S</div>
+      <div class="about-label">ABOUT?</div>
+    </div>
 
     <div class="about-grid">
-      <div>
-        <h3 class="headline">
-          DATA-DRIVEN MARKETING<br>
-          <span class="red">FOR MEASURABLE RESULTS</span>
-        </h3>
-        <a class="cta" href="#contact">GET STARTED <span>→</span></a>
-      </div>
-
-      <div>
-        <p class="body-copy">
-          We’re not just marketers; we’re data analysts. By leveraging cutting-edge tools and techniques, we turn data into actionable insights that fuel your digital success.
-        </p>
-      </div>
+      <h3 class="headline">
+        DATA-DRIVEN MARKETING<br>
+        <span class="red">FOR MEASURABLE RESULTS</span>
+      </h3>
+      <p class="body-copy">
+        We’re not just marketers; we’re data analysts. By leveraging cutting-edge tools and techniques, we turn data into actionable insights that fuel your digital success.
+      </p>
+      <a class="cta" href="#contact">GET STARTED <span>→</span></a>
     </div>
   </div>
 
@@ -2263,8 +2269,8 @@
           <a href="#contact" class="martech-btn">Build My Growth Engine</a>
         </div>
 
-        <!-- Left analytics card -->
-        <article class="martech-card card-left reveal" style="--delay:.55s">
+        <!-- Left analytics card (Upward Growth Slope & Vibrant Green Metrics) -->
+        <article class="martech-card card-left reveal">
           <div class="metric-glow" style="left:30px;bottom:-50px"></div>
           <div class="card-top">
             <div class="card-title">Growth Overview</div>
@@ -2290,19 +2296,20 @@
           <div class="chart">
             <svg viewBox="0 0 300 80" preserveAspectRatio="none">
               <defs>
-                <linearGradient id="redGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#ff3038"/>
-                  <stop offset="1" stop-color="#ff3038" stop-opacity="0"/>
+                <linearGradient id="greenGradient1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#10b981"/>
+                  <stop offset="1" stop-color="#10b981" stop-opacity="0"/>
                 </linearGradient>
               </defs>
-              <path class="fill" d="M0,15 L42,28 L82,25 L123,42 L160,39 L205,56 L245,51 L300,69 L300,80 L0,80 Z"/>
-              <path class="line" d="M0,15 L42,28 L82,25 L123,42 L160,39 L205,56 L245,51 L300,69"/>
+              <!-- Upward growth slope -->
+              <path class="fill" d="M0,66 L42,54 L82,58 L123,41 L160,43 L205,26 L245,30 L300,12 L300,80 L0,80 Z" fill="url(#greenGradient1)"/>
+              <path class="line" d="M0,66 L42,54 L82,58 L123,41 L160,43 L205,26 L245,30 L300,12" stroke="#22c55e"/>
             </svg>
           </div>
         </article>
 
-        <!-- Right analytics card -->
-        <article class="martech-card card-right reveal" style="--delay:.7s">
+        <!-- Right analytics card (Upward Growth Slope & Vibrant Green Metrics) -->
+        <article class="martech-card card-right reveal">
           <div class="metric-glow" style="right:20px;bottom:-40px"></div>
           <div class="card-top">
             <div class="card-title">Performance Overview</div>
@@ -2328,39 +2335,23 @@
           <div class="chart">
             <svg viewBox="0 0 300 80" preserveAspectRatio="none">
               <defs>
-                <linearGradient id="redGradient2" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#ff3038"/>
-                  <stop offset="1" stop-color="#ff3038" stop-opacity="0"/>
+                <linearGradient id="greenGradient2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#10b981"/>
+                  <stop offset="1" stop-color="#10b981" stop-opacity="0"/>
                 </linearGradient>
               </defs>
-              <path d="M0,35 L45,49 L87,42 L128,57 L168,61 L212,48 L252,52 L300,39 L300,80 L0,80 Z"
-                    fill="url(#redGradient2)" opacity=".58"/>
-              <path d="M0,35 L45,49 L87,42 L128,57 L168,61 L212,48 L252,52 L300,39"
-                    fill="none" stroke="#ff252e" stroke-width="2"/>
+              <!-- Upward growth slope -->
+              <path class="fill" d="M0,68 L45,58 L87,48 L128,52 L168,36 L212,32 L252,22 L300,10 L300,80 L0,80 Z" fill="url(#greenGradient2)"/>
+              <path class="line" d="M0,68 L45,58 L87,48 L128,52 L168,36 L212,32 L252,22 L300,10" stroke="#22c55e"/>
             </svg>
           </div>
         </article>
       </div>
 
-      <!-- 3D Three.js Character Stage (Layered ABOVE Content and Cards, z-index: 15) -->
-      <div id="three-stage" aria-hidden="true"></div>
-
-      <!-- Funky Meme Floating Badges Flanking 3D Character -->
-      <a href="#contact" class="meme-floating-badge meme-left reveal" style="--delay:0.75s" title="Talk to us about your PROJECT">
-        <div class="meme-tag">⚡ NO BORING PITCHES</div>
-        <div class="meme-text">
-          Talk to us about your <span class="funky-pop">PROJECT</span> <span class="meme-emoji">🚀</span>
-        </div>
-        <div class="meme-doodle">✦</div>
-      </a>
-
-      <a href="#contact" class="meme-floating-badge meme-right reveal" style="--delay:0.85s" title="Atleast we can make you smile">
-        <div class="meme-tag">🎭 ZERO CRINGE</div>
-        <div class="meme-text">
-          Atleast we can make you <span class="funky-pop">smile</span> <span class="meme-emoji">😊</span>
-        </div>
-        <div class="meme-doodle">✦</div>
-      </a>
+      <!-- Lightweight Static Character (No Three.js script, instant load) -->
+      <div class="martech-character-center" aria-hidden="true">
+        <img src="assets/martech-character.webp" alt="Redsan Digital Growth" class="martech-character-img" loading="lazy">
+      </div>
 
       <!-- Bottom Tagline in Curved Glass Capsule (Layered ABOVE Character, z-index: 25) -->
       <div class="martech-bottom reveal" style="--delay:1s">
@@ -2373,26 +2364,8 @@
     </div>
   </div>
 </section>
-<!-- STATS -->
-<div class="stats">
-  <div class="wrap stats-inner">
-    <div class="stat"><div class="num">50+</div><div class="lbl">Brands Grown</div></div>
-    <div class="stat"><div class="num">6+</div><div class="lbl">Industries Served</div></div>
-    <div class="stat"><div class="num">8</div><div class="lbl">Core Services</div></div>
-    <div class="stat"><div class="num">ISO</div><div class="lbl">Certified Agency</div></div>
-  </div>
-</div>
+<!-- Services Section Follows -->
 
-<!-- ABOUT (brief teaser, links to About Us page) -->
-<section id="about">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Who We Are</div>
-      <h2>A Marketing Company, Built Like a Product Team.</h2>
-      <p>Redsan Digitals runs on the same principle every brand we work with is chasing: move fast, build well, and let the results do the talking. We're not a portfolio site. We're the team behind the growth.</p>
-    </div>
-  </div>
-</section>
 
 <!-- SERVICES -->
 <section id="services">
@@ -3051,172 +3024,6 @@ function tick(now) {
 requestAnimationFrame(tick);
 }
 
-/* ============================================================
-   MARTECH 3D CHARACTER HERO (Interactive Three.js Character)
-   ============================================================ */
-function initMartechHero() {
-  const container = document.getElementById("three-stage");
-  if (!container) return;
-
-  const CONFIG = {
-    scale: 2.15,
-    mouseStrength: 0.30,
-    rotationStrength: 0.16,
-    floatAmount: 0.055,
-    floatSpeed: 1.05,
-    damping: 0.065,
-    breathing: 0.018,
-    depthStrength: 0.08
-  };
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 100);
-  camera.position.z = 5;
-
-  let renderer;
-  try {
-    renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true,
-      powerPreference: "high-performance"
-    });
-  } catch (e) {
-    console.warn("WebGL not supported for MarTech hero:", e);
-    return;
-  }
-
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(container.clientWidth || window.innerWidth, container.clientHeight || 420);
-  renderer.setClearColor(0x000000, 0);
-  container.appendChild(renderer.domElement);
-
-  const portraitGroup = new THREE.Group();
-  scene.add(portraitGroup);
-
-  let entrance = 0;
-  const loader = new THREE.TextureLoader();
-
-  const applyTexture = (texture) => {
-    texture.colorSpace = THREE.SRGBColorSpace;
-    texture.minFilter = THREE.LinearFilter;
-    texture.magFilter = THREE.LinearFilter;
-
-    const image = texture.image;
-    const aspect = (image && image.width && image.height) ? (image.width / image.height) : 0.85;
-    const height = CONFIG.scale;
-    const width = height * aspect;
-
-    const geometry = new THREE.PlaneGeometry(width, height, 1, 1);
-    const material = new THREE.MeshBasicMaterial({
-      map: texture,
-      transparent: true,
-      depthWrite: false,
-      side: THREE.DoubleSide,
-      alphaTest: 0.01
-    });
-
-    const portrait = new THREE.Mesh(geometry, material);
-    portraitGroup.add(portrait);
-    portraitGroup.position.y = -0.05;
-    entrance = 0;
-  };
-
-  const imageSrc = window.MARTECH_CHARACTER_B64 || "assets/martech-character.png";
-
-  loader.load(
-    imageSrc,
-    applyTexture,
-    undefined,
-    (err) => {
-      console.warn("Falling back to embedded character data:", err);
-      if (window.MARTECH_CHARACTER_B64 && imageSrc !== window.MARTECH_CHARACTER_B64) {
-        loader.load(window.MARTECH_CHARACTER_B64, applyTexture);
-      }
-    }
-  );
-
-  const pointer = { x: 0, y: 0 };
-  const target = { x: 0, y: 0 };
-
-  function updatePointer(x, y) {
-    target.x = (x / window.innerWidth) * 2 - 1;
-    target.y = -(y / window.innerHeight) * 2 + 1;
-  }
-
-  window.addEventListener("mousemove", (e) => {
-    updatePointer(e.clientX, e.clientY);
-  }, { passive: true });
-
-  window.addEventListener("touchmove", (e) => {
-    if (!e.touches.length) return;
-    updatePointer(e.touches[0].clientX, e.touches[0].clientY);
-  }, { passive: true });
-
-  function resize() {
-    const w = container.clientWidth || window.innerWidth;
-    const h = container.clientHeight || 420;
-    renderer.setSize(w, h, false);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    const aspect = w / h;
-    const viewHeight = 2;
-    camera.left = -viewHeight * aspect / 2;
-    camera.right = viewHeight * aspect / 2;
-    camera.top = viewHeight / 2;
-    camera.bottom = -viewHeight / 2;
-    camera.updateProjectionMatrix();
-  }
-
-  window.addEventListener("resize", resize);
-  if (window.ResizeObserver) {
-    new ResizeObserver(resize).observe(container);
-  }
-  resize();
-
-  let isHeroVisible = true;
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      isHeroVisible = entries[0].isIntersecting;
-    }, { threshold: 0.05 });
-    observer.observe(container);
-  }
-
-  const clock = new THREE.Clock();
-
-  function animate() {
-    requestAnimationFrame(animate);
-    if (!isHeroVisible) return;
-
-    const time = clock.getElapsedTime();
-
-    pointer.x += (target.x - pointer.x) * CONFIG.damping;
-    pointer.y += (target.y - pointer.y) * CONFIG.damping;
-
-    const floating = Math.sin(time * CONFIG.floatSpeed) * CONFIG.floatAmount;
-
-    portraitGroup.position.x = pointer.x * CONFIG.mouseStrength * 0.20;
-    portraitGroup.position.y = floating - pointer.y * CONFIG.mouseStrength * 0.12;
-
-    portraitGroup.rotation.y = pointer.x * CONFIG.rotationStrength;
-    portraitGroup.rotation.x = -pointer.y * CONFIG.rotationStrength;
-    portraitGroup.rotation.z = pointer.x * pointer.y * 0.018;
-
-    const breathing = 1 + Math.sin(time * 1.35) * CONFIG.breathing;
-    portraitGroup.scale.set(breathing, breathing, breathing);
-    portraitGroup.position.z = Math.abs(pointer.x) * CONFIG.depthStrength;
-
-    if (entrance < 1) {
-      entrance += 0.022;
-      const eased = 1 - Math.pow(1 - entrance, 3);
-      portraitGroup.scale.set(breathing * Math.max(0.01, eased), breathing * Math.max(0.01, eased), breathing * Math.max(0.01, eased));
-      portraitGroup.position.y -= (1 - eased) * 0.35;
-    }
-
-    renderer.render(scene, camera);
-  }
-  animate();
-}
-initMartechHero();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 <script>
@@ -3308,21 +3115,7 @@ function initPageInteractions() {
     }
   }
 
-  // Analytics cards 3D tilt interaction from original MarTech hero
-  document.querySelectorAll('.martech-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      const base = card.classList.contains('card-left') ? 9 : -9;
-      card.style.transform =
-        `perspective(700px) rotateY(${x * 7}deg) rotateX(${-y * 6}deg) rotate(${base}deg) translateY(-14px) scale(1.045)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      const base = card.classList.contains('card-left') ? 9 : -9;
-      card.style.transform = `rotate(${base}deg)`;
-    });
-  });
+
 
   // Button magnetic-style movement
   document.querySelectorAll('.martech-btn').forEach(btn => {
