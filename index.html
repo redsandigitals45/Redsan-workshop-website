@@ -1842,6 +1842,8 @@
     justify-content:center;
     overflow:hidden;
     font-family:'Anton',sans-serif;
+    contain: strict;
+    will-change: opacity;
   }
   #rsd-cinema *{ box-sizing:border-box; }
   #rsd-cinema, #rsd-cinema * {
@@ -1857,23 +1859,23 @@
     height:0;
     background:#000;
     z-index:6;
-    animation: rsd-bar-in 1.1s cubic-bezier(.4,0,.2,1) .1s forwards;
+    animation: rsd-bar-in 0.9s cubic-bezier(.16,1,.3,1) .05s forwards;
   }
   #rsd-cinema .rsd-bar.top{ top:0; }
   #rsd-cinema .rsd-bar.bottom{ bottom:0; }
   @keyframes rsd-bar-in{ to{ height:6.4vh; } }
 
-  /* ---------- film grain (static, subtle) ---------- */
+  /* ---------- film grain (lightweight, zero blend cost) ---------- */
   #rsd-cinema .rsd-grain{
     position:absolute; inset:0;
     z-index:5;
     opacity:0;
     pointer-events:none;
-    mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    animation: rsd-grain-in 1.4s ease-out .2s forwards;
+    background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 0);
+    background-size:24px 24px;
+    animation: rsd-grain-in 1.2s ease-out .15s forwards;
   }
-  @keyframes rsd-grain-in{ to{ opacity:.18; } }
+  @keyframes rsd-grain-in{ to{ opacity:.6; } }
 
   /* ---------- vignette ---------- */
   #rsd-cinema .rsd-vignette{
@@ -1881,15 +1883,15 @@
     z-index:4;
     background:radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,.85) 100%);
     opacity:0;
-    animation: rsd-fade-in 1.4s ease-out .2s forwards;
+    animation: rsd-fade-in 1.2s ease-out .15s forwards;
   }
 
-  /* ---------- ember dust ---------- */
+  /* ---------- ember dust (GPU accelerated) ---------- */
   #rsd-cinema .rsd-embers{
     position:absolute; inset:0;
     z-index:1;
     opacity:0;
-    animation: rsd-fade-in 1.8s ease-out .5s forwards;
+    animation: rsd-fade-in 1.5s ease-out .3s forwards;
   }
   #rsd-cinema .rsd-ember{
     position:absolute;
@@ -1899,15 +1901,15 @@
     background:var(--rsd-red);
     box-shadow:0 0 6px 1px var(--rsd-red-dim);
     opacity:0;
+    will-change: transform, opacity;
     animation: rsd-ember-rise linear infinite;
   }
   @keyframes rsd-ember-rise{
-    0%{ opacity:0; transform:translateY(0) translateX(0); }
+    0%{ opacity:0; transform:translate3d(0, 0, 0); }
     8%{ opacity:.8; }
     92%{ opacity:.5; }
-    100%{ opacity:0; transform:translateY(-108vh) translateX(var(--rsd-drift, 20px)); }
+    100%{ opacity:0; transform:translate3d(var(--rsd-drift, 20px), -108vh, 0); }
   }
-  /* hand-placed variety so it doesn't feel like a loop tile */
   #rsd-cinema .rsd-ember:nth-child(1){ left:8%;  --rsd-drift:14px;  animation-duration:13s; animation-delay:.2s; }
   #rsd-cinema .rsd-ember:nth-child(2){ left:18%; --rsd-drift:-18px; animation-duration:16s; animation-delay:2.1s; }
   #rsd-cinema .rsd-ember:nth-child(3){ left:27%; --rsd-drift:10px;  animation-duration:11s; animation-delay:.8s; }
@@ -1919,37 +1921,38 @@
   #rsd-cinema .rsd-ember:nth-child(9){ left:92%; --rsd-drift:8px;   animation-duration:12.5s; animation-delay:3.9s; }
   #rsd-cinema .rsd-ember:nth-child(10){ left:47%; --rsd-drift:-6px; animation-duration:18s; animation-delay:.1s; }
 
-  /* ---------- central glow ---------- */
+  /* ---------- central glow (GPU accelerated) ---------- */
   #rsd-cinema .rsd-glow{
     position:absolute;
     width:min(70vw, 760px);
     height:min(70vw, 760px);
     border-radius:50%;
     background:radial-gradient(circle, rgba(226,35,26,.5) 0%, rgba(226,35,26,.16) 38%, rgba(226,35,26,0) 70%);
-    filter:blur(4px);
     opacity:0;
-    transform:scale(.4);
+    transform:scale3d(.4, .4, 1);
     z-index:1;
+    will-change: transform, opacity;
     animation:
-      rsd-glow-in 2.6s cubic-bezier(.16,1,.3,1) .5s forwards,
-      rsd-glow-pulse 7s ease-in-out 3.2s infinite;
+      rsd-glow-in 2.2s cubic-bezier(.16,1,.3,1) .3s forwards,
+      rsd-glow-pulse 7s ease-in-out 2.5s infinite;
   }
-  @keyframes rsd-glow-in{ to{ opacity:.6; transform:scale(1); } }
+  @keyframes rsd-glow-in{ to{ opacity:.65; transform:scale3d(1, 1, 1); } }
   @keyframes rsd-glow-pulse{
-    0%,100%{ opacity:.6; transform:scale(1); }
-    50%{ opacity:.45; transform:scale(1.05); }
+    0%,100%{ opacity:.65; transform:scale3d(1, 1, 1); }
+    50%{ opacity:.48; transform:scale3d(1.04, 1.04, 1); }
   }
 
-  /* ---------- stage ---------- */
+  /* ---------- stage (smooth 60fps GPU compositor) ---------- */
   #rsd-cinema .rsd-stage{
     position:relative;
     z-index:3;
     text-align:center;
-    animation: rsd-stage-breathe 7.4s ease-in-out 6.4s infinite;
+    will-change: transform;
+    animation: rsd-stage-breathe 7.4s ease-in-out 5s infinite;
   }
   @keyframes rsd-stage-breathe{
-    0%,100%{ transform:scale(1); }
-    50%{ transform:scale(1.006); }
+    0%,100%{ transform:scale3d(1, 1, 1); }
+    50%{ transform:scale3d(1.006, 1.006, 1); }
   }
 
   #rsd-cinema .rsd-kicker{
@@ -1958,9 +1961,10 @@
     font-size:11px;
     letter-spacing:.32em;
     text-transform:uppercase;
-    color:rgba(255,255,255,.45);
+    color:rgba(255,255,255,.55);
     opacity:0;
-    animation: rsd-fade-in 1.2s ease-out .9s forwards;
+    will-change: opacity;
+    animation: rsd-fade-in 1s ease-out .6s forwards;
   }
 
   #rsd-cinema .rsd-word-wrap{
@@ -1968,6 +1972,8 @@
     display:inline-block;
   }
 
+  /* 60FPS BUTTERY SMOOTH TITLE REVEAL:
+     Uses pure GPU transform scale & opacity instead of continuous layout-thrashing letter-spacing or heavy blur */
   #rsd-cinema .rsd-word{
     position:relative;
     margin:0;
@@ -1977,26 +1983,27 @@
     line-height:.95;
     font-size:clamp(2.2rem, 9.5vw, 6.6rem);
     white-space:nowrap;
-    letter-spacing:.62em;
-    padding-right:.62em; /* offsets the trailing letter-spacing so it stays centered */
+    letter-spacing:.06em;
+    padding-right:.06em;
 
     background:linear-gradient(180deg, #ffffff 0%, #e4e6ea 22%, #ffffff 46%, #b9bec6 62%, #ffffff 82%, #dfe2e6 100%);
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
 
-    filter:blur(26px);
     opacity:0;
-    transform:scale(2.4);
+    transform:scale3d(1.45, 1.45, 1);
     transform-origin:50% 55%;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 
-    animation: rsd-word-focus 3.6s cubic-bezier(.16,1,.3,1) 1.1s forwards;
+    animation: rsd-word-focus 2.8s cubic-bezier(.16,1,.3,1) .7s forwards;
   }
 
   @keyframes rsd-word-focus{
-    0%{ opacity:0; filter:blur(26px); transform:scale(2.4); letter-spacing:.62em; padding-right:.62em; }
-    35%{ opacity:1; }
-    100%{ opacity:1; filter:blur(0px); transform:scale(1); letter-spacing:.02em; padding-right:.02em; }
+    0%{ opacity:0; transform:scale3d(1.45, 1.45, 1); }
+    40%{ opacity:1; }
+    100%{ opacity:1; transform:scale3d(1, 1, 1); }
   }
 
   /* shine sweep : mirrors the word's own text via data-text so the
@@ -2110,7 +2117,6 @@
     <a href="#top" class="nav-logo" aria-label="Redsan Digitals Home"><img src="assets/redsan_logo.png" alt="Redsan Digitals Logo" class="brand-logo-img"></a>
     <nav class="nav-links">
       <a href="#top" class="active">Home</a>
-      <a href="#about">About Us</a>
       <a href="#workshop">Workshop</a>
       <a href="#blog">Blog</a>
       <a href="#contact">Contact Us</a>
@@ -2121,7 +2127,6 @@
 </header>
 <nav class="mobile-nav" id="mobileNav">
   <a href="#top">Home</a>
-  <a href="#about">About Us</a>
   <a href="#workshop">Workshop</a>
   <a href="#blog">Blog</a>
   <a href="#contact">Contact Us</a>
@@ -2682,7 +2687,6 @@
     </div>
     <nav class="foot-nav">
       <a href="#top">Home</a>
-      <a href="#about">About Us</a>
       <a href="/workshop">Workshop</a>
       <a href="/blog">Blog</a>
       <a href="#contact">Contact Us</a>
@@ -3137,7 +3141,7 @@ function initCinematicReveal() {
   setTimeout(function() {
     canDismiss = true;
     dismiss();
-  }, 6500);
+  }, 4800);
 }
 
 function initPageInteractions() {
@@ -3382,6 +3386,7 @@ function initCigaretteSmoke() {
             hasStartedBurning = true;
             cycleStartTime = performance.now();
             isEmitting = true;
+            startLoopIfNeeded();
           }
         } else {
           isVisible = false;
@@ -3396,19 +3401,18 @@ function initCigaretteSmoke() {
     isEmitting = true;
   }
 
+  let isLooping = false;
+  function startLoopIfNeeded() {
+    if (!isLooping) {
+      isLooping = true;
+      requestAnimationFrame(loop);
+    }
+  }
+
   function loop() {
+    if (!isLooping) return;
     requestAnimationFrame(loop);
     if (!hasStartedBurning) {
-      if (cigaretteBurnable) cigaretteBurnable.style.clipPath = 'inset(0 0 0 0%)';
-      if (cherry) {
-        cherry.style.left = '0%';
-        cherry.style.display = 'block';
-        cherry.style.opacity = '1';
-      }
-      if (cigaretteBody) {
-        cigaretteBody.style.opacity = '1';
-        cigaretteBody.style.transform = 'translateY(0)';
-      }
       ctx.clearRect(0, 0, width, height);
       return;
     }
@@ -3481,7 +3485,6 @@ function initCigaretteSmoke() {
       sparks[i].draw();
     }
   }
-  loop();
 }
 </script>
 
