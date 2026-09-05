@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Sticky bottom bar — show after scrolling past the masthead
+  // Sticky bottom bar: show after scrolling past the masthead
   var stickyBar = document.getElementById('stickyBar');
   if (stickyBar) {
     window.addEventListener('scroll', function () {
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Newsletter form (placeholder — wire to real ESP)
+  // Newsletter form (placeholder: wire to real ESP)
   var newsletterForm = document.getElementById('newsletterForm');
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', function (e) {
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Load more (placeholder — wire to CMS pagination)
+  // Load more (placeholder: wire to CMS pagination)
   var loadMoreBtn = document.getElementById('loadMoreBtn');
   if (loadMoreBtn) {
     loadMoreBtn.addEventListener('click', function () {

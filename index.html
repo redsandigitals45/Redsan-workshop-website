@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>Redsan Digitals — Full-Stack Marketing, Engineered for Growth</title>
-<meta name="description" content="Redsan Digitals is the AI-powered marketing crew behind brands that refuse to blend in — websites, ads, content, and code, built to actually perform.">
+<title>Redsan Digitals | Full-Stack Marketing, Engineered for Growth</title>
+<meta name="description" content="Redsan Digitals is the AI-powered marketing crew behind brands that refuse to blend in: websites, ads, content, and code, built to actually perform.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -423,7 +423,7 @@
     display:block;
   }
 
-  /* corner brackets — surveyor / crosshair motif */
+  /* corner brackets : surveyor / crosshair motif */
   #redsan-attention-hero .rah-bracket{
     position:absolute;
     width:26px;
@@ -657,6 +657,33 @@
   .mobile-hero {
     display: none;
   }
+  .mobile-shirt-container {
+    margin: 28px auto 14px;
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .mobile-shirt-glass {
+    width: 100%;
+    height: 380px;
+    background: rgba(12, 12, 16, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+  }
+  .mobile-shirt-glass iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
   @media (max-width: 880px) {
     #preloader { display: none !important; }
     #top { display: none !important; } /* Hides the 3D hero wrapper */
@@ -687,12 +714,14 @@
     margin: 0 0 30px;
     text-align: center;
     font-family: var(--display);
-    font-size: clamp(56px, 10.5vw, 150px);
-    line-height: .84;
+    font-size: clamp(32px, 8.8vw, 150px);
+    line-height: .88;
     letter-spacing: 0.01em;
     font-weight: 400;
     text-transform: uppercase;
     white-space: nowrap;
+    max-width: 100%;
+    overflow: visible;
     color: #fff;
     background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 45%, #777777 100%);
     -webkit-background-clip: text;
@@ -1110,7 +1139,12 @@
 
   @media(max-width: 850px){
     .preview-section { padding: 40px 18px 20px; }
-    .preview-section .hero-title { font-size: 14vw; }
+    .preview-section .hero-title {
+      font-size: clamp(24px, 7.8vw, 48px);
+      letter-spacing: 0;
+      white-space: nowrap;
+      overflow: visible;
+    }
     .preview-section .cards {
       flex-direction: column;
       margin-top: 20px;
@@ -1172,7 +1206,7 @@
   .martech-content {
     position: relative;
     z-index: 5;
-    min-height: 920px;
+    min-height: 1000px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1304,13 +1338,13 @@
 
   .martech-card.card-left {
     left: 3.5%;
-    top: 290px;
+    top: 410px;
     transform: rotate(9deg);
   }
 
   .martech-card.card-right {
     right: 3.5%;
-    top: 280px;
+    top: 400px;
     transform: rotate(-9deg);
   }
 
@@ -1422,7 +1456,7 @@
     z-index: 25;
     left: 0;
     right: 0;
-    bottom: 35px;
+    bottom: 18px;
     text-align: center;
     padding: 0 20px;
     pointer-events: none;
@@ -1449,34 +1483,13 @@
     font-size: clamp(12px, 1.2vw, 18px);
     letter-spacing: 6px;
     font-weight: 800;
-    color: #666;
+    color: rgba(255, 255, 255, 0.88);
     text-transform: uppercase;
-    overflow: hidden;
     padding: 4px 6px;
   }
 
-  .bottom-line::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -55%;
-    width: 34%;
-    transform: skewX(-20deg);
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.95), transparent);
-    filter: blur(2px);
-    animation: shine 2.8s ease-in-out infinite;
-  }
-
   .bottom-line span {
-    animation: textPulse 2.8s ease-in-out infinite;
-  }
-
-  @keyframes shine {
-    0% { left: -55%; opacity: 0; }
-    15% { opacity: 1; }
-    55% { left: 125%; opacity: 1; }
-    65%, 100% { left: 125%; opacity: 0; }
+    color: rgba(255, 255, 255, 0.92);
   }
 
   @keyframes textPulse {
@@ -1738,9 +1751,9 @@
     --rsd-red-dim:rgba(226,35,26,.5);
     --rsd-white:#fff;
 
-    position:fixed; /* see integration note 3 */
+    position:fixed;
     inset:0;
-    z-index: 99999;
+    z-index: 999999 !important;
     background:#000;
     display:flex;
     align-items:center;
@@ -1749,6 +1762,11 @@
     font-family:'Anton',sans-serif;
   }
   #rsd-cinema *{ box-sizing:border-box; }
+  #rsd-cinema, #rsd-cinema * {
+    animation-duration: revert !important;
+    animation-iteration-count: revert !important;
+    transition-duration: revert !important;
+  }
 
   /* ---------- letterbox bars ---------- */
   #rsd-cinema .rsd-bar{
@@ -1899,7 +1917,7 @@
     100%{ opacity:1; filter:blur(0px); transform:scale(1); letter-spacing:.02em; padding-right:.02em; }
   }
 
-  /* shine sweep — mirrors the word's own text via data-text so the
+  /* shine sweep : mirrors the word's own text via data-text so the
      highlight is clipped to the glyph shapes, not a rectangle */
   #rsd-cinema .rsd-word::before{
     content:attr(data-text);
@@ -1957,33 +1975,9 @@
 
   @keyframes rsd-fade-in{ to{ opacity:1; } }
 
-  @media (prefers-reduced-motion: reduce){
-    #rsd-cinema .rsd-bar,
-    #rsd-cinema .rsd-grain,
-    #rsd-cinema .rsd-vignette,
-    #rsd-cinema .rsd-embers,
-    #rsd-cinema .rsd-glow,
-    #rsd-cinema .rsd-stage,
-    #rsd-cinema .rsd-kicker,
-    #rsd-cinema .rsd-word,
-    #rsd-cinema .rsd-word::before,
-    #rsd-cinema .rsd-rule,
-    #rsd-cinema .rsd-tagline{
-      animation:none !important;
-    }
-    #rsd-cinema .rsd-bar{ height:6.4vh; }
-    #rsd-cinema .rsd-grain{ opacity:.18; }
-    #rsd-cinema .rsd-vignette,
-    #rsd-cinema .rsd-embers,
-    #rsd-cinema .rsd-kicker,
-    #rsd-cinema .rsd-tagline{ opacity:1; }
-    #rsd-cinema .rsd-glow{ opacity:.6; transform:scale(1); }
-    #rsd-cinema .rsd-word{ opacity:1; filter:blur(0); transform:scale(1); letter-spacing:.02em; padding-right:.02em; }
-    #rsd-cinema .rsd-rule{ width:180px; }
-    #rsd-cinema .rsd-tagline{ letter-spacing:.5em; padding-left:.5em; }
-  }
 
-  /* preview-only replay control — delete for production */
+
+  /* preview-only replay control : delete for production */
   #rsd-replay{
     position:fixed;
     bottom:24px; left:50%; transform:translateX(-50%);
@@ -2064,14 +2058,16 @@
   <div class="wrap hero-main">
     <div class="eyebrow">Full-Stack Marketing Company</div>
     <h1 style="margin-top:22px;">WE TURN <span class="cut">ATTENTION</span><br>INTO REVENUE.</h1>
-    <p class="hero-sub">Redsan Digitals is the AI-powered marketing crew behind brands that refuse to blend in — websites, ads, content, and code, built to actually perform.</p>
+    <p class="hero-sub">Redsan Digitals is the AI-powered marketing crew behind brands that refuse to blend in: websites, ads, content, and code, built to actually perform.</p>
     <div class="hero-ctas">
       <a href="#contact" class="btn btn-primary">Let's Build Something →</a>
       <a href="https://wa.me/910000000000" class="btn btn-ghost">Chat on WhatsApp</a>
     </div>
-    <div class="hero-visual">
-      <div id="hero-lottie" role="img" aria-label="Animated preview of Redsan Digitals services — website dev, SEO/AEO/GEO, Meta &amp; Google ads, social media, and shoot &amp; editing"></div>
-      <noscript><img src="assets/hero-services-visual.svg" alt="Redsan Digitals services overview"></noscript>
+    <div class="mobile-shirt-container">
+      <div class="rah-shirt-glass mobile-shirt-glass">
+        <iframe src="interactive_floating_shirt.html" title="Interactive Floating Shirt" loading="lazy" allowtransparency="true"></iframe>
+      </div>
+      <p class="rah-shirt-caption">If you remember this t-shirt, you know how <em>impactful</em> the internet is.</p>
     </div>
   </div>
 </section>
@@ -2116,7 +2112,7 @@
 
       <div class="rah-panels" id="rah-panels">
 
-        <!-- SCENE 0 — HERO -->
+        <!-- SCENE 0 : HERO -->
         <div class="rah-panel" data-index="0">
           <p class="rah-eyebrow">Redsan Digitals · Est. 2019 · ISO 9001:2015 Certified</p>
           <h1 class="rah-h1">Attention is<br>the new <span class="rah-accent">currency</span></h1>
@@ -2124,28 +2120,28 @@
           <span class="rah-scroll-cue">Scroll to mine ↓</span>
         </div>
 
-        <!-- SCENE 1 — INTELLIGENCE -->
+        <!-- SCENE 1 : INTELLIGENCE -->
         <div class="rah-panel" data-index="1">
-          <p class="rah-eyebrow">Vein 01 — Intelligence</p>
+          <p class="rah-eyebrow">Vein 01 · Intelligence</p>
           <h1 class="rah-h1">We find where<br>the <span class="rah-accent">attention</span> is</h1>
-          <p class="rah-body">AI-driven research maps the exact platforms, searches, and moments your audience is already paying attention to — before a single rupee is spent trying to reach them.</p>
+          <p class="rah-body">AI-driven research maps the exact platforms, searches, and moments your audience is already paying attention to, before a single rupee is spent trying to reach them.</p>
         </div>
 
-        <!-- SCENE 2 — CONTENT -->
+        <!-- SCENE 2 : CONTENT -->
         <div class="rah-panel" data-index="2">
-          <p class="rah-eyebrow">Vein 02 — Content</p>
+          <p class="rah-eyebrow">Vein 02 · Content</p>
           <h1 class="rah-h1">Then we <span class="rah-accent">refine</span><br>it into content</h1>
-          <p class="rah-body">SEO, AEO and GEO-optimised articles, campaigns and creative — engineered to earn attention on search, on social, and inside AI answers, not just chase impressions.</p>
+          <p class="rah-body">SEO, AEO and GEO-optimised articles, campaigns and creative, engineered to earn attention on search, on social, and inside AI answers, not just chase impressions.</p>
         </div>
 
-        <!-- SCENE 3 — CONVERSION -->
+        <!-- SCENE 3 : CONVERSION -->
         <div class="rah-panel" data-index="3">
-          <p class="rah-eyebrow">Vein 03 — Conversion</p>
+          <p class="rah-eyebrow">Vein 03 · Conversion</p>
           <h1 class="rah-h1">And <span class="rah-accent">convert</span> it<br>into customers</h1>
-          <p class="rah-body">Funnels, landing pages and sales systems built to turn a scroll-stopping moment into a paying customer — the same playbook we teach first-hand in Sell With Confidence.</p>
+          <p class="rah-body">Funnels, landing pages and sales systems built to turn a scroll-stopping moment into a paying customer, the same playbook we teach first-hand in Sell With Confidence.</p>
         </div>
 
-        <!-- SCENE 4 — CTA -->
+        <!-- SCENE 4 : CTA -->
         <div class="rah-panel" data-index="4">
           <p class="rah-eyebrow">The Yield</p>
           <h1 class="rah-h1">Your audience's<br>attention is <span class="rah-accent">already</span><br>being mined</h1>
@@ -2358,10 +2354,10 @@
         <div class="meme-doodle">✦</div>
       </a>
 
-      <a href="#contact" class="meme-floating-badge meme-right reveal" style="--delay:0.85s" title="Atleast we can make you laugh">
+      <a href="#contact" class="meme-floating-badge meme-right reveal" style="--delay:0.85s" title="Atleast we can make you smile">
         <div class="meme-tag">🎭 ZERO CRINGE</div>
         <div class="meme-text">
-          Atleast we can make you <span class="funky-pop">laugh</span> <span class="meme-emoji">😂</span>
+          Atleast we can make you <span class="funky-pop">smile</span> <span class="meme-emoji">😊</span>
         </div>
         <div class="meme-doodle">✦</div>
       </a>
@@ -2393,7 +2389,7 @@
     <div class="section-head">
       <div class="eyebrow">Who We Are</div>
       <h2>A Marketing Company, Built Like a Product Team.</h2>
-      <p>Redsan Digitals runs on the same principle every brand we work with is chasing — move fast, build well, and let the results do the talking. We're not a portfolio site. We're the team behind the growth.</p>
+      <p>Redsan Digitals runs on the same principle every brand we work with is chasing: move fast, build well, and let the results do the talking. We're not a portfolio site. We're the team behind the growth.</p>
     </div>
   </div>
 </section>
@@ -2414,7 +2410,7 @@
       <a href="/services/seo-aeo-geo" class="service-row">
         <div class="service-num">02</div>
         <div class="service-name">SEO · AEO · GEO</div>
-        <div class="service-desc">Ranked on Google, cited by AI answers — visible wherever people are actually searching now.</div>
+        <div class="service-desc">Ranked on Google, cited by AI answers, visible wherever people are actually searching now.</div>
       </a>
       <a href="/services/social-content" class="service-row">
         <div class="service-num">03</div>
@@ -2505,13 +2501,13 @@
       <div>
         <div class="eyebrow" style="color:var(--red);">Learn → Launch</div>
         <h2 style="margin-top:16px;">Learnt the Theory. Now Get the Results.</h2>
-        <p>Our Workshop is where students turn cold DMs into paid retainers — real frameworks, real case studies, ₹49 to start.</p>
+        <p>Our Workshop is where students turn cold DMs into paid retainers: real frameworks, real case studies, ₹49 to start.</p>
         <a href="/workshop" class="btn btn-primary">Explore the Workshop →</a>
       </div>
       <div class="workshop-side">
         <div class="quote-tag">From the Workshop</div>
         <div class="quote">"I wasn't looking for brands that needed help. I was looking for brands where the gap was obvious in the first three seconds of scrolling their grid."</div>
-        <div style="font-family:var(--mono);font-size:12px;color:var(--slate);">— A 2nd-year student, on landing her first ₹15,000 retainer</div>
+        <div style="font-family:var(--mono);font-size:12px;color:var(--slate);">A 2nd-year student, on landing her first ₹15,000 retainer</div>
       </div>
     </div>
   </div>
@@ -2530,7 +2526,7 @@
         <div class="mag-body">
           <div class="tag">Sales &amp; Pitching</div>
           <h3>How a 2nd-Year Student Landed Her First ₹15,000 Retainer With One Cold DM</h3>
-          <p>No agency, no portfolio, no connections — just a message framework and the guts to hit send.</p>
+          <p>No agency, no portfolio, no connections, just a message framework and the guts to hit send.</p>
         </div>
       </a>
       <a href="/blog/3-line-objection-handler" class="mag-card">
@@ -2538,7 +2534,7 @@
         <div class="mag-body">
           <div class="tag">Sales &amp; Pitching</div>
           <h3>The 3-Line Objection Handler We Teach in Every Workshop</h3>
-          <p>"It's too expensive" isn't a rejection — it's a request for more context.</p>
+          <p>"It's too expensive" isn't a rejection, it's a request for more context.</p>
         </div>
       </a>
       <a href="/blog/cold-dm-vs-warm-intro-vs-referral" class="mag-card">
@@ -2559,7 +2555,7 @@
     <div class="section-head" style="margin-bottom:36px;">
       <div class="eyebrow">Credibility</div>
       <h2>Certified. Partnered. Accountable.</h2>
-      <p>Placeholder slots below — send over the ISO certificate and MoU logos and I'll drop them in at consistent size.</p>
+      <p>Placeholder slots below: send over the ISO certificate and MoU logos and I'll drop them in at consistent size.</p>
     </div>
     <div class="certs-grid">
       <div class="cert-badge"><div class="ph-icon">ISO</div><div class="cert-label">ISO Certified</div></div>
@@ -2580,18 +2576,18 @@
     <div class="testi-grid">
       <div class="testi-card">
         <div class="quote-mark">"</div>
-        <p class="quote-text">[Placeholder — send over the real testimonial text and we'll drop it in exactly as written.]</p>
+        <p class="quote-text">[Placeholder: send over the real testimonial text and we'll drop it in exactly as written.]</p>
         <div class="testi-name">Client Name</div>
         <div class="testi-role">Designation, Company</div>
       </div>
       <div class="testi-card">
         <div class="quote-mark">"</div>
-        <p class="quote-text">[Placeholder — send over the real testimonial text and we'll drop it in exactly as written.]</p>
+        <p class="quote-text">[Placeholder: send over the real testimonial text and we'll drop it in exactly as written.]</p>
         <div class="testi-name">Client Name</div>
         <div class="testi-role">Designation, Company</div>
       </div>
     </div>
-    <div class="testi-note">Note: swap these two placeholders for your real quotes — happy to add more as a scrollable row if you have 3+.</div>
+    <div class="testi-note">Note: swap these two placeholders for your real quotes, happy to add more as a scrollable row if you have 3+.</div>
   </div>
 </section>
 
@@ -2601,14 +2597,14 @@
     <div class="contact-left">
       <div class="eyebrow">Get In Touch</div>
       <h2 style="margin-top:16px;">Got an Idea?<br>We've Got the Engine.</h2>
-      <p>Tell us what you're building — we'll tell you how fast we can make it real.</p>
+      <p>Tell us what you're building: we'll tell you how fast we can make it real.</p>
       <div class="contact-info">
         <a href="mailto:hello@redsandigitals.com">hello@redsandigitals.com</a>
         <a href="tel:+910000000000">+91 00000 00000</a>
         <a href="https://wa.me/910000000000">WhatsApp Us Directly →</a>
       </div>
     </div>
-    <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submitted — connect this to your backend / form service.');">
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submitted: connect this to your backend / form service.');">
       <div class="form-field">
         <label for="name">Name</label>
         <input id="name" type="text" placeholder="Your name" required>
@@ -2697,7 +2693,7 @@ const root       = document.getElementById('redsan-attention-hero');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isSmall = window.matchMedia('(max-width: 680px)').matches;
 
-const labels = ['ORIGIN', 'VEIN 01 — INTELLIGENCE', 'VEIN 02 — CONTENT', 'VEIN 03 — CONVERSION', 'YIELD'];
+const labels = ['ORIGIN', 'VEIN 01 · INTELLIGENCE', 'VEIN 02 · CONTENT', 'VEIN 03 · CONVERSION', 'YIELD'];
 
 /* ---- reticle follows pointer subtly (works even without WebGL) ---- */
 window.addEventListener('pointermove', (e) => {
@@ -2866,7 +2862,7 @@ function initGlobalSpaceBg() {
 }
 initGlobalSpaceBg();
 
-/* ---- 3D scene (guarded — page still works with no WebGL) ---- */
+/* ---- 3D scene (guarded : page still works with no WebGL) ---- */
 let scene3d = null;
 
 function buildScene() {
@@ -2882,7 +2878,7 @@ function buildScene() {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
 
-  /* -- the "ore" — a raw, irregular crystal made of attention data points -- */
+  /* -- the "ore" : a raw, irregular crystal made of attention data points -- */
   const detail = isSmall ? 2 : 3;
   const geo = new THREE.IcosahedronGeometry(1.4, detail);
   const pos = geo.attributes.position;
@@ -3250,8 +3246,14 @@ function initCinematicReveal() {
   window.scrollTo(0, 0);
 
   let dismissed = false;
+  let canDismiss = false;
+  // Guard dismissal for 1800ms so window focus / early mouse clicks on PC do not kill the reveal
+  setTimeout(function() {
+    canDismiss = true;
+  }, 1800);
+
   const dismiss = function() {
-    if (dismissed) return;
+    if (dismissed || !canDismiss) return;
     dismissed = true;
     cinema.style.transition = "opacity 0.8s ease";
     cinema.style.opacity = "0";
@@ -3262,14 +3264,18 @@ function initCinematicReveal() {
     }, 800);
   };
 
-  // Allow clicking anywhere or pressing Escape to dismiss gracefully if preferred
-  cinema.addEventListener("click", dismiss);
+  cinema.addEventListener("click", function() {
+    if (canDismiss) dismiss();
+  });
   window.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") dismiss();
+    if (e.key === "Escape" && canDismiss) dismiss();
   });
 
-  // Automatically dismiss when sequence settles (~6.2s)
-  setTimeout(dismiss, 6200);
+  // Automatically dismiss when sequence completes (~6.5s)
+  setTimeout(function() {
+    canDismiss = true;
+    dismiss();
+  }, 6500);
 }
 
 function initPageInteractions() {
@@ -3372,8 +3378,9 @@ function initCigaretteSmoke() {
   const VANISH_END_TIME = 73000;  // 70.5s - 73s: Cigarette completely removed / vanished
   // 73s - 75s (2s): New unburnt cigarette replaced, slides/fades in smooth and restarts loop
 
-  let cycleStartTime = performance.now();
-  let isEmitting = true;
+  let hasStartedBurning = false;
+  let cycleStartTime = 0;
+  let isEmitting = false;
 
   function getCherryPosition() {
     if (!cherry || !canvas) return { x: 50, y: height - 20 };
@@ -3515,16 +3522,48 @@ function initCigaretteSmoke() {
     sparks.push(new MicroSpark());
   }
 
-  let isVisible = true;
+  let isVisible = false;
+  const cigaretteTarget = document.getElementById('cigarette-stripes') || canvas;
+
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
-      isVisible = entries[0].isIntersecting;
-    }, { threshold: 0.02 });
-    observer.observe(canvas);
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          isVisible = true;
+          if (!hasStartedBurning) {
+            hasStartedBurning = true;
+            cycleStartTime = performance.now();
+            isEmitting = true;
+          }
+        } else {
+          isVisible = false;
+        }
+      });
+    }, { threshold: 0.05 });
+    observer.observe(cigaretteTarget);
+  } else {
+    hasStartedBurning = true;
+    cycleStartTime = performance.now();
+    isVisible = true;
+    isEmitting = true;
   }
 
   function loop() {
     requestAnimationFrame(loop);
+    if (!hasStartedBurning) {
+      if (cigaretteBurnable) cigaretteBurnable.style.clipPath = 'inset(0 0 0 0%)';
+      if (cherry) {
+        cherry.style.left = '0%';
+        cherry.style.display = 'block';
+        cherry.style.opacity = '1';
+      }
+      if (cigaretteBody) {
+        cigaretteBody.style.opacity = '1';
+        cigaretteBody.style.transform = 'translateY(0)';
+      }
+      ctx.clearRect(0, 0, width, height);
+      return;
+    }
     if (!isVisible) return;
 
     // --- ORCHESTRATE 75-SECOND BURNING & REPLACEMENT CYCLE ---

@@ -1,5 +1,5 @@
 /* ============================================================
-   COUNTDOWN — edit TARGET_DATE for each batch cycle
+   COUNTDOWN: edit TARGET_DATE for each batch cycle
    ============================================================ */
 const TARGET_DATE = new Date('2026-08-03T23:59:59+05:30').getTime();
 function updateCountdown(){
@@ -23,7 +23,7 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 /* ============================================================
-   SEATS COUNTER — set this manually per batch, or wire to a DB
+   SEATS COUNTER: set this manually per batch, or wire to a DB
    ============================================================ */
 const SEATS_TOTAL = 40;
 const SEATS_LEFT = 9; // <-- edit manually each batch
@@ -50,7 +50,7 @@ document.querySelectorAll('.acc-item').forEach(item=>{
 });
 
 /* ============================================================
-   CHECKOUT FORM — front-end demo only.
+   CHECKOUT FORM: front-end demo only.
    Replace with real Razorpay/Instamojo/PayU checkout call.
    ============================================================ */
 document.getElementById('checkoutForm').addEventListener('submit', function(e){
@@ -62,7 +62,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e){
 });
 
 /* ============================================================
-   STICKY BAR — hide when checkout section is in view
+   STICKY BAR: hide when checkout section is in view
    ============================================================ */
 const stickyBar = document.getElementById('stickyBar');
 const checkoutEl = document.getElementById('checkout');

@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Redsan Digitals — Cinematic Logo Reveal</title>
+<title>Redsan Digitals: Cinematic Logo Reveal</title>
 
 <!--
   ============================================================================
-  REDSAN DIGITALS — CINEMATIC LOGO REVEAL (studio-vanity-card style)
+  REDSAN DIGITALS: CINEMATIC LOGO REVEAL (studio-vanity-card style)
   ============================================================================
   A slow, deliberate reveal: black screen → atmosphere settles (letterbox
   bars, drifting embers, faint glow) → the wordmark pulls into focus out of
@@ -17,25 +17,25 @@
   whole thing holds in a slow ambient breathing loop.
 
   Total run to settle: ~6.5s. This is meant to be watched once per session,
-  not skimmed — the pacing is the point.
+  not skimmed: the pacing is the point.
 
   INTEGRATION NOTES FOR ANTIGRAVITY:
   1. COPY the Google Fonts <link> tags into <head> if Anton / IBM Plex Mono
      aren't already loaded.
   2. COPY the <style> block in (scoped under #rsd-cinema).
   3. COPY the <div id="rsd-cinema">...</div> markup. It's built as a
-     fixed full-viewport overlay — ideal as a one-time splash before the
+     fixed full-viewport overlay: ideal as a one-time splash before the
      real site reveals itself. For an inline hero placement instead,
      remove `position:fixed; inset:0;` from #rsd-cinema and give its
      parent a defined height.
   4. Pure CSS, no JS dependency for the animation itself. The only script
-     on the page is the preview-only "Replay" button — delete it in
+     on the page is the preview-only "Replay" button: delete it in
      production.
   5. If used as a splash, trigger your real hero/page-content fade-in
      around the 5.5–6s mark so it hands off right as the reveal settles.
   6. To change the wordmark text, edit both the visible text in .rsd-word
      AND its matching data-text attribute (used for the shine-sweep
-     pseudo-element) — they must stay identical.
+     pseudo-element): they must stay identical.
   ============================================================================
 -->
 
@@ -212,7 +212,7 @@
     100%{ opacity:1; filter:blur(0px); transform:scale(1); letter-spacing:.02em; padding-right:.02em; }
   }
 
-  /* shine sweep — mirrors the word's own text via data-text so the
+  /* shine sweep: mirrors the word's own text via data-text so the
      highlight is clipped to the glyph shapes, not a rectangle */
   #rsd-cinema .rsd-word::before{
     content:attr(data-text);
@@ -296,7 +296,7 @@
     #rsd-cinema .rsd-tagline{ letter-spacing:.5em; padding-left:.5em; }
   }
 
-  /* preview-only replay control — delete for production */
+  /* preview-only replay control: delete for production */
   #rsd-replay{
     position:fixed;
     bottom:24px; left:50%; transform:translateX(-50%);
@@ -339,7 +339,7 @@
   </div>
 </div>
 
-<!-- PREVIEW-ONLY — remove before shipping -->
+<!-- PREVIEW-ONLY: remove before shipping -->
 <button id="rsd-replay" onclick="location.reload();">Replay</button>
 
 </body>
