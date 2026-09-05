@@ -2627,36 +2627,43 @@
         <a href="https://wa.me/919664365954" target="_blank" rel="noopener">WhatsApp Us Directly →</a>
       </div>
     </div>
-    <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submitted: connect this to your backend / form service.');">
+    <form class="contact-form" id="leadContactForm" action="https://api.web3forms.com/submit" method="POST">
+      <!-- Web3Forms Lead Capture Configuration -->
+      <input type="hidden" name="access_key" value="1ac97c8b-01fd-4a7f-a9b0-f19d191d0cbe">
+      <input type="hidden" name="subject" value="New Lead Submission from Redsan Digitals Website">
+      <input type="hidden" name="from_name" value="Redsan Digitals Lead Engine">
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
       <div class="form-field">
         <label for="name">Name</label>
-        <input id="name" type="text" placeholder="Your name" required>
+        <input id="name" name="name" type="text" placeholder="Your name" required>
       </div>
       <div class="form-field">
         <label for="contactinfo">Email or Phone</label>
-        <input id="contactinfo" type="text" placeholder="you@company.com" required>
+        <input id="contactinfo" name="email_or_phone" type="text" placeholder="you@company.com or phone" required>
       </div>
       <div class="form-field">
         <label for="company">Company</label>
-        <input id="company" type="text" placeholder="Your brand / startup">
+        <input id="company" name="company" type="text" placeholder="Your brand / startup">
       </div>
       <div class="form-field">
         <label for="need">What Do You Need Help With?</label>
-        <select id="need">
-          <option>Website / App Development</option>
-          <option>SEO / AEO / GEO</option>
-          <option>Social Media &amp; Content</option>
-          <option>Meta &amp; Google Ads</option>
-          <option>Startup MVP / Vibe Coding</option>
-          <option>Startup Consultation</option>
-          <option>Something Else</option>
+        <select id="need" name="service_needed">
+          <option value="Website / App Development">Website / App Development</option>
+          <option value="SEO / AEO / GEO">SEO / AEO / GEO</option>
+          <option value="Social Media & Content">Social Media &amp; Content</option>
+          <option value="Meta & Google Ads">Meta &amp; Google Ads</option>
+          <option value="Startup MVP / Vibe Coding">Startup MVP / Vibe Coding</option>
+          <option value="Startup Consultation">Startup Consultation</option>
+          <option value="Something Else">Something Else</option>
         </select>
       </div>
       <div class="form-field">
         <label for="message">Message</label>
-        <textarea id="message" placeholder="Tell us a bit about your project..."></textarea>
+        <textarea id="message" name="message" placeholder="Tell us a bit about your project..."></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Let's Get Weird With It →</button>
+      <div id="contactFormStatus" style="display:none; margin-top:14px; padding:12px 16px; border-radius:8px; font-family:var(--mono); font-size:13px; font-weight:600;"></div>
     </form>
   </div>
 </section>
@@ -3477,5 +3484,60 @@ function initCigaretteSmoke() {
   loop();
 }
 </script>
+
+<script>
+  // Web3Forms Asynchronous Lead Capture Submission
+  (function() {
+    const leadForm = document.getElementById('leadContactForm');
+    if (leadForm) {
+      leadForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const submitBtn = leadForm.querySelector('button[type="submit"]');
+        const statusBox = document.getElementById('contactFormStatus');
+        const originalBtnText = submitBtn.innerHTML;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending Lead... ⏳';
+        if (statusBox) {
+          statusBox.style.display = 'none';
+        }
+
+        try {
+          const formData = new FormData(leadForm);
+          const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+          });
+          const result = await response.json();
+
+          if (result.success) {
+            if (statusBox) {
+              statusBox.style.display = 'block';
+              statusBox.style.background = 'rgba(34, 197, 94, 0.15)';
+              statusBox.style.border = '1px solid #22c55e';
+              statusBox.style.color = '#22c55e';
+              statusBox.innerHTML = '✓ Thank you! Your details have been submitted. We will contact you shortly.';
+            }
+            leadForm.reset();
+          } else {
+            throw new Error(result.message || 'Submission failed');
+          }
+        } catch (error) {
+          if (statusBox) {
+            statusBox.style.display = 'block';
+            statusBox.style.background = 'rgba(239, 68, 68, 0.15)';
+            statusBox.style.border = '1px solid #ef4444';
+            statusBox.style.color = '#ef4444';
+            statusBox.innerHTML = '✕ Unable to submit form. Please reach out to redsandigitals@gmail.com or WhatsApp us directly.';
+          }
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+        }
+      });
+    }
+  })();
+</script>
+
 </body>
 </html>
