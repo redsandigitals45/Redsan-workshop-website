@@ -47,7 +47,7 @@
   h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:0.01em;line-height:1.02;margin:0;color:#ffffff;}
   :focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   @media (prefers-reduced-motion: reduce){
-    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+    *:not(#rsd-cinema):not(#rsd-cinema *){animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
   }
 
   /* ===== FIXED SPACE CANVAS ===== */
@@ -1843,11 +1843,7 @@
     font-family:'Anton',sans-serif;
   }
   #rsd-cinema *{ box-sizing:border-box; }
-  #rsd-cinema, #rsd-cinema * {
-    animation-duration: revert !important;
-    animation-iteration-count: revert !important;
-    transition-duration: revert !important;
-  }
+
 
   /* ---------- letterbox bars ---------- */
   #rsd-cinema .rsd-bar{
@@ -2271,12 +2267,8 @@
 
       <article class="circle right" tabindex="0">
         <div class="circle-content">
-          <div class="metric highlight-metric" style="color:#ffffff; font-size:clamp(44px, 4.4vw, 68px); font-family:var(--display); line-height:0.95; letter-spacing:0.02em;">
-            <span style="color:#ffffff; text-shadow:0 0 24px rgba(255,255,255,0.75);">1.5cr+</span>
-          </div>
-          <p class="copy" style="color:rgba(255,255,255,0.95); font-size:clamp(13px, 1.1vw, 16px); font-weight:600; line-height:1.35; margin-top:10px;">
-            turnover delivered<br>for brands starting<br>from scratch
-          </p>
+          <div class="metric">1.5cr+</div>
+          <p class="copy">turnover delivered<br>for brands starting<br>from scratch</p>
         </div>
       </article>
     </div>
