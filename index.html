@@ -927,26 +927,157 @@
   }
   .preview-section .cta:hover span { color: #fff; transform: translateX(4px); }
 
-  /* Diagonal footer stripes */
+  /* Diagonal footer stripes (cigarette motif) */
   .preview-section .footer-stripes {
     position: relative;
     width: 106%;
     left: -3%;
     height: 64px;
-    margin-top: 20px;
+    margin-top: 30px;
     transform: rotate(-2.5deg);
     transform-origin: left bottom;
     display: flex;
-    z-index: 1;
-    overflow: hidden;
+    z-index: 3;
+    overflow: visible;
     border-radius: 4px;
   }
-  .preview-section .stripe { height: 100%; }
-  .preview-section .s1 { width: 45%; background: #FFFFFF; }
+  .preview-section .stripe { height: 100%; position: relative; }
+  .preview-section .s1 {
+    width: 45%;
+    background: #FFFFFF;
+    position: relative;
+    overflow: visible;
+  }
   .preview-section .s2 { width: 15%; background: #E5E5E7; }
   .preview-section .s3 { width: 14%; background: var(--red); }
   .preview-section .s4 { width: 13%; background: #9E150F; }
   .preview-section .s5 { width: 13%; background: #0B0B0C; }
+
+  /* --- CIGARETTE BURNING PAPER & EMBER TIP --- */
+  .preview-section .cigarette-ash-tip {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 90px;
+    pointer-events: none;
+    z-index: 10;
+    overflow: visible;
+  }
+
+  /* Charred burned paper scorch gradient on white paper */
+  .preview-section .cigarette-ash-tip .scorch-gradient {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    background: linear-gradient(90deg, 
+      rgba(15,15,18,0.98) 0%, 
+      rgba(40,24,14,0.92) 16%, 
+      rgba(78,46,22,0.78) 32%, 
+      rgba(145,98,52,0.48) 52%, 
+      rgba(205,170,120,0.2) 74%, 
+      rgba(255,255,255,0) 100%
+    );
+  }
+
+  /* Craggy glowing ember tip right on the left edge */
+  .preview-section .cigarette-ash-tip .ember-core {
+    position: absolute;
+    left: -3px;
+    top: -1px;
+    bottom: -1px;
+    width: 18px;
+    background: linear-gradient(90deg, 
+      #111 0%, 
+      #2b120c 18%, 
+      #ff3700 52%, 
+      #ff8800 78%, 
+      #ffea77 100%
+    );
+    clip-path: polygon(
+      0% 0%, 100% 0%, 
+      82% 14%, 100% 28%, 
+      72% 46%, 96% 62%, 
+      78% 80%, 100% 100%, 
+      0% 100%
+    );
+    box-shadow: 
+      -4px 0 16px rgba(255, 60, 0, 0.95),
+      -12px 0 28px rgba(255, 120, 0, 0.75),
+      -22px 0 50px rgba(255, 50, 0, 0.45),
+      inset 3px 0 8px #ff7700;
+    animation: cigarette-ember-breathe 3.2s ease-in-out infinite alternate;
+  }
+
+  /* Hot crackling ember speckles */
+  .preview-section .cigarette-ash-tip .ember-specks {
+    position: absolute;
+    left: 2px;
+    top: 0;
+    bottom: 0;
+    width: 24px;
+    background-image: 
+      radial-gradient(circle at 4px 14px, #ffdd55 1.5px, transparent 2px),
+      radial-gradient(circle at 11px 34px, #ff6600 2px, transparent 2.5px),
+      radial-gradient(circle at 6px 50px, #ffaa00 1.5px, transparent 2px),
+      radial-gradient(circle at 13px 20px, #ff3300 2px, transparent 2.5px);
+    filter: drop-shadow(0 0 5px #ff5500);
+    animation: cigarette-specks-flicker 1.8s ease-in-out infinite;
+  }
+
+  @keyframes cigarette-ember-breathe {
+    0% {
+      opacity: 0.85;
+      filter: brightness(0.95);
+      box-shadow: 
+        -4px 0 14px rgba(255, 60, 0, 0.85),
+        -8px 0 22px rgba(255, 100, 0, 0.6),
+        -16px 0 35px rgba(255, 40, 0, 0.35);
+    }
+    50% {
+      opacity: 1;
+      filter: brightness(1.28);
+      box-shadow: 
+        -6px 0 22px rgba(255, 70, 0, 1),
+        -14px 0 38px rgba(255, 140, 0, 0.88),
+        -28px 0 60px rgba(255, 50, 0, 0.58);
+    }
+    100% {
+      opacity: 0.9;
+      filter: brightness(1.05);
+      box-shadow: 
+        -4px 0 16px rgba(255, 60, 0, 0.9),
+        -10px 0 26px rgba(255, 110, 0, 0.65),
+        -18px 0 40px rgba(255, 40, 0, 0.4);
+    }
+  }
+
+  @keyframes cigarette-specks-flicker {
+    0%, 100% { opacity: 0.7; transform: scale(0.95); }
+    30% { opacity: 1; transform: scale(1.1); }
+    60% { opacity: 0.55; transform: scale(0.9); }
+    80% { opacity: 0.95; transform: scale(1.05); }
+  }
+
+  /* Smoke Canvas Container */
+  .preview-section .cigarette-smoke-wrap {
+    position: absolute;
+    left: -48px;
+    bottom: 20px;
+    width: 220px;
+    height: 400px;
+    pointer-events: none;
+    z-index: 25;
+    overflow: visible;
+    /* Counteract stripe rotation so smoke rises straight upward */
+    transform: rotate(2.5deg);
+    transform-origin: bottom 48px;
+  }
+  .preview-section #cigarette-smoke-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
 
   @media(max-width: 850px){
     .preview-section { padding: 40px 18px 20px; }
@@ -1460,7 +1591,19 @@
   </div>
 
   <div class="footer-stripes" aria-hidden="true">
-    <div class="stripe s1"></div>
+    <!-- Cigarette rising smoke canvas -->
+    <div class="cigarette-smoke-wrap">
+      <canvas id="cigarette-smoke-canvas"></canvas>
+    </div>
+
+    <!-- Cigarette body with burning ember cherry on the left tip -->
+    <div class="stripe s1">
+      <div class="cigarette-ash-tip">
+        <div class="scorch-gradient"></div>
+        <div class="ember-core"></div>
+        <div class="ember-specks"></div>
+      </div>
+    </div>
     <div class="stripe s2"></div>
     <div class="stripe s3"></div>
     <div class="stripe s4"></div>
@@ -2198,8 +2341,170 @@ document.addEventListener("DOMContentLoaded", function() {
       if (!wasActive) circle.classList.add("active");
     });
   });
-});
-</script>
 
+  // Initialize cigarette smoke animation
+  initCigaretteSmoke();
+});
+
+/* ============================================================
+   REALISTIC CIGARETTE SMOKE & EMBERS SYSTEM
+   ============================================================ */
+function initCigaretteSmoke() {
+  const canvas = document.getElementById('cigarette-smoke-canvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let width = 220;
+  let height = 400;
+
+  function resize() {
+    width = canvas.width = canvas.offsetWidth || 220;
+    height = canvas.height = canvas.offsetHeight || 400;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const particles = [];
+  const sparks = [];
+  const MAX_PARTICLES = 65;
+
+  class SmokeParticle {
+    constructor() {
+      this.reset(true);
+    }
+    reset(initial) {
+      // Spawn right at the burning cherry tip at the bottom-left
+      this.x = 48 + (Math.random() - 0.5) * 6;
+      this.y = height - 16 + (Math.random() - 0.5) * 4;
+      this.vy = -(1.4 + Math.random() * 1.1); // upward velocity
+      this.vx = (Math.random() - 0.5) * 0.35; // gentle initial drift
+      this.radius = 2.5 + Math.random() * 2.5; // starts small & tight
+      this.maxRadius = 26 + Math.random() * 22; // expands into soft swirling wisp
+      this.life = initial ? Math.random() * 140 : 0;
+      this.maxLife = 140 + Math.random() * 50;
+      this.curlFreq = 0.022 + Math.random() * 0.02;
+      this.curlAmp = 0.5 + Math.random() * 0.7;
+      this.curlPhase = Math.random() * Math.PI * 2;
+    }
+    update() {
+      this.life++;
+      if (this.life >= this.maxLife) {
+        this.reset(false);
+        return;
+      }
+      const progress = this.life / this.maxLife;
+
+      // Natural cigarette thermal updraft with organic waving curls
+      this.x += this.vx + Math.sin(this.life * this.curlFreq + this.curlPhase) * this.curlAmp;
+      this.y += this.vy;
+
+      // Gentle aerodynamic drag
+      this.vy *= 0.993;
+
+      // Expansion of smoke cloud as it rises and cools
+      this.radius = 2.5 + (this.maxRadius - 2.5) * Math.pow(progress, 0.68);
+    }
+    draw() {
+      const progress = this.life / this.maxLife;
+      let alpha;
+      if (progress < 0.08) {
+        alpha = (progress / 0.08) * 0.38;
+      } else {
+        alpha = 0.38 * Math.pow(1 - progress, 1.3);
+      }
+
+      if (alpha <= 0.005) return;
+
+      const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+      if (progress < 0.12) {
+        // Hot amber glow near the burning cherry
+        grad.addColorStop(0, `rgba(255, 160, 90, ${alpha * 1.3})`);
+        grad.addColorStop(0.3, `rgba(235, 240, 250, ${alpha * 0.75})`);
+        grad.addColorStop(1, 'rgba(230, 235, 245, 0)');
+      } else {
+        // Ethereal bluish-white cigarette smoke
+        grad.addColorStop(0, `rgba(225, 232, 245, ${alpha})`);
+        grad.addColorStop(0.45, `rgba(210, 220, 235, ${alpha * 0.55})`);
+        grad.addColorStop(1, 'rgba(195, 210, 225, 0)');
+      }
+
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  // Micro sparks drifting off the lit cherry
+  class MicroSpark {
+    constructor() {
+      this.reset(true);
+    }
+    reset(initial) {
+      this.x = 48 + (Math.random() - 0.5) * 8;
+      this.y = height - 16 + (Math.random() - 0.5) * 4;
+      this.vx = (Math.random() - 0.5) * 0.7;
+      this.vy = -(1.6 + Math.random() * 1.6);
+      this.life = initial ? Math.random() * 55 : 0;
+      this.maxLife = 40 + Math.random() * 35;
+      this.size = 0.8 + Math.random() * 1.4;
+    }
+    update() {
+      this.life++;
+      if (this.life >= this.maxLife) {
+        this.reset(false);
+        return;
+      }
+      this.x += this.vx;
+      this.y += this.vy;
+      this.vx += (Math.random() - 0.5) * 0.12;
+    }
+    draw() {
+      const progress = this.life / this.maxLife;
+      const alpha = 1 - progress;
+      ctx.fillStyle = `rgba(255, ${Math.floor(130 + Math.random() * 90)}, 30, ${alpha})`;
+      ctx.shadowColor = '#ff4500';
+      ctx.shadowBlur = 5;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+  }
+
+  for (let i = 0; i < MAX_PARTICLES; i++) {
+    particles.push(new SmokeParticle());
+  }
+  for (let i = 0; i < 5; i++) {
+    sparks.push(new MicroSpark());
+  }
+
+  let isVisible = true;
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+    }, { threshold: 0.02 });
+    observer.observe(canvas);
+  }
+
+  function loop() {
+    requestAnimationFrame(loop);
+    if (!isVisible) return;
+
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+    }
+
+    for (let i = 0; i < sparks.length; i++) {
+      sparks[i].update();
+      sparks[i].draw();
+    }
+  }
+  loop();
+}
+</script>
 </body>
 </html>
