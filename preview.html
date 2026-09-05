@@ -220,25 +220,23 @@ body{
   display: flex;
   position: relative;
   border-radius: 4px;
+  overflow: visible;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.stripe-slot {
+/* The burnable group: white (45%), grey (15%), red (14%), dark red (13%) = 87% total */
+.cigarette-burnable {
+  width: 87%;
   height: 100%;
+  display: flex;
   position: relative;
   overflow: visible;
 }
 
-.s1-slot {
-  width: 45%;
-  display: flex;
-  justify-content: flex-end; /* White paper shrinks from left to right towards the filter! */
-  background: transparent;
-}
-
 .stripe{height:100%;position:relative}
+/* Proportions within the 87% burnable group */
 .s1{
-  width:100%; /* Dynamically animated from 100% down to 0% over 60s */
+  width: 51.724%;
   background:var(--white);
   position:relative;
   overflow:visible;
@@ -246,9 +244,9 @@ body{
   border-bottom-left-radius: 4px;
   box-shadow: inset 0 -3px 6px rgba(0,0,0,0.1);
 }
-.s2{width:15%;background:var(--grey)}
-.s3{width:14%;background:var(--primary)}
-.s4{width:13%;background:#B30F1E}
+.s2{width: 17.241%;background:var(--grey)}
+.s3{width: 16.092%;background:var(--primary)}
+.s4{width: 14.943%;background:#B30F1E}
 .s5{
   width:13%;
   background:var(--dark);
@@ -267,6 +265,7 @@ body{
   pointer-events: none;
   z-index: 10;
   overflow: visible;
+  transform: translateX(-4px);
   transition: opacity 0.25s ease;
 }
 
@@ -645,21 +644,22 @@ body{
       <canvas id="cigarette-smoke-canvas"></canvas>
     </div>
 
-    <!-- Cigarette structure: white paper shrinks from left to right, followed by filter stripes -->
+    <!-- Cigarette structure: burnable group (white, grey, red, dark red = 87%) + black butt (13%) -->
     <div class="cigarette-body" id="cigarette-body">
-      <div class="stripe-slot s1-slot">
-        <div class="stripe s1" id="cigarette-paper">
-          <div class="cigarette-ash-tip" id="cigarette-cherry">
-            <div class="scorch-gradient"></div>
-            <div class="ember-core"></div>
-            <div class="ember-specks"></div>
-          </div>
-        </div>
+      <div class="cigarette-burnable" id="cigarette-burnable">
+        <div class="stripe s1"></div>
+        <div class="stripe s2"></div>
+        <div class="stripe s3"></div>
+        <div class="stripe s4"></div>
       </div>
-      <div class="stripe s2"></div>
-      <div class="stripe s3"></div>
-      <div class="stripe s4"></div>
       <div class="stripe s5"></div>
+
+      <!-- Advancing ember cherry riding across burn front from 0% to 87% -->
+      <div class="cigarette-ash-tip" id="cigarette-cherry">
+        <div class="scorch-gradient"></div>
+        <div class="ember-core"></div>
+        <div class="ember-specks"></div>
+      </div>
     </div>
   </div>
 
@@ -708,7 +708,7 @@ function initCigaretteSmoke() {
   if (!canvas) return;
 
   const cigaretteBody = document.getElementById('cigarette-body');
-  const cigarettePaper = document.getElementById('cigarette-paper');
+  const cigaretteBurnable = document.getElementById('cigarette-burnable');
   const cherry = document.getElementById('cigarette-cherry');
 
   const ctx = canvas.getContext('2d');
@@ -722,12 +722,12 @@ function initCigaretteSmoke() {
   resize();
   window.addEventListener('resize', resize);
 
-  // 60-Second Loop Timing (1 Minute)
-  const BURN_CYCLE = 60000;       // Total 60,000ms (1 minute loop)
-  const BURN_ACTIVE_TIME = 52000; // 0s - 52s: Paper burns down and shrinks to 0%
-  const FLARE_END_TIME = 55500;   // 52s - 55.5s: Cherry flares at filter, sizzles out
-  const VANISH_END_TIME = 58000;  // 55.5s - 58s: Cigarette completely removed / vanished
-  // 58s - 60s: New unburnt cigarette replaced, slides/fades in smooth and restarts
+  // 75-Second Loop Timing (Burns through white, grey, red, dark red until black)
+  const BURN_CYCLE = 75000;       // Total 75,000ms (75 seconds)
+  const BURN_ACTIVE_TIME = 67000; // 0s - 67s: Burns across 0% to 87% (touches black at 67s)
+  const FLARE_END_TIME = 70500;   // 67s - 70.5s: Cherry flares at black border, sizzles out
+  const VANISH_END_TIME = 73000;  // 70.5s - 73s: Cigarette completely removed / vanished
+  // 73s - 75s (2s): New unburnt cigarette replaced, slides/fades in smooth and restarts loop
 
   let cycleStartTime = performance.now();
   let isEmitting = true;
@@ -884,42 +884,46 @@ function initCigaretteSmoke() {
     requestAnimationFrame(loop);
     if (!isVisible) return;
 
-    // --- ORCHESTRATE 60-SECOND BURNING & REPLACEMENT CYCLE ---
+    // --- ORCHESTRATE 75-SECOND BURNING & REPLACEMENT CYCLE ---
     const now = performance.now();
     const elapsed = (now - cycleStartTime) % BURN_CYCLE;
 
-    if (cigaretteBody && cigarettePaper && cherry) {
+    if (cigaretteBody && cigaretteBurnable && cherry) {
       if (elapsed < BURN_ACTIVE_TIME) {
-        // Phase 1: 0s - 52s: Paper shrinks from 100% to 0% as it burns down
+        // Phase 1: 0s - 67s: Burns through white, grey, red, dark red until black (0% to 87%)
         const p = elapsed / BURN_ACTIVE_TIME;
-        const paperPercent = Math.max(0, (1 - p) * 100);
-        cigarettePaper.style.width = paperPercent.toFixed(2) + '%';
-        cigarettePaper.style.display = 'block';
+        const clipPercent = p * 100;
+        const cherryLeftPercent = p * 87;
+
+        cigaretteBurnable.style.clipPath = `inset(0 0 0 ${clipPercent.toFixed(2)}%)`;
+        cherry.style.left = cherryLeftPercent.toFixed(2) + '%';
         cherry.style.opacity = '1';
         cherry.style.display = 'block';
         cigaretteBody.style.opacity = '1';
         cigaretteBody.style.transform = 'translateY(0)';
         isEmitting = true;
       } else if (elapsed < FLARE_END_TIME) {
-        // Phase 2: 52s - 55.5s: Paper fully burned, cherry flares at filter then sizzles out
-        cigarettePaper.style.width = '0%';
+        // Phase 2: 67s - 70.5s: Reached black area; flares up and sizzles out
+        cigaretteBurnable.style.clipPath = 'inset(0 0 0 100%)';
+        cherry.style.left = '87%';
         const fadeEmber = 1 - (elapsed - BURN_ACTIVE_TIME) / (FLARE_END_TIME - BURN_ACTIVE_TIME);
         cherry.style.opacity = Math.max(0, fadeEmber).toFixed(3);
         cigaretteBody.style.opacity = '1';
         cigaretteBody.style.transform = 'translateY(0)';
         isEmitting = fadeEmber > 0.25;
       } else if (elapsed < VANISH_END_TIME) {
-        // Phase 3: 55.5s - 58s: Cigarette completely removed / vanished
+        // Phase 3: 70.5s - 73s: Cigarette completely removed / vanished
         cherry.style.opacity = '0';
         cherry.style.display = 'none';
-        cigarettePaper.style.width = '0%';
+        cigaretteBurnable.style.clipPath = 'inset(0 0 0 100%)';
         const vanishP = (elapsed - FLARE_END_TIME) / (VANISH_END_TIME - FLARE_END_TIME);
         cigaretteBody.style.opacity = Math.max(0, 1 - vanishP).toFixed(3);
         cigaretteBody.style.transform = `translateY(${(vanishP * 8).toFixed(1)}px)`;
         isEmitting = false;
       } else {
-        // Phase 4: 58s - 60s: New unburnt cigarette replaced, slides/fades in smoothly to loop
-        cigarettePaper.style.width = '100%';
+        // Phase 4: 73s - 75s: New unburnt cigarette replaced, slides/fades in smoothly to loop
+        cigaretteBurnable.style.clipPath = 'inset(0 0 0 0%)';
+        cherry.style.left = '0%';
         cherry.style.display = 'block';
         const replaceP = (elapsed - VANISH_END_TIME) / (BURN_CYCLE - VANISH_END_TIME);
         cigaretteBody.style.opacity = replaceP.toFixed(3);

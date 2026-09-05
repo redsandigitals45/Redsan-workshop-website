@@ -948,35 +948,32 @@
     display: flex;
     position: relative;
     border-radius: 4px;
+    overflow: visible;
     transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
-  .preview-section .stripe-slot {
+  /* The burnable group: white (45%), grey (15%), red (14%), dark red (13%) = 87% total */
+  .preview-section .cigarette-burnable {
+    width: 87%;
     height: 100%;
+    display: flex;
     position: relative;
     overflow: visible;
-  }
-
-  .preview-section .s1-slot {
-    width: 45%;
-    display: flex;
-    justify-content: flex-end; /* White paper shrinks from left to right towards the filter! */
-    background: transparent;
   }
 
   .preview-section .stripe { height: 100%; position: relative; }
+  /* Proportions within the 87% burnable group */
   .preview-section .s1 {
-    width: 100%; /* Dynamically controlled in JS from 100% down to 0% over 60s */
+    width: 51.724%;
     background: #FFFFFF;
-    position: relative;
-    overflow: visible;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     box-shadow: inset 0 -3px 6px rgba(0,0,0,0.1);
   }
-  .preview-section .s2 { width: 15%; background: #E5E5E7; }
-  .preview-section .s3 { width: 14%; background: var(--red); }
-  .preview-section .s4 { width: 13%; background: #9E150F; }
+  .preview-section .s2 { width: 17.241%; background: #E5E5E7; }
+  .preview-section .s3 { width: 16.092%; background: var(--red); }
+  .preview-section .s4 { width: 14.943%; background: #9E150F; }
+  /* Black area (13%) where burn completes */
   .preview-section .s5 { 
     width: 13%; 
     background: #0B0B0C; 
@@ -995,6 +992,7 @@
     pointer-events: none;
     z-index: 10;
     overflow: visible;
+    transform: translateX(-4px);
     transition: opacity 0.25s ease;
   }
 
@@ -1130,7 +1128,378 @@
       gap: 30px;
       padding-bottom: 60px;
     }
-    .preview-section .footer-stripes { height: 42px; }
+  /* ============================================================
+     MARTECH GROWTH ANIMATED HERO (3D Character + Glassmorphism)
+     ============================================================ */
+  .martech-section {
+    position: relative;
+    max-width: 1480px;
+    margin: 40px auto 80px;
+    padding: 0 24px;
+    z-index: 2;
+  }
+
+  .martech-hero-card {
+    position: relative;
+    min-height: 920px;
+    overflow: hidden;
+    border-radius: 34px;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: linear-gradient(180deg, 
+      rgba(6,6,8,0.72) 0%, 
+      rgba(12,8,10,0.68) 45%, 
+      rgba(45,3,6,0.65) 75%, 
+      rgba(180,10,18,0.55) 100%
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 30px 100px rgba(0,0,0,0.75), 0 0 50px rgba(255,17,27,0.12);
+  }
+
+  .martech-hero-card::after {
+    content: "";
+    position: absolute;
+    width: 850px;
+    height: 380px;
+    left: 50%;
+    bottom: -200px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse, rgba(255,35,42,0.85), rgba(255,0,0,0.2) 45%, transparent 72%);
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .martech-content {
+    position: relative;
+    z-index: 5;
+    min-height: 920px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 90px 5% 45px;
+    text-align: center;
+  }
+
+  .martech-eyebrow {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #ff6b72;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-family: var(--mono);
+  }
+
+  .martech-title {
+    margin: 0;
+    max-width: 1100px;
+    font-size: clamp(38px, 5.4vw, 84px);
+    line-height: 1.02;
+    letter-spacing: -2px;
+    font-weight: 900;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .martech-title .white {
+    color: #fff;
+    display: block;
+  }
+
+  .martech-title .red {
+    color: #ff111b;
+    text-shadow: 0 0 35px rgba(255,0,20,0.4);
+    display: block;
+  }
+
+  .martech-desc {
+    max-width: 720px;
+    margin: 26px auto 0;
+    color: #d4d4d8;
+    font-size: clamp(14px, 1.3vw, 18px);
+    line-height: 1.65;
+  }
+
+  .martech-desc span {
+    color: #ff6268;
+    font-weight: 600;
+  }
+
+  .martech-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    z-index: 6;
+  }
+
+  .martech-btn {
+    position: relative;
+    overflow: hidden;
+    border-radius: 999px;
+    padding: 15px 32px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    pointer-events: auto;
+  }
+
+  .martech-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    left: -120%;
+    width: 70%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform: skewX(-22deg);
+    transition: left 0.7s ease;
+  }
+
+  .martech-btn:hover::before { left: 150%; }
+
+  .martech-btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    border-color: #ff2e35;
+    box-shadow: 0 15px 35px rgba(255,0,18,0.35);
+  }
+
+  .martech-btn.primary {
+    background: #ff111b;
+    border-color: #ff111b;
+  }
+
+  .martech-btn.primary:hover {
+    background: #ff2831;
+    box-shadow: 0 16px 45px rgba(255,0,18,0.55);
+  }
+
+  /* Floating analytics cards */
+  .martech-card {
+    position: absolute;
+    z-index: 6;
+    width: 310px;
+    min-height: 230px;
+    padding: 22px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,50,58,0.45);
+    background: linear-gradient(145deg, rgba(28,18,20,0.88), rgba(8,8,10,0.85));
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    cursor: pointer;
+    text-align: left;
+    transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.5s ease, border-color 0.5s ease;
+  }
+
+  .martech-card:hover {
+    transform: translateY(-10px) rotate(0deg) scale(1.04) !important;
+    border-color: #ff333b;
+    box-shadow: 0 30px 80px rgba(255,0,15,0.3), 0 0 40px rgba(255,0,15,0.15);
+  }
+
+  .martech-card.card-left {
+    left: 3.5%;
+    top: 290px;
+    transform: rotate(9deg);
+  }
+
+  .martech-card.card-right {
+    right: 3.5%;
+    top: 280px;
+    transform: rotate(-9deg);
+  }
+
+  .martech-card .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .martech-card .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .martech-card .dots {
+    color: #fff;
+    letter-spacing: 4px;
+    font-size: 13px;
+  }
+
+  .martech-card .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .martech-card .metric-label {
+    font-size: 9px;
+    color: #a1a1aa;
+    margin-bottom: 5px;
+  }
+
+  .martech-card .metric-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .martech-card .metric-growth {
+    color: #ff333b;
+    font-size: 10px;
+    margin-top: 4px;
+    font-weight: 600;
+  }
+
+  .martech-card .chart {
+    height: 70px;
+    margin-top: 16px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .martech-card .chart svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .martech-card .chart .fill {
+    fill: url(#redGradient);
+    opacity: 0.58;
+  }
+
+  .martech-card .chart .line {
+    fill: none;
+    stroke: #ff252e;
+    stroke-width: 2;
+  }
+
+  .martech-card .metric-glow {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255,0,20,0.15);
+    filter: blur(35px);
+    pointer-events: none;
+  }
+
+  /* 3D CHARACTER STAGE: Positioned ABOVE all content and dashboard cards */
+  #three-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 380px;
+    z-index: 15;
+    pointer-events: none;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 100%);
+  }
+
+  #three-stage canvas {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    pointer-events: none;
+  }
+
+  /* BOTTOM TAGLINE: Positioned ABOVE the 3D Character in a Curved Glass Capsule */
+  .martech-bottom {
+    position: absolute;
+    z-index: 25;
+    left: 0;
+    right: 0;
+    bottom: 35px;
+    text-align: center;
+    padding: 0 20px;
+    pointer-events: none;
+  }
+
+  .bottom-glass-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 36px;
+    border-radius: 999px; /* curved glass capsule */
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 28px rgba(255, 17, 27, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bottom-line {
+    position: relative;
+    display: inline-block;
+    font-size: clamp(12px, 1.2vw, 18px);
+    letter-spacing: 6px;
+    font-weight: 800;
+    color: #666;
+    text-transform: uppercase;
+    overflow: hidden;
+    padding: 4px 6px;
+  }
+
+  .bottom-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -55%;
+    width: 34%;
+    transform: skewX(-20deg);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.95), transparent);
+    filter: blur(2px);
+    animation: shine 2.8s ease-in-out infinite;
+  }
+
+  .bottom-line span {
+    animation: textPulse 2.8s ease-in-out infinite;
+  }
+
+  @keyframes shine {
+    0% { left: -55%; opacity: 0; }
+    15% { opacity: 1; }
+    55% { left: 125%; opacity: 1; }
+    65%, 100% { left: 125%; opacity: 0; }
+  }
+
+  @keyframes textPulse {
+    0%, 20% { color: #666; text-shadow: none; }
+    42% { color: #fff; text-shadow: 0 0 18px rgba(255,255,255,0.5); }
+    58% { color: #fff; text-shadow: 0 0 24px rgba(255,35,40,0.5); }
+    80%, 100% { color: #666; text-shadow: none; }
+  }
+
+  @media(max-width: 990px) {
+    .martech-hero-card { min-height: auto; border-radius: 24px; }
+    .martech-content { min-height: auto; padding: 60px 18px 290px; }
+    .martech-card.card-left, .martech-card.card-right {
+      position: static;
+      transform: none !important;
+      margin: 18px auto;
+      width: 100%;
+      max-width: 340px;
+    }
+    #three-stage { height: 280px; }
+    .bottom-glass-pill { padding: 9px 20px; }
+    .bottom-line { font-size: 10px; letter-spacing: 3px; }
   }
 
 /* --- CINEMATIC REVEAL --- */
@@ -1626,21 +1995,141 @@
       <canvas id="cigarette-smoke-canvas"></canvas>
     </div>
 
-    <!-- Cigarette structure: white paper shrinks from left to right, followed by filter stripes -->
+    <!-- Cigarette structure: burnable group (white, grey, red, dark red = 87%) + black butt (13%) -->
     <div class="cigarette-body" id="cigarette-body">
-      <div class="stripe-slot s1-slot">
-        <div class="stripe s1" id="cigarette-paper">
-          <div class="cigarette-ash-tip" id="cigarette-cherry">
-            <div class="scorch-gradient"></div>
-            <div class="ember-core"></div>
-            <div class="ember-specks"></div>
+      <div class="cigarette-burnable" id="cigarette-burnable">
+        <div class="stripe s1"></div>
+        <div class="stripe s2"></div>
+        <div class="stripe s3"></div>
+        <div class="stripe s4"></div>
+      </div>
+      <div class="stripe s5"></div>
+
+      <!-- Advancing ember cherry riding across burn front from 0% to 87% -->
+      <div class="cigarette-ash-tip" id="cigarette-cherry">
+        <div class="scorch-gradient"></div>
+        <div class="ember-core"></div>
+        <div class="ember-specks"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MARTECH GROWTH ANIMATED HERO (3D Character + Glassmorphism)
+     ============================================================ -->
+<section class="martech-section" id="martech-hero">
+  <div class="martech-container">
+    <div class="martech-hero-card">
+      <div class="martech-content">
+        <div class="martech-eyebrow reveal" style="--delay:.05s">MarTech × Digital Growth</div>
+
+        <h2 class="martech-title reveal" style="--delay:.15s">
+          <span class="white">Phle Online Phchan Banao,</span>
+          <span class="red">Money Follows My Brotha !</span>
+        </h2>
+
+        <p class="martech-desc reveal" style="--delay:.3s">
+          We combine MarTech, creative strategy, automation and performance marketing
+          to turn your business into a digital growth engine , helping you get
+          <span>discovered</span>, build <span>authority</span>, and convert attention into <span>revenue</span>.
+        </p>
+
+        <div class="martech-actions reveal" style="--delay:.45s">
+          <a href="#contact" class="martech-btn primary">Let's Talk Growth ↗</a>
+          <a href="#contact" class="martech-btn">Build My Growth Engine</a>
+        </div>
+
+        <!-- Left analytics card -->
+        <article class="martech-card card-left reveal" style="--delay:.55s">
+          <div class="metric-glow" style="left:30px;bottom:-50px"></div>
+          <div class="card-top">
+            <div class="card-title">Growth Overview</div>
+            <div class="dots">•••</div>
+          </div>
+          <div class="metrics">
+            <div>
+              <div class="metric-label">Total Reach</div>
+              <div class="metric-value">248.5K</div>
+              <div class="metric-growth">↗ 28%</div>
+            </div>
+            <div>
+              <div class="metric-label">Leads</div>
+              <div class="metric-value">18.6K</div>
+              <div class="metric-growth">↗ 34%</div>
+            </div>
+            <div>
+              <div class="metric-label">Conversions</div>
+              <div class="metric-value">6.42K</div>
+              <div class="metric-growth">↗ 41%</div>
+            </div>
+          </div>
+          <div class="chart">
+            <svg viewBox="0 0 300 80" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="redGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#ff3038"/>
+                  <stop offset="1" stop-color="#ff3038" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path class="fill" d="M0,15 L42,28 L82,25 L123,42 L160,39 L205,56 L245,51 L300,69 L300,80 L0,80 Z"/>
+              <path class="line" d="M0,15 L42,28 L82,25 L123,42 L160,39 L205,56 L245,51 L300,69"/>
+            </svg>
+          </div>
+        </article>
+
+        <!-- Right analytics card -->
+        <article class="martech-card card-right reveal" style="--delay:.7s">
+          <div class="metric-glow" style="right:20px;bottom:-40px"></div>
+          <div class="card-top">
+            <div class="card-title">Performance Overview</div>
+            <div class="dots">•••</div>
+          </div>
+          <div class="metrics">
+            <div>
+              <div class="metric-label">Revenue Impact</div>
+              <div class="metric-value">₹12.45M</div>
+              <div class="metric-growth">↗ 38%</div>
+            </div>
+            <div>
+              <div class="metric-label">ROAS</div>
+              <div class="metric-value">7.8X</div>
+              <div class="metric-growth">↗ 29%</div>
+            </div>
+            <div>
+              <div class="metric-label">Growth Rate</div>
+              <div class="metric-value">+52%</div>
+              <div class="metric-growth">↗ 22%</div>
+            </div>
+          </div>
+          <div class="chart">
+            <svg viewBox="0 0 300 80" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="redGradient2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#ff3038"/>
+                  <stop offset="1" stop-color="#ff3038" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,35 L45,49 L87,42 L128,57 L168,61 L212,48 L252,52 L300,39 L300,80 L0,80 Z"
+                    fill="url(#redGradient2)" opacity=".58"/>
+              <path d="M0,35 L45,49 L87,42 L128,57 L168,61 L212,48 L252,52 L300,39"
+                    fill="none" stroke="#ff252e" stroke-width="2"/>
+            </svg>
+          </div>
+        </article>
+      </div>
+
+      <!-- 3D Three.js Character Stage (Layered ABOVE Content and Cards, z-index: 15) -->
+      <div id="three-stage" aria-hidden="true"></div>
+
+      <!-- Bottom Tagline in Curved Glass Capsule (Layered ABOVE Character, z-index: 25) -->
+      <div class="martech-bottom reveal" style="--delay:1s">
+        <div class="bottom-glass-pill">
+          <div class="bottom-line">
+            <span>BRAND × MARTECH × AUTOMATION × GROWTH</span>
           </div>
         </div>
       </div>
-      <div class="stripe s2"></div>
-      <div class="stripe s3"></div>
-      <div class="stripe s4"></div>
-      <div class="stripe s5"></div>
     </div>
   </div>
 </section>
@@ -2321,6 +2810,158 @@ function tick(now) {
 }
 requestAnimationFrame(tick);
 }
+
+/* ============================================================
+   MARTECH 3D CHARACTER HERO (Interactive Three.js Character)
+   ============================================================ */
+function initMartechHero() {
+  const container = document.getElementById("three-stage");
+  if (!container) return;
+
+  const CONFIG = {
+    scale: 2.15,
+    mouseStrength: 0.30,
+    rotationStrength: 0.16,
+    floatAmount: 0.055,
+    floatSpeed: 1.05,
+    damping: 0.065,
+    breathing: 0.018,
+    depthStrength: 0.08
+  };
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 100);
+  camera.position.z = 5;
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true,
+      powerPreference: "high-performance"
+    });
+  } catch (e) {
+    console.warn("WebGL not supported for MarTech hero:", e);
+    return;
+  }
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(container.clientWidth || window.innerWidth, container.clientHeight || 380);
+  renderer.setClearColor(0x000000, 0);
+  container.appendChild(renderer.domElement);
+
+  const portraitGroup = new THREE.Group();
+  scene.add(portraitGroup);
+
+  let entrance = 0;
+  const loader = new THREE.TextureLoader();
+  loader.load("assets/martech-character.png", (texture) => {
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.minFilter = THREE.LinearFilter;
+    texture.magFilter = THREE.LinearFilter;
+
+    const image = texture.image;
+    const aspect = image.width / image.height;
+    const height = CONFIG.scale;
+    const width = height * aspect;
+
+    const geometry = new THREE.PlaneGeometry(width, height, 1, 1);
+    const material = new THREE.MeshBasicMaterial({
+      map: texture,
+      transparent: true,
+      depthWrite: false,
+      side: THREE.DoubleSide,
+      alphaTest: 0.01
+    });
+
+    const portrait = new THREE.Mesh(geometry, material);
+    portraitGroup.add(portrait);
+    portraitGroup.position.y = -0.05;
+    entrance = 0;
+  });
+
+  const pointer = { x: 0, y: 0 };
+  const target = { x: 0, y: 0 };
+
+  function updatePointer(x, y) {
+    target.x = (x / window.innerWidth) * 2 - 1;
+    target.y = -(y / window.innerHeight) * 2 + 1;
+  }
+
+  window.addEventListener("mousemove", (e) => {
+    updatePointer(e.clientX, e.clientY);
+  }, { passive: true });
+
+  window.addEventListener("touchmove", (e) => {
+    if (!e.touches.length) return;
+    updatePointer(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: true });
+
+  function resize() {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || 380;
+    renderer.setSize(w, h, false);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const aspect = w / h;
+    const viewHeight = 2;
+    camera.left = -viewHeight * aspect / 2;
+    camera.right = viewHeight * aspect / 2;
+    camera.top = viewHeight / 2;
+    camera.bottom = -viewHeight / 2;
+    camera.updateProjectionMatrix();
+  }
+
+  window.addEventListener("resize", resize);
+  if (window.ResizeObserver) {
+    new ResizeObserver(resize).observe(container);
+  }
+  resize();
+
+  let isHeroVisible = true;
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      isHeroVisible = entries[0].isIntersecting;
+    }, { threshold: 0.05 });
+    observer.observe(container);
+  }
+
+  const clock = new THREE.Clock();
+
+  function animate() {
+    requestAnimationFrame(animate);
+    if (!isHeroVisible) return;
+
+    const time = clock.getElapsedTime();
+
+    pointer.x += (target.x - pointer.x) * CONFIG.damping;
+    pointer.y += (target.y - pointer.y) * CONFIG.damping;
+
+    const floating = Math.sin(time * CONFIG.floatSpeed) * CONFIG.floatAmount;
+
+    portraitGroup.position.x = pointer.x * CONFIG.mouseStrength * 0.20;
+    portraitGroup.position.y = floating - pointer.y * CONFIG.mouseStrength * 0.12;
+
+    portraitGroup.rotation.y = pointer.x * CONFIG.rotationStrength;
+    portraitGroup.rotation.x = -pointer.y * CONFIG.rotationStrength;
+    portraitGroup.rotation.z = pointer.x * pointer.y * 0.018;
+
+    const breathing = 1 + Math.sin(time * 1.35) * CONFIG.breathing;
+    portraitGroup.scale.set(breathing, breathing, breathing);
+    portraitGroup.position.z = Math.abs(pointer.x) * CONFIG.depthStrength;
+
+    if (entrance < 1) {
+      entrance += 0.022;
+      const eased = 1 - Math.pow(1 - entrance, 3);
+      portraitGroup.scale.multiplyScalar(eased);
+      portraitGroup.position.y -= (1 - eased) * 0.45;
+    }
+
+    renderer.render(scene, camera);
+  }
+  animate();
+}
+initMartechHero();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 <script>
@@ -2376,6 +3017,20 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
+  // MarTech section scroll reveal animation
+  const martechReveals = document.querySelectorAll('.martech-section .reveal');
+  if (martechReveals.length > 0 && 'IntersectionObserver' in window) {
+    const mObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    martechReveals.forEach(item => mObserver.observe(item));
+  }
+
   // Initialize cigarette smoke animation
   initCigaretteSmoke();
 });
@@ -2388,7 +3043,7 @@ function initCigaretteSmoke() {
   if (!canvas) return;
 
   const cigaretteBody = document.getElementById('cigarette-body');
-  const cigarettePaper = document.getElementById('cigarette-paper');
+  const cigaretteBurnable = document.getElementById('cigarette-burnable');
   const cherry = document.getElementById('cigarette-cherry');
 
   const ctx = canvas.getContext('2d');
@@ -2402,12 +3057,12 @@ function initCigaretteSmoke() {
   resize();
   window.addEventListener('resize', resize);
 
-  // 60-Second Loop Timing (1 Minute)
-  const BURN_CYCLE = 60000;       // Total 60,000ms (1 minute loop)
-  const BURN_ACTIVE_TIME = 52000; // 0s - 52s: Paper burns down and shrinks to 0%
-  const FLARE_END_TIME = 55500;   // 52s - 55.5s: Cherry flares at filter, sizzles out
-  const VANISH_END_TIME = 58000;  // 55.5s - 58s: Cigarette completely removed / vanished
-  // 58s - 60s: New unburnt cigarette replaced, slides/fades in smooth and restarts
+  // 75-Second Loop Timing (Burns through white, grey, red, dark red until black)
+  const BURN_CYCLE = 75000;       // Total 75,000ms (75 seconds)
+  const BURN_ACTIVE_TIME = 67000; // 0s - 67s: Burns across 0% to 87% (touches black at 67s)
+  const FLARE_END_TIME = 70500;   // 67s - 70.5s: Cherry flares at black border, sizzles out
+  const VANISH_END_TIME = 73000;  // 70.5s - 73s: Cigarette completely removed / vanished
+  // 73s - 75s (2s): New unburnt cigarette replaced, slides/fades in smooth and restarts loop
 
   let cycleStartTime = performance.now();
   let isEmitting = true;
@@ -2564,42 +3219,46 @@ function initCigaretteSmoke() {
     requestAnimationFrame(loop);
     if (!isVisible) return;
 
-    // --- ORCHESTRATE 60-SECOND BURNING & REPLACEMENT CYCLE ---
+    // --- ORCHESTRATE 75-SECOND BURNING & REPLACEMENT CYCLE ---
     const now = performance.now();
     const elapsed = (now - cycleStartTime) % BURN_CYCLE;
 
-    if (cigaretteBody && cigarettePaper && cherry) {
+    if (cigaretteBody && cigaretteBurnable && cherry) {
       if (elapsed < BURN_ACTIVE_TIME) {
-        // Phase 1: 0s - 52s: Paper shrinks from 100% to 0% as it burns down
+        // Phase 1: 0s - 67s: Burns through white, grey, red, dark red until black (0% to 87%)
         const p = elapsed / BURN_ACTIVE_TIME;
-        const paperPercent = Math.max(0, (1 - p) * 100);
-        cigarettePaper.style.width = paperPercent.toFixed(2) + '%';
-        cigarettePaper.style.display = 'block';
+        const clipPercent = p * 100;
+        const cherryLeftPercent = p * 87;
+
+        cigaretteBurnable.style.clipPath = `inset(0 0 0 ${clipPercent.toFixed(2)}%)`;
+        cherry.style.left = cherryLeftPercent.toFixed(2) + '%';
         cherry.style.opacity = '1';
         cherry.style.display = 'block';
         cigaretteBody.style.opacity = '1';
         cigaretteBody.style.transform = 'translateY(0)';
         isEmitting = true;
       } else if (elapsed < FLARE_END_TIME) {
-        // Phase 2: 52s - 55.5s: Paper fully burned, cherry flares at filter then sizzles out
-        cigarettePaper.style.width = '0%';
+        // Phase 2: 67s - 70.5s: Reached black area; flares up and sizzles out
+        cigaretteBurnable.style.clipPath = 'inset(0 0 0 100%)';
+        cherry.style.left = '87%';
         const fadeEmber = 1 - (elapsed - BURN_ACTIVE_TIME) / (FLARE_END_TIME - BURN_ACTIVE_TIME);
         cherry.style.opacity = Math.max(0, fadeEmber).toFixed(3);
         cigaretteBody.style.opacity = '1';
         cigaretteBody.style.transform = 'translateY(0)';
         isEmitting = fadeEmber > 0.25;
       } else if (elapsed < VANISH_END_TIME) {
-        // Phase 3: 55.5s - 58s: Cigarette completely removed / vanished
+        // Phase 3: 70.5s - 73s: Cigarette completely removed / vanished
         cherry.style.opacity = '0';
         cherry.style.display = 'none';
-        cigarettePaper.style.width = '0%';
+        cigaretteBurnable.style.clipPath = 'inset(0 0 0 100%)';
         const vanishP = (elapsed - FLARE_END_TIME) / (VANISH_END_TIME - FLARE_END_TIME);
         cigaretteBody.style.opacity = Math.max(0, 1 - vanishP).toFixed(3);
         cigaretteBody.style.transform = `translateY(${(vanishP * 8).toFixed(1)}px)`;
         isEmitting = false;
       } else {
-        // Phase 4: 58s - 60s: New unburnt cigarette replaced, slides/fades in smoothly to loop
-        cigarettePaper.style.width = '100%';
+        // Phase 4: 73s - 75s: New unburnt cigarette replaced, slides/fades in smoothly to loop
+        cigaretteBurnable.style.clipPath = 'inset(0 0 0 0%)';
+        cherry.style.left = '0%';
         cherry.style.display = 'block';
         const replaceP = (elapsed - VANISH_END_TIME) / (BURN_CYCLE - VANISH_END_TIME);
         cigaretteBody.style.opacity = replaceP.toFixed(3);
