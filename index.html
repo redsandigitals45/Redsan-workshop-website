@@ -835,65 +835,179 @@
     }
   }
 
-  /* Three overlapping circles */
-  .preview-section .cards {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* ============================================================
+     STATISTICS CIRCLE CAROUSEL (7 Cards + 5-Color Palette)
+     ============================================================ */
+  .preview-section .circles-slider-container {
     position: relative;
-    z-index: 5;
+    width: 100%;
+    max-width: 1280px;
     margin: 20px auto 68px;
     padding-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+
+  .preview-section .circles-viewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 24px 0 28px;
+    cursor: grab;
+  }
+  .preview-section .circles-viewport:active {
+    cursor: grabbing;
+  }
+
+  .preview-section .circles-track {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    will-change: transform;
+    padding-left: 20px;
+    white-space: nowrap;
   }
 
   .preview-section .circle {
-    width: min(30vw, 400px);
-    height: min(30vw, 400px);
+    width: min(28vw, 360px);
+    height: min(28vw, 360px);
     min-width: 250px;
     min-height: 250px;
     border-radius: 50%;
     position: relative;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     margin-left: -32px;
+    flex-shrink: 0;
     cursor: pointer;
-    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, filter .35s ease, opacity .75s ease;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, filter .35s ease;
     box-shadow: 0 20px 45px rgba(0,0,0,.65);
     opacity: 1;
   }
 
   .preview-section .circle:first-child { margin-left: 0; }
+
   .preview-section .circle:hover {
-    transform: translateY(-16px) scale(1.04);
-    box-shadow: 0 32px 64px rgba(0,0,0,.8);
+    transform: translateY(-16px) scale(1.05);
+    box-shadow: 0 32px 64px rgba(0,0,0,.85);
     filter: saturate(1.08);
-  }
-  .preview-section .circle.active .metric,
-  .preview-section .circle.active .copy,
-  .preview-section .circle.active .wordmark,
-  .preview-section .circle.active .tag {
-    opacity: 1;
-    transform: translateY(0);
+    z-index: 20 !important;
   }
 
-  .preview-section .circle.left {
-    background: #FFFFFF;
-    color: #0B0B0C;
-    z-index: 1;
+  /* 5-Color Scheme from Palette Image */
+  /* 1. White (#F8F8F8) */
+  .preview-section .circle.c-white {
+    background: #F8F8F8;
+    color: #111111;
+  }
+  .preview-section .circle.c-white .metric {
+    color: #EE0000;
+  }
+  .preview-section .circle.c-white .copy {
+    color: #111111;
   }
 
-  .preview-section .circle.middle {
-    background: #E5E5E7;
-    color: #0B0B0C;
-    z-index: 2;
+  /* 2. Light Grey (#EEEEEE) */
+  .preview-section .circle.c-grey {
+    background: #EEEEEE;
+    color: #111111;
+  }
+  .preview-section .circle.c-grey .metric {
+    color: #EE0000;
+  }
+  .preview-section .circle.c-grey .copy {
+    color: #111111;
   }
 
-  .preview-section .circle.right {
-    background: var(--red);
+  /* 3. Bright Red (#EE0000) */
+  .preview-section .circle.c-bright-red {
+    background: #EE0000;
     color: #FFFFFF;
-    z-index: 3;
+  }
+  .preview-section .circle.c-bright-red .metric {
+    color: #FFFFFF;
+  }
+  .preview-section .circle.c-bright-red .copy {
+    color: #FFFFFF;
+  }
+
+  /* 4. Dark Red (#CC0000) */
+  .preview-section .circle.c-dark-red {
+    background: #CC0000;
+    color: #FFFFFF;
+  }
+  .preview-section .circle.c-dark-red .metric {
+    color: #FFFFFF;
+  }
+  .preview-section .circle.c-dark-red .copy {
+    color: #FFFFFF;
+  }
+
+  /* 5. Black (#111111) */
+  .preview-section .circle.c-black {
+    background: #111111;
+    color: #FFFFFF;
+    border: 1.5px solid rgba(255,255,255,0.18);
+  }
+  .preview-section .circle.c-black .metric {
+    color: #EE0000;
+  }
+  .preview-section .circle.c-black .copy {
+    color: #FFFFFF;
+  }
+
+  /* Attached Arrow Button */
+  .preview-section .circle-arrow-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: #EE0000;
+    color: #FFFFFF;
+    border: 2px solid rgba(255,255,255,0.45);
+    box-shadow: 0 10px 30px rgba(238,0,0,0.65), 0 0 25px rgba(238,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 25;
+    transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+    outline: none;
+  }
+  .preview-section .circle-arrow-btn:hover {
+    transform: translateY(-50%) scale(1.12);
+    background: #ff1e15;
+    box-shadow: 0 14px 40px rgba(238,0,0,0.85), 0 0 35px rgba(238,0,0,0.6);
+  }
+  .preview-section .circle-arrow-btn:active {
+    transform: translateY(-50%) scale(0.96);
+  }
+  .preview-section .circle-arrow-btn.is-active {
+    background: #CC0000;
+    border-color: #FFFFFF;
+  }
+  .preview-section .circle-arrow-btn .arrow-svg-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .3s ease;
+  }
+  .preview-section .circle-arrow-btn:hover .arrow-svg-wrap {
+    transform: translateX(3px);
+  }
+  .preview-section .circle-arrow-btn.is-active .arrow-svg-wrap {
+    animation: arrowPulse 1.2s ease-in-out infinite;
+  }
+  @keyframes arrowPulse {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
   }
 
   .preview-section .circle-content {
@@ -1265,18 +1379,32 @@
       height: 1.12em;
       line-height: 1.12em;
     }
-    .preview-section .cards {
-      flex-direction: column;
-      margin-top: 20px;
-      margin-bottom: 50px;
+    .preview-section .circles-slider-container {
+      margin-top: 10px;
+      margin-bottom: 40px;
+      padding-top: 6px;
+    }
+    .preview-section .circles-viewport {
+      padding: 18px 0;
     }
     .preview-section .circle {
-      width: min(76vw, 340px);
-      height: min(76vw, 340px);
-      margin-left: 0 !important;
-      margin-top: -36px;
+      width: min(68vw, 290px);
+      height: min(68vw, 290px);
+      min-width: 210px;
+      min-height: 210px;
+      margin-left: -26px;
+      margin-top: 0;
     }
-    .preview-section .circle:first-child { margin-top: 0; }
+    .preview-section .circle:first-child { margin-left: 0 !important; }
+    .preview-section .circle-arrow-btn {
+      width: 48px;
+      height: 48px;
+      right: 2px;
+    }
+    .preview-section .circle-arrow-btn svg {
+      width: 22px;
+      height: 22px;
+    }
     .preview-section .about-label { margin-bottom: 35px; }
     .preview-section .about-grid {
       grid-template-columns: 1fr;
@@ -2434,27 +2562,133 @@
       </span>
     </h2>
 
-    <div class="cards" aria-label="Marketing statistics">
-      <article class="circle left" tabindex="0">
-        <div class="circle-content">
-          <div class="metric">100k+</div>
-          <p class="copy">Backlinks<br>generated for<br>organic growth</p>
-        </div>
-      </article>
+    <div class="circles-slider-container" id="circles-slider-container">
+      <div class="circles-viewport" id="circles-viewport">
+        <div class="circles-track" id="circles-track" aria-label="Marketing statistics">
+          <!-- 1) 50+ Clients served (White) -->
+          <article class="circle c-white" tabindex="0" style="z-index: 1;">
+            <div class="circle-content">
+              <div class="metric">50+</div>
+              <p class="copy">Clients<br>served</p>
+            </div>
+          </article>
 
-      <article class="circle middle" tabindex="0">
-        <div class="circle-content">
-          <div class="metric">1000+</div>
-          <p class="copy">Content<br>produced for<br>digital presence</p>
-        </div>
-      </article>
+          <!-- 2) 120+ Projects delivered (Light Grey) -->
+          <article class="circle c-grey" tabindex="0" style="z-index: 2;">
+            <div class="circle-content">
+              <div class="metric">120+</div>
+              <p class="copy">Projects<br>delivered</p>
+            </div>
+          </article>
 
-      <article class="circle right" tabindex="0">
-        <div class="circle-content">
-          <div class="metric">1.5cr+</div>
-          <p class="copy">turnover delivered<br>for brands starting<br>from scratch</p>
+          <!-- 3) 5+ Countries work base (Bright Red) -->
+          <article class="circle c-bright-red" tabindex="0" style="z-index: 3;">
+            <div class="circle-content">
+              <div class="metric">5+</div>
+              <p class="copy">Countries<br>work base</p>
+            </div>
+          </article>
+
+          <!-- 4) 100k+ Backlinks generated for organic growth (Dark Red) -->
+          <article class="circle c-dark-red" tabindex="0" style="z-index: 4;">
+            <div class="circle-content">
+              <div class="metric">100k+</div>
+              <p class="copy">Backlinks<br>generated for<br>organic growth</p>
+            </div>
+          </article>
+
+          <!-- 5) 1000+ Content produced for digial presence (Black) -->
+          <article class="circle c-black" tabindex="0" style="z-index: 5;">
+            <div class="circle-content">
+              <div class="metric">1000+</div>
+              <p class="copy">Content<br>produced for<br>digital presence</p>
+            </div>
+          </article>
+
+          <!-- 6) 1.5cr+ turnover for brands starting from scratch (White) -->
+          <article class="circle c-white" tabindex="0" style="z-index: 6;">
+            <div class="circle-content">
+              <div class="metric">1.5cr+</div>
+              <p class="copy">turnover for brands<br>starting from<br>scratch</p>
+            </div>
+          </article>
+
+          <!-- 7) 5+ Events & Shows managed & marketed (Bright Red) -->
+          <article class="circle c-bright-red" tabindex="0" style="z-index: 7;">
+            <div class="circle-content">
+              <div class="metric">5+</div>
+              <p class="copy">Events &amp; Shows<br>managed &amp;<br>marketed</p>
+            </div>
+          </article>
+
+          <!-- Duplicated Set for Seamless Infinite Loop -->
+          <!-- 1b) 50+ Clients served -->
+          <article class="circle c-white" tabindex="0" style="z-index: 8;" aria-hidden="true">
+            <div class="circle-content">
+              <div class="metric">50+</div>
+              <p class="copy">Clients<br>served</p>
+            </div>
+          </article>
+
+          <!-- 2b) 120+ Projects delivered -->
+          <article class="circle c-grey" tabindex="0" style="z-index: 9;" aria-hidden="true">
+            <div class="circle-content">
+              <div class="metric">120+</div>
+              <p class="copy">Projects<br>delivered</p>
+            </div>
+          </article>
+
+          <!-- 3b) 5+ Countries work base -->
+          <article class="circle c-bright-red" tabindex="0" style="z-index: 10;" aria-hidden="true">
+            <div class="circle-content">
+              <div class="metric">5+</div>
+              <p class="copy">Countries<br>work base</p>
+            </div>
+          </article>
+
+          <!-- 4b) 100k+ Backlinks generated for organic growth -->
+          <article class="circle c-dark-red" tabindex="0" style="z-index: 11;" aria-hidden="true">
+            <div class="circle-content">
+              <div class="metric">100k+</div>
+              <p class="copy">Backlinks<br>generated for<br>organic growth</p>
+            </div>
+          </article>
+
+          <!-- 5b) 1000+ Content produced for digial presence -->
+          <article class="circle c-black" tabindex="0" style="z-index: 12;" aria-hidden="true">
+            <div class="circle-content">
+              <div class="metric">1000+</div>
+              <p class="copy">Content<br>produced for<br>digital presence</p>
+            </div>
+          </article>
+
+          <!-- 6b) 1.5cr+ turnover for brands starting from scratch -->
+          <article class="circle c-white" tabindex="0" style="z-index: 13;" aria-hidden="true">
+            <div class="circle-content">
+              <div class="metric">1.5cr+</div>
+              <p class="copy">turnover for brands<br>starting from<br>scratch</p>
+            </div>
+          </article>
+
+          <!-- 7b) 5+ Events & Shows managed & marketed -->
+          <article class="circle c-bright-red" tabindex="0" style="z-index: 14;" aria-hidden="true">
+            <div class="circle-content">
+              <div class="metric">5+</div>
+              <p class="copy">Events &amp; Shows<br>managed &amp;<br>marketed</p>
+            </div>
+          </article>
         </div>
-      </article>
+      </div>
+
+      <!-- Attached Arrow Button -->
+      <button class="circle-arrow-btn" id="circle-arrow-btn" aria-label="Move circle cards from right to left in loop" title="Click to move cards">
+        <span class="arrow-svg-wrap">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </span>
+      </button>
     </div>
 
     <div class="about-header-wrap">
@@ -3722,6 +3956,128 @@ function initCigaretteSmoke() {
         }
       });
     }
+  })();
+
+  /* ============================================================
+     CIRCLES CAROUSEL: Static initially, moves right-to-left in
+     an infinite endless loop when the attached arrow is clicked.
+     ============================================================ */
+  (function initCirclesSlider() {
+    const track = document.getElementById('circles-track');
+    const arrowBtn = document.getElementById('circle-arrow-btn');
+    const viewport = document.getElementById('circles-viewport');
+    if (!track || !arrowBtn || !viewport) return;
+
+    let isMoving = false;
+    let offset = 0;
+    let animFrame = null;
+    let isHovered = false;
+    const speed = 1.35; // smooth constant gliding speed (px per frame)
+
+    function getSetWidth() {
+      const cards = track.querySelectorAll('.circle');
+      if (cards.length < 14) return 0;
+      const firstCard = cards[0];
+      const eighthCard = cards[7];
+      if (firstCard && eighthCard) {
+        const diff = eighthCard.offsetLeft - firstCard.offsetLeft;
+        if (diff > 0) return diff;
+      }
+      let w = 0;
+      for (let i = 0; i < 7; i++) {
+        const rect = cards[i].getBoundingClientRect();
+        const style = window.getComputedStyle(cards[i]);
+        const ml = parseFloat(style.marginLeft) || 0;
+        w += rect.width + ml;
+      }
+      return w;
+    }
+
+    function render() {
+      if (isMoving && !isHovered) {
+        offset += speed;
+        const setWidth = getSetWidth();
+        if (setWidth > 0 && offset >= setWidth) {
+          offset -= setWidth;
+        }
+        track.style.transform = `translateX(-${offset}px)`;
+      }
+      animFrame = requestAnimationFrame(render);
+    }
+
+    arrowBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!isMoving) {
+        isMoving = true;
+        arrowBtn.classList.add('is-active');
+        arrowBtn.setAttribute('title', 'Moving in loop (Click to advance)');
+        if (!animFrame) {
+          animFrame = requestAnimationFrame(render);
+        }
+      } else {
+        // If already moving, click advances by 1 card smoothly
+        offset += 240;
+        const setWidth = getSetWidth();
+        if (setWidth > 0 && offset >= setWidth) {
+          offset -= setWidth;
+        }
+        track.style.transform = `translateX(-${offset}px)`;
+      }
+    });
+
+    // Pause on hover so user can read details
+    viewport.addEventListener('mouseenter', () => { isHovered = true; });
+    viewport.addEventListener('mouseleave', () => { isHovered = false; });
+
+    // Drag / touch support for swipe interactions
+    let isDragging = false;
+    let startX = 0;
+    let dragStartOffset = 0;
+
+    viewport.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.pageX;
+      dragStartOffset = offset;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const diff = e.pageX - startX;
+      offset = dragStartOffset - diff;
+      const setWidth = getSetWidth();
+      if (setWidth > 0) {
+        if (offset < 0) offset += setWidth;
+        if (offset >= setWidth) offset -= setWidth;
+      }
+      track.style.transform = `translateX(-${offset}px)`;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDragging) isDragging = false;
+    });
+
+    // Touch support
+    viewport.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      startX = e.touches[0].pageX;
+      dragStartOffset = offset;
+    }, { passive: true });
+
+    viewport.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      const diff = e.touches[0].pageX - startX;
+      offset = dragStartOffset - diff;
+      const setWidth = getSetWidth();
+      if (setWidth > 0) {
+        if (offset < 0) offset += setWidth;
+        if (offset >= setWidth) offset -= setWidth;
+      }
+      track.style.transform = `translateX(-${offset}px)`;
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', () => {
+      isDragging = false;
+    });
   })();
 </script>
 
