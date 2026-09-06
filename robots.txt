@@ -1,0 +1,114 @@
+# ==============================================================================
+# ROBOTS.TXT - REDSAN DIGITALS PVT. LTD.
+# Domain: https://redsandigitals.in
+# Core Pillars:
+#   1) Digital Growth & MarTech Agency (Performance Marketing, AI Web, SEO/AEO/GEO)
+#   2) Digital Courses & Masterclasses (Student Entrepreneurship Workshop)
+# ==============================================================================
+
+# Global Search Engine Crawlers (Google, Bing, Yahoo, DuckDuckGo, etc.)
+User-agent: *
+Allow: /
+Allow: /workshop/
+Allow: /blog/
+Allow: /assets/
+Allow: /assets%202/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.webp$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.svg$
+Disallow: /*?*
+Disallow: /scratch/
+Disallow: /.git/
+Disallow: /.system_generated/
+
+# ------------------------------------------------------------------------------
+# Googlebot (Core, Images, Mobile)
+# ------------------------------------------------------------------------------
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Googlebot-Mobile
+Allow: /
+Allow: /workshop/
+Allow: /blog/
+Allow: /assets/
+Allow: /assets%202/
+
+# ------------------------------------------------------------------------------
+# Bingbot & MSN
+# ------------------------------------------------------------------------------
+User-agent: Bingbot
+User-agent: msnbot
+Allow: /
+Allow: /workshop/
+Allow: /blog/
+
+# ------------------------------------------------------------------------------
+# Applebot (Apple Intelligence, Spotlight & Safari Suggest)
+# ------------------------------------------------------------------------------
+User-agent: Applebot
+Allow: /
+Allow: /workshop/
+Allow: /blog/
+
+# ------------------------------------------------------------------------------
+# AI & Answer Engine Crawlers (AEO / GEO / Generative Search Optimization)
+# Allows OpenAI, Perplexity, Anthropic, Google Gemini to index & cite Redsan
+# ------------------------------------------------------------------------------
+# OpenAI (ChatGPT Search & Citations)
+User-agent: GPTBot
+User-agent: ChatGPT-User
+Allow: /
+Allow: /workshop/
+Allow: /blog/
+
+# Perplexity AI (Real-time Answer Engine & Sources)
+User-agent: PerplexityBot
+Allow: /
+Allow: /workshop/
+Allow: /blog/
+
+# Anthropic Claude (Claude AI Search & Citations)
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+Allow: /
+Allow: /workshop/
+Allow: /blog/
+
+# Google Gemini & Extended AI Training / Grounding
+User-agent: Google-Extended
+User-agent: GoogleOther
+Allow: /
+Allow: /workshop/
+Allow: /blog/
+
+# Cohere & Meta AI
+User-agent: cohere-ai
+User-agent: FacebookBot
+User-agent: Meta-ExternalAgent
+Allow: /
+Allow: /workshop/
+Allow: /blog/
+
+# ByteDance / TikTok Web Indexer
+User-agent: Bytespider
+Allow: /
+Allow: /workshop/
+Allow: /blog/
+
+# ------------------------------------------------------------------------------
+# Aggressive Scraper & SEO Tool Rate Control
+# ------------------------------------------------------------------------------
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: DotBot
+User-agent: MJ12bot
+Crawl-delay: 10
+
+# ------------------------------------------------------------------------------
+# Canonical Sitemap & Host Reference
+# ------------------------------------------------------------------------------
+Host: https://redsandigitals.in
+Sitemap: https://redsandigitals.in/sitemap.xml
