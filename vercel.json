@@ -1,0 +1,106 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "redsandigitals.in"
+        }
+      ],
+      "destination": "https://redsan.in/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.redsandigitals.in"
+        }
+      ],
+      "destination": "https://redsan.in/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.redsan.in"
+        }
+      ],
+      "destination": "https://redsan.in/$1",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/workshop",
+      "destination": "/workshops/",
+      "permanent": true
+    },
+    {
+      "source": "/workshop/",
+      "destination": "/workshops/",
+      "permanent": true
+    },
+    {
+      "source": "/workshop/index.html",
+      "destination": "/workshops/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/index.html",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/blog-post.html",
+      "destination": "/blog/2nd-year-student-15000-retainer/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/2nd-year-student-15000-retainer.html",
+      "destination": "/blog/2nd-year-student-15000-retainer/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/3-line-objection-handler.html",
+      "destination": "/blog/3-line-objection-handler/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cold-dm-vs-warm-intro-vs-referral.html",
+      "destination": "/blog/cold-dm-vs-warm-intro-vs-referral/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=3600" }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=3600" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
+}

@@ -8,74 +8,180 @@
                             http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
 
   <!-- ====================================================================
-       PILLAR 1: DIGITAL GROWTH AND MARTECH AGENCY
-       Homepage, Full-Stack Performance Marketing, Web Dev, SEO/AEO/GEO
+       1. CORE HOMEPAGE
        ==================================================================== -->
   <url>
-    <loc>https://redsandigitals.in/</loc>
+    <loc>https://redsan.in/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://redsandigitals.in/assets/redsan_logo.png</image:loc>
-      <image:title>Best Digital Marketing Agency - Redsan Digitals</image:title>
-      <image:caption>Best digital marketing agency &amp; MarTech growth partner in Dehradun, Noida, Delhi, Gurugram, Jaipur, Chandigarh, Rishikesh and Haridwar</image:caption>
+      <image:loc>https://redsan.in/assets/redsan_logo.png</image:loc>
+      <image:title>Digital Marketing Agency - RedSan</image:title>
+      <image:caption>Premier digital marketing agency and MarTech growth partner serving Dehradun, Rishikesh, Noida, Delhi, Gurugram, and Chandigarh.</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://redsandigitals.in/assets/martech-character.webp</image:loc>
-      <image:title>Redsan Digitals Full-Stack Performance Marketing &amp; MarTech Engine</image:title>
-      <image:caption>AI-Powered Web Design, SEO / AEO / GEO, Paid Ads &amp; High-Converting Performance Marketing</image:caption>
+      <image:loc>https://redsan.in/assets/martech-character.webp</image:loc>
+      <image:title>RedSan Full-Stack Performance Marketing &amp; MarTech Engine</image:title>
+      <image:caption>AI-Powered Web Design, SEO, AEO, Paid Ads &amp; High-Converting Performance Marketing</image:caption>
     </image:image>
   </url>
 
   <!-- ====================================================================
-       PILLAR 2: DIGITAL COURSES AND WORKSHOPS
-       Student Entrepreneurship Workshop (₹49 Masterclass, 3 Power Courses)
+       2. PRIMARY SERVICE PAGES
        ==================================================================== -->
   <url>
-    <loc>https://redsandigitals.in/workshop/</loc>
+    <loc>https://redsan.in/digital-marketing-agency/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
-    <image:image>
-      <image:loc>https://redsandigitals.in/assets/workshop.svg</image:loc>
-      <image:title>Best Digital Marketing &amp; MarTech Skill Workshop - Redsan Digitals</image:title>
-      <image:caption>Top-rated MarTech skill workshop conductors in Dehradun, Noida, Delhi, Gurugram, Jaipur, Chandigarh, Rishikesh &amp; Haridwar</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://redsandigitals.in/assets/whatsapp_community.svg</image:loc>
-      <image:title>Redsan Student Entrepreneur &amp; MarTech Community</image:title>
-      <image:caption>Private network of ambitious student founders, digital marketers and creators across Delhi NCR, Uttarakhand, Rajasthan and Punjab</image:caption>
-    </image:image>
   </url>
 
-  <!-- ====================================================================
-       AUTHORITY ENGINE: CASE STUDIES, PLAYBOOKS AND BLOG
-       Educational Content, Client Retainers, AI Prompts, Sales Playbooks
-       ==================================================================== -->
   <url>
-    <loc>https://redsandigitals.in/blog/</loc>
+    <loc>https://redsan.in/seo-agency/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/performance-marketing/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/google-ads/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/meta-ads/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/social-media-marketing/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/website-development/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/ai-marketing/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ====================================================================
+       3. PRIORITY LOCAL SEO LANDING PAGES (6 MARKETS)
+       ==================================================================== -->
+  <url>
+    <loc>https://redsan.in/digital-marketing-agency-dehradun/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/digital-marketing-agency-rishikesh/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/digital-marketing-agency-noida/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/digital-marketing-agency-delhi/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/digital-marketing-agency-gurugram/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/digital-marketing-agency-chandigarh/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- ====================================================================
+       4. CONVERSION & WORKSHOP HUBS
+       ==================================================================== -->
+  <url>
+    <loc>https://redsan.in/workshops/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
     <image:image>
-      <image:loc>https://redsandigitals.in/assets/newsletter.svg</image:loc>
-      <image:title>Digital Marketing &amp; MarTech Blog - Redsan Digitals Dispatches</image:title>
-      <image:caption>Case studies, playbooks, and field notes on AI digital marketing, SEO, and client acquisition</image:caption>
+      <image:loc>https://redsan.in/assets/Redsan_teaching_at_university.png</image:loc>
+      <image:title>Best Digital Marketing &amp; MarTech Skill Workshop - RedSan</image:title>
+      <image:caption>Practical MarTech skills, AI marketing tools, and entrepreneurship frameworks.</image:caption>
     </image:image>
   </url>
 
-  <!-- Featured Case Study Dispatch -->
   <url>
-    <loc>https://redsandigitals.in/blog/blog-post.html</loc>
+    <loc>https://redsan.in/contact/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
-    <image:image>
-      <image:loc>https://redsandigitals.in/assets/video_guide.svg</image:loc>
-      <image:title>Digital Marketing Retainer Case Study - ₹15,000 Client Closing</image:title>
-      <image:caption>Step-by-step cold DM framework, handling objections, and closing paying digital marketing clients</image:caption>
-    </image:image>
+  </url>
+
+  <!-- ====================================================================
+       5. EDITORIAL AUTHORITY & BLOG DISPATCHES
+       ==================================================================== -->
+  <url>
+    <loc>https://redsan.in/blog/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/blog/2nd-year-student-15000-retainer/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/blog/3-line-objection-handler/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/blog/cold-dm-vs-warm-intro-vs-referral/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
 
 </urlset>

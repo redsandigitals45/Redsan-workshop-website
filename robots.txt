@@ -1,18 +1,35 @@
 # ==============================================================================
-# ROBOTS.TXT - REDSAN DIGITALS PVT. LTD.
-# Domain: https://redsandigitals.in
-# Core Pillars:
-#   1) Digital Growth & MarTech Agency (Performance Marketing, AI Web, SEO/AEO/GEO)
-#   2) Digital Courses & Masterclasses (Student Entrepreneurship Workshop)
+# ROBOTS.TXT - REDSAN / REDSAN DIGITALS
+# Domain: https://redsan.in
+# Core Architecture:
+#   1) Digital Marketing & MarTech Agency (/digital-marketing-agency/, /seo-agency/, etc.)
+#   2) Priority Local SEO (/digital-marketing-agency-[city]/)
+#   3) Educational Hub & Masterclasses (/workshops/)
+#   4) Authority Blog Dispatches (/blog/)
 # ==============================================================================
 
 # Global Search Engine Crawlers (Google, Bing, Yahoo, DuckDuckGo, etc.)
 User-agent: *
 Allow: /
+Allow: /digital-marketing-agency/
+Allow: /seo-agency/
+Allow: /performance-marketing/
+Allow: /google-ads/
+Allow: /meta-ads/
+Allow: /social-media-marketing/
+Allow: /website-development/
+Allow: /ai-marketing/
+Allow: /digital-marketing-agency-dehradun/
+Allow: /digital-marketing-agency-rishikesh/
+Allow: /digital-marketing-agency-noida/
+Allow: /digital-marketing-agency-delhi/
+Allow: /digital-marketing-agency-gurugram/
+Allow: /digital-marketing-agency-chandigarh/
+Allow: /workshops/
 Allow: /workshop/
 Allow: /blog/
+Allow: /contact/
 Allow: /assets/
-Allow: /assets%202/
 Allow: /*.css$
 Allow: /*.js$
 Allow: /*.webp$
@@ -31,10 +48,9 @@ User-agent: Googlebot
 User-agent: Googlebot-Image
 User-agent: Googlebot-Mobile
 Allow: /
-Allow: /workshop/
+Allow: /workshops/
 Allow: /blog/
 Allow: /assets/
-Allow: /assets%202/
 
 # ------------------------------------------------------------------------------
 # Bingbot & MSN
@@ -42,7 +58,7 @@ Allow: /assets%202/
 User-agent: Bingbot
 User-agent: msnbot
 Allow: /
-Allow: /workshop/
+Allow: /workshops/
 Allow: /blog/
 
 # ------------------------------------------------------------------------------
@@ -50,53 +66,42 @@ Allow: /blog/
 # ------------------------------------------------------------------------------
 User-agent: Applebot
 Allow: /
-Allow: /workshop/
+Allow: /workshops/
 Allow: /blog/
 
 # ------------------------------------------------------------------------------
 # AI & Answer Engine Crawlers (AEO / GEO / Generative Search Optimization)
-# Allows OpenAI, Perplexity, Anthropic, Google Gemini to index & cite Redsan
+# Allows OpenAI, Perplexity, Anthropic, Google Gemini to index & cite RedSan
 # ------------------------------------------------------------------------------
 # OpenAI (ChatGPT Search & Citations)
 User-agent: GPTBot
 User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
 Allow: /
-Allow: /workshop/
-Allow: /blog/
 
-# Perplexity AI (Real-time Answer Engine & Sources)
+# Perplexity AI (Conversational Answer Engine & Perplexity Pages)
 User-agent: PerplexityBot
 Allow: /
-Allow: /workshop/
-Allow: /blog/
 
-# Anthropic Claude (Claude AI Search & Citations)
+# Anthropic (Claude Search & Analysis)
 User-agent: ClaudeBot
 User-agent: anthropic-ai
 Allow: /
-Allow: /workshop/
-Allow: /blog/
 
-# Google Gemini & Extended AI Training / Grounding
+# Google Gemini & Extended AI Grounding
 User-agent: Google-Extended
 User-agent: GoogleOther
 Allow: /
-Allow: /workshop/
-Allow: /blog/
 
 # Cohere & Meta AI
 User-agent: cohere-ai
 User-agent: FacebookBot
 User-agent: Meta-ExternalAgent
 Allow: /
-Allow: /workshop/
-Allow: /blog/
 
-# ByteDance / TikTok Web Indexer
+# ByteDance Web Indexer
 User-agent: Bytespider
 Allow: /
-Allow: /workshop/
-Allow: /blog/
 
 # ------------------------------------------------------------------------------
 # Aggressive Scraper & SEO Tool Rate Control
@@ -110,5 +115,5 @@ Crawl-delay: 10
 # ------------------------------------------------------------------------------
 # Canonical Sitemap & Host Reference
 # ------------------------------------------------------------------------------
-Host: https://redsandigitals.in
-Sitemap: https://redsandigitals.in/sitemap.xml
+Host: https://redsan.in
+Sitemap: https://redsan.in/sitemap.xml
