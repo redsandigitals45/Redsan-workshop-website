@@ -51,6 +51,11 @@
       "permanent": true
     },
     {
+      "source": "/workshop/(.*)",
+      "destination": "/workshops/$1",
+      "permanent": true
+    },
+    {
       "source": "/workshop/index.html",
       "destination": "/workshops/",
       "permanent": true
