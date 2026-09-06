@@ -197,6 +197,7 @@
     display:grid;grid-template-columns:80px 1fr 1fr;gap:24px;
     padding:30px 0;border-bottom:1px solid rgba(255,255,255,0.12);
     align-items:baseline;
+    cursor:default;
     transition:padding-left .25s ease, background .25s ease;
   }
   .service-row:hover{padding-left:14px;background:rgba(226,35,26,0.06);}
@@ -764,21 +765,74 @@
     text-align: center;
     font-family: var(--display);
     font-size: clamp(32px, 8.8vw, 150px);
-    line-height: .88;
+    line-height: 1.05;
     letter-spacing: 0.01em;
     font-weight: 400;
     text-transform: uppercase;
     white-space: nowrap;
     max-width: 100%;
-    overflow: visible;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent !important;
+  }
+
+  .preview-section .rotator-window {
+    display: block;
+    height: 1.08em;
+    overflow: hidden;
+    position: relative;
+    background: transparent !important;
+  }
+
+  .preview-section .rotator-track {
+    display: flex;
+    flex-direction: column;
+    animation: rotateHeroWordsUp 15s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+    will-change: transform;
+    background: transparent !important;
+  }
+
+  .preview-section .rotator-item {
+    height: 1.08em;
+    line-height: 1.08em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     color: #fff;
     background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 45%, #777777 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: .95;
-    user-select: none;
-    text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    filter: drop-shadow(0 4px 25px rgba(0,0,0,0.5));
+    white-space: nowrap;
+  }
+
+  @keyframes rotateHeroWordsUp {
+    0%, 13.5% {
+      transform: translateY(0%);
+    }
+    16.66%, 30.16% {
+      transform: translateY(-14.2857%);
+    }
+    33.33%, 46.83% {
+      transform: translateY(-28.5714%);
+    }
+    50%, 63.5% {
+      transform: translateY(-42.8571%);
+    }
+    66.66%, 80.16% {
+      transform: translateY(-57.1428%);
+    }
+    83.33%, 96.83% {
+      transform: translateY(-71.4285%);
+    }
+    100% {
+      transform: translateY(-85.7143%);
+    }
   }
 
   /* Three overlapping circles */
@@ -1200,7 +1254,16 @@
       font-size: clamp(24px, 7.8vw, 48px);
       letter-spacing: 0;
       white-space: nowrap;
-      overflow: visible;
+      overflow: hidden;
+      height: 1.12em;
+    }
+    .preview-section .rotator-window {
+      height: 1.12em;
+      overflow: hidden;
+    }
+    .preview-section .rotator-item {
+      height: 1.12em;
+      line-height: 1.12em;
     }
     .preview-section .cards {
       flex-direction: column;
@@ -2357,7 +2420,19 @@
 <!-- PREVIEW SHOWCASE (SEO-OPTIMIZED & DATA-DRIVEN MARKETING) -->
 <section class="preview-section" id="preview-showcase">
   <div class="wrap">
-    <h2 class="hero-title"><span>SEO-OPTIMIZED</span></h2>
+    <h2 class="hero-title" aria-label="AI-POWERED MAR-TECH PERFORMANCE CONTENT WEBSITE SEO-OPTIMIZED">
+      <span class="rotator-window">
+        <span class="rotator-track">
+          <span class="rotator-item">AI-POWERED</span>
+          <span class="rotator-item">MAR-TECH</span>
+          <span class="rotator-item">PERFORMANCE</span>
+          <span class="rotator-item">CONTENT</span>
+          <span class="rotator-item">WEBSITE</span>
+          <span class="rotator-item">SEO-OPTIMIZED</span>
+          <span class="rotator-item">AI-POWERED</span>
+        </span>
+      </span>
+    </h2>
 
     <div class="cards" aria-label="Marketing statistics">
       <article class="circle left" tabindex="0">
@@ -2383,8 +2458,8 @@
     </div>
 
     <div class="about-header-wrap">
-      <div class="small-label">WHAT'S</div>
-      <div class="about-label">ABOUT?</div>
+      <div class="small-label">WHAT'S IT</div>
+      <div class="about-label">ABOUT</div>
     </div>
 
     <div class="about-grid">
@@ -2567,46 +2642,46 @@
       <h2>Everything Growth Actually Needs.</h2>
     </div>
     <div class="services-list">
-      <a href="/services/web-design" class="service-row">
+      <div class="service-row">
         <div class="service-num">01</div>
         <div class="service-name">AI-Powered Web Design &amp; Development</div>
         <div class="service-desc">Sites that load fast, look sharp, and don't need a developer on speed-dial to update.</div>
-      </a>
-      <a href="/services/seo-aeo-geo" class="service-row">
+      </div>
+      <div class="service-row">
         <div class="service-num">02</div>
         <div class="service-name">SEO · AEO · GEO</div>
         <div class="service-desc">Ranked on Google, cited by AI answers, visible wherever people are actually searching now.</div>
-      </a>
-      <a href="/services/social-content" class="service-row">
+      </div>
+      <div class="service-row">
         <div class="service-num">03</div>
         <div class="service-name">AI-Powered Social Content &amp; Handling</div>
         <div class="service-desc">Content that's planned, made, and posted without you touching a content calendar.</div>
-      </a>
-      <a href="/services/shoots" class="service-row">
+      </div>
+      <div class="service-row">
         <div class="service-num">04</div>
         <div class="service-name">Product &amp; Service Shoots</div>
         <div class="service-desc">Studio-grade visuals for whatever you're selling, shot and edited end-to-end.</div>
-      </a>
-      <a href="/services/vibe-coding" class="service-row">
+      </div>
+      <div class="service-row">
         <div class="service-num">05</div>
         <div class="service-name">Vibe Coding for Startup MVPs</div>
         <div class="service-desc">Idea to working prototype, fast enough to demo before the excitement wears off.</div>
-      </a>
-      <a href="/services/startup-consultation" class="service-row">
+      </div>
+      <div class="service-row">
         <div class="service-num">06</div>
         <div class="service-name">Startup Consultation</div>
         <div class="service-desc">Straight answers on what to build, what to skip, and what to fix first.</div>
-      </a>
-      <a href="/services/ads" class="service-row">
+      </div>
+      <div class="service-row">
         <div class="service-num">07</div>
         <div class="service-name">Meta &amp; Google Ads</div>
         <div class="service-desc">Ads that get seen by the right people, not just a lot of people.</div>
-      </a>
-      <a href="/services/performance-marketing" class="service-row">
+      </div>
+      <div class="service-row">
         <div class="service-num">08</div>
         <div class="service-name">Full-Stack Performance Marketing</div>
         <div class="service-desc">Every channel working together toward one number: growth.</div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
