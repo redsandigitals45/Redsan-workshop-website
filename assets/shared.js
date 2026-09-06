@@ -1,24 +1,25 @@
 /* ============================================================
-   REDSAN SHARED CORE SCRIPTS
-   Interactive Canvas, Navigation, Accordions & Lead Engine
+   REDSAN SYNCHRONIZED CORE CONTROLLER
+   Canvas Starfield, Navbar Dropdown, Mobile Accordions & Forms
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
   initSpaceCanvas();
-  initMobileNav();
+  initNavbars();
   initFaqAccordions();
   initContactForms();
-  initContactModal();
 });
 
-/* 1. Interactive Starfield / Space Canvas */
+/* 1. Dynamic Space Starfield Canvas */
 function initSpaceCanvas() {
   const canvas = document.getElementById('space-bg-canvas');
-  if (!canvas) return;
+  // Skip 2D canvas on pages that use the custom 3D WebGL space background (e.g. homepage)
+  if (!canvas || document.getElementById('rsd-cinema') || window.initGlobalSpaceBg) return;
   const ctx = canvas.getContext('2d');
+  if (!ctx) return;
   let width, height;
   let stars = [];
-  const starCount = 85;
+  const starCount = 80;
 
   function resize() {
     width = canvas.width = window.innerWidth;
@@ -65,25 +66,41 @@ function initSpaceCanvas() {
   animate();
 }
 
-/* 2. Mobile Nav Toggle */
-function initMobileNav() {
+/* 2. Unified Navbar & Mobile Navigation */
+function initNavbars() {
   const toggle = document.getElementById('navToggle');
-  const menu = document.getElementById('mobileNav');
-  if (!toggle || !menu) return;
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileServicesToggle = document.getElementById('mobileServicesToggle');
+  const mobileServicesMenu = document.getElementById('mobileServicesMenu');
 
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    menu.classList.toggle('open');
-  });
+  if (toggle && mobileNav && !toggle.dataset.bound) {
+    toggle.dataset.bound = 'true';
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileNav.classList.toggle('open');
+    });
 
-  document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && e.target !== toggle) {
-      menu.classList.remove('open');
-    }
-  });
+    document.addEventListener('click', (e) => {
+      if (!mobileNav.contains(e.target) && e.target !== toggle) {
+        mobileNav.classList.remove('open');
+      }
+    });
+  }
+
+  if (mobileServicesToggle && mobileServicesMenu) {
+    mobileServicesToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      mobileServicesMenu.classList.toggle('open');
+      const arrow = mobileServicesToggle.querySelector('span');
+      if (arrow) {
+        arrow.textContent = mobileServicesMenu.classList.contains('open') ? '▴' : '▾';
+      }
+    });
+  }
 }
 
-/* 3. FAQ Accordion */
+/* 3. FAQ Accordion Logic */
 function initFaqAccordions() {
   const questions = document.querySelectorAll('.faq-question');
   questions.forEach((q) => {
@@ -93,7 +110,6 @@ function initFaqAccordions() {
       const isOpen = item.classList.contains('open');
       const ans = item.querySelector('.faq-answer');
 
-      // Close other items in the same container
       const container = item.closest('.faq-grid') || document;
       container.querySelectorAll('.faq-item').forEach((other) => {
         other.classList.remove('open');
@@ -109,7 +125,7 @@ function initFaqAccordions() {
   });
 }
 
-/* 4. Web3Forms AJAX Lead Capture */
+/* 4. Asynchronous Lead Form Submissions */
 function initContactForms() {
   const forms = document.querySelectorAll('form[action*="web3forms.com/submit"]');
   forms.forEach((form) => {
@@ -162,55 +178,5 @@ function initContactForms() {
         }
       }
     });
-  });
-}
-
-/* 5. Contact Modal Controller */
-function initContactModal() {
-  const modal = document.getElementById('contactModal');
-  if (!modal) return;
-  const closeBtn = document.getElementById('contactModalClose');
-
-  function openModal(e) {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal() {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  // Delegated open for modal triggers
-  document.addEventListener('click', (e) => {
-    const link = e.target.closest('a[data-open-modal="contact"]');
-    if (link) {
-      openModal(e);
-    }
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      closeModal();
-    });
-  }
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
-
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
-      closeModal();
-    }
   });
 }

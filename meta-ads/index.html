@@ -105,16 +105,82 @@
 <body>
 <canvas id="space-bg-canvas"></canvas>
 
-<!-- Header Navigation -->
+<!-- NAV -->
 <header class="nav">
   <div class="wrap nav-inner">
     <a href="/" class="nav-logo" aria-label="RedSan Home"><img src="/assets/redsan_logo.png" alt="RedSan Logo" class="brand-logo-img"></a>
     <nav class="nav-links">
-      <a href="/">Home</a>
-      <a href="/digital-marketing-agency/" class="active">Services</a>
-      <a href="/workshops/">Workshop</a>
-      <a href="/blog/">Blog</a>
-      <a href="/contact/">Contact Us</a>
+      <a href="/" >Home</a>
+      <div class="nav-item-dropdown">
+        <a href="/digital-marketing-agency/" class="dropdown-trigger active">Services <span class="dropdown-arrow">▾</span></a>
+        <div class="dropdown-menu">
+          <div class="dropdown-header">
+            <span class="dropdown-eyebrow">Growth Capabilities</span>
+            <a href="/digital-marketing-agency/" class="dropdown-all-link">All Services Overview →</a>
+          </div>
+          <div class="dropdown-grid">
+            <a href="/seo-agency/" class="dropdown-item">
+              <span class="dropdown-item-icon">🔍</span>
+              <div>
+                <div class="dropdown-item-title">SEO, AEO &amp; GEO</div>
+                <div class="dropdown-item-desc">Google search &amp; AI answer engine citations</div>
+              </div>
+            </a>
+            <a href="/performance-marketing/" class="dropdown-item">
+              <span class="dropdown-item-icon">📈</span>
+              <div>
+                <div class="dropdown-item-title">Performance Marketing</div>
+                <div class="dropdown-item-desc">High-ROAS paid acquisition funnels</div>
+              </div>
+            </a>
+            <a href="/google-ads/" class="dropdown-item">
+              <span class="dropdown-item-icon">🎯</span>
+              <div>
+                <div class="dropdown-item-title">Google Ads (PPC)</div>
+                <div class="dropdown-item-desc">Search, Shopping &amp; PMax buyer capture</div>
+              </div>
+            </a>
+            <a href="/meta-ads/" class="dropdown-item">
+              <span class="dropdown-item-icon">⚡</span>
+              <div>
+                <div class="dropdown-item-title">Meta Ads (FB/IG)</div>
+                <div class="dropdown-item-desc">Creative velocity &amp; Conversions API (CAPI)</div>
+              </div>
+            </a>
+            <a href="/social-media-marketing/" class="dropdown-item">
+              <span class="dropdown-item-icon">🎬</span>
+              <div>
+                <div class="dropdown-item-title">Social Media &amp; Video</div>
+                <div class="dropdown-item-desc">Studio-grade Reels, Shorts &amp; grid ops</div>
+              </div>
+            </a>
+            <a href="/website-development/" class="dropdown-item">
+              <span class="dropdown-item-icon">💻</span>
+              <div>
+                <div class="dropdown-item-title">Website Development</div>
+                <div class="dropdown-item-desc">Sub-second speed, custom web apps &amp; MVPs</div>
+              </div>
+            </a>
+            <a href="/ai-marketing/" class="dropdown-item">
+              <span class="dropdown-item-icon">🤖</span>
+              <div>
+                <div class="dropdown-item-title">AI Marketing &amp; MarTech</div>
+                <div class="dropdown-item-desc">WhatsApp bots, automations &amp; prompt flows</div>
+              </div>
+            </a>
+            <a href="/digital-marketing-agency/" class="dropdown-item">
+              <span class="dropdown-item-icon">🚀</span>
+              <div>
+                <div class="dropdown-item-title">Full-Stack Strategy</div>
+                <div class="dropdown-item-desc">End-to-end commercial growth engineering</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <a href="/workshops/" >Workshop</a>
+      <a href="/blog/" >Blog</a>
+      <a href="/contact/" >Contact Us</a>
     </nav>
     <a href="/contact/" class="nav-cta">Let's Talk →</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
@@ -122,7 +188,19 @@
 </header>
 <nav class="mobile-nav" id="mobileNav">
   <a href="/">Home</a>
-  <a href="/digital-marketing-agency/" class="active">Services</a>
+  <div class="mobile-dropdown">
+    <button class="mobile-dropdown-toggle" id="mobileServicesToggle" type="button">Services <span>▾</span></button>
+    <div class="mobile-dropdown-menu" id="mobileServicesMenu">
+      <a href="/digital-marketing-agency/">All Services Overview</a>
+      <a href="/seo-agency/">SEO, AEO &amp; GEO</a>
+      <a href="/performance-marketing/">Performance Marketing</a>
+      <a href="/google-ads/">Google Ads</a>
+      <a href="/meta-ads/">Meta Ads</a>
+      <a href="/social-media-marketing/">Social Media &amp; Video</a>
+      <a href="/website-development/">Website Development</a>
+      <a href="/ai-marketing/">AI Marketing &amp; MarTech</a>
+    </div>
+  </div>
   <a href="/workshops/">Workshop</a>
   <a href="/blog/">Blog</a>
   <a href="/contact/">Contact Us</a>
@@ -131,6 +209,8 @@
 
 <!-- Page Hero -->
 <section class="page-hero">
+  <div class="bg-mesh-glow"></div>
+  <div class="bg-grid-pattern"></div>
   <div class="wrap">
     <div class="breadcrumbs">
       <a href="/">Home</a>
@@ -356,45 +436,68 @@
   </div>
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer>
-  <div class="wrap foot-inner">
-    <div class="foot-left">
-      <a href="/" aria-label="RedSan Home"><img src="/assets/redsan_logo.png" alt="RedSan Logo" class="brand-logo-img foot-logo-img"></a>
-      <p>High-converting creative production, UGC testing, and Advantage+ Meta ad scale.</p>
-      <div class="foot-social">
-        <a href="https://wa.me/919664365954" aria-label="WhatsApp">WA</a>
-        <a href="mailto:redsandigitals@gmail.com" aria-label="Email">Email</a>
+  <div class="wrap foot-wrap">
+    <div class="foot-grid">
+      <!-- Col 1: Brand & Contact -->
+      <div class="foot-col foot-brand">
+        <a href="/" aria-label="RedSan Home"><img src="/assets/redsan_logo.png" alt="RedSan Logo" class="brand-logo-img foot-logo-img"></a>
+        <p class="foot-tagline">Attention, Mined. Building high-performing brands, web infrastructure &amp; revenue engines since 2019.</p>
+        <div class="badge-iso">ISO 9001:2015 Certified Agency</div>
+        <div class="foot-contact-quick">
+          <a href="mailto:redsandigitals@gmail.com">✉️ redsandigitals@gmail.com</a>
+          <a href="tel:+919664365954">📞 +91 9664365954</a>
+          <a href="https://wa.me/919664365954" target="_blank" rel="noopener" style="color:#25D366;">💬 WhatsApp Us Directly</a>
+        </div>
+      </div>
+
+      <!-- Col 2: Growth Services -->
+      <div class="foot-col">
+        <div class="foot-col-title">Growth Services</div>
+        <ul class="foot-links-list">
+          <li><a href="/digital-marketing-agency/">Digital Marketing Overview</a></li>
+          <li><a href="/seo-agency/">SEO, AEO &amp; GEO Strategy</a></li>
+          <li><a href="/performance-marketing/">Performance Marketing</a></li>
+          <li><a href="/google-ads/">Google Ads (PPC &amp; PMax)</a></li>
+          <li><a href="/meta-ads/">Meta Ads (Facebook &amp; Instagram)</a></li>
+          <li><a href="/social-media-marketing/">Social Media &amp; Video Shoots</a></li>
+          <li><a href="/website-development/">Website Development &amp; CRO</a></li>
+          <li><a href="/ai-marketing/">AI Marketing &amp; MarTech</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Regional Hubs -->
+      <div class="foot-col">
+        <div class="foot-col-title">Locations We Serve</div>
+        <ul class="foot-links-list">
+          <li><a href="/digital-marketing-agency-dehradun/">📍 Dehradun Agency</a></li>
+          <li><a href="/digital-marketing-agency-rishikesh/">📍 Rishikesh Agency</a></li>
+          <li><a href="/digital-marketing-agency-noida/">📍 Noida Agency</a></li>
+          <li><a href="/digital-marketing-agency-delhi/">📍 Delhi NCR Agency</a></li>
+          <li><a href="/digital-marketing-agency-gurugram/">📍 Gurugram Agency</a></li>
+          <li><a href="/digital-marketing-agency-chandigarh/">📍 Chandigarh Agency</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Ecosystem & Education -->
+      <div class="foot-col">
+        <div class="foot-col-title">Ecosystem</div>
+        <ul class="foot-links-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/workshops/">MarTech Masterclasses (₹49)</a></li>
+          <li><a href="/blog/">Dispatches &amp; Case Studies</a></li>
+          <li><a href="/contact/">Schedule a Growth Session</a></li>
+          <li><a href="https://chat.whatsapp.com/FMjPO96CFewCnXEOwwRIF0?s=cl&amp;p=i&amp;mlu=0&amp;amv=2" target="_blank" rel="noopener">Private Founder Community</a></li>
+        </ul>
       </div>
     </div>
 
-    <nav class="foot-nav">
-      <a href="/">Home</a>
-      <a href="/digital-marketing-agency/">Services</a>
-      <a href="/workshops/">Workshop</a>
-      <a href="/blog/">Blog</a>
-      <a href="/contact/">Contact Us</a>
-    </nav>
-
-    <div class="foot-locations">
-      <div class="foot-locations-title">Regional Growth Footprint</div>
-      <div class="foot-locations-sub">Recognized Digital Marketing Agency &amp; MarTech Growth Partner across Northern &amp; Central India</div>
-      <div class="foot-locations-links">
-        <a href="/digital-marketing-agency-dehradun/">📍 Dehradun</a>
-        <span style="color:var(--red);">•</span>
-        <a href="/digital-marketing-agency-rishikesh/">📍 Rishikesh</a>
-        <span style="color:var(--red);">•</span>
-        <a href="/digital-marketing-agency-noida/">📍 Noida</a>
-        <span style="color:var(--red);">•</span>
-        <a href="/digital-marketing-agency-delhi/">📍 Delhi NCR</a>
-        <span style="color:var(--red);">•</span>
-        <a href="/digital-marketing-agency-gurugram/">📍 Gurugram</a>
-        <span style="color:var(--red);">•</span>
-        <a href="/digital-marketing-agency-chandigarh/">📍 Chandigarh</a>
-      </div>
+    <div class="foot-bottom-bar">
+      <div class="foot-bottom-copy">© 2026 RedSan / RedSan Digitals Pvt. Ltd. All rights reserved.</div>
+      <div class="foot-bottom-meta">Enterprise Growth Engine · Built for High-Intent Commercial Dominance</div>
     </div>
   </div>
-  <div class="wrap foot-bottom">© 2026 RedSan / RedSan Digitals Pvt. Ltd. All rights reserved.</div>
 </footer>
 
 <script src="/assets/shared.js"></script>
