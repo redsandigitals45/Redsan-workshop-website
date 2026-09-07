@@ -2733,33 +2733,48 @@
     display: inline-flex;
     align-items: center;
   }
+  .dropdown-trigger,
   .nav-item-dropdown > .dropdown-trigger {
-    color: rgba(255, 255, 255, 0.85);
-    transition: color 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    font-family: inherit;
+    all: unset !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    cursor: pointer !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding: 6px 0 !important;
+    color: rgba(255, 255, 255, 0.85) !important;
     background: transparent !important;
+    background-color: transparent !important;
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
-    padding: 6px 0;
+    text-shadow: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
     -webkit-tap-highlight-color: transparent !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    transition: color 0.2s ease !important;
   }
+  .dropdown-trigger:focus,
+  .dropdown-trigger:active,
+  .dropdown-trigger:focus-visible,
   .nav-item-dropdown > .dropdown-trigger:focus,
   .nav-item-dropdown > .dropdown-trigger:active,
   .nav-item-dropdown > .dropdown-trigger:focus-visible {
     outline: none !important;
     background: transparent !important;
+    background-color: transparent !important;
     box-shadow: none !important;
   }
   .nav-item-dropdown:hover > .dropdown-trigger,
   .nav-item-dropdown.is-open > .dropdown-trigger {
-    color: #ffffff;
+    color: #ffffff !important;
   }
   .dropdown-arrow {
     font-size: 10px;
@@ -2767,68 +2782,90 @@
     display: inline-block;
     opacity: 0.7;
   }
-  .nav-item-dropdown:hover .dropdown-arrow {
+  .nav-item-dropdown:hover .dropdown-arrow,
+  .nav-item-dropdown.is-open .dropdown-arrow {
     transform: rotate(180deg);
     opacity: 1;
     color: var(--red);
   }
-  .dropdown-menu {
-    position: absolute;
-    top: calc(100% + 4px);
-    left: 0;
-    min-width: 250px;
-    background: #0B0B0E;
-    background: rgba(11, 11, 14, 0.98);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05);
-    padding: 8px;
+  .dropdown-menu,
+  ul.dropdown-menu {
+    position: absolute !important;
+    top: calc(100% + 4px) !important;
+    left: 0 !important;
+    width: 250px !important;
+    min-width: 250px !important;
+    max-width: 280px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 8px !important;
+    list-style: none !important;
+    background: #0B0B0E !important;
+    background: rgba(11, 11, 14, 0.98) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transform: translateY(6px);
     transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
     z-index: 100000 !important;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    text-align: left;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    text-align: left !important;
   }
   .dropdown-menu::before {
-    content: "";
-    position: absolute;
-    top: -12px;
-    left: 0;
-    right: 0;
-    height: 14px;
-    background: transparent;
+    content: "" !important;
+    position: absolute !important;
+    top: -12px !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 14px !important;
+    background: transparent !important;
   }
   .nav-item-dropdown:hover .dropdown-menu,
   .nav-item-dropdown.is-open .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
   }
+  .dropdown-menu li,
+  ul.dropdown-menu > li {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .dropdown-menu li a,
   .dropdown-link {
-    display: block;
-    padding: 9px 14px;
-    font-size: 13.5px;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.82);
-    text-decoration: none;
-    white-space: nowrap;
-    border-radius: 8px;
-    transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 9px 14px !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    color: rgba(255, 255, 255, 0.82) !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    border-radius: 8px !important;
+    transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease !important;
   }
+  .dropdown-menu li a:hover,
+  .dropdown-menu li a:focus-visible,
+  .dropdown-menu li a.active,
   .dropdown-link:hover,
   .dropdown-link:focus-visible,
   .dropdown-link.active {
-    background: rgba(226, 35, 26, 0.14);
-    color: #ffffff;
-    padding-left: 18px;
+    background: rgba(226, 35, 26, 0.14) !important;
+    color: #ffffff !important;
+    padding-left: 18px !important;
   }
 
   /* Mobile Dropdown */
@@ -2998,16 +3035,16 @@
       <a href="/" class="active">Home</a>
       <div class="nav-item-dropdown">
         <button type="button" class="dropdown-trigger" aria-expanded="false" aria-haspopup="true">Services <span class="dropdown-arrow">▾</span></button>
-        <div class="dropdown-menu">
-          <a href="/digital-marketing-agency/" class="dropdown-link">All Services Overview</a>
-          <a href="/seo-agency/" class="dropdown-link">SEO, AEO &amp; GEO</a>
-          <a href="/performance-marketing/" class="dropdown-link">Performance Marketing</a>
-          <a href="/google-ads/" class="dropdown-link">Google Ads (PPC)</a>
-          <a href="/meta-ads/" class="dropdown-link">Meta Ads (FB &amp; Instagram)</a>
-          <a href="/social-media-marketing/" class="dropdown-link">Social Media &amp; Video</a>
-          <a href="/website-development/" class="dropdown-link">Website Development</a>
-          <a href="/ai-marketing/" class="dropdown-link">AI Marketing &amp; MarTech</a>
-        </div>
+        <ul class="dropdown-menu" role="menu">
+          <li role="none"><a href="/digital-marketing-agency/" class="dropdown-link" role="menuitem">All Services Overview</a></li>
+          <li role="none"><a href="/seo-agency/" class="dropdown-link" role="menuitem">SEO, AEO &amp; GEO</a></li>
+          <li role="none"><a href="/performance-marketing/" class="dropdown-link" role="menuitem">Performance Marketing</a></li>
+          <li role="none"><a href="/google-ads/" class="dropdown-link" role="menuitem">Google Ads (PPC)</a></li>
+          <li role="none"><a href="/meta-ads/" class="dropdown-link" role="menuitem">Meta Ads (FB &amp; Instagram)</a></li>
+          <li role="none"><a href="/social-media-marketing/" class="dropdown-link" role="menuitem">Social Media &amp; Video</a></li>
+          <li role="none"><a href="/website-development/" class="dropdown-link" role="menuitem">Website Development</a></li>
+          <li role="none"><a href="/ai-marketing/" class="dropdown-link" role="menuitem">AI Marketing &amp; MarTech</a></li>
+        </ul>
       </div>
       <a href="/workshops/">Workshop</a>
       <a href="/blog/">Blog</a>

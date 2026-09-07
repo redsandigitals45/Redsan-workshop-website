@@ -82,34 +82,40 @@ h1, h2, h3, h4 {
 .dropdown-arrow { font-size: 10px; transition: transform .25s ease; opacity: 0.7; }
 .nav-item-dropdown:hover .dropdown-arrow, .nav-item-dropdown.is-open .dropdown-arrow { transform: rotate(180deg); color: var(--red); opacity: 1; }
 
-/* Desktop Dropdown - Single Line & No Emojis */
-.nav-item-dropdown { position: relative; display: inline-flex; align-items: center; }
-.dropdown-menu {
-  position: absolute; top: calc(100% + 4px); left: 0;
-  min-width: 250px; background: #0B0B0E;
-  background: rgba(11, 11, 14, 0.98);
-  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05);
-  padding: 8px; opacity: 0; visibility: hidden; pointer-events: none;
+/* Desktop Dropdown - Semantic List Structure */
+.nav-item-dropdown { position: relative !important; display: inline-flex !important; align-items: center !important; }
+.dropdown-menu, ul.dropdown-menu {
+  position: absolute !important; top: calc(100% + 4px) !important; left: 0 !important;
+  width: 250px !important; min-width: 250px !important; max-width: 280px !important;
+  box-sizing: border-box !important; margin: 0 !important; padding: 8px !important; list-style: none !important;
+  background: #0B0B0E !important; background: rgba(11, 11, 14, 0.98) !important;
+  backdrop-filter: blur(24px) !important; -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px !important; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+  opacity: 0; visibility: hidden; pointer-events: none;
   transform: translateY(6px);
   transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
-  z-index: 100000 !important; display: flex; flex-direction: column; gap: 2px; text-align: left;
+  z-index: 100000 !important; display: flex !important; flex-direction: column !important; gap: 2px !important; text-align: left !important;
 }
 /* Hover bridge */
 .dropdown-menu::before {
-  content: ""; position: absolute; top: -12px; left: 0; right: 0; height: 14px; background: transparent;
+  content: "" !important; position: absolute !important; top: -12px !important; left: 0 !important; right: 0 !important; height: 14px !important; background: transparent !important;
 }
 .nav-item-dropdown:hover .dropdown-menu, .nav-item-dropdown.is-open .dropdown-menu {
-  opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0);
+  opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; transform: translateY(0) !important;
 }
-.dropdown-link {
-  display: block; padding: 9px 14px; font-size: 13.5px; font-weight: 500;
-  color: rgba(255, 255, 255, 0.82); text-decoration: none; white-space: nowrap; border-radius: 8px;
-  transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+.dropdown-menu li, ul.dropdown-menu > li {
+  list-style: none !important; margin: 0 !important; padding: 0 !important; display: block !important; width: 100% !important; box-sizing: border-box !important;
 }
+.dropdown-menu li a, .dropdown-link {
+  display: block !important; width: 100% !important; box-sizing: border-box !important;
+  padding: 9px 14px !important; font-size: 13.5px !important; font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.82) !important; text-decoration: none !important; white-space: nowrap !important; border-radius: 8px !important;
+  transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease !important;
+}
+.dropdown-menu li a:hover, .dropdown-menu li a:focus-visible, .dropdown-menu li a.active,
 .dropdown-link:hover, .dropdown-link:focus-visible, .dropdown-link.active {
-  background: rgba(226, 35, 26, 0.14); color: #ffffff; padding-left: 18px;
+  background: rgba(226, 35, 26, 0.14) !important; color: #ffffff !important; padding-left: 18px !important;
 }
 
 .nav-cta {

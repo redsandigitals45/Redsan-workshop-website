@@ -190,8 +190,7 @@ p {
   font-weight: 600;
 }
 
-.nav-links > a,
-.nav-item-dropdown > .dropdown-trigger {
+.nav-links > a {
   position: relative;
   padding: 10px 0;
   color: rgba(255, 255, 255, 0.85);
@@ -200,36 +199,19 @@ p {
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  background: transparent !important;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent !important;
+  background: transparent;
+  border: none;
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
 }
 
-.dropdown-trigger:focus,
-.dropdown-trigger:active,
-.dropdown-trigger:focus-visible,
-.nav-item-dropdown > .dropdown-trigger:focus,
-.nav-item-dropdown > .dropdown-trigger:active,
-.nav-item-dropdown > .dropdown-trigger:focus-visible {
-  outline: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
 .nav-links > a:hover,
-.nav-links > a.active,
-.nav-item-dropdown:hover > .dropdown-trigger,
-.nav-item-dropdown.is-open > .dropdown-trigger {
+.nav-links > a.active {
   color: #ffffff;
 }
 
-.nav-links > a::after,
-.nav-item-dropdown > .dropdown-trigger::after {
+.nav-links > a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -241,10 +223,64 @@ p {
 }
 
 .nav-links > a:hover::after,
-.nav-links > a.active::after,
-.nav-item-dropdown:hover > .dropdown-trigger::after,
-.nav-item-dropdown.is-open > .dropdown-trigger::after {
+.nav-links > a.active::after {
   width: 100%;
+}
+
+/* Dropdown Trigger - Total Reset (No white shade, no buttonface, no outline) */
+.nav-item-dropdown {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.dropdown-trigger,
+.nav-item-dropdown > .dropdown-trigger {
+  all: unset !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 8px 0 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.dropdown-trigger:focus,
+.dropdown-trigger:active,
+.dropdown-trigger:focus-visible,
+.nav-item-dropdown > .dropdown-trigger:focus,
+.nav-item-dropdown > .dropdown-trigger:active,
+.nav-item-dropdown > .dropdown-trigger:focus-visible {
+  outline: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.nav-item-dropdown:hover > .dropdown-trigger,
+.nav-item-dropdown.is-open > .dropdown-trigger {
+  color: #ffffff !important;
 }
 
 .dropdown-arrow {
@@ -261,46 +297,47 @@ p {
   color: var(--red);
 }
 
-/* Desktop Dropdown - Single Line & No Emojis */
-.nav-item-dropdown {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: calc(100% + 4px);
-  left: 0;
-  min-width: 250px;
-  background: #0B0B0E;
-  background: rgba(11, 11, 14, 0.98);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05);
-  padding: 8px;
+/* Desktop Dropdown Menu - Explicit List Structure */
+.dropdown-menu,
+ul.dropdown-menu {
+  position: absolute !important;
+  top: calc(100% + 4px) !important;
+  left: 0 !important;
+  width: 250px !important;
+  min-width: 250px !important;
+  max-width: 280px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 8px !important;
+  list-style: none !important;
+  background: #0B0B0E !important;
+  background: rgba(11, 11, 14, 0.98) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transform: translateY(6px);
   transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
   z-index: 100000 !important;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  text-align: left !important;
 }
 
 /* Hover bridge so mouse movement from trigger never flickers out */
 .dropdown-menu::before {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: 0;
-  right: 0;
-  height: 14px;
-  background: transparent;
+  content: "" !important;
+  position: absolute !important;
+  top: -12px !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 14px !important;
+  background: transparent !important;
 }
 
 .nav-item-dropdown:hover .dropdown-menu,
@@ -311,24 +348,42 @@ p {
   transform: translateY(0) !important;
 }
 
-.dropdown-link {
-  display: block;
-  padding: 9px 14px;
-  font-size: 13.5px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.82);
-  text-decoration: none;
-  white-space: nowrap;
-  border-radius: 8px;
-  transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+/* List Items */
+.dropdown-menu li,
+ul.dropdown-menu > li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
+/* Dropdown Links */
+.dropdown-menu li a,
+.dropdown-link {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 9px 14px !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  border-radius: 8px !important;
+  transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease !important;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus-visible,
+.dropdown-menu li a.active,
 .dropdown-link:hover,
 .dropdown-link:focus-visible,
 .dropdown-link.active {
-  background: rgba(226, 35, 26, 0.14);
-  color: #ffffff;
-  padding-left: 18px;
+  background: rgba(226, 35, 26, 0.14) !important;
+  color: #ffffff !important;
+  padding-left: 18px !important;
 }
 
 .nav-cta {
