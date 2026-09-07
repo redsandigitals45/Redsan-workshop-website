@@ -200,18 +200,31 @@ p {
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  background: none;
-  border: none;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
 }
 
+.dropdown-trigger:focus,
+.dropdown-trigger:active,
+.dropdown-trigger:focus-visible,
+.nav-item-dropdown > .dropdown-trigger:focus,
+.nav-item-dropdown > .dropdown-trigger:active,
+.nav-item-dropdown > .dropdown-trigger:focus-visible {
+  outline: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 .nav-links > a:hover,
 .nav-links > a.active,
 .nav-item-dropdown:hover > .dropdown-trigger,
-.nav-item-dropdown.is-open > .dropdown-trigger,
-.nav-item-dropdown > .dropdown-trigger.active {
+.nav-item-dropdown.is-open > .dropdown-trigger {
   color: #ffffff;
 }
 
@@ -230,8 +243,7 @@ p {
 .nav-links > a:hover::after,
 .nav-links > a.active::after,
 .nav-item-dropdown:hover > .dropdown-trigger::after,
-.nav-item-dropdown.is-open > .dropdown-trigger::after,
-.nav-item-dropdown > .dropdown-trigger.active::after {
+.nav-item-dropdown.is-open > .dropdown-trigger::after {
   width: 100%;
 }
 
@@ -252,6 +264,8 @@ p {
 /* Desktop Dropdown - Single Line & No Emojis */
 .nav-item-dropdown {
   position: relative;
+  display: inline-flex;
+  align-items: center;
 }
 
 .dropdown-menu {
@@ -291,10 +305,10 @@ p {
 
 .nav-item-dropdown:hover .dropdown-menu,
 .nav-item-dropdown.is-open .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(0);
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
 }
 
 .dropdown-link {

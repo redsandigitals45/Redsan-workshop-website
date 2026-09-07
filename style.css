@@ -1557,8 +1557,11 @@ footer {
   align-items: center;
 }
 .dropdown-trigger {
-  background: none;
-  border: none;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
   color: rgba(255, 255, 255, 0.85);
   font-family: inherit;
   font-size: 14px;
@@ -1570,10 +1573,16 @@ footer {
   padding: 6px 0;
   transition: color 0.2s ease;
 }
+.dropdown-trigger:focus,
+.dropdown-trigger:active,
+.dropdown-trigger:focus-visible {
+  outline: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
 .nav-item-dropdown:hover .dropdown-trigger,
 .nav-item-dropdown.is-open .dropdown-trigger,
-.dropdown-trigger:hover,
-.dropdown-trigger.active {
+.dropdown-trigger:hover {
   color: #ffffff;
 }
 .dropdown-arrow {

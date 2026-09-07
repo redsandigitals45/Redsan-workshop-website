@@ -729,58 +729,65 @@
   const trigger = dd.querySelector('.dropdown-trigger');
   const menu = dd.querySelector('.dropdown-menu');
   let timer = null;
+  let isPinnedOpen = false;
 
-  function open() {
+  function openMenu(pin = false) {
     clearTimeout(timer);
+    if (pin) isPinnedOpen = true;
     dd.classList.add('is-open');
     if (trigger) trigger.setAttribute('aria-expanded', 'true');
   }
 
-  function close() {
-    timer = setTimeout(() => {
+  function closeMenu(force = false) {
+    clearTimeout(timer);
+    if (force || !isPinnedOpen) {
+      isPinnedOpen = false;
       dd.classList.remove('is-open');
       if (trigger) trigger.setAttribute('aria-expanded', 'false');
-    }, 250);
+    }
   }
 
-  dd.addEventListener('mouseenter', open);
-  dd.addEventListener('mouseleave', close);
+  function scheduleClose() {
+    if (isPinnedOpen) return;
+    timer = setTimeout(() => {
+      closeMenu(true);
+    }, 350);
+  }
+
+  dd.addEventListener('mouseenter', () => openMenu(false));
+  dd.addEventListener('mouseleave', scheduleClose);
 
   if (trigger) {
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      if (dd.classList.contains('is-open')) {
-        dd.classList.remove('is-open');
-        trigger.setAttribute('aria-expanded', 'false');
+      if (isPinnedOpen) {
+        closeMenu(true);
       } else {
-        open();
+        openMenu(true);
       }
     });
   }
 
   if (menu) {
-    menu.addEventListener('mouseenter', open);
-    menu.addEventListener('mouseleave', close);
+    menu.addEventListener('mouseenter', () => openMenu(false));
+    menu.addEventListener('mouseleave', scheduleClose);
     menu.querySelectorAll('a').forEach(l => {
       l.addEventListener('click', () => {
-        dd.classList.remove('is-open');
-        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        closeMenu(true);
       });
     });
   }
 
   document.addEventListener('click', (e) => {
     if (!dd.contains(e.target)) {
-      dd.classList.remove('is-open');
-      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      closeMenu(true);
     }
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      dd.classList.remove('is-open');
-      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      closeMenu(true);
     }
   });
 })();

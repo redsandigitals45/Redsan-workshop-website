@@ -75,7 +75,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#0B0B0C;
@@ -84,7 +84,7 @@
     --slate:#A1A1A6;
     --line: rgba(255,255,255,0.12);
     --line-dark: rgba(255,255,255,0.14);
-    --display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --display: 'Anton', sans-serif;
     --body: 'Manrope', sans-serif;
     --mono: 'IBM Plex Mono', monospace;
   }
@@ -112,7 +112,7 @@
     gap:10px;
   }
   .eyebrow::before{display:none !important;}
-  h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-0.025em;line-height:1.04;margin:0;color:#ffffff;}
+  h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:0.01em;line-height:1.02;margin:0;color:#ffffff;}
   :focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   @media (prefers-reduced-motion: reduce){
     *:not(#rsd-cinema):not(#rsd-cinema *){animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
@@ -2742,9 +2742,23 @@
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
+    font-family: inherit;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 6px 0;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  .nav-item-dropdown > .dropdown-trigger:focus,
+  .nav-item-dropdown > .dropdown-trigger:active,
+  .nav-item-dropdown > .dropdown-trigger:focus-visible {
+    outline: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
   .nav-item-dropdown:hover > .dropdown-trigger,
-  .nav-item-dropdown > .dropdown-trigger.active {
+  .nav-item-dropdown.is-open > .dropdown-trigger {
     color: #ffffff;
   }
   .dropdown-arrow {
@@ -4977,58 +4991,65 @@ function initCigaretteSmoke() {
   const trigger = dd.querySelector('.dropdown-trigger');
   const menu = dd.querySelector('.dropdown-menu');
   let timer = null;
+  let isPinnedOpen = false;
 
-  function open() {
+  function openMenu(pin = false) {
     clearTimeout(timer);
+    if (pin) isPinnedOpen = true;
     dd.classList.add('is-open');
     if (trigger) trigger.setAttribute('aria-expanded', 'true');
   }
 
-  function close() {
-    timer = setTimeout(() => {
+  function closeMenu(force = false) {
+    clearTimeout(timer);
+    if (force || !isPinnedOpen) {
+      isPinnedOpen = false;
       dd.classList.remove('is-open');
       if (trigger) trigger.setAttribute('aria-expanded', 'false');
-    }, 250);
+    }
   }
 
-  dd.addEventListener('mouseenter', open);
-  dd.addEventListener('mouseleave', close);
+  function scheduleClose() {
+    if (isPinnedOpen) return;
+    timer = setTimeout(() => {
+      closeMenu(true);
+    }, 350);
+  }
+
+  dd.addEventListener('mouseenter', () => openMenu(false));
+  dd.addEventListener('mouseleave', scheduleClose);
 
   if (trigger) {
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      if (dd.classList.contains('is-open')) {
-        dd.classList.remove('is-open');
-        trigger.setAttribute('aria-expanded', 'false');
+      if (isPinnedOpen) {
+        closeMenu(true);
       } else {
-        open();
+        openMenu(true);
       }
     });
   }
 
   if (menu) {
-    menu.addEventListener('mouseenter', open);
-    menu.addEventListener('mouseleave', close);
+    menu.addEventListener('mouseenter', () => openMenu(false));
+    menu.addEventListener('mouseleave', scheduleClose);
     menu.querySelectorAll('a').forEach(l => {
       l.addEventListener('click', () => {
-        dd.classList.remove('is-open');
-        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        closeMenu(true);
       });
     });
   }
 
   document.addEventListener('click', (e) => {
     if (!dd.contains(e.target)) {
-      dd.classList.remove('is-open');
-      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      closeMenu(true);
     }
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      dd.classList.remove('is-open');
-      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      closeMenu(true);
     }
   });
 })();

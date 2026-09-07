@@ -113,69 +113,69 @@ function initNavbars() {
     const trigger = container.querySelector('.dropdown-trigger');
     const menu = container.querySelector('.dropdown-menu');
     let closeTimer = null;
+    let isPinnedOpen = false;
 
-    function openMenu() {
+    function openMenu(pin = false) {
       clearTimeout(closeTimer);
+      if (pin) isPinnedOpen = true;
       container.classList.add('is-open');
       if (trigger) trigger.setAttribute('aria-expanded', 'true');
     }
 
-    function scheduleClose() {
-      closeTimer = setTimeout(() => {
+    function closeMenu(force = false) {
+      clearTimeout(closeTimer);
+      if (force || !isPinnedOpen) {
+        isPinnedOpen = false;
         container.classList.remove('is-open');
         if (trigger) trigger.setAttribute('aria-expanded', 'false');
-      }, 250); // 250ms grace period so options never disappear instantly
+      }
     }
 
-    container.addEventListener('mouseenter', openMenu);
+    function scheduleClose() {
+      if (isPinnedOpen) return;
+      closeTimer = setTimeout(() => {
+        closeMenu(true);
+      }, 350); // 350ms grace period so options never disappear instantly
+    }
+
+    container.addEventListener('mouseenter', () => openMenu(false));
     container.addEventListener('mouseleave', scheduleClose);
 
     if (trigger) {
       trigger.addEventListener('click', (e) => {
-        // Toggle on click
         e.preventDefault();
         e.stopPropagation();
-        if (container.classList.contains('is-open')) {
-          container.classList.remove('is-open');
-          trigger.setAttribute('aria-expanded', 'false');
+        if (isPinnedOpen) {
+          closeMenu(true);
         } else {
-          openMenu();
+          openMenu(true);
         }
       });
     }
 
     if (menu) {
-      menu.addEventListener('mouseenter', openMenu);
+      menu.addEventListener('mouseenter', () => openMenu(false));
       menu.addEventListener('mouseleave', scheduleClose);
       menu.querySelectorAll('a').forEach((link) => {
         link.addEventListener('click', () => {
-          container.classList.remove('is-open');
-          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+          closeMenu(true);
         });
       });
     }
-  });
 
-  // Global click outside to close dropdowns
-  document.addEventListener('click', (e) => {
-    desktopDropdowns.forEach((container) => {
+    // Global click outside to close dropdowns
+    document.addEventListener('click', (e) => {
       if (!container.contains(e.target)) {
-        container.classList.remove('is-open');
-        const trigger = container.querySelector('.dropdown-trigger');
-        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        closeMenu(true);
       }
     });
-  });
 
-  // Close on escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      desktopDropdowns.forEach((container) => {
-        container.classList.remove('is-open');
-        const trigger = container.querySelector('.dropdown-trigger');
-        if (trigger) trigger.setAttribute('aria-expanded', 'false');
-      });
-    }
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMenu(true);
+      }
+    });
   });
 
   if (mobileServicesToggle && mobileServicesMenu && !mobileServicesToggle.dataset.bound) {
