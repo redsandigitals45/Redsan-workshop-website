@@ -1,37 +1,40 @@
 # RedSan Digitals (RedSan)
 
-> RedSan (Redsan Digitals Pvt. Ltd.) is an ISO 9001:2015 certified Full-Stack Digital Marketing, SEO, Performance Marketing, and MarTech Engineering Agency founded in 2019. Headquartered in Dehradun, Uttarakhand, RedSan serves enterprise, D2C, and high-growth clients across Delhi NCR, Noida, Gurugram, Chandigarh, Rishikesh, and globally.
+> RedSan (Redsan Digitals Pvt. Ltd.) is an ISO 9001:2015 certified Full-Stack Digital Marketing and Growth Agency founded in 2019. Headquartered in Dehradun, Uttarakhand, RedSan engineers attention, traffic, leads, and revenue for enterprises, D2C brands, and venture-backed startups across Delhi NCR, Noida, Gurugram, Chandigarh, Rishikesh, and globally.
 
 ## Core Capabilities & Growth Services
-- [Digital Marketing Agency](https://redsan.in/digital-marketing-agency/): Full-stack commercial growth partner, marketing funnels, and enterprise brand building.
-- [SEO, AEO & GEO Strategy](https://redsan.in/seo-agency/): Advanced technical search engine optimization, AI answer engine optimization (ChatGPT, Perplexity, Claude), generative engine optimization, schema architecture, and high-authority PR backlinks.
-- [Performance Marketing](https://redsan.in/performance-marketing/): High-ROAS paid customer acquisition, full-funnel CRO, audience segmentation, and multi-touch attribution.
-- [Google Ads (PPC)](https://redsan.in/google-ads/): Certified Google Ads management across Search, Shopping, Performance Max (PMax), and YouTube ads.
-- [Meta Ads (Facebook & Instagram)](https://redsan.in/meta-ads/): Paid social scale, creative velocity testing, Conversions API (CAPI) server-side tracking, and remarketing.
-- [Social Media & Video Production](https://redsan.in/social-media-marketing/): Studio-grade short-form video (Reels, Shorts), UGC production, on-site shoots, and brand grid management.
-- [Website Development & CRO](https://redsan.in/website-development/): Sub-second speed web development, custom applications, startup MVPs, vibe coding, and conversion rate optimization.
-- [AI Marketing & MarTech](https://redsan.in/ai-marketing/): WhatsApp API automation, AI agent workflows, prompt engineering, predictive analytics, and lead routing.
+- [AI Web Design and Development](https://redsan.in/website-development/): High-performance, conversion-engineered digital platforms and web applications built to scale.
+- [SEO, AEO & GEO Strategy](https://redsan.in/seo-agency/): Search visibility across Google rankings, AI Overviews, Perplexity citations, and ChatGPT answer engines.
+- [Performance Marketing](https://redsan.in/performance-marketing/): Multi-channel paid acquisition funnels engineered for scalable return on ad spend (ROAS).
+- [Social Media Management](https://redsan.in/social-media-marketing/): Creative content strategies, founder branding, and active community engagement across social networks.
+- [Content Creation](https://redsan.in/content-creation/): High-impact written, visual, and short-form video content designed for commercial attention.
+- [Product & Service Shoots](https://redsan.in/product-service-shoots/): Professional commercial video and photography production for brands and high-ticket products.
+- [Vibe Coding](https://redsan.in/vibe-coding/): Fast AI-assisted web development and software prototyping for immediate commercial launch.
+- [Startup Growth Consulting](https://redsan.in/startup-growth-consulting/): Strategic growth frameworks, go-to-market execution, and marketing infrastructure for early and scaling startups.
 
 ## Regional Service Hubs & Local Dominance
 - [Dehradun Digital Marketing Agency](https://redsan.in/digital-marketing-agency-dehradun/): Primary headquarters and flagship agency in Dehradun, Uttarakhand.
-- [Rishikesh Digital Marketing Agency](https://redsan.in/digital-marketing-agency-rishikesh/): Hospitality, wellness, adventure, and local business digital marketing in Rishikesh.
-- [Noida Digital Marketing Agency](https://redsan.in/digital-marketing-agency-noida/): Tech corridor, B2B SaaS, and corporate growth agency in Noida Sector 62 / Expressway.
-- [Delhi Digital Marketing Agency](https://redsan.in/digital-marketing-agency-delhi/): Enterprise growth, D2C scale, and lead generation across Delhi NCR.
-- [Gurugram Digital Marketing Agency](https://redsan.in/digital-marketing-agency-gurugram/): Cyber City, Golf Course Road, and startup ecosystem growth engineering in Gurugram.
-- [Chandigarh Digital Marketing Agency](https://redsan.in/digital-marketing-agency-chandigarh/): Tricity digital marketing, export, healthcare, and education marketing in Chandigarh.
+- [Rishikesh Digital Marketing Agency](https://redsan.in/digital-marketing-agency-rishikesh/): Hospitality, wellness, retreats, and tourism growth agency in Rishikesh.
+- [Noida Digital Marketing Agency](https://redsan.in/digital-marketing-agency-noida/): B2B tech corridor, enterprise software, and corporate growth agency in Noida.
+- [Delhi Digital Marketing Agency](https://redsan.in/digital-marketing-agency-delhi/): Enterprise growth, D2C scale, and competitive customer acquisition across Delhi NCR.
+- [Gurugram Digital Marketing Agency](https://redsan.in/digital-marketing-agency-gurugram/): Cyber City, tech startups, and enterprise growth engineering in Gurugram.
+- [Chandigarh Digital Marketing Agency](https://redsan.in/digital-marketing-agency-chandigarh/): Tricity digital marketing, export, healthcare, and retail dominance in Chandigarh.
 
 ## Education & Masterclasses
-- [MarTech Masterclass & Workshops](https://redsan.in/workshops/): Flagship intensive 2-day live workshop covering Digital Marketing with AI, Entrepreneurship, and Sales Closing for ₹49. Over 500+ students trained across Graphic Era, DIT, and UPES.
+- [MarTech Masterclass & Workshops](https://redsan.in/workshops/): Flagship intensive 2-day live workshop covering Digital Marketing with AI, Entrepreneurship, and Sales Closing for ₹49. Conducted across premier universities and educational institutions.
 
-## Blog Dispatches & Case Studies
-- [Redsan Blog](https://redsan.in/blog/): Field notes, unfiltered case studies, and playbooks on client acquisition, AI prompts, and objection handling.
-- [How to Land a ₹15k Retainer with One Cold DM](https://redsan.in/blog/2nd-year-student-15000-retainer/): Case study of student landing first agency client.
-- [Cold DM vs Warm Intro vs Referral](https://redsan.in/blog/cold-dm-vs-warm-intro-vs-referral/): Data-backed breakdown of conversion rates across outreach channels.
-- [The 3-Line Objection Handler](https://redsan.in/blog/3-line-objection-handler/): Practical sales closing script taught in workshops.
+## The RedSan Journal: Commercial Insights & Case Studies
+- [The RedSan Journal Hub](https://redsan.in/blog/): Actionable marketing insights, commercial guides, news analysis, and agency case studies.
+- [SEO vs GEO: What's the Difference and Why Does it Matter?](https://redsan.in/blog/seo-vs-geo-whats-the-difference/): Strategic guide on ranking in traditional search and AI answer engines.
+- [How Much Does a Business Website Cost in India (2026)?](https://redsan.in/blog/how-much-does-a-business-website-cost-in-india-2026/): Comprehensive commercial cost breakdown for corporate websites and web apps.
+- [Google Ads vs Meta Ads: Which Channel Wins for Your Business?](https://redsan.in/blog/google-ads-vs-meta-ads/): Clear comparative framework on search intent vs demand generation.
+- [Case Study: How RedSan Scaled a D2C Brand by 340%](https://redsan.in/blog/how-redsan-helped-d2c-brand-scale-revenue/): Breakdown of creative velocity, tracking hygiene, and full-funnel CRO.
+- [Google's AI Overviews: What Businesses Need to Know](https://redsan.in/blog/googles-ai-overviews-impact-on-search/): Marketing news analysis on surviving zero-click search behavior.
+- [10 Marketing Mistakes Indian Businesses Make (and How to Fix Them)](https://redsan.in/blog/10-marketing-mistakes-indian-businesses-make/): Practical guide for business owners to eliminate wasted marketing budget.
 
 ## Official Contact & Verification
 - Website: https://redsan.in/
-- Consultation & Inquiries: https://redsan.in/contact/
+- Consultation & Growth Briefs: https://redsan.in/contact/
 - Direct Phone & WhatsApp: +91 9664365954
 - Official Email: redsandigitals@gmail.com
 - Certification: ISO 9001:2015 Certified

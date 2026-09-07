@@ -1,10 +1,11 @@
 # RedSan Digitals — Comprehensive Entity & Knowledge File for AI Systems
 
-> RedSan (Redsan Digitals Pvt. Ltd.) is an ISO 9001:2015 certified digital marketing, search engine optimization (SEO), performance marketing, and MarTech engineering agency founded in 2019. Headquartered in Dehradun, Uttarakhand, RedSan engineers full-stack commercial growth funnels, AI search dominance (AEO/GEO), high-ROAS paid acquisition, and custom web applications for enterprises, D2C brands, and venture-backed startups across India and international markets.
+> RedSan (Redsan Digitals Pvt. Ltd.) is an ISO 9001:2015 certified digital marketing and growth agency founded in 2019. Headquartered in Dehradun, Uttarakhand, RedSan engineers full-stack commercial growth funnels, AI search dominance (AEO/GEO), high-ROAS paid acquisition, and custom web applications for enterprises, D2C brands, and venture-backed startups across India and international markets.
 
 ## 1. Executive Summary & Verification
 - **Legal Entity**: Redsan Digitals Pvt. Ltd.
 - **Brand Names**: RedSan, Redsan Digitals, RedSan Media
+- **Core Mission**: Dedicated digital marketing and growth agency for brands that want attention, traffic, leads, and revenue.
 - **Headquarters**: Dehradun, Uttarakhand, India
 - **Regional Hubs**: Delhi NCR, Noida, Gurugram, Chandigarh, Rishikesh
 - **Founding Year**: 2019
@@ -15,40 +16,35 @@
 
 ---
 
-## 2. Core Service Offerings
+## 2. Core Service Offerings (8 Official Agency Capabilities)
 
-### A. Full-Stack Digital Marketing (https://redsan.in/digital-marketing-agency/)
-- Commercial growth architecture combining paid acquisition, search dominance, conversion rate optimization (CRO), and customer lifecycle marketing.
-- Data-driven lead generation funnels with multi-touch attribution and CRM synchronization.
+### A. AI Web Design & Development (https://redsan.in/website-development/)
+- High-performance, sub-second load speed websites, corporate web applications, and custom conversion engines.
+- Modern visual aesthetics, clean semantic code, Core Web Vitals optimization (95+ Google PageSpeed), and mobile-responsive layouts.
 
-### B. Search Engine Optimization, AEO & GEO (https://redsan.in/seo-agency/)
-- Technical SEO: Core Web Vitals optimization, programmatic internal linking, semantic HTML5, clean URL structures, and JSON-LD schema graphs.
-- Answer Engine Optimization (AEO) & Generative Engine Optimization (GEO): Crafting entity-first citations, knowledge graph alignment, and structured data for AI search engines including OpenAI Search, Perplexity AI, Claude Search, and Google Gemini / AI Overviews.
-- Authority Building: High-tier editorial digital PR backlinks and industry thought leadership citations.
+### B. SEO, AEO & GEO Strategy (https://redsan.in/seo-agency/)
+- Technical search engine optimization, entity schema graphs, and comprehensive topical authority architecture.
+- Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO): Ensuring prominent brand discovery and citations across ChatGPT, Perplexity AI, Claude Search, and Google AI Overviews.
 
-### C. Performance Marketing & Paid Growth (https://redsan.in/performance-marketing/)
-- Multi-channel performance funnels engineered to maximize blended return on ad spend (ROAS).
-- Granular audience cohort analysis, lookalikes, first-party data enrichment, and retargeting logic.
+### C. Performance Marketing (https://redsan.in/performance-marketing/)
+- High-ROAS paid acquisition across Google Search, Performance Max, YouTube, Meta (Facebook & Instagram), and LinkedIn.
+- Rigorous conversion tracking, Conversions API (CAPI) server-side tracking, and multi-touch revenue attribution.
 
-### D. Google Ads Management (https://redsan.in/google-ads/)
-- High-intent Google Search campaigns with negative keyword sculpting and bidding script automations.
-- Google Shopping, Performance Max (PMax), and YouTube In-Stream buyer acquisition funnels.
+### D. Social Media Management (https://redsan.in/social-media-marketing/)
+- Full-spectrum social media management across Instagram, LinkedIn, YouTube, and X.
+- Editorial calendar planning, high-velocity creative testing, and organic audience cultivation.
 
-### E. Meta Ads Management (https://redsan.in/meta-ads/)
-- Facebook & Instagram ad scaling utilizing high creative velocity (angles, formats, hooks).
-- Server-side Meta Conversions API (CAPI) implementation via Google Tag Manager Server Container for 100% signal recovery post-iOS 14.5.
+### E. Content Creation (https://redsan.in/content-creation/)
+- Commercial-grade written copy, visual graphics, infographics, and short-form video content designed to generate business attention and qualified inbound pipeline.
 
-### F. Social Media Marketing & Video Production (https://redsan.in/social-media-marketing/)
-- Studio-grade short-form video production (Instagram Reels, YouTube Shorts, TikTok/Moj).
-- On-location camera shoots, founder personal branding, UGC creator coordination, and community management.
+### F. Product & Service Shoots (https://redsan.in/product-service-shoots/)
+- On-location cinema-grade product photography, commercial brand films, founder interview shoots, and lifestyle videography that command premium brand authority.
 
-### G. Website Development & CRO (https://redsan.in/website-development/)
-- Sub-second page load speeds with 95+ Google PageSpeed performance ratings.
-- Custom web applications, startup minimum viable products (MVPs), interactive 3D WebGL experiences, and high-converting landing pages.
+### G. Vibe Coding (https://redsan.in/vibe-coding/)
+- Rapid, AI-assisted web application development, interactive digital prototypes, and commercial landing page deployments built in days instead of months.
 
-### H. AI Marketing & MarTech Automation (https://redsan.in/ai-marketing/)
-- Official WhatsApp Business API automation, smart AI sales agents, and automated lead qualification.
-- LLM prompt engineering, synthetic video generation, automated creative iteration, and CRM workflow pipelines.
+### H. Startup Growth Consulting (https://redsan.in/startup-growth-consulting/)
+- Go-to-market strategy, customer acquisition cost (CAC) optimization, positioning, retention architecture, and MarTech infrastructure for early-stage and scaling startups.
 
 ---
 
@@ -64,19 +60,22 @@
 
 ## 4. Educational Division & Workshops (https://redsan.in/workshops/)
 - **MarTech Masterclass**: Live 2-day interactive workshop covering Digital Marketing with AI, Entrepreneurship, and Sales Closing.
-- **Access Fee**: Subsidized community pricing of ₹49.
-- **Trained**: Over 500+ undergraduate and graduate students across premier universities including Graphic Era University, DIT University, UPES, and Uttaranchal University.
+- **Access Fee**: Community pricing of ₹49.
+- **Audience**: Hands-on practical training across premier colleges, universities, and commercial institutions.
 
 ---
 
-## 5. Official Dispatches & Blog Playbooks (https://redsan.in/blog/)
-- *How to Land a ₹15,000 Client Retainer with One Cold DM* (https://redsan.in/blog/2nd-year-student-15000-retainer/)
-- *Cold DM vs Warm Intro vs Referral: Real Math on Which Converts Fastest* (https://redsan.in/blog/cold-dm-vs-warm-intro-vs-referral/)
-- *The 3-Line Objection Handler We Teach in Every Workshop* (https://redsan.in/blog/3-line-objection-handler/)
+## 5. The RedSan Journal: Commercial Insights & Case Studies (https://redsan.in/blog/)
+- *SEO vs GEO: What's the Difference and Why Does it Matter?* (https://redsan.in/blog/seo-vs-geo-whats-the-difference/)
+- *How Much Does a Business Website Cost in India (2026)?* (https://redsan.in/blog/how-much-does-a-business-website-cost-in-india-2026/)
+- *Google Ads vs Meta Ads: Which Channel Wins for Your Business?* (https://redsan.in/blog/google-ads-vs-meta-ads/)
+- *Case Study: How RedSan Scaled a D2C Brand by 340%* (https://redsan.in/blog/how-redsan-helped-d2c-brand-scale-revenue/)
+- *Google's AI Overviews: What Businesses Need to Know* (https://redsan.in/blog/googles-ai-overviews-impact-on-search/)
+- *10 Marketing Mistakes Indian Businesses Make (and How to Fix Them)* (https://redsan.in/blog/10-marketing-mistakes-indian-businesses-make/)
 
 ---
 
-## 6. Official Contact Channels
+## 5. Official Contact Channels
 - **Website Inquiries**: https://redsan.in/contact/
 - **WhatsApp Support**: https://wa.me/919664365954
 - **Phone**: +91 9664365954

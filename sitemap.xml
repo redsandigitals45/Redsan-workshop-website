@@ -23,18 +23,25 @@
     <image:image>
       <image:loc>https://redsan.in/assets/martech-character.webp</image:loc>
       <image:title>RedSan Full-Stack Performance Marketing &amp; MarTech Engine</image:title>
-      <image:caption>AI-Powered Web Design, SEO, AEO, Paid Ads &amp; High-Converting Performance Marketing</image:caption>
+      <image:caption>AI Web Design, SEO, AEO, GEO, Performance Marketing &amp; Business Growth Consulting</image:caption>
     </image:image>
   </url>
 
   <!-- ====================================================================
-       2. PRIMARY SERVICE PAGES
+       2. PRIMARY SERVICE PAGES (8 CORE + SUB-SERVICES)
        ==================================================================== -->
   <url>
     <loc>https://redsan.in/digital-marketing-agency/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/website-development/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
   </url>
 
   <url>
@@ -52,20 +59,6 @@
   </url>
 
   <url>
-    <loc>https://redsan.in/google-ads/</loc>
-    <lastmod>2026-09-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://redsan.in/meta-ads/</loc>
-    <lastmod>2026-09-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
     <loc>https://redsan.in/social-media-marketing/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -73,17 +66,45 @@
   </url>
 
   <url>
-    <loc>https://redsan.in/website-development/</loc>
+    <loc>https://redsan.in/content-creation/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://redsan.in/ai-marketing/</loc>
+    <loc>https://redsan.in/product-service-shoots/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/vibe-coding/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/startup-growth-consulting/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/google-ads/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/meta-ads/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
   </url>
 
   <!-- ====================================================================
@@ -132,7 +153,7 @@
   </url>
 
   <!-- ====================================================================
-       4. CONVERSION & WORKSHOP HUBS
+       4. CONVERSION, WORKSHOPS & CONTACT
        ==================================================================== -->
   <url>
     <loc>https://redsan.in/workshops/</loc>
@@ -150,38 +171,59 @@
     <loc>https://redsan.in/contact/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.85</priority>
   </url>
 
   <!-- ====================================================================
-       5. EDITORIAL AUTHORITY & BLOG DISPATCHES
+       5. THE REDSAN JOURNAL & AGENCY DISPATCHES
        ==================================================================== -->
   <url>
     <loc>https://redsan.in/blog/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/blog/seo-vs-geo-whats-the-difference/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://redsan.in/blog/2nd-year-student-15000-retainer/</loc>
+    <loc>https://redsan.in/blog/how-much-does-a-business-website-cost-in-india-2026/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://redsan.in/blog/3-line-objection-handler/</loc>
+    <loc>https://redsan.in/blog/google-ads-vs-meta-ads/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://redsan.in/blog/cold-dm-vs-warm-intro-vs-referral/</loc>
+    <loc>https://redsan.in/blog/how-redsan-helped-d2c-brand-scale-revenue/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/blog/googles-ai-overviews-impact-on-search/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/blog/10-marketing-mistakes-indian-businesses-make/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
   </url>
 
 </urlset>

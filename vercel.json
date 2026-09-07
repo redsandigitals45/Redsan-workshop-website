@@ -41,48 +41,58 @@
       "permanent": true
     },
     {
-      "source": "/workshop",
-      "destination": "/workshops/",
-      "permanent": true
-    },
-    {
-      "source": "/workshop/",
-      "destination": "/workshops/",
-      "permanent": true
-    },
-    {
-      "source": "/workshop/(.*)",
-      "destination": "/workshops/$1",
-      "permanent": true
-    },
-    {
-      "source": "/workshop/index.html",
-      "destination": "/workshops/",
-      "permanent": true
-    },
-    {
       "source": "/blog/index.html",
       "destination": "/blog/",
       "permanent": true
     },
     {
       "source": "/blog/blog-post.html",
-      "destination": "/blog/2nd-year-student-15000-retainer/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/2nd-year-student-15000-retainer/(.*)",
+      "destination": "/blog/how-redsan-helped-d2c-brand-scale-revenue/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/2nd-year-student-15000-retainer/",
+      "destination": "/blog/how-redsan-helped-d2c-brand-scale-revenue/",
       "permanent": true
     },
     {
       "source": "/blog/2nd-year-student-15000-retainer.html",
-      "destination": "/blog/2nd-year-student-15000-retainer/",
+      "destination": "/blog/how-redsan-helped-d2c-brand-scale-revenue/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/3-line-objection-handler/(.*)",
+      "destination": "/blog/10-marketing-mistakes-indian-businesses-make/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/3-line-objection-handler/",
+      "destination": "/blog/10-marketing-mistakes-indian-businesses-make/",
       "permanent": true
     },
     {
       "source": "/blog/3-line-objection-handler.html",
-      "destination": "/blog/3-line-objection-handler/",
+      "destination": "/blog/10-marketing-mistakes-indian-businesses-make/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cold-dm-vs-warm-intro-vs-referral/(.*)",
+      "destination": "/blog/google-ads-vs-meta-ads/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cold-dm-vs-warm-intro-vs-referral/",
+      "destination": "/blog/google-ads-vs-meta-ads/",
       "permanent": true
     },
     {
       "source": "/blog/cold-dm-vs-warm-intro-vs-referral.html",
-      "destination": "/blog/cold-dm-vs-warm-intro-vs-referral/",
+      "destination": "/blog/google-ads-vs-meta-ads/",
       "permanent": true
     }
   ],
