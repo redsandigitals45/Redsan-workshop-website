@@ -75,7 +75,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#0B0B0C;
@@ -84,7 +84,7 @@
     --slate:#A1A1A6;
     --line: rgba(255,255,255,0.12);
     --line-dark: rgba(255,255,255,0.14);
-    --display: 'Anton', sans-serif;
+    --display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --body: 'Manrope', sans-serif;
     --mono: 'IBM Plex Mono', monospace;
   }
@@ -112,7 +112,7 @@
     gap:10px;
   }
   .eyebrow::before{display:none !important;}
-  h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:0.01em;line-height:1.02;margin:0;color:#ffffff;}
+  h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-0.025em;line-height:1.04;margin:0;color:#ffffff;}
   :focus-visible{outline:2px solid var(--red);outline-offset:3px;}
   @media (prefers-reduced-motion: reduce){
     *:not(#rsd-cinema):not(#rsd-cinema *){animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
@@ -2760,92 +2760,61 @@
   }
   .dropdown-menu {
     position: absolute;
-    top: calc(100% + 14px);
-    left: 50%;
-    transform: translateX(-50%) translateY(8px);
-    width: 660px;
-    background: rgba(11, 11, 12, 0.98);
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 250px;
+    background: #0B0B0E;
+    background: rgba(11, 11, 14, 0.98);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 18px;
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.05);
-    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    padding: 8px;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
-    z-index: 1000;
+    transform: translateY(6px);
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+    z-index: 100000 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: left;
+  }
+  .dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: transparent;
   }
   .nav-item-dropdown:hover .dropdown-menu,
-  .nav-item-dropdown:focus-within .dropdown-menu {
+  .nav-item-dropdown.is-open .dropdown-menu {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
-  .dropdown-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 12px;
-    margin-bottom: 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  .dropdown-link {
+    display: block;
+    padding: 9px 14px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.82);
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 8px;
+    transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
   }
-  .dropdown-eyebrow {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--red);
-  }
-  .dropdown-all-link {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
-    transition: color 0.2s;
-  }
-  .dropdown-all-link:hover {
-    color: var(--red);
-  }
-  .dropdown-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 12px;
-  }
-  .dropdown-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 10px 12px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid transparent;
-    transition: background 0.2s, border-color 0.2s, transform 0.2s;
-  }
-  .dropdown-item:hover {
-    background: rgba(226, 35, 26, 0.08);
-    border-color: rgba(226, 35, 26, 0.25);
-    transform: translateX(2px);
-  }
-  .dropdown-item-icon {
-    font-size: 18px;
-    line-height: 1.2;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .dropdown-item-title {
-    font-family: var(--body);
-    font-weight: 700;
-    font-size: 13px;
+  .dropdown-link:hover,
+  .dropdown-link:focus-visible,
+  .dropdown-link.active {
+    background: rgba(226, 35, 26, 0.14);
     color: #ffffff;
-    line-height: 1.3;
-  }
-  .dropdown-item-desc {
-    font-size: 11.5px;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1.35;
-    margin-top: 2px;
+    padding-left: 18px;
   }
 
   /* Mobile Dropdown */
@@ -3014,70 +2983,16 @@
     <nav class="nav-links">
       <a href="/" class="active">Home</a>
       <div class="nav-item-dropdown">
-        <a href="/digital-marketing-agency/" class="dropdown-trigger">Services <span class="dropdown-arrow">▾</span></a>
+        <button type="button" class="dropdown-trigger" aria-expanded="false" aria-haspopup="true">Services <span class="dropdown-arrow">▾</span></button>
         <div class="dropdown-menu">
-          <div class="dropdown-header">
-            <span class="dropdown-eyebrow">Growth Capabilities</span>
-            <a href="/digital-marketing-agency/" class="dropdown-all-link">All Services Overview →</a>
-          </div>
-          <div class="dropdown-grid">
-            <a href="/seo-agency/" class="dropdown-item">
-              <span class="dropdown-item-icon">🔍</span>
-              <div>
-                <div class="dropdown-item-title">SEO, AEO &amp; GEO</div>
-                <div class="dropdown-item-desc">Google search &amp; AI answer engine citations</div>
-              </div>
-            </a>
-            <a href="/performance-marketing/" class="dropdown-item">
-              <span class="dropdown-item-icon">📈</span>
-              <div>
-                <div class="dropdown-item-title">Performance Marketing</div>
-                <div class="dropdown-item-desc">High-ROAS paid acquisition funnels</div>
-              </div>
-            </a>
-            <a href="/google-ads/" class="dropdown-item">
-              <span class="dropdown-item-icon">🎯</span>
-              <div>
-                <div class="dropdown-item-title">Google Ads (PPC)</div>
-                <div class="dropdown-item-desc">Search, Shopping &amp; PMax buyer capture</div>
-              </div>
-            </a>
-            <a href="/meta-ads/" class="dropdown-item">
-              <span class="dropdown-item-icon">⚡</span>
-              <div>
-                <div class="dropdown-item-title">Meta Ads (FB/IG)</div>
-                <div class="dropdown-item-desc">Creative velocity &amp; Conversions API (CAPI)</div>
-              </div>
-            </a>
-            <a href="/social-media-marketing/" class="dropdown-item">
-              <span class="dropdown-item-icon">🎬</span>
-              <div>
-                <div class="dropdown-item-title">Social Media &amp; Video</div>
-                <div class="dropdown-item-desc">Studio-grade Reels, Shorts &amp; grid ops</div>
-              </div>
-            </a>
-            <a href="/website-development/" class="dropdown-item">
-              <span class="dropdown-item-icon">💻</span>
-              <div>
-                <div class="dropdown-item-title">Website Development</div>
-                <div class="dropdown-item-desc">Sub-second speed, custom web apps &amp; MVPs</div>
-              </div>
-            </a>
-            <a href="/ai-marketing/" class="dropdown-item">
-              <span class="dropdown-item-icon">🤖</span>
-              <div>
-                <div class="dropdown-item-title">AI Marketing &amp; MarTech</div>
-                <div class="dropdown-item-desc">WhatsApp bots, automations &amp; prompt flows</div>
-              </div>
-            </a>
-            <a href="/digital-marketing-agency/" class="dropdown-item">
-              <span class="dropdown-item-icon">🚀</span>
-              <div>
-                <div class="dropdown-item-title">Full-Stack Strategy</div>
-                <div class="dropdown-item-desc">End-to-end commercial growth engineering</div>
-              </div>
-            </a>
-          </div>
+          <a href="/digital-marketing-agency/" class="dropdown-link">All Services Overview</a>
+          <a href="/seo-agency/" class="dropdown-link">SEO, AEO &amp; GEO</a>
+          <a href="/performance-marketing/" class="dropdown-link">Performance Marketing</a>
+          <a href="/google-ads/" class="dropdown-link">Google Ads (PPC)</a>
+          <a href="/meta-ads/" class="dropdown-link">Meta Ads (FB &amp; Instagram)</a>
+          <a href="/social-media-marketing/" class="dropdown-link">Social Media &amp; Video</a>
+          <a href="/website-development/" class="dropdown-link">Website Development</a>
+          <a href="/ai-marketing/" class="dropdown-link">AI Marketing &amp; MarTech</a>
         </div>
       </div>
       <a href="/workshops/">Workshop</a>
@@ -3091,19 +3006,19 @@
 <nav class="mobile-nav" id="mobileNav">
   <a href="/">Home</a>
   <div class="mobile-dropdown">
-    <button class="mobile-dropdown-toggle" id="mobileServicesToggle" type="button">Services <span>▾</span></button>
-    <div class="mobile-dropdown-menu" id="mobileServicesMenu">
-      <a href="/digital-marketing-agency/">All Services Overview</a>
-      <a href="/seo-agency/">SEO, AEO &amp; GEO</a>
-      <a href="/performance-marketing/">Performance Marketing</a>
-      <a href="/google-ads/">Google Ads</a>
-      <a href="/meta-ads/">Meta Ads</a>
-      <a href="/social-media-marketing/">Social Media &amp; Video</a>
-      <a href="/website-development/">Website Development</a>
-      <a href="/ai-marketing/">AI Marketing &amp; MarTech</a>
+      <button class="mobile-dropdown-toggle" id="mobileServicesToggle" type="button" aria-expanded="false">Services <span>▾</span></button>
+      <div class="mobile-dropdown-menu" id="mobileServicesMenu">
+        <a href="/digital-marketing-agency/">All Services Overview</a>
+        <a href="/seo-agency/">SEO, AEO &amp; GEO</a>
+        <a href="/performance-marketing/">Performance Marketing</a>
+        <a href="/google-ads/">Google Ads (PPC)</a>
+        <a href="/meta-ads/">Meta Ads (FB &amp; Instagram)</a>
+        <a href="/social-media-marketing/">Social Media &amp; Video</a>
+        <a href="/website-development/">Website Development</a>
+        <a href="/ai-marketing/">AI Marketing &amp; MarTech</a>
+      </div>
     </div>
-  </div>
-  <a href="/workshops/">Workshop</a>
+    <a href="/workshops/">Workshop</a>
   <a href="/blog/">Blog</a>
   <a href="#contact">Contact Us</a>
   <a href="#contact" class="cta">Let's Talk →</a>
@@ -5053,6 +4968,70 @@ function initCigaretteSmoke() {
   } else {
     initContactModal();
   }
+</script>
+
+<script>
+(function() {
+  const dd = document.querySelector('.nav-item-dropdown');
+  if (!dd) return;
+  const trigger = dd.querySelector('.dropdown-trigger');
+  const menu = dd.querySelector('.dropdown-menu');
+  let timer = null;
+
+  function open() {
+    clearTimeout(timer);
+    dd.classList.add('is-open');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+  }
+
+  function close() {
+    timer = setTimeout(() => {
+      dd.classList.remove('is-open');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    }, 250);
+  }
+
+  dd.addEventListener('mouseenter', open);
+  dd.addEventListener('mouseleave', close);
+
+  if (trigger) {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (dd.classList.contains('is-open')) {
+        dd.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        open();
+      }
+    });
+  }
+
+  if (menu) {
+    menu.addEventListener('mouseenter', open);
+    menu.addEventListener('mouseleave', close);
+    menu.querySelectorAll('a').forEach(l => {
+      l.addEventListener('click', () => {
+        dd.classList.remove('is-open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!dd.contains(e.target)) {
+      dd.classList.remove('is-open');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dd.classList.remove('is-open');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
 </script>
 </body>
 </html>

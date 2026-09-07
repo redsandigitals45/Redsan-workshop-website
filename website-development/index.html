@@ -27,7 +27,7 @@
 <!-- Fonts & Styles -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/shared.css">
 
 <!-- JSON-LD Structured Data -->
@@ -115,70 +115,16 @@
     <nav class="nav-links">
       <a href="/" >Home</a>
       <div class="nav-item-dropdown">
-        <a href="/digital-marketing-agency/" class="dropdown-trigger active">Services <span class="dropdown-arrow">▾</span></a>
+        <button type="button" class="dropdown-trigger active" aria-expanded="false" aria-haspopup="true">Services <span class="dropdown-arrow">▾</span></button>
         <div class="dropdown-menu">
-          <div class="dropdown-header">
-            <span class="dropdown-eyebrow">Growth Capabilities</span>
-            <a href="/digital-marketing-agency/" class="dropdown-all-link">All Services Overview →</a>
-          </div>
-          <div class="dropdown-grid">
-            <a href="/seo-agency/" class="dropdown-item">
-              <span class="dropdown-item-icon">🔍</span>
-              <div>
-                <div class="dropdown-item-title">SEO, AEO &amp; GEO</div>
-                <div class="dropdown-item-desc">Google search &amp; AI answer engine citations</div>
-              </div>
-            </a>
-            <a href="/performance-marketing/" class="dropdown-item">
-              <span class="dropdown-item-icon">📈</span>
-              <div>
-                <div class="dropdown-item-title">Performance Marketing</div>
-                <div class="dropdown-item-desc">High-ROAS paid acquisition funnels</div>
-              </div>
-            </a>
-            <a href="/google-ads/" class="dropdown-item">
-              <span class="dropdown-item-icon">🎯</span>
-              <div>
-                <div class="dropdown-item-title">Google Ads (PPC)</div>
-                <div class="dropdown-item-desc">Search, Shopping &amp; PMax buyer capture</div>
-              </div>
-            </a>
-            <a href="/meta-ads/" class="dropdown-item">
-              <span class="dropdown-item-icon">⚡</span>
-              <div>
-                <div class="dropdown-item-title">Meta Ads (FB/IG)</div>
-                <div class="dropdown-item-desc">Creative velocity &amp; Conversions API (CAPI)</div>
-              </div>
-            </a>
-            <a href="/social-media-marketing/" class="dropdown-item">
-              <span class="dropdown-item-icon">🎬</span>
-              <div>
-                <div class="dropdown-item-title">Social Media &amp; Video</div>
-                <div class="dropdown-item-desc">Studio-grade Reels, Shorts &amp; grid ops</div>
-              </div>
-            </a>
-            <a href="/website-development/" class="dropdown-item">
-              <span class="dropdown-item-icon">💻</span>
-              <div>
-                <div class="dropdown-item-title">Website Development</div>
-                <div class="dropdown-item-desc">Sub-second speed, custom web apps &amp; MVPs</div>
-              </div>
-            </a>
-            <a href="/ai-marketing/" class="dropdown-item">
-              <span class="dropdown-item-icon">🤖</span>
-              <div>
-                <div class="dropdown-item-title">AI Marketing &amp; MarTech</div>
-                <div class="dropdown-item-desc">WhatsApp bots, automations &amp; prompt flows</div>
-              </div>
-            </a>
-            <a href="/digital-marketing-agency/" class="dropdown-item">
-              <span class="dropdown-item-icon">🚀</span>
-              <div>
-                <div class="dropdown-item-title">Full-Stack Strategy</div>
-                <div class="dropdown-item-desc">End-to-end commercial growth engineering</div>
-              </div>
-            </a>
-          </div>
+          <a href="/digital-marketing-agency/" class="dropdown-link">All Services Overview</a>
+          <a href="/seo-agency/" class="dropdown-link">SEO, AEO &amp; GEO</a>
+          <a href="/performance-marketing/" class="dropdown-link">Performance Marketing</a>
+          <a href="/google-ads/" class="dropdown-link">Google Ads (PPC)</a>
+          <a href="/meta-ads/" class="dropdown-link">Meta Ads (FB &amp; Instagram)</a>
+          <a href="/social-media-marketing/" class="dropdown-link">Social Media &amp; Video</a>
+          <a href="/website-development/" class="dropdown-link active">Website Development</a>
+          <a href="/ai-marketing/" class="dropdown-link">AI Marketing &amp; MarTech</a>
         </div>
       </div>
       <a href="/workshops/" >Workshop</a>
@@ -192,19 +138,19 @@
 <nav class="mobile-nav" id="mobileNav">
   <a href="/">Home</a>
   <div class="mobile-dropdown">
-    <button class="mobile-dropdown-toggle" id="mobileServicesToggle" type="button">Services <span>▾</span></button>
-    <div class="mobile-dropdown-menu" id="mobileServicesMenu">
-      <a href="/digital-marketing-agency/">All Services Overview</a>
-      <a href="/seo-agency/">SEO, AEO &amp; GEO</a>
-      <a href="/performance-marketing/">Performance Marketing</a>
-      <a href="/google-ads/">Google Ads</a>
-      <a href="/meta-ads/">Meta Ads</a>
-      <a href="/social-media-marketing/">Social Media &amp; Video</a>
-      <a href="/website-development/">Website Development</a>
-      <a href="/ai-marketing/">AI Marketing &amp; MarTech</a>
+      <button class="mobile-dropdown-toggle" id="mobileServicesToggle" type="button" aria-expanded="false">Services <span>▾</span></button>
+      <div class="mobile-dropdown-menu" id="mobileServicesMenu">
+        <a href="/digital-marketing-agency/">All Services Overview</a>
+        <a href="/seo-agency/">SEO, AEO &amp; GEO</a>
+        <a href="/performance-marketing/">Performance Marketing</a>
+        <a href="/google-ads/">Google Ads (PPC)</a>
+        <a href="/meta-ads/">Meta Ads (FB &amp; Instagram)</a>
+        <a href="/social-media-marketing/">Social Media &amp; Video</a>
+        <a href="/website-development/">Website Development</a>
+        <a href="/ai-marketing/">AI Marketing &amp; MarTech</a>
+      </div>
     </div>
-  </div>
-  <a href="/workshops/">Workshop</a>
+    <a href="/workshops/">Workshop</a>
   <a href="/blog/">Blog</a>
   <a href="/contact/">Contact Us</a>
   <a href="/contact/" class="cta">Let's Talk →</a>
