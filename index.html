@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>RedSan Digitals | Digital Marketing &amp; Growth Agency</title>
+<title>RedSan Digitals | Growth Engine Company &amp; Performance Partner</title>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="alternate icon" href="/assets/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/favicon.svg">
-<meta name="description" content="RedSan Digitals is a digital marketing and growth agency for brands that want attention, traffic, leads and revenue. AI web design, SEO, AEO/GEO, and performance marketing.">
-<meta name="keywords" content="digital marketing agency, growth agency, performance marketing agency, seo agency, ai web design, social media management, content creation, vibe coding, startup growth consulting">
+<meta name="description" content="RedSan Digitals is a Growth Engine Company and performance partner for brands that want attention, traffic, qualified leads, and measurable revenue. AI web design, SEO/GEO, MarTech, and customer acquisition.">
+<meta name="keywords" content="growth engine company, digital marketing agency, growth partner, performance marketing agency, seo agency, geo agency, aeo, ai web design, martech, redsan">
 <link rel="canonical" href="https://redsan.in/">
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
 <!-- Open Graph & Social Cards -->
-<meta property="og:title" content="RedSan Digitals | Digital Marketing &amp; Growth Agency">
-<meta property="og:description" content="RedSan Digitals is a digital marketing and growth agency for brands that want attention, traffic, leads and revenue. Full-stack marketing built for growth.">
+<meta property="og:title" content="RedSan Digitals | Growth Engine Company &amp; Performance Partner">
+<meta property="og:description" content="RedSan Digitals is a growth engine company and performance partner engineering predictable acquisition systems, MarTech infrastructure, and scalable brand revenue.">
 <meta property="og:url" content="https://redsan.in/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://redsan.in/assets/redsan_logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="RedSan Digitals | Digital Marketing &amp; Growth Agency">
-<meta name="twitter:description" content="RedSan Digitals is a digital marketing and growth agency for brands that want attention, traffic, leads and revenue.">
+<meta name="twitter:title" content="RedSan Digitals | Growth Engine Company">
+<meta name="twitter:description" content="RedSan Digitals is a growth engine company turning attention into traffic, qualified pipeline, and measurable revenue.">
 <meta name="twitter:image" content="https://redsan.in/assets/redsan_logo.png">
 
 <!-- JSON-LD LocalBusiness & MarketingAgency Schema -->
@@ -37,7 +37,7 @@
       "url": "https://redsan.in/",
       "logo": "https://redsan.in/assets/redsan_logo.png",
       "image": "https://redsan.in/assets/martech-character.webp",
-      "description": "Digital marketing and growth agency helping brands turn attention into traffic, qualified leads, and measurable revenue.",
+      "description": "Growth engine company and MarTech performance partner helping brands turn attention into traffic, qualified leads, and measurable revenue.",
       "email": "redsandigitals@gmail.com",
       "telephone": "+919664365954",
       "priceRange": "₹₹",
@@ -2999,6 +2999,215 @@
       text-align: center;
     }
   }
+
+  /* ===== GROWTH AUDIT CARD & MODAL ===== */
+  .growth-audit-card {
+    margin-top: 32px;
+    background: linear-gradient(135deg, rgba(226,35,26,0.08) 0%, rgba(18,18,22,0.92) 100%);
+    border: 1px solid rgba(226,35,26,0.32);
+    border-radius: 16px;
+    padding: 32px 28px;
+    position: relative;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  }
+  .audit-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    background: rgba(226,35,26,0.14);
+    border: 1px solid rgba(226,35,26,0.28);
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+  .audit-headline {
+    font-size: 26px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
+    line-height: 1.25;
+  }
+  .audit-sub {
+    font-size: 14.5px;
+    color: var(--slate);
+    line-height: 1.6;
+    margin: 0 0 22px;
+    max-width: 680px;
+  }
+  .audit-scope-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+  .audit-scope-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+  }
+  .audit-scope-item .scope-icon {
+    font-size: 15px;
+  }
+  .audit-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .btn-audit-trigger {
+    background: var(--red);
+    color: #ffffff;
+    border: none;
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 100px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 24px rgba(226,35,26,0.35);
+  }
+  .btn-audit-trigger:hover {
+    background: #ff2d22;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(226,35,26,0.5);
+  }
+  .audit-turnaround {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* MODAL */
+  .growth-audit-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 100005;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .growth-audit-modal-backdrop.is-open {
+    display: flex;
+    opacity: 1;
+  }
+  .growth-audit-dialog {
+    background: #0d0d12;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 18px;
+    width: 100%;
+    max-width: 680px;
+    max-height: 92vh;
+    overflow-y: auto;
+    padding: 32px 28px;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+    box-sizing: border-box;
+    transform: scale(0.96);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .growth-audit-modal-backdrop.is-open .growth-audit-dialog {
+    transform: scale(1);
+  }
+  .modal-close-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #ffffff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .modal-close-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+    transform: rotate(90deg);
+  }
+  .audit-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  @media (max-width: 600px) {
+    .audit-form-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .form-col-span-2 {
+    grid-column: 1 / -1;
+  }
+  .audit-input-group label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .audit-input-group input,
+  .audit-input-group select,
+  .audit-input-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: #ffffff;
+    font-family: var(--body);
+    font-size: 13.5px;
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .audit-input-group input:focus,
+  .audit-input-group select:focus,
+  .audit-input-group textarea:focus {
+    border-color: var(--red);
+    background: rgba(226,35,26,0.05);
+  }
+  .audit-input-group select option {
+    background: #121216;
+    color: #ffffff;
+  }
 </style>
 </head>
 <body>
@@ -3031,7 +3240,7 @@
 <!-- NAV -->
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="/" class="nav-logo" aria-label="Redsan Digitals Home"><img src="/assets/redsan_logo.png" alt="Redsan Digitals Logo" class="brand-logo-img" width="162" height="38"></a>
+    <a href="/" class="nav-logo" aria-label="Redsan Digitals Home"><img src="/assets/redsan_logo.webp" alt="Redsan Digitals Logo" class="brand-logo-img" width="162" height="38"></a>
     <nav class="nav-links">
       <a href="/" class="active">Home</a>
       <div class="nav-item-dropdown">
@@ -3045,13 +3254,14 @@
           <li role="none"><a href="/vibe-coding/" class="dropdown-link" role="menuitem">Vibe Coding</a></li>
           <li role="none"><a href="/startup-growth-consulting/" class="dropdown-link" role="menuitem">Startup Growth Consulting</a></li>
           <li role="none"><a href="/performance-marketing/" class="dropdown-link" role="menuitem">Performance Marketing</a></li>
+          <li role="none"><a href="/ai-marketing/" class="dropdown-link" role="menuitem">AI Marketing &amp; Automation</a></li>
         </ul>
       </div>
       <a href="/workshops/">Workshop</a>
       <a href="/blog/">Blog</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a href="#contact" class="nav-cta">Let's Talk →</a>
+    <a href="#growth-audit" class="nav-cta">Build My Growth Engine</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
   </div>
 </header>
@@ -3068,12 +3278,13 @@
       <a href="/vibe-coding/">Vibe Coding</a>
       <a href="/startup-growth-consulting/">Startup Growth Consulting</a>
       <a href="/performance-marketing/">Performance Marketing</a>
+      <a href="/ai-marketing/">AI Marketing &amp; Automation</a>
     </div>
   </div>
   <a href="/workshops/">Workshop</a>
   <a href="/blog/">Blog</a>
   <a href="#contact">Contact</a>
-  <a href="#contact" class="cta">Let's Talk →</a>
+  <a href="#growth-audit" class="cta">Build My Growth Engine</a>
 </nav>
 
 <!-- HERO -->
@@ -3086,11 +3297,11 @@
     </div>
   </div>
   <div class="wrap hero-main">
-    <div class="eyebrow">Full-Stack Marketing Company</div>
+    <div class="eyebrow">Full-Stack Growth Engine Company</div>
     <h2 style="margin-top:22px;">WE TURN <span class="cut">ATTENTION</span><br>INTO REVENUE.</h2>
     <p class="hero-sub">Redsan Digitals is the AI-powered marketing crew behind brands that refuse to blend in: websites, ads, content, and code, built to actually perform.</p>
     <div class="hero-ctas">
-      <a href="#contact" class="btn btn-primary">Let's Build Something →</a>
+      <a href="#growth-audit" class="btn btn-primary">Build My Growth Engine</a>
       <a href="https://wa.me/919664365954" class="btn btn-ghost">Chat on WhatsApp</a>
     </div>
     <div class="mobile-shirt-container">
@@ -3176,7 +3387,7 @@
           <p class="rah-eyebrow">The Yield</p>
           <h2 class="rah-h1">Your audience's<br>attention is <span class="rah-accent">already</span><br>being mined</h2>
           <p class="rah-body">By someone. Make sure it's you. Let's talk about what Redsan Digitals can build for your brand.</p>
-          <a href="#contact" class="rah-cta">Start mining →</a>
+          <a href="#growth-audit" class="rah-cta">Build My Growth Engine →</a>
         </div>
 
       </div>
@@ -3351,7 +3562,28 @@
       <p class="body-copy">
         We’re not just marketers; we’re data analysts. By leveraging cutting-edge tools and techniques, we turn data into actionable insights that fuel your digital success.
       </p>
-      <a class="cta" href="#contact">GET STARTED <span>→</span></a>
+
+      <!-- DEDICATED GROWTH AUDIT CARD -->
+      <div class="growth-audit-card" id="growth-audit">
+        <div class="audit-badge">FREE 15-MIN DIAGNOSTIC</div>
+        <h4 class="audit-headline">How much revenue are you leaving on the table?</h4>
+        <p class="audit-sub">Get a 15-minute AI + human growth audit. We will analyze your search visibility, paid acquisition, and conversion funnel: no pitch, just actionable findings.</p>
+
+        <div class="audit-scope-grid">
+          <div class="audit-scope-item"><span class="scope-icon">🔍</span><span class="scope-text">Search Visibility (SEO)</span></div>
+          <div class="audit-scope-item"><span class="scope-icon">⚡</span><span class="scope-text">Paid Acquisition (Ads)</span></div>
+          <div class="audit-scope-item"><span class="scope-icon">📱</span><span class="scope-text">Website &amp; CRO UX</span></div>
+          <div class="audit-scope-item"><span class="scope-icon">🎬</span><span class="scope-text">Content Velocity</span></div>
+          <div class="audit-scope-item"><span class="scope-icon">🤖</span><span class="scope-text">AI Visibility (GEO/AEO)</span></div>
+          <div class="audit-scope-item"><span class="scope-icon">⚙️</span><span class="scope-text">MarTech &amp; Tracking</span></div>
+          <div class="audit-scope-item"><span class="scope-icon">📈</span><span class="scope-text">Conversion Architecture</span></div>
+        </div>
+
+        <div class="audit-cta-row">
+          <button type="button" class="btn-audit-trigger" id="openGrowthAuditModal" aria-haspopup="dialog">Get My Free Growth Audit →</button>
+          <span class="audit-turnaround">⚡ Delivered within 24-48 business hours · 100% Free</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -3402,15 +3634,15 @@
         </p>
 
         <div class="martech-actions reveal" style="--delay:.45s">
-          <a href="#contact" class="martech-btn primary">Let's Talk Growth ↗</a>
-          <a href="#contact" class="martech-btn">Build My Growth Engine</a>
+          <a href="#growth-audit" class="martech-btn primary">Build My Growth Engine</a>
+          <a href="/blog/how-redsan-helped-d2c-brand-scale-revenue/" class="martech-btn">See How We Did It →</a>
         </div>
 
         <!-- Left analytics card (Upward Growth Slope & Vibrant Green Metrics) -->
         <article class="martech-card card-left reveal">
           <div class="metric-glow" style="left:30px;bottom:-50px"></div>
           <div class="card-top">
-            <div class="card-title">Growth Overview</div>
+            <div class="card-title">Growth Overview <span style="display:block; font-size:9.5px; text-transform:uppercase; letter-spacing:0.8px; opacity:0.6; margin-top:2px;">Illustrative Model Data</span></div>
             <div class="dots">•••</div>
           </div>
           <div class="metrics">
@@ -3449,7 +3681,7 @@
         <article class="martech-card card-right reveal">
           <div class="metric-glow" style="right:20px;bottom:-40px"></div>
           <div class="card-top">
-            <div class="card-title">Performance Overview</div>
+            <div class="card-title">Performance Overview <span style="display:block; font-size:9.5px; text-transform:uppercase; letter-spacing:0.8px; opacity:0.6; margin-top:2px;">Illustrative Model Data</span></div>
             <div class="dots">•••</div>
           </div>
           <div class="metrics">
@@ -3484,6 +3716,8 @@
           </div>
         </article>
       </div>
+
+      <div style="text-align:center; font-size:11px; color:rgba(255,255,255,0.45); letter-spacing:0.8px; text-transform:uppercase; margin:14px auto 0; position:relative; z-index:3;">Illustrative Growth Dashboard · Model Performance Metrics · <a href="/blog/1-5cr-growth-milestone-methodology/" style="color:#e2231a; text-decoration:underline;">View Methodology</a></div>
 
       <!-- Flanking text on left side of character -->
       <div class="martech-flank-text flank-left reveal">
@@ -3762,7 +3996,7 @@
     <div class="foot-grid">
       <!-- Col 1: Brand & Contact -->
       <div class="foot-col foot-brand">
-        <a href="/" class="nav-logo" aria-label="Redsan Digitals Home"><img src="/assets/redsan_logo.png" alt="Redsan Digitals Logo" class="brand-logo-img foot-logo-img" width="162" height="38" loading="lazy"></a>
+        <a href="/" class="nav-logo" aria-label="Redsan Digitals Home"><img src="/assets/redsan_logo.webp" alt="Redsan Digitals Logo" class="brand-logo-img foot-logo-img" width="162" height="38" loading="lazy"></a>
         <p class="foot-tagline">Attention, Mined. Building high-performing brands, web infrastructure &amp; revenue engines since 2019.</p>
         <div class="badge-iso" style="display:inline-block; font-family:var(--mono); font-size:11px; padding:4px 10px; border-radius:100px; background:rgba(226,35,26,0.12); color:var(--red); border:1px solid rgba(226,35,26,0.3); margin-top:12px; width:fit-content;">ISO 9001:2015 Certified Agency</div>
         <div class="foot-contact-quick">
@@ -5091,6 +5325,217 @@ function initCigaretteSmoke() {
       closeMenu(true);
     }
   });
+})();
+</script>
+
+<!-- GROWTH AUDIT CAPTURE MODAL -->
+<div class="growth-audit-modal-backdrop" id="growthAuditModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="growthAuditModalTitle">
+  <div class="growth-audit-dialog">
+    <button type="button" class="modal-close-btn" id="closeGrowthAuditModal" aria-label="Close modal">✕</button>
+
+    <div class="audit-modal-head">
+      <span class="audit-badge">15-MINUTE COMPREHENSIVE DIAGNOSTIC</span>
+      <h3 id="growthAuditModalTitle" style="font-size:24px; font-weight:800; color:#fff; margin:8px 0 6px;">Request Your Free Growth Audit</h3>
+      <p style="font-size:13.5px; color:var(--slate); line-height:1.5; margin:0 0 16px;">We analyze your search visibility, paid acquisition, and conversion funnel: no sales fluff, just clear commercial findings delivered in 24-48 hours.</p>
+    </div>
+
+    <form id="growthAuditForm" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="1ac97c8b-01fd-4a7f-a9b0-f19d191d0cbe">
+      <input type="hidden" name="subject" value="New Growth Audit Request from RedSan Website">
+      <input type="hidden" name="from_name" value="RedSan Growth Audit Engine">
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
+
+      <div class="audit-form-grid">
+        <div class="audit-input-group">
+          <label for="audit_name">1. Full Name *</label>
+          <input type="text" id="audit_name" name="name" placeholder="Your full name" required>
+        </div>
+
+        <div class="audit-input-group">
+          <label for="audit_company">2. Company / Brand Name *</label>
+          <input type="text" id="audit_company" name="company" placeholder="e.g. Acme D2C or Tech Co." required>
+        </div>
+
+        <div class="audit-input-group">
+          <label for="audit_website">3. Website URL *</label>
+          <input type="url" id="audit_website" name="website_url" placeholder="https://yourbrand.com" required>
+        </div>
+
+        <div class="audit-input-group">
+          <label for="audit_email">4. Work Email *</label>
+          <input type="email" id="audit_email" name="email" placeholder="you@company.com" required>
+        </div>
+
+        <div class="audit-input-group">
+          <label for="audit_phone">5. Phone / WhatsApp (with Country Code) *</label>
+          <input type="tel" id="audit_phone" name="phone" placeholder="+91 98765 43210" required>
+        </div>
+
+        <div class="audit-input-group">
+          <label for="audit_industry">6. Industry / Vertical *</label>
+          <select id="audit_industry" name="industry" required>
+            <option value="" disabled selected>Select Industry</option>
+            <option value="E-Commerce & D2C">E-Commerce &amp; D2C</option>
+            <option value="B2B & Tech SaaS">B2B &amp; Tech SaaS</option>
+            <option value="Healthcare & Wellness">Healthcare &amp; Wellness</option>
+            <option value="Hospitality & Travel">Hospitality &amp; Travel</option>
+            <option value="Professional & Legal Services">Professional &amp; Legal Services</option>
+            <option value="Real Estate & Architecture">Real Estate &amp; Architecture</option>
+            <option value="Education & EdTech">Education &amp; EdTech</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="audit-input-group">
+          <label for="audit_objective">7. Primary Growth Objective *</label>
+          <select id="audit_objective" name="growth_objective" required>
+            <option value="" disabled selected>Select Objective</option>
+            <option value="Scale Paid Ads (Meta / Google)">Scale Paid Ads (Meta / Google)</option>
+            <option value="Organic Search & AI Visibility (SEO/GEO)">Organic Search &amp; AI Visibility (SEO/GEO)</option>
+            <option value="Improve Conversion Rate (CRO)">Improve Conversion Rate (CRO)</option>
+            <option value="Complete Growth Engine Buildout">Complete Growth Engine Buildout</option>
+            <option value="MarTech Automation & Server Tracking">MarTech Automation &amp; Server Tracking</option>
+          </select>
+        </div>
+
+        <div class="audit-input-group">
+          <label for="audit_budget">8. Monthly Marketing Budget *</label>
+          <select id="audit_budget" name="monthly_budget" required>
+            <option value="" disabled selected>Select Budget Range</option>
+            <option value="Under ₹50k">&lt; ₹50,000 / month</option>
+            <option value="₹50k - ₹1.5L">₹50,000 - ₹1,50,000 / month</option>
+            <option value="₹1.5L - ₹5L">₹1,50,000 - ₹5,00,000 / month</option>
+            <option value="₹5L+">Above ₹5,00,000 / month</option>
+          </select>
+        </div>
+
+        <div class="audit-input-group form-col-span-2">
+          <label for="audit_channel">9. Primary Acquisition Channel Currently *</label>
+          <select id="audit_channel" name="current_primary_channel" required>
+            <option value="" disabled selected>Select Current Primary Channel</option>
+            <option value="Meta Ads (Instagram / Facebook)">Meta Ads (Instagram / Facebook)</option>
+            <option value="Google Search Ads">Google Search Ads</option>
+            <option value="Organic SEO & Content">Organic SEO &amp; Content</option>
+            <option value="Social Media & Organic Viral">Social Media &amp; Organic Viral</option>
+            <option value="Cold Outreach & Direct Sales">Cold Outreach &amp; Direct Sales</option>
+            <option value="None / Just Getting Started">None / Just Getting Started</option>
+          </select>
+        </div>
+
+        <div class="audit-input-group form-col-span-2">
+          <label for="audit_bottleneck">10. Biggest Growth Bottleneck / Challenge *</label>
+          <textarea id="audit_bottleneck" name="biggest_challenge" rows="3" placeholder="Describe what is holding your revenue or customer acquisition back right now..." required></textarea>
+        </div>
+      </div>
+
+      <div style="margin-top:20px; display:flex; flex-direction:column; gap:12px;">
+        <button type="submit" class="btn-audit-trigger" style="width:100%; justify-content:center; font-size:15px; padding:15px 24px;">Get My Free Growth Audit →</button>
+        <div style="font-family:var(--mono); font-size:11.5px; color:rgba(255,255,255,0.6); text-align:center;">🔒 Zero Spam · 100% Confidential · Human + AI Diagnostic</div>
+      </div>
+
+      <div id="growthAuditStatus" style="display:none; margin-top:16px; padding:14px 18px; border-radius:10px; font-family:var(--mono); font-size:13px; line-height:1.5;"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function() {
+  const modal = document.getElementById('growthAuditModalBackdrop');
+  const openBtn = document.getElementById('openGrowthAuditModal');
+  const closeBtn = document.getElementById('closeGrowthAuditModal');
+  const auditForm = document.getElementById('growthAuditForm');
+  const statusBox = document.getElementById('growthAuditStatus');
+
+  function openAuditModal(e) {
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
+    if (modal) {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      const firstInput = modal.querySelector('input:not([type="hidden"])');
+      if (firstInput) setTimeout(() => firstInput.focus(), 100);
+    }
+  }
+
+  function closeAuditModal() {
+    if (modal) {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (openBtn) openBtn.addEventListener('click', openAuditModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeAuditModal);
+
+  document.querySelectorAll('a[href="#growth-audit"], [data-open-growth-audit]').forEach(el => {
+    el.addEventListener('click', function(e) {
+      openAuditModal(e);
+    });
+  });
+
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeAuditModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+      closeAuditModal();
+    }
+  });
+
+  if (auditForm) {
+    auditForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const submitBtn = auditForm.querySelector('button[type="submit"]');
+      const origText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Submitting Growth Brief... ⏳';
+
+      if (statusBox) {
+        statusBox.style.display = 'none';
+      }
+
+      try {
+        const formData = new FormData(auditForm);
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          if (statusBox) {
+            statusBox.style.display = 'block';
+            statusBox.style.background = 'rgba(34, 197, 94, 0.15)';
+            statusBox.style.border = '1px solid #22c55e';
+            statusBox.style.color = '#22c55e';
+            statusBox.innerHTML = '✓ Growth Audit Request Received! Our senior growth engineers will analyze your digital footprint and deliver your Growth Audit within 24–48 business hours.';
+          }
+          auditForm.reset();
+          submitBtn.innerHTML = '✓ Submitted Successfully';
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = origText;
+          }, 4000);
+        } else {
+          throw new Error(data.message || 'Submission failed');
+        }
+      } catch (err) {
+        if (statusBox) {
+          statusBox.style.display = 'block';
+          statusBox.style.background = 'rgba(239, 68, 68, 0.15)';
+          statusBox.style.border = '1px solid #ef4444';
+          statusBox.style.color = '#ef4444';
+          statusBox.innerHTML = '⚠️ Submission error. Please WhatsApp us directly at +91 9664365954 or email redsandigitals@gmail.com.';
+        }
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origText;
+      }
+    });
+  }
 })();
 </script>
 </body>
