@@ -1,11 +1,40 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Mobile nav toggle
+  // Mobile nav toggle & services dropdown
   var navToggle = document.getElementById('navToggle');
   var mobileNav = document.getElementById('mobileNav');
+  var mobileServicesToggle = document.getElementById('mobileServicesToggle');
+  var mobileServicesMenu = document.getElementById('mobileServicesMenu');
+
   if (navToggle && mobileNav) {
-    navToggle.addEventListener('click', function () {
+    navToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
       mobileNav.classList.toggle('open');
+    });
+
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileNav.classList.remove('open');
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!mobileNav.contains(e.target) && e.target !== navToggle && !navToggle.contains(e.target)) {
+        mobileNav.classList.remove('open');
+      }
+    });
+  }
+
+  if (mobileServicesToggle && mobileServicesMenu) {
+    mobileServicesToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      mobileServicesMenu.classList.toggle('open');
+      var arrow = mobileServicesToggle.querySelector('span');
+      if (arrow) {
+        arrow.textContent = mobileServicesMenu.classList.contains('open') ? '▴' : '▾';
+      }
     });
   }
 

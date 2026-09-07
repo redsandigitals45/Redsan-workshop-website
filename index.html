@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>Digital Marketing Agency | RedSan - Performance Marketing, SEO, AI Web &amp; MarTech</title>
+<title>RedSan Digitals | Top Digital Marketing &amp; MarTech Agency</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="alternate icon" href="/assets/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/favicon.svg">
 <meta name="description" content="RedSan is a premier digital marketing agency and MarTech growth partner in Dehradun, Rishikesh, Noida, Delhi, Gurugram &amp; Chandigarh. AI web design, SEO, and paid performance marketing.">
 <meta name="keywords" content="digital marketing agency, best digital marketing agency, performance marketing agency, seo agency, digital marketing agency in Dehradun, digital marketing agency in Rishikesh, digital marketing agency in Noida, digital marketing agency in Delhi, digital marketing agency in Gurugram, digital marketing agency in Chandigarh">
 <link rel="canonical" href="https://redsan.in/">
@@ -166,15 +169,39 @@
     .nav-cta{display:none;}
     .nav-toggle{display:block;}
     .mobile-nav{
-      display:none;flex-direction:column;gap:2px;
+      display:none;
+      position:fixed !important;
+      top:76px !important;
+      left:0 !important;
+      right:0 !important;
+      width:100% !important;
+      max-height:calc(100dvh - 76px) !important;
+      overflow-y:auto !important;
+      -webkit-overflow-scrolling:touch !important;
+      z-index:99999 !important;
+      flex-direction:column;gap:2px;
       background:rgba(8,8,10,0.98);
-      backdrop-filter:blur(16px);
-      padding:20px 32px 28px;
-      border-bottom:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      padding:16px 24px 36px;
+      border-bottom:1px solid rgba(255,255,255,0.12);
+      box-shadow:0 20px 40px rgba(0,0,0,0.85);
     }
-    .mobile-nav.open{display:flex;}
-    .mobile-nav a{color:rgba(255,255,255,0.9);padding:12px 0;font-weight:600;border-bottom:1px solid var(--line-dark);}
-    .mobile-nav a.cta{color:var(--red);}
+    .mobile-nav.open{display:flex !important;}
+    .mobile-nav a{color:rgba(255,255,255,0.9);padding:13px 0;font-weight:600;border-bottom:1px solid var(--line-dark);font-size:15px;}
+    .mobile-nav a.cta{color:var(--red);font-family:var(--mono);margin-top:8px;}
+    .mobile-dropdown-toggle{
+      width:100%;background:none;border:none;border-bottom:1px solid var(--line-dark);
+      padding:13px 0;color:rgba(255,255,255,0.9);font-family:var(--body);font-weight:600;font-size:15px;
+      display:flex;justify-content:space-between;align-items:center;cursor:pointer;
+    }
+    .mobile-dropdown-menu{
+      display:none;flex-direction:column;padding:8px 0 8px 16px;background:rgba(255,255,255,0.02);
+      border-radius:8px;margin:6px 0;
+    }
+    .mobile-dropdown-menu.open{display:flex !important;}
+    .mobile-dropdown-menu a{font-size:13.5px;color:rgba(255,255,255,0.75);padding:8px 0;border-bottom:none;}
+    .mobile-dropdown-menu a:hover{color:var(--red);}
   }
 
   /* ===== HERO ===== */
@@ -2859,52 +2886,96 @@
     color: var(--red);
   }
 
-  /* --- FOOTER DIRECTORY COLUMNS --- */
-  .foot-columns {
+  /* --- FOOTER DIRECTORY DIRECTORY & GRID --- */
+  .foot-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding: 60px 0 32px;
+  }
+  .foot-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(180px, 1fr));
-    gap: 32px 36px;
-    flex: 1;
-    max-width: 780px;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px 32px;
+  }
+  @media (max-width: 960px) {
+    .foot-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .foot-grid {
+      grid-template-columns: 1fr;
+    }
   }
   .foot-col {
     display: flex;
     flex-direction: column;
   }
+  .foot-tagline {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--slate);
+    max-width: 320px;
+  }
+  .foot-contact-quick {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 18px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+  }
+  .foot-contact-quick a {
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.2s;
+  }
+  .foot-contact-quick a:hover {
+    color: var(--red);
+  }
   .foot-col-title {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--red);
-    margin-bottom: 14px;
+    margin-bottom: 18px;
     font-weight: 600;
   }
-  .foot-col-links {
+  .foot-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 9px;
-    font-size: 13.5px;
+    gap: 10px;
   }
-  .foot-col-links a {
-    color: rgba(255, 255, 255, 0.75);
+  .foot-links-list li a {
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.72);
     transition: color 0.2s ease, transform 0.2s ease;
     display: inline-block;
   }
-  .foot-col-links a:hover {
+  .foot-links-list li a:hover {
     color: #ffffff;
-    transform: translateX(2px);
+    transform: translateX(3px);
   }
-  @media (max-width: 960px) {
-    .foot-columns {
-      grid-template-columns: 1fr 1fr;
-      max-width: 100%;
-    }
+  .foot-bottom-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--slate);
   }
-  @media (max-width: 580px) {
-    .foot-columns {
-      grid-template-columns: 1fr;
-      gap: 24px;
+  @media (max-width: 768px) {
+    .foot-bottom-bar {
+      flex-direction: column;
+      text-align: center;
     }
   }
 </style>
@@ -3720,61 +3791,66 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="wrap foot-inner">
-    <div class="foot-left">
-      <div class="foot-logo"><img src="/assets/redsan_logo.png" alt="Redsan Digitals Logo" class="brand-logo-img foot-logo-img" width="162" height="38" loading="lazy"></div>
-      <p>Building brands &amp; founders since 2019.</p>
-      <div class="foot-social">
-        <a href="#" aria-label="Instagram">IG</a>
-        <a href="#" aria-label="LinkedIn">IN</a>
-        <a href="https://wa.me/919664365954" aria-label="WhatsApp" target="_blank" rel="noopener">WA</a>
+  <div class="wrap foot-wrap">
+    <div class="foot-grid">
+      <!-- Col 1: Brand & Contact -->
+      <div class="foot-col foot-brand">
+        <a href="/" class="nav-logo" aria-label="Redsan Digitals Home"><img src="/assets/redsan_logo.png" alt="Redsan Digitals Logo" class="brand-logo-img foot-logo-img" width="162" height="38" loading="lazy"></a>
+        <p class="foot-tagline">Attention, Mined. Building high-performing brands, web infrastructure &amp; revenue engines since 2019.</p>
+        <div class="badge-iso" style="display:inline-block; font-family:var(--mono); font-size:11px; padding:4px 10px; border-radius:100px; background:rgba(226,35,26,0.12); color:var(--red); border:1px solid rgba(226,35,26,0.3); margin-top:12px; width:fit-content;">ISO 9001:2015 Certified Agency</div>
+        <div class="foot-contact-quick">
+          <a href="mailto:redsandigitals@gmail.com">✉️ redsandigitals@gmail.com</a>
+          <a href="tel:+919664365954">📞 +91 9664365954</a>
+          <a href="https://wa.me/919664365954" target="_blank" rel="noopener" style="color:#25D366;">💬 WhatsApp Us Directly</a>
+        </div>
       </div>
-    </div>
 
-    <!-- EXPANDED INTERNAL LINKING DIRECTORY -->
-    <div class="foot-columns">
-      <!-- Col 1: Growth Services -->
+      <!-- Col 2: Growth Services -->
       <div class="foot-col">
         <div class="foot-col-title">Growth Services</div>
-        <div class="foot-col-links">
-          <a href="/digital-marketing-agency/">Digital Marketing Overview</a>
-          <a href="/seo-agency/">SEO, AEO &amp; GEO Strategy</a>
-          <a href="/performance-marketing/">Performance Marketing</a>
-          <a href="/google-ads/">Google Ads (PPC &amp; PMax)</a>
-          <a href="/meta-ads/">Meta Ads (Facebook &amp; IG)</a>
-          <a href="/social-media-marketing/">Social Media &amp; Video</a>
-          <a href="/website-development/">Website Development &amp; CRO</a>
-          <a href="/ai-marketing/">AI Marketing &amp; MarTech</a>
-        </div>
+        <ul class="foot-links-list">
+          <li><a href="/digital-marketing-agency/">Digital Marketing Overview</a></li>
+          <li><a href="/seo-agency/">SEO, AEO &amp; GEO Strategy</a></li>
+          <li><a href="/performance-marketing/">Performance Marketing</a></li>
+          <li><a href="/google-ads/">Google Ads (PPC &amp; PMax)</a></li>
+          <li><a href="/meta-ads/">Meta Ads (Facebook &amp; Instagram)</a></li>
+          <li><a href="/social-media-marketing/">Social Media &amp; Video Shoots</a></li>
+          <li><a href="/website-development/">Website Development &amp; CRO</a></li>
+          <li><a href="/ai-marketing/">AI Marketing &amp; MarTech</a></li>
+        </ul>
       </div>
 
-      <!-- Col 2: Regional Hubs -->
+      <!-- Col 3: Regional Hubs -->
       <div class="foot-col">
         <div class="foot-col-title">Locations We Serve</div>
-        <div class="foot-col-links">
-          <a href="/digital-marketing-agency-dehradun/">📍 Dehradun Agency</a>
-          <a href="/digital-marketing-agency-rishikesh/">📍 Rishikesh Agency</a>
-          <a href="/digital-marketing-agency-noida/">📍 Noida Agency</a>
-          <a href="/digital-marketing-agency-delhi/">📍 Delhi NCR Agency</a>
-          <a href="/digital-marketing-agency-gurugram/">📍 Gurugram Agency</a>
-          <a href="/digital-marketing-agency-chandigarh/">📍 Chandigarh Agency</a>
-        </div>
+        <ul class="foot-links-list">
+          <li><a href="/digital-marketing-agency-dehradun/">📍 Dehradun Agency</a></li>
+          <li><a href="/digital-marketing-agency-rishikesh/">📍 Rishikesh Agency</a></li>
+          <li><a href="/digital-marketing-agency-noida/">📍 Noida Agency</a></li>
+          <li><a href="/digital-marketing-agency-delhi/">📍 Delhi NCR Agency</a></li>
+          <li><a href="/digital-marketing-agency-gurugram/">📍 Gurugram Agency</a></li>
+          <li><a href="/digital-marketing-agency-chandigarh/">📍 Chandigarh Agency</a></li>
+        </ul>
       </div>
 
-      <!-- Col 3: Ecosystem -->
+      <!-- Col 4: Ecosystem & Education -->
       <div class="foot-col">
         <div class="foot-col-title">Ecosystem</div>
-        <div class="foot-col-links">
-          <a href="/">Home</a>
-          <a href="/workshops/">MarTech Masterclasses (₹49)</a>
-          <a href="/blog/">Dispatches &amp; Case Studies</a>
-          <a href="#contact">Schedule a Growth Session</a>
-          <a href="https://chat.whatsapp.com/FMjPO96CFewCnXEOwwRIF0?s=cl&amp;p=i&amp;mlu=0&amp;amv=2" target="_blank" rel="noopener">Private Founder Community</a>
-        </div>
+        <ul class="foot-links-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/workshops/">MarTech Masterclasses (₹49)</a></li>
+          <li><a href="/blog/">Dispatches &amp; Case Studies</a></li>
+          <li><a href="#contact">Schedule a Growth Session</a></li>
+          <li><a href="https://chat.whatsapp.com/FMjPO96CFewCnXEOwwRIF0?s=cl&amp;p=i&amp;mlu=0&amp;amv=2" target="_blank" rel="noopener">Private Founder Community</a></li>
+        </ul>
       </div>
     </div>
+
+    <div class="foot-bottom-bar">
+      <div class="foot-bottom-copy">© 2026 RedSan / RedSan Digitals Pvt. Ltd. All rights reserved.</div>
+      <div class="foot-bottom-meta">Enterprise Growth Engine · Built for High-Intent Commercial Dominance</div>
+    </div>
   </div>
-  <div class="wrap foot-bottom">© 2026 Redsan Digitals Pvt. Ltd. All rights reserved.</div>
 </footer>
 </div><!-- /#main-content -->
 
@@ -3869,14 +3945,33 @@
   const navToggle = document.getElementById('navToggle');
   const mobileNav = document.getElementById('mobileNav');
   if (navToggle && mobileNav) {
-    navToggle.addEventListener('click', () => mobileNav.classList.toggle('open'));
+    navToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      mobileNav.classList.toggle('open');
+    });
+    mobileNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!mobileNav.contains(e.target) && e.target !== navToggle && !navToggle.contains(e.target)) {
+        mobileNav.classList.remove('open');
+      }
+    });
   }
   const mobileServicesToggle = document.getElementById('mobileServicesToggle');
   const mobileServicesMenu = document.getElementById('mobileServicesMenu');
   if (mobileServicesToggle && mobileServicesMenu) {
     mobileServicesToggle.addEventListener('click', (e) => {
+      e.preventDefault();
       e.stopPropagation();
       mobileServicesMenu.classList.toggle('open');
+      const arrow = mobileServicesToggle.querySelector('span');
+      if (arrow) {
+        arrow.textContent = mobileServicesMenu.classList.contains('open') ? '▴' : '▾';
+      }
     });
   }
 </script>

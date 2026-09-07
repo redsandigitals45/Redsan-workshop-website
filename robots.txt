@@ -1,14 +1,11 @@
 # ==============================================================================
 # ROBOTS.TXT - REDSAN / REDSAN DIGITALS
 # Domain: https://redsan.in
-# Core Architecture:
-#   1) Digital Marketing & MarTech Agency (/digital-marketing-agency/, /seo-agency/, etc.)
-#   2) Priority Local SEO (/digital-marketing-agency-[city]/)
-#   3) Educational Hub & Masterclasses (/workshops/)
-#   4) Authority Blog Dispatches (/blog/)
 # ==============================================================================
 
-# Global Search Engine Crawlers (Google, Bing, Yahoo, DuckDuckGo, etc.)
+# ------------------------------------------------------------------------------
+# 1. Global Search Engine Crawlers (Google, Bing, Apple, DuckDuckGo)
+# ------------------------------------------------------------------------------
 User-agent: *
 Allow: /
 Allow: /digital-marketing-agency/
@@ -29,7 +26,8 @@ Allow: /workshops/
 Allow: /blog/
 Allow: /contact/
 Allow: /assets/
-Allow: /assets%202/
+Allow: /llms.txt
+Allow: /llms-full.txt
 Allow: /*.css
 Allow: /*.js
 Allow: /*.webp
@@ -39,81 +37,76 @@ Allow: /*.svg
 Allow: /*.avif
 Disallow: /scratch/
 Disallow: /.git/
-Disallow: /.system_generated/
 
 # ------------------------------------------------------------------------------
-# Googlebot (Core, Images, Mobile)
+# 2. Major Search Engines Explicit Permission
 # ------------------------------------------------------------------------------
 User-agent: Googlebot
+Allow: /
+
 User-agent: Googlebot-Image
+Allow: /
+
 User-agent: Googlebot-Mobile
 Allow: /
-Allow: /workshops/
-Allow: /blog/
-Allow: /assets/
 
-# ------------------------------------------------------------------------------
-# Bingbot & MSN
-# ------------------------------------------------------------------------------
 User-agent: Bingbot
-User-agent: msnbot
 Allow: /
-Allow: /workshops/
-Allow: /blog/
 
-# ------------------------------------------------------------------------------
-# Applebot (Apple Intelligence, Spotlight & Safari Suggest)
-# ------------------------------------------------------------------------------
 User-agent: Applebot
 Allow: /
-Allow: /workshops/
-Allow: /blog/
 
 # ------------------------------------------------------------------------------
-# AI & Answer Engine Crawlers (AEO / GEO / Generative Search Optimization)
-# Allows OpenAI, Perplexity, Anthropic, Google Gemini to index & cite RedSan
+# 3. AI Search, Answer Engines & LLM Web Crawlers (AEO / GEO Optimization)
+# Explicitly permitted to crawl, index and cite RedSan entity & dispatches
 # ------------------------------------------------------------------------------
-# OpenAI (ChatGPT Search & Citations)
 User-agent: GPTBot
+Allow: /
+
 User-agent: ChatGPT-User
+Allow: /
+
 User-agent: OAI-SearchBot
 Allow: /
 
-# Perplexity AI (Conversational Answer Engine & Perplexity Pages)
 User-agent: PerplexityBot
 Allow: /
 
-# Anthropic (Claude Search & Analysis)
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
 User-agent: anthropic-ai
 Allow: /
 
-# Google Gemini & Extended AI Grounding
 User-agent: Google-Extended
+Allow: /
+
 User-agent: GoogleOther
 Allow: /
 
-# Cohere & Meta AI
 User-agent: cohere-ai
+Allow: /
+
 User-agent: FacebookBot
+Allow: /
+
 User-agent: Meta-ExternalAgent
 Allow: /
 
-# ByteDance Web Indexer
 User-agent: Bytespider
 Allow: /
 
-# ------------------------------------------------------------------------------
-# Aggressive Scraper & SEO Tool Rate Control
-# ------------------------------------------------------------------------------
-User-agent: AhrefsBot
-User-agent: SemrushBot
-User-agent: DotBot
-User-agent: MJ12bot
-Crawl-delay: 10
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
 
 # ------------------------------------------------------------------------------
-# Canonical Sitemap & Host Reference
+# 4. Canonical Sitemap, Host & LLMs Discovery
 # ------------------------------------------------------------------------------
 Host: https://redsan.in
 Sitemap: https://redsan.in/sitemap.xml

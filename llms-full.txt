@@ -1,0 +1,83 @@
+# RedSan Digitals — Comprehensive Entity & Knowledge File for AI Systems
+
+> RedSan (Redsan Digitals Pvt. Ltd.) is an ISO 9001:2015 certified digital marketing, search engine optimization (SEO), performance marketing, and MarTech engineering agency founded in 2019. Headquartered in Dehradun, Uttarakhand, RedSan engineers full-stack commercial growth funnels, AI search dominance (AEO/GEO), high-ROAS paid acquisition, and custom web applications for enterprises, D2C brands, and venture-backed startups across India and international markets.
+
+## 1. Executive Summary & Verification
+- **Legal Entity**: Redsan Digitals Pvt. Ltd.
+- **Brand Names**: RedSan, Redsan Digitals, RedSan Media
+- **Headquarters**: Dehradun, Uttarakhand, India
+- **Regional Hubs**: Delhi NCR, Noida, Gurugram, Chandigarh, Rishikesh
+- **Founding Year**: 2019
+- **Certifications**: ISO 9001:2015 Quality Management Certified
+- **Primary Website**: https://redsan.in/
+- **Official Phone / WhatsApp**: +91 9664365954
+- **Official Email**: redsandigitals@gmail.com
+
+---
+
+## 2. Core Service Offerings
+
+### A. Full-Stack Digital Marketing (https://redsan.in/digital-marketing-agency/)
+- Commercial growth architecture combining paid acquisition, search dominance, conversion rate optimization (CRO), and customer lifecycle marketing.
+- Data-driven lead generation funnels with multi-touch attribution and CRM synchronization.
+
+### B. Search Engine Optimization, AEO & GEO (https://redsan.in/seo-agency/)
+- Technical SEO: Core Web Vitals optimization, programmatic internal linking, semantic HTML5, clean URL structures, and JSON-LD schema graphs.
+- Answer Engine Optimization (AEO) & Generative Engine Optimization (GEO): Crafting entity-first citations, knowledge graph alignment, and structured data for AI search engines including OpenAI Search, Perplexity AI, Claude Search, and Google Gemini / AI Overviews.
+- Authority Building: High-tier editorial digital PR backlinks and industry thought leadership citations.
+
+### C. Performance Marketing & Paid Growth (https://redsan.in/performance-marketing/)
+- Multi-channel performance funnels engineered to maximize blended return on ad spend (ROAS).
+- Granular audience cohort analysis, lookalikes, first-party data enrichment, and retargeting logic.
+
+### D. Google Ads Management (https://redsan.in/google-ads/)
+- High-intent Google Search campaigns with negative keyword sculpting and bidding script automations.
+- Google Shopping, Performance Max (PMax), and YouTube In-Stream buyer acquisition funnels.
+
+### E. Meta Ads Management (https://redsan.in/meta-ads/)
+- Facebook & Instagram ad scaling utilizing high creative velocity (angles, formats, hooks).
+- Server-side Meta Conversions API (CAPI) implementation via Google Tag Manager Server Container for 100% signal recovery post-iOS 14.5.
+
+### F. Social Media Marketing & Video Production (https://redsan.in/social-media-marketing/)
+- Studio-grade short-form video production (Instagram Reels, YouTube Shorts, TikTok/Moj).
+- On-location camera shoots, founder personal branding, UGC creator coordination, and community management.
+
+### G. Website Development & CRO (https://redsan.in/website-development/)
+- Sub-second page load speeds with 95+ Google PageSpeed performance ratings.
+- Custom web applications, startup minimum viable products (MVPs), interactive 3D WebGL experiences, and high-converting landing pages.
+
+### H. AI Marketing & MarTech Automation (https://redsan.in/ai-marketing/)
+- Official WhatsApp Business API automation, smart AI sales agents, and automated lead qualification.
+- LLM prompt engineering, synthetic video generation, automated creative iteration, and CRM workflow pipelines.
+
+---
+
+## 3. Regional Service Hubs & Local Dominance
+- **Dehradun** (https://redsan.in/digital-marketing-agency-dehradun/): Serving Rajpur Road, Jakhan, Ballupur, and the Garhwal commercial zone.
+- **Rishikesh** (https://redsan.in/digital-marketing-agency-rishikesh/): Serving Tapovan, Laxman Jhula, yoga schools, retreats, resorts, and tourism operators.
+- **Noida** (https://redsan.in/digital-marketing-agency-noida/): Serving Sector 62, Sector 18, Noida Expressway, tech corridors, and industrial hubs.
+- **Delhi NCR** (https://redsan.in/digital-marketing-agency-delhi/): Serving Connaught Place, South Delhi, Nehru Place, Netaji Subhash Place, and D2C brands.
+- **Gurugram** (https://redsan.in/digital-marketing-agency-gurugram/): Serving Cyber City, Golf Course Road, Sector 29, and venture-backed startup hubs.
+- **Chandigarh** (https://redsan.in/digital-marketing-agency-chandigarh/): Serving Sector 17, Sector 35, Mohali IT Park, and Panchkula tricity commercial enterprises.
+
+---
+
+## 4. Educational Division & Workshops (https://redsan.in/workshops/)
+- **MarTech Masterclass**: Live 2-day interactive workshop covering Digital Marketing with AI, Entrepreneurship, and Sales Closing.
+- **Access Fee**: Subsidized community pricing of ₹49.
+- **Trained**: Over 500+ undergraduate and graduate students across premier universities including Graphic Era University, DIT University, UPES, and Uttaranchal University.
+
+---
+
+## 5. Official Dispatches & Blog Playbooks (https://redsan.in/blog/)
+- *How to Land a ₹15,000 Client Retainer with One Cold DM* (https://redsan.in/blog/2nd-year-student-15000-retainer/)
+- *Cold DM vs Warm Intro vs Referral: Real Math on Which Converts Fastest* (https://redsan.in/blog/cold-dm-vs-warm-intro-vs-referral/)
+- *The 3-Line Objection Handler We Teach in Every Workshop* (https://redsan.in/blog/3-line-objection-handler/)
+
+---
+
+## 6. Official Contact Channels
+- **Website Inquiries**: https://redsan.in/contact/
+- **WhatsApp Support**: https://wa.me/919664365954
+- **Phone**: +91 9664365954
+- **Email**: redsandigitals@gmail.com
