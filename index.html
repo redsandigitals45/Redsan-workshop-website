@@ -2699,6 +2699,214 @@
     #rsd-cinema .rsd-tagline{ letter-spacing:.5em; padding-left:.5em; }
   }
 
+
+  /* --- ISOLATED SERVICES DROPDOWN & FOOTER DIRECTORY --- */
+  .nav-item-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+  .nav-item-dropdown > .dropdown-trigger {
+    color: rgba(255, 255, 255, 0.85);
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .nav-item-dropdown:hover > .dropdown-trigger,
+  .nav-item-dropdown > .dropdown-trigger.active {
+    color: #ffffff;
+  }
+  .dropdown-arrow {
+    font-size: 10px;
+    transition: transform 0.25s ease;
+    display: inline-block;
+    opacity: 0.7;
+  }
+  .nav-item-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+    opacity: 1;
+    color: var(--red);
+  }
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    width: 660px;
+    background: rgba(11, 11, 12, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    padding: 22px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    z-index: 1000;
+  }
+  .nav-item-dropdown:hover .dropdown-menu,
+  .nav-item-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+  .dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .dropdown-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+  .dropdown-all-link {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.2s;
+  }
+  .dropdown-all-link:hover {
+    color: var(--red);
+  }
+  .dropdown-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 12px;
+  }
+  .dropdown-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid transparent;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .dropdown-item:hover {
+    background: rgba(226, 35, 26, 0.08);
+    border-color: rgba(226, 35, 26, 0.25);
+    transform: translateX(2px);
+  }
+  .dropdown-item-icon {
+    font-size: 18px;
+    line-height: 1.2;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .dropdown-item-title {
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 13px;
+    color: #ffffff;
+    line-height: 1.3;
+  }
+  .dropdown-item-desc {
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.35;
+    margin-top: 2px;
+  }
+
+  /* Mobile Dropdown */
+  .mobile-dropdown-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--line-dark);
+    padding: 13px 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+  }
+  .mobile-dropdown-menu {
+    display: none;
+    flex-direction: column;
+    padding: 6px 0 6px 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    margin: 6px 0;
+  }
+  .mobile-dropdown-menu.open {
+    display: flex;
+  }
+  .mobile-dropdown-menu a {
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 7px 0;
+    border-bottom: none;
+  }
+  .mobile-dropdown-menu a:hover {
+    color: var(--red);
+  }
+
+  /* --- FOOTER DIRECTORY COLUMNS --- */
+  .foot-columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(180px, 1fr));
+    gap: 32px 36px;
+    flex: 1;
+    max-width: 780px;
+  }
+  .foot-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .foot-col-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .foot-col-links {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    font-size: 13.5px;
+  }
+  .foot-col-links a {
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+  }
+  .foot-col-links a:hover {
+    color: #ffffff;
+    transform: translateX(2px);
+  }
+  @media (max-width: 960px) {
+    .foot-columns {
+      grid-template-columns: 1fr 1fr;
+      max-width: 100%;
+    }
+  }
+  @media (max-width: 580px) {
+    .foot-columns {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -2734,6 +2942,73 @@
     <a href="/" class="nav-logo" aria-label="Redsan Digitals Home"><img src="/assets/redsan_logo.png" alt="Redsan Digitals Logo" class="brand-logo-img" width="162" height="38"></a>
     <nav class="nav-links">
       <a href="/" class="active">Home</a>
+      <div class="nav-item-dropdown">
+        <a href="/digital-marketing-agency/" class="dropdown-trigger">Services <span class="dropdown-arrow">▾</span></a>
+        <div class="dropdown-menu">
+          <div class="dropdown-header">
+            <span class="dropdown-eyebrow">Growth Capabilities</span>
+            <a href="/digital-marketing-agency/" class="dropdown-all-link">All Services Overview →</a>
+          </div>
+          <div class="dropdown-grid">
+            <a href="/seo-agency/" class="dropdown-item">
+              <span class="dropdown-item-icon">🔍</span>
+              <div>
+                <div class="dropdown-item-title">SEO, AEO &amp; GEO</div>
+                <div class="dropdown-item-desc">Google search &amp; AI answer engine citations</div>
+              </div>
+            </a>
+            <a href="/performance-marketing/" class="dropdown-item">
+              <span class="dropdown-item-icon">📈</span>
+              <div>
+                <div class="dropdown-item-title">Performance Marketing</div>
+                <div class="dropdown-item-desc">High-ROAS paid acquisition funnels</div>
+              </div>
+            </a>
+            <a href="/google-ads/" class="dropdown-item">
+              <span class="dropdown-item-icon">🎯</span>
+              <div>
+                <div class="dropdown-item-title">Google Ads (PPC)</div>
+                <div class="dropdown-item-desc">Search, Shopping &amp; PMax buyer capture</div>
+              </div>
+            </a>
+            <a href="/meta-ads/" class="dropdown-item">
+              <span class="dropdown-item-icon">⚡</span>
+              <div>
+                <div class="dropdown-item-title">Meta Ads (FB/IG)</div>
+                <div class="dropdown-item-desc">Creative velocity &amp; Conversions API (CAPI)</div>
+              </div>
+            </a>
+            <a href="/social-media-marketing/" class="dropdown-item">
+              <span class="dropdown-item-icon">🎬</span>
+              <div>
+                <div class="dropdown-item-title">Social Media &amp; Video</div>
+                <div class="dropdown-item-desc">Studio-grade Reels, Shorts &amp; grid ops</div>
+              </div>
+            </a>
+            <a href="/website-development/" class="dropdown-item">
+              <span class="dropdown-item-icon">💻</span>
+              <div>
+                <div class="dropdown-item-title">Website Development</div>
+                <div class="dropdown-item-desc">Sub-second speed, custom web apps &amp; MVPs</div>
+              </div>
+            </a>
+            <a href="/ai-marketing/" class="dropdown-item">
+              <span class="dropdown-item-icon">🤖</span>
+              <div>
+                <div class="dropdown-item-title">AI Marketing &amp; MarTech</div>
+                <div class="dropdown-item-desc">WhatsApp bots, automations &amp; prompt flows</div>
+              </div>
+            </a>
+            <a href="/digital-marketing-agency/" class="dropdown-item">
+              <span class="dropdown-item-icon">🚀</span>
+              <div>
+                <div class="dropdown-item-title">Full-Stack Strategy</div>
+                <div class="dropdown-item-desc">End-to-end commercial growth engineering</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
       <a href="/workshops/">Workshop</a>
       <a href="/blog/">Blog</a>
       <a href="#contact">Contact Us</a>
@@ -2744,6 +3019,19 @@
 </header>
 <nav class="mobile-nav" id="mobileNav">
   <a href="/">Home</a>
+  <div class="mobile-dropdown">
+    <button class="mobile-dropdown-toggle" id="mobileServicesToggle" type="button">Services <span>▾</span></button>
+    <div class="mobile-dropdown-menu" id="mobileServicesMenu">
+      <a href="/digital-marketing-agency/">All Services Overview</a>
+      <a href="/seo-agency/">SEO, AEO &amp; GEO</a>
+      <a href="/performance-marketing/">Performance Marketing</a>
+      <a href="/google-ads/">Google Ads</a>
+      <a href="/meta-ads/">Meta Ads</a>
+      <a href="/social-media-marketing/">Social Media &amp; Video</a>
+      <a href="/website-development/">Website Development</a>
+      <a href="/ai-marketing/">AI Marketing &amp; MarTech</a>
+    </div>
+  </div>
   <a href="/workshops/">Workshop</a>
   <a href="/blog/">Blog</a>
   <a href="#contact">Contact Us</a>
@@ -3442,12 +3730,49 @@
         <a href="https://wa.me/919664365954" aria-label="WhatsApp" target="_blank" rel="noopener">WA</a>
       </div>
     </div>
-    <nav class="foot-nav">
-      <a href="/">Home</a>
-      <a href="/workshops/">Workshop</a>
-      <a href="/blog/">Blog</a>
-      <a href="#contact">Contact Us</a>
-    </nav>
+
+    <!-- EXPANDED INTERNAL LINKING DIRECTORY -->
+    <div class="foot-columns">
+      <!-- Col 1: Growth Services -->
+      <div class="foot-col">
+        <div class="foot-col-title">Growth Services</div>
+        <div class="foot-col-links">
+          <a href="/digital-marketing-agency/">Digital Marketing Overview</a>
+          <a href="/seo-agency/">SEO, AEO &amp; GEO Strategy</a>
+          <a href="/performance-marketing/">Performance Marketing</a>
+          <a href="/google-ads/">Google Ads (PPC &amp; PMax)</a>
+          <a href="/meta-ads/">Meta Ads (Facebook &amp; IG)</a>
+          <a href="/social-media-marketing/">Social Media &amp; Video</a>
+          <a href="/website-development/">Website Development &amp; CRO</a>
+          <a href="/ai-marketing/">AI Marketing &amp; MarTech</a>
+        </div>
+      </div>
+
+      <!-- Col 2: Regional Hubs -->
+      <div class="foot-col">
+        <div class="foot-col-title">Locations We Serve</div>
+        <div class="foot-col-links">
+          <a href="/digital-marketing-agency-dehradun/">📍 Dehradun Agency</a>
+          <a href="/digital-marketing-agency-rishikesh/">📍 Rishikesh Agency</a>
+          <a href="/digital-marketing-agency-noida/">📍 Noida Agency</a>
+          <a href="/digital-marketing-agency-delhi/">📍 Delhi NCR Agency</a>
+          <a href="/digital-marketing-agency-gurugram/">📍 Gurugram Agency</a>
+          <a href="/digital-marketing-agency-chandigarh/">📍 Chandigarh Agency</a>
+        </div>
+      </div>
+
+      <!-- Col 3: Ecosystem -->
+      <div class="foot-col">
+        <div class="foot-col-title">Ecosystem</div>
+        <div class="foot-col-links">
+          <a href="/">Home</a>
+          <a href="/workshops/">MarTech Masterclasses (₹49)</a>
+          <a href="/blog/">Dispatches &amp; Case Studies</a>
+          <a href="#contact">Schedule a Growth Session</a>
+          <a href="https://chat.whatsapp.com/FMjPO96CFewCnXEOwwRIF0?s=cl&amp;p=i&amp;mlu=0&amp;amv=2" target="_blank" rel="noopener">Private Founder Community</a>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="wrap foot-bottom">© 2026 Redsan Digitals Pvt. Ltd. All rights reserved.</div>
 </footer>
@@ -3545,6 +3870,14 @@
   const mobileNav = document.getElementById('mobileNav');
   if (navToggle && mobileNav) {
     navToggle.addEventListener('click', () => mobileNav.classList.toggle('open'));
+  }
+  const mobileServicesToggle = document.getElementById('mobileServicesToggle');
+  const mobileServicesMenu = document.getElementById('mobileServicesMenu');
+  if (mobileServicesToggle && mobileServicesMenu) {
+    mobileServicesToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileServicesMenu.classList.toggle('open');
+    });
   }
 </script>
 <script type="importmap">
