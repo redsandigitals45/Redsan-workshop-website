@@ -128,6 +128,99 @@ ul.dropdown-menu > li, .dropdown-menu li { list-style: none !important; margin: 
 ul.dropdown-menu > li > a, .dropdown-menu li a, .dropdown-link { display: block !important; width: 100% !important; box-sizing: border-box !important; padding: 9px 14px !important; font-size: 13.5px !important; font-weight: 500 !important; color: #EEEEEE !important; text-decoration: none !important; white-space: nowrap !important; border-radius: 8px !important; transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease !important; }
 ul.dropdown-menu > li > a:hover, ul.dropdown-menu > li > a:focus-visible, ul.dropdown-menu > li > a.active, .dropdown-link:hover, .dropdown-link:focus-visible, .dropdown-link.active { background: rgba(226, 35, 26, 0.14) !important; color:#F8F8F8 !important; padding-left: 18px !important; }
 </style>
+
+<!-- Blog & Mag Card Styles for Dehradun Page -->
+<style id="dehradun-blog-css">
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.mag-card {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: rgba(18, 18, 22, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  color: #F8F8F8;
+  text-decoration: none;
+}
+.mag-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 34px rgba(240, 0, 0, 0.18);
+  border-color: rgba(240, 0, 0, 0.45);
+}
+.mag-cover {
+  position: relative;
+  height: 140px;
+  background: rgba(8, 8, 10, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.mag-cover.cover-sales { background: linear-gradient(135deg, rgba(240,0,0,0.12), rgba(8,8,10,0.95)); }
+.mag-cover.cover-ai { background: linear-gradient(135deg, rgba(204,0,0,0.12), rgba(8,8,10,0.95)); }
+.mag-cover .cover-icon { font-size: 34px; }
+.crosshair { position: absolute; width: 14px; height: 14px; }
+.crosshair::before, .crosshair::after { content: ""; position: absolute; background: rgba(255, 255, 255, 0.4); }
+.crosshair::before { width: 100%; height: 1px; top: 50%; }
+.crosshair::after { height: 100%; width: 1px; left: 50%; }
+.crosshair.tl { top: 12px; left: 12px; }
+.crosshair.br { bottom: 12px; right: 12px; }
+.flair {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: #F8F8F8;
+  background: rgba(240, 0, 0, 0.85);
+  border-radius: 999px;
+  padding: 3px 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 600;
+}
+.mag-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.mag-body .tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: #F00000;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 600;
+}
+.mag-body h3 {
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 17px;
+  margin: 10px 0 8px;
+  line-height: 1.35;
+  color: #F8F8F8;
+}
+.mag-body p {
+  color: #EEEEEE;
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+</style>
 </head>
 <body>
 <canvas id="space-bg-canvas"></canvas>
@@ -162,6 +255,27 @@ ul.dropdown-menu > li > a:hover, ul.dropdown-menu > li > a:focus-visible, ul.dro
 <nav class="mobile-nav" id="mobileNav">
   <a href="/">Home</a>
   <div class="mobile-dropdown">
+    <button class="mobile-dropdown-toggle" id="mobileServicesToggle" type="button" aria-expanded="false">Services <span>▾</span></button>
+    <div class="mobile-dropdown-menu" id="mobileServicesMenu">
+      <a href="/website-development/">AI Web Design &amp; Development</a>
+      <a href="/seo-agency/">SEO, AEO &amp; GEO Strategy</a>
+      <a href="/performance-marketing/">Performance Marketing</a>
+      <a href="/social-media-marketing/">Social Media Management</a>
+      <a href="/content-creation/">Content Creation</a>
+      <a href="/product-service-shoots/">Product &amp; Service Shoots</a>
+      <a href="/vibe-coding/">Vibe Coding</a>
+      <a href="/startup-growth-consulting/">Startup Growth Consulting</a>
+      <a href="/ai-marketing/">AI Marketing &amp; Automation</a>
+    </div>
+  </div>
+  <a href="/blog/">Blog</a>
+  <a href="/contact/">Contact</a>
+  <a href="/contact/" class="cta">Build My Growth Engine</a>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="bg-mesh-glow"></div>
   <div class="bg-grid-pattern"></div>
   <div class="wrap">
     <div class="breadcrumbs">
@@ -282,6 +396,77 @@ ul.dropdown-menu > li > a:hover, ul.dropdown-menu > li > a:focus-visible, ul.dro
         <p>Stop wasting money showing ads to people who will never buy. We geofence ads to exact neighborhoods in Dehradun or target high-income demographics traveling into Uttarakhand.</p>
         <div style="margin-top:16px;"><a href="/performance-marketing/" style="color:var(--red); font-family:var(--mono); font-size:13px; font-weight:600;">Learn More About Paid Ads →</a></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG & DEHRADUN CLIENT CASE STUDIES -->
+<section class="page-section" id="blog" style="border-top:1px solid rgba(255,255,255,0.08);">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">From the Blog</div>
+      <h2>Guides, Case Studies &amp; Growth Insights</h2>
+      <p>Verified client playbooks, local search strategy, and regional revenue frameworks from our Dehradun team.</p>
+    </div>
+
+    <div class="blog-grid">
+      <!-- Dehradun Client Case Study 1: Doon Resort & Narayani Hospitality -->
+      <a href="/digital-marketing-agency-dehradun/#contact" class="mag-card">
+        <div class="mag-cover cover-sales">
+          <span class="crosshair tl"></span><span class="crosshair br"></span>
+          <div class="cover-icon">🏨</div>
+          <span class="flair">Case Study</span>
+        </div>
+        <div class="mag-body">
+          <div class="tag">Case Study · Dehradun Hub</div>
+          <h3>Case Study: Scaling Doon Resort &amp; Hospitality Inquiries by 280%</h3>
+          <p>How we cut 18% OTA commission dependence for a premier Dehradun resort through local Google Business Profile domination, high-speed mobile booking funnels, and cinematic Reels shoots.</p>
+          <div style="margin-top:16px; font-family:var(--mono); font-size:11px; color:#EEEEEE; display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#F8F8F8; font-weight:600;">₹48L+ Direct Bookings</span>
+            <span style="color:#F00000; font-weight:600;">Inquire Framework →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Dehradun Case Study 2: ₹1.5Cr+ Methodology & Attribution -->
+      <a href="/blog/1-5cr-growth-milestone-methodology/" class="mag-card">
+        <div class="mag-cover cover-sales">
+          <span class="crosshair tl"></span><span class="crosshair br"></span>
+          <div class="cover-icon">📊</div>
+          <span class="flair">Methodology</span>
+        </div>
+        <div class="mag-body">
+          <div class="tag">Attribution Framework · Dehradun</div>
+          <h3>The ₹1.5Cr+ Growth Milestone Methodology &amp; Attribution Framework</h3>
+          <p>The exact data architecture, CRM event tracking, and local cohort attribution model behind ₹1.5Cr+ in tracked pipeline for Uttarakhand businesses.</p>
+          <div style="margin-top:16px; font-family:var(--mono); font-size:11px; color:#EEEEEE; display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#F8F8F8; font-weight:600;">₹1.5Cr+ Milestone</span>
+            <span style="color:#F00000; font-weight:600;">Read Teardown →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Dehradun Guide 3: SEO vs GEO Strategy -->
+      <a href="/blog/seo-vs-geo-whats-the-difference/" class="mag-card">
+        <div class="mag-cover cover-ai">
+          <span class="crosshair tl"></span><span class="crosshair br"></span>
+          <div class="cover-icon">🔍</div>
+          <span class="flair">Guide</span>
+        </div>
+        <div class="mag-body">
+          <div class="tag">Guide · SEO &amp; AI Search</div>
+          <h3>SEO vs GEO: What's the Difference and Why You Need Both</h3>
+          <p>Traditional search optimization isn't dead, but Generative Engine Optimization is transforming discovery across Google AI Overviews and ChatGPT Search for Dehradun brands.</p>
+          <div style="margin-top:16px; font-family:var(--mono); font-size:11px; color:#EEEEEE; display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#F8F8F8; font-weight:600;">Local 3-Pack &amp; AI</span>
+            <span style="color:#F00000; font-weight:600;">Read Guide →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div style="text-align:center; margin-top:36px;">
+      <a href="/blog/" class="btn btn-ghost" style="display:inline-flex; align-items:center; gap:8px;">View All Dispatches on The RedSan Journal →</a>
     </div>
   </div>
 </section>
