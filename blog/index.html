@@ -51,15 +51,15 @@
 .nav-inner { display: flex !important; align-items: center !important; justify-content: space-between !important; height: 76px !important; }
 .nav-links { display: flex !important; align-items: center !important; gap: 32px !important; font-size: 14px !important; font-weight: 600 !important; }
 .nav-item-dropdown { position: relative !important; display: inline-flex !important; align-items: center !important; background: transparent !important; border: none !important; box-shadow: none !important; }
-.dropdown-trigger, .nav-item-dropdown > .dropdown-trigger, button.dropdown-trigger { all: unset !important; box-sizing: border-box !important; position: relative !important; display: inline-flex !important; align-items: center !important; gap: 6px !important; cursor: pointer !important; font-family: inherit !important; font-size: 14px !important; font-weight: 600 !important; padding: 8px 0 !important; color: rgba(255, 255, 255, 0.85) !important; background: transparent !important; background-color: transparent !important; border: none !important; outline: none !important; box-shadow: none !important; text-shadow: none !important; -webkit-appearance: none !important; -moz-appearance: none !important; appearance: none !important; -webkit-tap-highlight-color: transparent !important; }
+.dropdown-trigger, .nav-item-dropdown > .dropdown-trigger, button.dropdown-trigger { all: unset !important; box-sizing: border-box !important; position: relative !important; display: inline-flex !important; align-items: center !important; gap: 6px !important; cursor: pointer !important; font-family: inherit !important; font-size: 14px !important; font-weight: 600 !important; padding: 8px 0 !important; color: #EEEEEE !important; background: transparent !important; background-color: transparent !important; border: none !important; outline: none !important; box-shadow: none !important; text-shadow: none !important; -webkit-appearance: none !important; -moz-appearance: none !important; appearance: none !important; -webkit-tap-highlight-color: transparent !important; }
 .dropdown-arrow { font-size: 10px !important; transition: transform 0.25s ease !important; display: inline-block !important; opacity: 0.7 !important; }
-.nav-item-dropdown:hover .dropdown-arrow, .nav-item-dropdown.is-open .dropdown-arrow { transform: rotate(180deg) !important; opacity: 1 !important; color: #e2231a !important; }
+.nav-item-dropdown:hover .dropdown-arrow, .nav-item-dropdown.is-open .dropdown-arrow { transform: rotate(180deg) !important; opacity: 1 !important; color:#F00000 !important; }
 ul.dropdown-menu, .dropdown-menu { position: absolute !important; top: calc(100% + 4px) !important; left: 0 !important; width: 250px !important; min-width: 250px !important; max-width: 280px !important; box-sizing: border-box !important; margin: 0 !important; padding: 8px !important; list-style: none !important; background: #0B0B0E !important; background: rgba(11, 11, 14, 0.98) !important; backdrop-filter: blur(24px) !important; -webkit-backdrop-filter: blur(24px) !important; border: 1px solid rgba(255, 255, 255, 0.12) !important; border-radius: 12px !important; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05) !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; transform: translateY(6px) !important; transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s !important; z-index: 100000 !important; display: flex !important; flex-direction: column !important; gap: 2px !important; text-align: left !important; }
 .dropdown-menu::before { content: "" !important; position: absolute !important; top: -12px !important; left: 0 !important; right: 0 !important; height: 14px !important; background: transparent !important; }
 .nav-item-dropdown:hover .dropdown-menu, .nav-item-dropdown.is-open .dropdown-menu { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; transform: translateY(0) !important; }
 ul.dropdown-menu > li, .dropdown-menu li { list-style: none !important; margin: 0 !important; padding: 0 !important; display: block !important; width: 100% !important; box-sizing: border-box !important; }
-ul.dropdown-menu > li > a, .dropdown-menu li a, .dropdown-link { display: block !important; width: 100% !important; box-sizing: border-box !important; padding: 9px 14px !important; font-size: 13.5px !important; font-weight: 500 !important; color: rgba(255, 255, 255, 0.82) !important; text-decoration: none !important; white-space: nowrap !important; border-radius: 8px !important; transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease !important; }
-ul.dropdown-menu > li > a:hover, ul.dropdown-menu > li > a.active, .dropdown-link:hover, .dropdown-link.active { background: rgba(226, 35, 26, 0.14) !important; color: #ffffff !important; padding-left: 18px !important; }
+ul.dropdown-menu > li > a, .dropdown-menu li a, .dropdown-link { display: block !important; width: 100% !important; box-sizing: border-box !important; padding: 9px 14px !important; font-size: 13.5px !important; font-weight: 500 !important; color: #EEEEEE !important; text-decoration: none !important; white-space: nowrap !important; border-radius: 8px !important; transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease !important; }
+ul.dropdown-menu > li > a:hover, ul.dropdown-menu > li > a.active, .dropdown-link:hover, .dropdown-link.active { background: rgba(226, 35, 26, 0.14) !important; color:#F8F8F8 !important; padding-left: 18px !important; }
 </style>
 </head>
 <body>
@@ -120,7 +120,7 @@ ul.dropdown-menu > li > a:hover, ul.dropdown-menu > li > a.active, .dropdown-lin
   <h1>The RedSan <span class="red">Journal</span></h1>
   <p class="masthead-sub">Marketing, search, advertising, technology and growth without the fluff. Actionable teardowns, verified client playbooks, and strategic perspectives from the RedSan growth team.</p>
   <div style="margin-top: 14px; position: relative; max-width: 440px;">
-   <input type="text" id="blogSearchInput" placeholder="Search guides, case studies, topics..." style="width:100%; padding: 11px 20px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); color: #fff; font-size: 14px; font-family: inherit; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#e2231a'" onblur="this.style.borderColor='rgba(255,255,255,0.18)'">
+   <input type="text" id="blogSearchInput" placeholder="Search guides, case studies, topics..." style="width:100%; padding: 11px 20px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); color:#F8F8F8; font-size: 14px; font-family: inherit; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#F00000'" onblur="this.style.borderColor='rgba(255,255,255,0.18)'">
   </div>
  </div>
 </section>
@@ -1003,7 +1003,7 @@ ul.dropdown-menu > li > a:hover, ul.dropdown-menu > li > a.active, .dropdown-lin
     <div class="foot-contact-quick">
      <a href="mailto:redsandigitals@gmail.com">✉️ redsandigitals@gmail.com</a>
      <a href="tel:+919664365954">📞 +91 9664365954</a>
-     <a href="https://wa.me/919664365954" target="_blank" rel="noopener" style="color:#25D366;">💬 WhatsApp Us Directly</a>
+     <a href="https://wa.me/919664365954" target="_blank" rel="noopener" style="color:#EEEEEE;">💬 WhatsApp Us Directly</a>
     </div>
    </div>
 
