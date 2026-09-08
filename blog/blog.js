@@ -50,31 +50,43 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Category filter chips
-  var chips = document.querySelectorAll('.chip');
+  // Category & Location filter chips
+  var topicChips = document.querySelectorAll('#blogFilter .chip');
+  var locationChips = document.querySelectorAll('#locationFilter .chip');
   var cards = document.querySelectorAll('.mag-card');
   var emptyState = document.getElementById('blogEmpty');
   var blogSearchInput = document.getElementById('blogSearchInput');
 
   function applyFilters() {
-    var activeChip = document.querySelector('.chip.active');
-    var filter = activeChip ? activeChip.getAttribute('data-filter') : 'all';
+    var activeTopic = document.querySelector('#blogFilter .chip.active');
+    var topicFilter = activeTopic ? activeTopic.getAttribute('data-filter') : 'all';
+
+    var activeLoc = document.querySelector('#locationFilter .chip.active');
+    var locFilter = activeLoc ? activeLoc.getAttribute('data-location') : 'all';
+
     var query = blogSearchInput ? blogSearchInput.value.trim().toLowerCase() : '';
     var visible = 0;
 
     cards.forEach(function (card) {
       var cardCat = (card.getAttribute('data-category') || '').trim();
       var cardCats = cardCat.split(/\s+/);
-      var matchesCategory = (
-        filter === 'all' ||
-        cardCats.indexOf(filter) !== -1 ||
-        (filter === 'ai-marketing-news' && (cardCats.indexOf('news') !== -1 || cardCats.indexOf('ai-marketing-news') !== -1)) ||
-        (filter === 'news' && (cardCats.indexOf('news') !== -1 || cardCats.indexOf('ai-marketing-news') !== -1))
+
+      var matchesTopic = (
+        topicFilter === 'all' ||
+        cardCats.indexOf(topicFilter) !== -1 ||
+        (topicFilter === 'ai-marketing-news' && (cardCats.indexOf('news') !== -1 || cardCats.indexOf('ai-marketing-news') !== -1)) ||
+        (topicFilter === 'news' && (cardCats.indexOf('news') !== -1 || cardCats.indexOf('ai-marketing-news') !== -1))
       );
+
+      var matchesLocation = (
+        locFilter === 'all' ||
+        cardCats.indexOf(locFilter) !== -1
+      );
+
       var textContent = card.innerText.toLowerCase();
       var matchesSearch = !query || textContent.indexOf(query) !== -1;
 
-      var show = matchesCategory && matchesSearch;
+      var show = matchesTopic && matchesLocation && matchesSearch;
       card.style.display = show ? 'flex' : 'none';
       if (show) visible++;
     });
@@ -82,9 +94,17 @@ document.addEventListener('DOMContentLoaded', function () {
     if (emptyState) emptyState.style.display = visible === 0 ? 'block' : 'none';
   }
 
-  chips.forEach(function (chip) {
+  topicChips.forEach(function (chip) {
     chip.addEventListener('click', function () {
-      chips.forEach(function (c) { c.classList.remove('active'); });
+      topicChips.forEach(function (c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      applyFilters();
+    });
+  });
+
+  locationChips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      locationChips.forEach(function (c) { c.classList.remove('active'); });
       chip.classList.add('active');
       applyFilters();
     });
