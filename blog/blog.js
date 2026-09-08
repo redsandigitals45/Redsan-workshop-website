@@ -63,7 +63,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var visible = 0;
 
     cards.forEach(function (card) {
-      var matchesCategory = (filter === 'all' || card.getAttribute('data-category') === filter);
+      var cardCat = (card.getAttribute('data-category') || '').trim();
+      var cardCats = cardCat.split(/\s+/);
+      var matchesCategory = (
+        filter === 'all' ||
+        cardCats.indexOf(filter) !== -1 ||
+        (filter === 'ai-marketing-news' && (cardCats.indexOf('news') !== -1 || cardCats.indexOf('ai-marketing-news') !== -1)) ||
+        (filter === 'news' && (cardCats.indexOf('news') !== -1 || cardCats.indexOf('ai-marketing-news') !== -1))
+      );
       var textContent = card.innerText.toLowerCase();
       var matchesSearch = !query || textContent.indexOf(query) !== -1;
 
