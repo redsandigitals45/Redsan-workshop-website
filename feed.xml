@@ -5,13 +5,22 @@
     <link>https://redsan.in/blog/</link>
     <description>Actionable teardowns, verified client playbooks, and strategic perspectives on Web Engineering, SEO, GEO, and Performance Marketing from RedSan Digitals.</description>
     <language>en-in</language>
-    <lastBuildDate>Wed, 09 Sep 2026 05:35:00 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 22:40:00 +0530</lastBuildDate>
     <atom:link href="https://redsan.in/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://redsan.in/assets/redsan_logo.png</url>
       <title>RedSan Digitals</title>
       <link>https://redsan.in/</link>
     </image>
+    <item>
+      <title><![CDATA[Google Ads vs Meta Ads: Which Is Right for Your Business in 2026?]]></title>
+      <link>https://redsan.in/blog/google-ads-vs-meta-ads/</link>
+      <guid isPermaLink="true">https://redsan.in/blog/google-ads-vs-meta-ads/</guid>
+      <description><![CDATA[Real campaign numbers in INR, real client outcomes, and a diagnostic questionnaire to help new business owners pick the right paid ad channel.]]></description>
+      <category>Guides</category>
+      <pubDate>Wed, 09 Sep 2026 22:30:00 +0530</pubDate>
+      <enclosure url="https://redsan.in/assets/google-ads-vs-meta-ads-paid-advertising-2026-redsan.webp" type="image/webp" length="0" />
+    </item>
     <item>
       <title><![CDATA[How Much Does a Business Website Cost in India in 2026?]]></title>
       <link>https://redsan.in/blog/how-much-does-a-business-website-cost-in-india-2026/</link>
@@ -44,7 +53,7 @@
       <link>https://redsan.in/blog/googles-ai-overviews-impact-on-search/</link>
       <guid isPermaLink="true">https://redsan.in/blog/googles-ai-overviews-impact-on-search/</guid>
       <description><![CDATA[How AI Overviews are shifting search behavior and what Indian companies must do to safeguard organic visibility.]]></description>
-      <category>AI & Marketing News</category>
+      <category>AI &amp; Marketing News</category>
       <pubDate>Wed, 26 Aug 2026 00:00:00 +0530</pubDate>
       <enclosure url="https://redsan.in/assets/redsan_logo.png" type="image/webp" length="0" />
     </item>
@@ -56,16 +65,7 @@
       <category>Case Studies</category>
       <pubDate>Sat, 22 Aug 2026 00:00:00 +0530</pubDate>
       <enclosure url="https://redsan.in/assets/redsan_logo.png" type="image/webp" length="0" />
-    </item>
-    <item>
-      <title><![CDATA[Google Ads vs Meta Ads: Which Channel Is Right for Your Business?]]></title>
-      <link>https://redsan.in/blog/google-ads-vs-meta-ads/</link>
-      <guid isPermaLink="true">https://redsan.in/blog/google-ads-vs-meta-ads/</guid>
-      <description><![CDATA[Intent versus attention: how to allocate your paid advertising budget for maximum return on ad spend.]]></description>
-      <category>Guides</category>
-      <pubDate>Tue, 18 Aug 2026 00:00:00 +0530</pubDate>
-      <enclosure url="https://redsan.in/assets/redsan_logo.png" type="image/webp" length="0" />
-    </item>
+    </item>
     <item>
       <title><![CDATA[SEO vs GEO: What's the Difference and Why You Need Both]]></title>
       <link>https://redsan.in/blog/seo-vs-geo-whats-the-difference/</link>
