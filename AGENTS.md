@@ -58,7 +58,10 @@ Every article under `blog/<slug>/index.html` MUST follow this identical structur
 - **STRICT EXCEPTION / CONSTRAINT**:
   - **DO NOT MODIFY Instagram Cards on Blog Page**: All `.ig-post-card` articles inside `#blogGrid` on `blog/index.html` must remain strictly untouched.
 
-## Design Constraints
+## Global Content & Typography Standards
+- **STRICT PROHIBITION: Zero Em-Dashes (`—`) Anywhere Across the Entire Website**:
+  - Never use em-dashes (`—` or `&mdash;`) in any content across the website, including the homepage, landing pages, blog posts, service pages, case studies, hero sections, meta titles, descriptions, RSS feeds, or JSON-LD schema.
+  - Always use clean alternatives: hyphens with spaces (` - `), colons (`:`), commas, parentheses, or clear sentence structure.
 - Always preserve the strict 5-hex color palette: `#F8F8F8`, `#EEEEEE`, `#F00000`, `#CC0000`, `#111111`.
 - Always specify explicit `width`, `height`, `loading="lazy"`, and `decoding="async"` on all images to prevent Cumulative Layout Shift (CLS).
-- Never use em-dashes (`—`) anywhere in blog post content.
+
