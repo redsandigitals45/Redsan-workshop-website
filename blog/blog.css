@@ -422,117 +422,6 @@ h3, h4 {
   }
 }
 
-.hero-subcards-grid .mag-card {
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 16px !important;
-  overflow: hidden !important;
-  display: block !important;
-  background: rgba(18, 18, 22, 0.72) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease !important;
-  color: #fff !important;
-  text-decoration: none !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55) !important;
-}
-.hero-subcards-grid .mag-card:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 18px 34px rgba(226, 35, 26, 0.18) !important;
-  border-color: rgba(226, 35, 26, 0.45) !important;
-}
-.hero-subcards-grid .mag-cover {
-  position: relative !important;
-  width: 100% !important;
-  aspect-ratio: 16 / 10 !important;
-  min-height: 185px !important;
-  background: rgba(8, 8, 10, 0.95) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  overflow: hidden !important;
-}
-.hero-subcards-grid .mag-cover img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  position: absolute !important;
-  inset: 0 !important;
-  display: block !important;
-  transition: transform .4s ease !important;
-}
-.hero-subcards-grid .mag-card:hover .mag-cover img {
-  transform: scale(1.05) !important;
-}
-.hero-subcards-grid .crosshair {
-  position: absolute !important;
-  width: 16px !important;
-  height: 16px !important;
-  z-index: 2 !important;
-}
-.hero-subcards-grid .crosshair::before,
-.hero-subcards-grid .crosshair::after {
-  content: "" !important;
-  position: absolute !important;
-  background: rgba(255, 255, 255, 0.5) !important;
-}
-.hero-subcards-grid .crosshair::before {
-  width: 100% !important;
-  height: 1px !important;
-  top: 50% !important;
-}
-.hero-subcards-grid .crosshair::after {
-  height: 100% !important;
-  width: 1px !important;
-  left: 50% !important;
-}
-.hero-subcards-grid .crosshair.tl {
-  top: 14px !important;
-  left: 14px !important;
-}
-.hero-subcards-grid .crosshair.br {
-  bottom: 14px !important;
-  right: 14px !important;
-}
-.hero-subcards-grid .flair {
-  position: absolute !important;
-  top: 14px !important;
-  right: 14px !important;
-  left: auto !important;
-  font-family: 'Roboto Mono', monospace !important;
-  font-size: 10px !important;
-  color: var(--red) !important;
-  background: rgba(226, 35, 26, 0.16) !important;
-  padding: 4px 9px !important;
-  border-radius: 100px !important;
-  text-transform: uppercase !important;
-  letter-spacing: .06em !important;
-  z-index: 2 !important;
-}
-.hero-subcards-grid .mag-body {
-  padding: 22px !important;
-}
-.hero-subcards-grid .mag-body .tag {
-  font-family: 'Roboto Mono', monospace !important;
-  font-size: 11px !important;
-  color: var(--red) !important;
-  text-transform: uppercase !important;
-  letter-spacing: .06em !important;
-}
-.hero-subcards-grid .mag-body h3 {
-  font-family: 'DM Sans', sans-serif !important;
-  font-weight: 700 !important;
-  font-size: 17px !important;
-  margin: 10px 0 8px !important;
-  line-height: 1.35 !important;
-  color: #fff !important;
-}
-.hero-subcards-grid .mag-body p {
-  color: rgba(255, 255, 255, 0.65) !important;
-  font-size: 14px !important;
-  line-height: 1.5 !important;
-  margin: 0 !important;
-}
 
 .trending-card {
   display: flex;
@@ -1369,10 +1258,8 @@ footer { padding: 56px 0 32px; border-top: 1px solid var(--border); }
 .post-share a:hover { border-color: var(--red); color: var(--red); }
 /* ---------- RELATED POSTS (KEEP READING THE JOURNAL) ---------- */
 .related {
-  max-width: 1180px;
-  margin: 70px auto 0;
-  padding: 0 24px;
-  box-sizing: border-box;
+  padding: 70px 0 20px;
+  border-top: 1px dashed var(--border);
 }
 .related .section-label {
   font-family: 'Roboto Mono', monospace;
@@ -1382,23 +1269,30 @@ footer { padding: 56px 0 32px; border-top: 1px solid var(--border); }
   letter-spacing: .08em;
   margin-bottom: 24px;
 }
-.related .mag-grid {
+
+/* ===== BLOG SPEC CARDS (HOMEPAGE MOTIF: .blog-grid & .mag-card) ===== */
+.blog-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 26px;
   align-items: stretch;
 }
 @media (max-width: 900px) {
+  .blog-grid,
+  .related .blog-grid,
   .related .mag-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 }
 
+.blog-grid .mag-card,
+.hero-subcards-grid .mag-card,
 .related .mag-card {
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 16px !important;
   overflow: hidden !important;
-  display: block !important;
+  display: flex !important;
+  flex-direction: column !important;
   background: rgba(18, 18, 22, 0.72) !important;
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
@@ -1406,12 +1300,18 @@ footer { padding: 56px 0 32px; border-top: 1px solid var(--border); }
   color: #fff !important;
   text-decoration: none !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55) !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
 }
+.blog-grid .mag-card:hover,
+.hero-subcards-grid .mag-card:hover,
 .related .mag-card:hover {
   transform: translateY(-4px) !important;
   box-shadow: 0 18px 34px rgba(226, 35, 26, 0.18) !important;
   border-color: rgba(226, 35, 26, 0.45) !important;
 }
+.blog-grid .mag-cover,
+.hero-subcards-grid .mag-cover,
 .related .mag-cover {
   position: relative !important;
   width: 100% !important;
@@ -1422,7 +1322,10 @@ footer { padding: 56px 0 32px; border-top: 1px solid var(--border); }
   align-items: center !important;
   justify-content: center !important;
   overflow: hidden !important;
+  flex-shrink: 0 !important;
 }
+.blog-grid .mag-cover img,
+.hero-subcards-grid .mag-cover img,
 .related .mag-cover img {
   width: 100% !important;
   height: 100% !important;
@@ -1433,39 +1336,68 @@ footer { padding: 56px 0 32px; border-top: 1px solid var(--border); }
   display: block !important;
   transition: transform .4s ease !important;
 }
+.blog-grid .mag-card:hover .mag-cover img,
+.hero-subcards-grid .mag-card:hover .mag-cover img,
 .related .mag-card:hover .mag-cover img {
   transform: scale(1.05) !important;
 }
+
+/* Crosshairs: Exact Reticle Plus Sign Motif */
+.blog-grid .crosshair,
+.hero-subcards-grid .crosshair,
 .related .crosshair {
   position: absolute !important;
   width: 16px !important;
   height: 16px !important;
+  border: none !important;
   z-index: 2 !important;
 }
+.blog-grid .crosshair::before,
+.blog-grid .crosshair::after,
+.hero-subcards-grid .crosshair::before,
+.hero-subcards-grid .crosshair::after,
 .related .crosshair::before,
 .related .crosshair::after {
   content: "" !important;
   position: absolute !important;
   background: rgba(255, 255, 255, 0.5) !important;
 }
+.blog-grid .crosshair::before,
+.hero-subcards-grid .crosshair::before,
 .related .crosshair::before {
   width: 100% !important;
   height: 1px !important;
   top: 50% !important;
+  left: 0 !important;
+  border: none !important;
 }
+.blog-grid .crosshair::after,
+.hero-subcards-grid .crosshair::after,
 .related .crosshair::after {
   height: 100% !important;
   width: 1px !important;
   left: 50% !important;
+  top: 0 !important;
+  border: none !important;
 }
+.blog-grid .crosshair.tl,
+.hero-subcards-grid .crosshair.tl,
 .related .crosshair.tl {
   top: 14px !important;
   left: 14px !important;
+  border: none !important;
 }
+.blog-grid .crosshair.br,
+.hero-subcards-grid .crosshair.br,
 .related .crosshair.br {
   bottom: 14px !important;
   right: 14px !important;
+  border: none !important;
 }
+
+/* Flair Badge */
+.blog-grid .flair,
+.hero-subcards-grid .flair,
 .related .flair {
   position: absolute !important;
   top: 14px !important;
@@ -1481,9 +1413,19 @@ footer { padding: 56px 0 32px; border-top: 1px solid var(--border); }
   letter-spacing: .06em !important;
   z-index: 2 !important;
 }
+
+/* Content Area */
+.blog-grid .mag-body,
+.hero-subcards-grid .mag-body,
 .related .mag-body {
   padding: 22px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  box-sizing: border-box !important;
 }
+.blog-grid .mag-body .tag,
+.hero-subcards-grid .mag-body .tag,
 .related .mag-body .tag {
   font-family: 'Roboto Mono', monospace !important;
   font-size: 11px !important;
@@ -1491,6 +1433,8 @@ footer { padding: 56px 0 32px; border-top: 1px solid var(--border); }
   text-transform: uppercase !important;
   letter-spacing: .06em !important;
 }
+.blog-grid .mag-body h3,
+.hero-subcards-grid .mag-body h3,
 .related .mag-body h3 {
   font-family: 'DM Sans', sans-serif !important;
   font-weight: 700 !important;
@@ -1499,6 +1443,8 @@ footer { padding: 56px 0 32px; border-top: 1px solid var(--border); }
   line-height: 1.35 !important;
   color: #fff !important;
 }
+.blog-grid .mag-body p,
+.hero-subcards-grid .mag-body p,
 .related .mag-body p {
   color: rgba(255, 255, 255, 0.65) !important;
   font-size: 14px !important;
