@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>The RedSan Journal — Growth, Web &amp; Marketing Intelligence</title>
+    <link>https://redsan.in/blog/</link>
+    <description>Actionable teardowns, verified client playbooks, and strategic perspectives on Web Engineering, SEO, GEO, and Performance Marketing from RedSan Digitals.</description>
+    <language>en-in</language>
+    <lastBuildDate>Wed, 09 Sep 2026 05:35:00 +0530</lastBuildDate>
+    <atom:link href="https://redsan.in/feed.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://redsan.in/assets/redsan_logo.png</url>
+      <title>RedSan Digitals</title>
+      <link>https://redsan.in/</link>
+    </image>
+    <item>
+      <title><![CDATA[How Much Does a Business Website Cost in India in 2026?]]></title>
+      <link>https://redsan.in/blog/how-much-does-a-business-website-cost-in-india-2026/</link>
+      <guid isPermaLink="true">https://redsan.in/blog/how-much-does-a-business-website-cost-in-india-2026/</guid>
+      <description><![CDATA[Find realistic website cost ranges in India for 2026: small business, e‑commerce, and custom web apps, with breakdowns, hidden costs, and credible sources.]]></description>
+      <category>Web Development</category>
+      <pubDate>Wed, 09 Sep 2026 00:00:00 +0530</pubDate>
+      <enclosure url="https://redsan.in/assets/business-website-cost-dehradun-2026-redsan.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[The ₹1.5Cr+ Growth Milestone Methodology & Attribution Framework]]></title>
+      <link>https://redsan.in/blog/1-5cr-growth-milestone-methodology/</link>
+      <guid isPermaLink="true">https://redsan.in/blog/1-5cr-growth-milestone-methodology/</guid>
+      <description><![CDATA[The exact data tracking, CRM infrastructure, and multi-channel attribution model behind scaling client revenue past ₹1.5Cr+.]]></description>
+      <category>Methodology</category>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 +0530</pubDate>
+      <enclosure url="https://redsan.in/assets/redsan_logo.png" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[10 Costly Marketing Mistakes Indian Businesses Make in 2026]]></title>
+      <link>https://redsan.in/blog/10-marketing-mistakes-indian-businesses-make/</link>
+      <guid isPermaLink="true">https://redsan.in/blog/10-marketing-mistakes-indian-businesses-make/</guid>
+      <description><![CDATA[From burning ad spend without attribution to neglecting local search authority, here are 10 avoidable marketing traps.]]></description>
+      <category>Insights</category>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 +0530</pubDate>
+      <enclosure url="https://redsan.in/assets/redsan_logo.png" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[Google's AI Overviews: Impact on Indian Business Search & Traffic]]></title>
+      <link>https://redsan.in/blog/googles-ai-overviews-impact-on-search/</link>
+      <guid isPermaLink="true">https://redsan.in/blog/googles-ai-overviews-impact-on-search/</guid>
+      <description><![CDATA[How AI Overviews are shifting search behavior and what Indian companies must do to safeguard organic visibility.]]></description>
+      <category>AI & Marketing News</category>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0530</pubDate>
+      <enclosure url="https://redsan.in/assets/redsan_logo.png" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[Case Study: Scaling a D2C Brand's Monthly Revenue by 340%]]></title>
+      <link>https://redsan.in/blog/how-redsan-helped-d2c-brand-scale-revenue/</link>
+      <guid isPermaLink="true">https://redsan.in/blog/how-redsan-helped-d2c-brand-scale-revenue/</guid>
+      <description><![CDATA[Inside the 90-day playbook that took a home decor brand from ₹4L to ₹17.6L/month with a 3.8x blended ROAS.]]></description>
+      <category>Case Studies</category>
+      <pubDate>Sat, 22 Aug 2026 00:00:00 +0530</pubDate>
+      <enclosure url="https://redsan.in/assets/redsan_logo.png" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[Google Ads vs Meta Ads: Which Channel Is Right for Your Business?]]></title>
+      <link>https://redsan.in/blog/google-ads-vs-meta-ads/</link>
+      <guid isPermaLink="true">https://redsan.in/blog/google-ads-vs-meta-ads/</guid>
+      <description><![CDATA[Intent versus attention: how to allocate your paid advertising budget for maximum return on ad spend.]]></description>
+      <category>Guides</category>
+      <pubDate>Tue, 18 Aug 2026 00:00:00 +0530</pubDate>
+      <enclosure url="https://redsan.in/assets/redsan_logo.png" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title><![CDATA[SEO vs GEO: What's the Difference and Why You Need Both]]></title>
+      <link>https://redsan.in/blog/seo-vs-geo-whats-the-difference/</link>
+      <guid isPermaLink="true">https://redsan.in/blog/seo-vs-geo-whats-the-difference/</guid>
+      <description><![CDATA[A strategic breakdown of traditional search engine optimization vs Generative Engine Optimization for modern businesses.]]></description>
+      <category>Guides</category>
+      <pubDate>Mon, 10 Aug 2026 00:00:00 +0530</pubDate>
+      <enclosure url="https://redsan.in/assets/redsan_logo.png" type="image/webp" length="0" />
+    </item>
+  </channel>
+</rss>
