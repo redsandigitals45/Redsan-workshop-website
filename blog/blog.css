@@ -50,7 +50,7 @@ html { scroll-behavior: smooth; }
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
   display: block;
 }
@@ -63,7 +63,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.nav, .masthead, .editorial-hero, .mag-shelf, .post-hero, .post-article, .post-cta, footer, .wa-float, .quote-strip, .newsletter-band {
+.nav, .masthead, .editorial-hero, .mag-shelf, .post-hero, .post-body, .post-share, .related, .final-cta, .post-article, .post-cta, footer, .wa-float, .quote-strip, .newsletter-band {
   position: relative;
   z-index: 1;
 }
