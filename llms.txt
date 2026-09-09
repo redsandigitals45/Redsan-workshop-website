@@ -26,7 +26,7 @@
 
 ## The RedSan Journal: Commercial Insights & Case Studies
 - [The RedSan Journal Hub](https://redsan.in/blog/): Actionable marketing insights, commercial guides, news analysis, and agency case studies.
-- [SEO vs GEO: What's the Difference and Why Does it Matter?](https://redsan.in/blog/seo-vs-geo-whats-the-difference/): Strategic guide on ranking in traditional search and AI answer engines.
+- [SEO vs AEO vs GEO: What's the Difference in 2026?](https://redsan.in/blog/seo-vs-geo-whats-the-difference/): Strategic guide on ranking in traditional search, winning answer engines, and generative AI engine citations.
 - [How Much Does a Business Website Cost in India (2026)?](https://redsan.in/blog/how-much-does-a-business-website-cost-in-india-2026/): Comprehensive commercial cost breakdown for corporate websites and web apps.
 - [Google Ads vs Meta Ads: Which Is Right for Your Business in 2026?](https://redsan.in/blog/google-ads-vs-meta-ads/): Real campaign numbers in INR, client outcomes, and a diagnostic questionnaire to pick the right paid ad channel.
 - [Case Study: How RedSan Scaled a D2C Brand by 340%](https://redsan.in/blog/how-redsan-helped-d2c-brand-scale-revenue/): Breakdown of creative velocity, tracking hygiene, and full-funnel CRO.
