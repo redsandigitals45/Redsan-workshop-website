@@ -299,11 +299,28 @@ h3, h4 {
   box-shadow: 0 14px 34px rgba(226, 35, 26, 0.2);
 }
 .trending-cover {
-  height: 120px;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 175px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  background: #0d0d10;
+}
+.trending-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.trending-card:hover .trending-cover img {
+  transform: scale(1.05);
 }
 
 .hero-main-card {
@@ -325,11 +342,28 @@ h3, h4 {
   box-shadow: 0 18px 40px rgba(226, 35, 26, 0.22);
 }
 .hero-main-cover {
-  height: 220px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 240px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  background: #0d0d10;
+}
+.hero-main-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.hero-main-card:hover .hero-main-cover img {
+  transform: scale(1.05);
 }
 .hero-main-body {
   padding: 24px 22px;
@@ -789,9 +823,32 @@ h3, h4 {
   text-transform: uppercase;
 }
 
-/* Fallback for legacy mag-card markup if loaded dynamically */
-.mag-cover { position: relative; height: 160px; display: flex; align-items: center; justify-content: center; }
-.mag-cover .cover-icon { font-size: 38px; }
+/* Mag Card Frame (Home, Archive & Keep Reading The Journal) */
+.mag-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 180px;
+  background: #0d0d10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.mag-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.mag-card:hover .mag-cover img {
+  transform: scale(1.05);
+}
+.mag-cover .cover-icon { font-size: 38px; position: relative; z-index: 1; }
 .flair {
   position: absolute; top: 14px; left: 14px;
   font-family: 'Roboto Mono', monospace; font-size: 11px; font-weight: 600;
@@ -970,6 +1027,63 @@ footer { padding: 56px 0 32px; border-top: 1px solid var(--border); }
 }
 
 /* ---------- SINGLE POST ---------- */
+/* Breadcrumbs */
+.post-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px;
+  color: #888888;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.post-breadcrumbs a {
+  color: #888888;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.post-breadcrumbs a:hover {
+  color: var(--red);
+}
+.post-breadcrumbs .crumb-sep {
+  color: #555555;
+  font-size: 11px;
+}
+.post-breadcrumbs .crumb-current {
+  color: #F8F8F8;
+  font-weight: 500;
+}
+
+/* Featured Media Frame */
+.featured-media-frame {
+  margin: 36px 0 32px;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #08080a;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+.featured-media-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 16px;
+}
+.featured-media-caption {
+  padding: 12px 18px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px;
+  color: #EEEEEE;
+  background: rgba(14, 14, 18, 0.92);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .post-hero { padding: 60px 0 40px; border-bottom: 1px solid var(--border); }
 .post-hero .back { font-family: 'Roboto Mono', monospace; font-size: 13px; color: var(--gray); text-decoration: none; display: inline-block; margin-bottom: 24px; }
 .post-hero .back:hover { color: var(--red); }

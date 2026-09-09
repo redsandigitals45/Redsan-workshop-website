@@ -193,9 +193,14 @@
 
   <url>
     <loc>https://redsan.in/blog/seo-vs-geo-whats-the-difference/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://redsan.in/assets/seo-vs-geo-search-engine-optimization-2026-redsan.webp</image:loc>
+      <image:title>SEO vs GEO: What's the Difference and Why Indian Businesses Need Both in 2026</image:title>
+      <image:caption>A strategic breakdown of traditional search engine optimization vs Generative Engine Optimization for modern businesses.</image:caption>
+    </image:image>
   </url>
 
   <url>
@@ -224,30 +229,50 @@
 
   <url>
     <loc>https://redsan.in/blog/how-redsan-helped-d2c-brand-scale-revenue/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://redsan.in/assets/d2c-brand-scale-revenue-ecommerce-case-study-redsan.webp</image:loc>
+      <image:title>Case Study: Scaling a D2C Brand's Monthly Revenue by 340%</image:title>
+      <image:caption>Inside the 90-day playbook that took a home decor brand from ₹4L to ₹17.6L/month with a 3.8x blended ROAS.</image:caption>
+    </image:image>
   </url>
 
   <url>
     <loc>https://redsan.in/blog/googles-ai-overviews-impact-on-search/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://redsan.in/assets/googles-ai-overviews-impact-on-search-redsan.webp</image:loc>
+      <image:title>Google's AI Overviews: Impact on Indian Business Search &amp; Traffic</image:title>
+      <image:caption>How AI Overviews are shifting search behavior and what Indian companies must do to safeguard organic visibility.</image:caption>
+    </image:image>
   </url>
 
   <url>
     <loc>https://redsan.in/blog/10-marketing-mistakes-indian-businesses-make/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://redsan.in/assets/10-marketing-mistakes-indian-businesses-make-redsan.webp</image:loc>
+      <image:title>10 Costly Marketing Mistakes Indian Businesses Make in 2026</image:title>
+      <image:caption>From burning ad spend without attribution to neglecting local search authority, here are 10 avoidable marketing traps.</image:caption>
+    </image:image>
   </url>
 
   <url>
     <loc>https://redsan.in/blog/1-5cr-growth-milestone-methodology/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://redsan.in/assets/1-5cr-growth-milestone-methodology-attribution-redsan.webp</image:loc>
+      <image:title>The ₹1.5Cr+ Growth Milestone Methodology &amp; Attribution Framework</image:title>
+      <image:caption>The exact data tracking, CRM infrastructure, and multi-channel attribution model behind scaling client revenue past ₹1.5Cr+.</image:caption>
+    </image:image>
   </url>
 
 </urlset>
