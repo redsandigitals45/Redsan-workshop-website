@@ -362,7 +362,10 @@
   .mag-cover{
     position:relative;height:150px;background:rgba(8,8,10,0.9);
     display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
   }
+  .mag-cover img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .4s ease;}
+  .mag-card:hover .mag-cover img{transform:scale(1.06);}
   .mag-cover .cover-icon{font-size:34px;}
   .crosshair{position:absolute;width:16px;height:16px;}
   .crosshair::before,.crosshair::after{content:"";position:absolute;background:rgba(255,255,255,0.5);}
@@ -3874,7 +3877,7 @@
     </div>
     <div class="blog-grid">
       <a href="/blog/how-much-does-a-business-website-cost-in-india-2026/" class="mag-card">
-        <div class="mag-cover"><span class="crosshair tl"></span><span class="crosshair br"></span><div class="cover-icon">💻</div><span class="flair">Guide</span></div>
+        <div class="mag-cover"><span class="crosshair tl" style="z-index:2;"></span><span class="crosshair br" style="z-index:2;"></span><img src="/assets/business-website-cost-dehradun-2026-redsan.webp" alt="Business Website Cost in India 2026 - RedSan Pricing Framework" width="600" height="400" loading="lazy" decoding="async"><span class="flair" style="z-index:2;">Guide</span></div>
         <div class="mag-body">
           <div class="tag">Guide · Web &amp; CRO</div>
           <h3>How Much Does a Business Website Cost in India in 2026?</h3>
