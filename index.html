@@ -1633,6 +1633,11 @@
     opacity:0;
     will-change:opacity, transform;
   }
+  #redsan-attention-hero .rah-panel:first-child{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
   #redsan-attention-hero .rah-eyebrow{
     font-family:'IBM Plex Mono',monospace;
     font-size:12px;
@@ -5465,7 +5470,14 @@ function updatePanels(p) {
   panels.forEach((panel, i) => {
     const center = (i + 0.5) / n;
     const band = 0.5 / n;
-    const dist = Math.abs(p - center);
+    let dist;
+    if (i === 0 && p <= center) {
+      dist = 0;
+    } else if (i === n - 1 && p >= center) {
+      dist = 0;
+    } else {
+      dist = Math.abs(p - center);
+    }
     const fade = 1 - THREE.MathUtils.clamp((dist - band * 0.35) / (band * 0.65), 0, 1);
     panel.style.opacity = fade;
     panel.style.transform = `translateY(${(1 - fade) * 22}px)`;
@@ -5478,6 +5490,7 @@ function updatePanels(p) {
     if (activeIdx > 0) spawnBurstSafe();
   }
 }
+updatePanels(0);
 
 /* ============================================================
    GLOBAL FULL-PAGE SPACE BACKGROUND (Three.js)
