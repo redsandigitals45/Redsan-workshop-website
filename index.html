@@ -1838,10 +1838,60 @@
   @media (max-width: 880px) {
     #preloader { display: none !important; }
     #top { display: none !important; } /* Hides the 3D hero wrapper */
-    .mobile-hero { display: block; padding: 24px 0 0 !important; }
-    .mobile-hero .hero-main { padding: 24px 0 16px !important; }
-    .mobile-hero .hero-sub { margin: 14px 0 20px !important; font-size: 15px !important; }
-    .mobile-shirt-container { margin: 16px auto 6px !important; }
+    .mobile-hero {
+      display: block !important;
+      padding: 20px 0 0 !important;
+    }
+    .mobile-hero .hero-main {
+      padding: 24px 12px 16px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      text-align: center !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .mobile-hero .hero-main .eyebrow {
+      justify-content: center !important;
+      text-align: center !important;
+      margin: 0 auto !important;
+      width: 100% !important;
+    }
+    .mobile-hero .hero-main h2 {
+      text-align: center !important;
+      margin: 18px auto 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      font-size: clamp(34px, 8.5vw, 48px) !important;
+      line-height: 1.05 !important;
+    }
+    .mobile-hero .hero-main .hero-sub {
+      text-align: center !important;
+      margin: 14px auto 22px !important;
+      font-size: 15px !important;
+      line-height: 1.55 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 4px !important;
+    }
+    .mobile-hero .hero-ctas {
+      justify-content: center !important;
+      width: 100% !important;
+      gap: 12px !important;
+    }
+    .mobile-hero .hero-ctas .btn {
+      flex: 1 1 auto !important;
+      text-align: center !important;
+      justify-content: center !important;
+      padding: 14px 20px !important;
+    }
+    .mobile-shirt-container {
+      margin: 20px auto 6px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 4px !important;
+    }
     #main-content {
       opacity: 1 !important;
       pointer-events: auto !important;
@@ -1850,7 +1900,7 @@
 
     /* TIGHTEN EXCESSIVE MOBILE GAPS BETWEEN SECTIONS */
     section {
-      padding: 42px 0 !important;
+      padding: 38px 0 !important;
     }
     .section-head {
       margin-bottom: 24px !important;
@@ -1860,7 +1910,69 @@
       font-size: 14.5px !important;
     }
     .preview-section {
-      padding: 24px 16px 12px !important;
+      padding: 24px 0 12px !important;
+    }
+    .preview-section .wrap {
+      padding: 0 12px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .preview-section .about-grid {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding-bottom: 36px !important;
+    }
+    .growth-audit-card {
+      width: 100% !important;
+      margin-top: 24px !important;
+      padding: 26px 16px !important;
+      border-radius: 24px !important;
+      box-sizing: border-box !important;
+    }
+    .audit-headline {
+      font-size: 22px !important;
+      text-align: center !important;
+      line-height: 1.25 !important;
+    }
+    .audit-sub {
+      font-size: 13.5px !important;
+      text-align: center !important;
+      margin: 0 auto 20px !important;
+    }
+    .audit-scope-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
+      margin-bottom: 22px !important;
+      width: 100% !important;
+    }
+    .audit-scope-item {
+      padding: 9px 8px !important;
+      font-size: 11.5px !important;
+      font-weight: 600 !important;
+      justify-content: center !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+      border-radius: 8px !important;
+    }
+    .audit-cta-row {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      gap: 12px !important;
+      width: 100% !important;
+    }
+    .btn-audit-trigger {
+      width: 100% !important;
+      justify-content: center !important;
+      padding: 13px 20px !important;
+      font-size: 13.5px !important;
+    }
+    .audit-turnaround {
+      font-size: 11px !important;
+      text-align: center !important;
+      justify-content: center !important;
     }
     .martech-section {
       margin: 16px auto 24px !important;
@@ -1869,17 +1981,84 @@
     .logos-section {
       padding: 28px 0 !important;
     }
+    .about-section {
+      padding: 32px 0 !important;
+    }
+    .about-section .wrap {
+      padding: 0 12px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .about-card {
+      width: 100% !important;
+      border-radius: 28px !important;
+    }
     .workshop-teaser {
-      padding: 36px 0 !important;
+      padding: 32px 0 !important;
+    }
+    .workshop-teaser .wrap {
+      padding: 0 12px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .workshop-card {
+      width: 100% !important;
+      border-radius: 28px !important;
+      padding: 36px 18px !important;
     }
     #blog {
       padding: 36px 0 !important;
     }
+    #blog .wrap {
+      padding: 0 12px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
     .contact-section {
       padding: 38px 0 !important;
     }
+    .contact-section .wrap {
+      padding: 0 12px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
     footer {
       padding: 34px 0 60px !important;
+    }
+
+    /* WHAT WE DO (SERVICES): Disable card popup jump & enable scroll popout description */
+    #services .wrap {
+      padding: 0 12px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    #services .service-row {
+      padding: 20px 12px !important;
+      border-radius: 14px;
+      transition: background 0.3s ease, border-color 0.3s ease !important;
+      transform: none !important;
+    }
+    #services .service-row:hover {
+      padding-left: 12px !important;
+      background: transparent !important;
+      transform: none !important;
+    }
+    #services .service-row .service-desc {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(6px);
+      transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, transform 0.35s ease, margin 0.35s ease;
+      margin-top: 0 !important;
+    }
+    #services .service-row.is-active {
+      background: rgba(226, 35, 26, 0.05) !important;
+    }
+    #services .service-row.is-active .service-desc {
+      max-height: 220px;
+      opacity: 1;
+      transform: translateY(0);
+      margin-top: 10px !important;
     }
   }
 
@@ -5165,6 +5344,60 @@
       }
     });
   }
+
+  // WHAT WE DO: Mobile interactive scroll popout description
+  (function initServicesMobileScroll() {
+    const serviceRows = document.querySelectorAll('#services .service-row');
+    if (!serviceRows.length) return;
+
+    let ticking = false;
+    function updateActiveServiceOnScroll() {
+      if (window.innerWidth > 880) {
+        serviceRows.forEach(row => row.classList.remove('is-active'));
+        return;
+      }
+      const viewportHeight = window.innerHeight;
+      const centerY = viewportHeight * 0.5;
+
+      let closestRow = null;
+      let minDistance = Infinity;
+
+      serviceRows.forEach(row => {
+        const rect = row.getBoundingClientRect();
+        const rowCenter = rect.top + rect.height / 2;
+        const dist = Math.abs(rowCenter - centerY);
+
+        // Active when in central 60% viewport focus band
+        if (rect.bottom > viewportHeight * 0.2 && rect.top < viewportHeight * 0.8) {
+          if (dist < minDistance) {
+            minDistance = dist;
+            closestRow = row;
+          }
+        }
+      });
+
+      serviceRows.forEach(row => {
+        if (row === closestRow) {
+          row.classList.add('is-active');
+        } else {
+          row.classList.remove('is-active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateActiveServiceOnScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', updateActiveServiceOnScroll, { passive: true });
+    updateActiveServiceOnScroll();
+  })();
 </script>
 <script type="importmap">
 {

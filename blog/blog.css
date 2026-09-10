@@ -197,10 +197,10 @@ h3, h4 {
 .mobile-dropdown-menu a:hover { color: var(--red); }
 .mobile-nav a.cta { margin-top: 8px; padding: 12px 20px; text-align: center; background: var(--red); color: #F8F8F8; border-radius: 100px; border-bottom: none; }
 
-@media (max-width: 860px) {
-  .nav-links { display: none; }
-  .nav-cta { display: none; }
-  .nav-toggle { display: block; }
+@media (max-width: 900px) {
+  .nav-links { display: none !important; }
+  .nav-cta { display: none !important; }
+  .nav-toggle { display: block !important; }
 }
 
 /* ---------- MASTHEAD ---------- */

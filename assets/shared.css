@@ -456,10 +456,10 @@ ul.dropdown-menu > li {
 
 @media (max-width: 900px) {
   .nav-links, .nav-cta {
-    display: none;
+    display: none !important;
   }
   .nav-toggle {
-    display: block;
+    display: block !important;
   }
   .mobile-nav {
     display: none;
