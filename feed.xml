@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>The RedSan Journal — Growth, Web &amp; Marketing Intelligence</title>
+    <title>The RedSan Journal - Growth, Web &amp; Marketing Intelligence</title>
     <link>https://redsan.in/blog/</link>
     <description>Actionable teardowns, verified client playbooks, and strategic perspectives on Web Engineering, SEO, GEO, and Performance Marketing from RedSan Digitals.</description>
     <language>en-in</language>
-    <lastBuildDate>Wed, 09 Sep 2026 22:40:00 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 06:15:00 +0530</lastBuildDate>
     <atom:link href="https://redsan.in/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://redsan.in/assets/redsan_logo.png</url>

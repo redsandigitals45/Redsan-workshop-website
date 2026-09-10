@@ -12,18 +12,23 @@
        ==================================================================== -->
   <url>
     <loc>https://redsan.in/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://redsan.in/assets/redsan_logo.png</image:loc>
-      <image:title>Digital Marketing Agency - RedSan</image:title>
-      <image:caption>Premier digital marketing agency and MarTech growth partner serving Dehradun, Rishikesh, Noida, Delhi, Gurugram, and Chandigarh.</image:caption>
+      <image:title>RedSan Digitals Pvt. Ltd. - Full-Stack Growth Agency</image:title>
+      <image:caption>Full-stack growth agency and MarTech performance partner serving Dehradun, Rishikesh, Noida, Delhi, Gurugram, and Chandigarh.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://redsan.in/assets/martech-character.webp</image:loc>
       <image:title>RedSan Full-Stack Performance Marketing &amp; MarTech Engine</image:title>
       <image:caption>AI Web Design, SEO, AEO, GEO, Performance Marketing &amp; Business Growth Consulting</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://redsan.in/assets/sankalp-reddy.webp</image:loc>
+      <image:title>Sankalp Reddy - Founder, RedSan Digitals Pvt. Ltd.</image:title>
+      <image:caption>Sankalp Reddy, Founder of RedSan Digitals Pvt. Ltd., full-stack growth agency and performance partner.</image:caption>
     </image:image>
   </url>
 

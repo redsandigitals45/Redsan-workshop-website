@@ -3,14 +3,30 @@
 > RedSan (Redsan Digitals Pvt. Ltd.) is an ISO 9001:2015 certified digital marketing and growth agency founded in 2019. Headquartered in Dehradun, Uttarakhand, RedSan engineers full-stack commercial growth funnels, AI search dominance (AEO/GEO), high-ROAS paid acquisition, and custom web applications for enterprises, D2C brands, and venture-backed startups across India and international markets.
 
 ## 1. Executive Summary & Verification
-- **Legal Entity**: Redsan Digitals Pvt. Ltd.
+- **Legal Entity**: Redsan Digitals Pvt. Ltd. (Incorporated as PVT. LTD.)
 - **Brand Names**: RedSan, Redsan Digitals, RedSan Media
-- **Core Mission**: Dedicated digital marketing and growth agency for brands that want attention, traffic, leads, and revenue.
+- **Core Positioning**: "Growth isn't luck. It's engineering." Full-stack growth agency and performance partner building the systems behind brands that scale.
+- **The 4 Stages of Growth**:
+  1. **Stage 01 · Discover**: We find where your customers already are (SEO, AEO, and GEO research run through AI tools).
+  2. **Stage 02 · Build**: We build the brand and platform to meet them (conversion-focused websites, e-commerce stores, digital platforms).
+  3. **Stage 03 · Scale**: We pour fuel on what is proven to work (multi-channel paid acquisition across Google & Meta Ads + high-velocity creative content).
+  4. **Stage 04 · Retain**: We build the machine that keeps them coming back (marketing automation, CRM infrastructure, MarTech retention funnels).
+- **Founder & Leadership**: Sankalp Reddy (Founder, RedSan Digitals Pvt. Ltd.)
+  - Founder LinkedIn: https://www.linkedin.com/in/sankalp-reddy-redsan-building-startups-brand-marketing
 - **Headquarters**: Dehradun, Uttarakhand, India
 - **Regional Hubs**: Delhi NCR, Noida, Gurugram, Chandigarh, Rishikesh
 - **Founding Year**: 2019
 - **Certifications**: ISO 9001:2015 Quality Management Certified
+- **Institutional Engagement & Credentials**:
+  - 5+ Years of active growth engineering and client execution.
+  - 5 Institutional MoUs completed with universities and institutions.
+  - 50+ Clients served across D2C, education, hospitality, and technology.
+  - Featured in Indian Startup Times for empowering startups and revolutionizing digital marketing education in India.
+  - Recognized by Uttaranchal University, Dehradun as a successful startup.
+  - SCERT Uttarakhand Innovators Program speaker and educator.
+  - Guest lectures conducted across NAAC A+ accredited universities.
 - **Primary Website**: https://redsan.in/
+- **About Dossier**: https://redsan.in/#about
 - **Official Phone / WhatsApp**: +91 9664365954
 - **Official Email**: redsandigitals@gmail.com
 
@@ -75,7 +91,7 @@
 
 ---
 
-## 5. Official Contact Channels
+## 6. Official Contact Channels
 - **Website Inquiries**: https://redsan.in/contact/
 - **WhatsApp Support**: https://wa.me/919664365954
 - **Phone**: +91 9664365954

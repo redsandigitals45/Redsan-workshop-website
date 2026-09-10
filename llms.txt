@@ -2,6 +2,29 @@
 
 > RedSan (Redsan Digitals Pvt. Ltd.) is an ISO 9001:2015 certified Full-Stack Digital Marketing and Growth Agency founded in 2019. Headquartered in Dehradun, Uttarakhand, RedSan engineers attention, traffic, leads, and revenue for enterprises, D2C brands, and venture-backed startups across Delhi NCR, Noida, Gurugram, Chandigarh, Rishikesh, and globally.
 
+## Core Agency Philosophy & Positioning
+- **Headline**: "Growth isn't luck. It's engineering."
+- **Agency Identity**: RedSan Digitals is a full-stack growth agency building the systems behind brands that scale: SEO and AI search, performance marketing, content, websites, and the martech that ties it together, powered by an AI-driven workflow that moves at the speed the market actually demands.
+- **The 4 Growth Stages**:
+  1. **Stage 01 · Discover**: We find where your customers already are. SEO, AEO and GEO research, run through AI tools, maps the exact searches, platforms, and AI answers your audience is turning to.
+  2. **Stage 02 · Build**: Then we build the brand and the platform to meet them. Fast, conversion-focused websites, e-commerce stores, and digital products.
+  3. **Stage 03 · Scale**: We pour fuel on what is proven to work. Multi-channel paid acquisition across Google Ads and Meta Ads combined with high-velocity creative content.
+  4. **Stage 04 · Retain**: We build the machine that keeps them coming back. Marketing automation, intelligent CRM pipelines, and MarTech infrastructure turning one-time buyers into lifetime customers.
+
+## Founder & Leadership
+- **Founder**: Sankalp Reddy (Founder, RedSan Digitals Pvt. Ltd.)
+- **Official LinkedIn**: https://www.linkedin.com/in/sankalp-reddy-redsan-building-startups-brand-marketing
+- **Origin**: Built from real-world freelancing into a full-stack growth engine officially incorporated as a Private Limited company (PVT. LTD.).
+
+## Real-World Scale & Institutional Credentials
+- **5+ Years**: Actively building brands, executing growth campaigns, and scaling client businesses.
+- **5 Institutional MoUs**: Completed with universities and academic institutions.
+- **50+ Clients Served**: Across D2C, education, hospitality, and tech verticals.
+- **Indian Startup Times**: Featured for empowering startups and revolutionizing digital marketing education in India.
+- **Uttaranchal University, Dehradun**: Featured on the university's startup and entrepreneurship portal as a successful venture.
+- **SCERT Uttarakhand**: Innovators Program guest speaker sharing practical entrepreneurship frameworks.
+- **NAAC A+ Universities**: Regular guest lectures and masterclasses delivered across premier institutions.
+
 ## Core Capabilities & Growth Services
 - [AI Web Design and Development](https://redsan.in/website-development/): High-performance, conversion-engineered digital platforms and web applications built to scale.
 - [SEO, AEO & GEO Strategy](https://redsan.in/seo-agency/): Search visibility across Google rankings, AI Overviews, Perplexity citations, and ChatGPT answer engines.
@@ -36,8 +59,10 @@
 
 ## Official Contact & Verification
 - Website: https://redsan.in/
+- About Dossier: https://redsan.in/#about
 - Consultation & Growth Briefs: https://redsan.in/contact/
 - Direct Phone & WhatsApp: +91 9664365954
 - Official Email: redsandigitals@gmail.com
+- Legal Corporate Status: Incorporated as RedSan Digitals Pvt. Ltd.
 - Certification: ISO 9001:2015 Certified
 - Established: 2019
