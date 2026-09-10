@@ -28,81 +28,86 @@
 
   <!-- JSON-LD Course & EducationalOrganization Schema -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Course",
-        "@id": "https://redsan.in/workshops/#course",
-        "name": "Digital Marketing with AI & MarTech Skill Mastery",
-        "description": "Comprehensive digital marketing and MarTech practical skill workshop. Learn AI marketing tools, SEO vs AEO vs GEO ranking, entrepreneurial setup, and high-ticket client sales pitching.",
-        "provider": {
-          "@type": "Organization",
-          "name": "Redsan Digitals",
-          "url": "https://redsan.in/",
-          "logo": "https://redsan.in/assets/redsan_logo.png"
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "49",
-          "priceCurrency": "INR",
-          "category": "Paid",
-          "availability": "https://schema.org/InStock",
-          "url": "https://redsan.in/workshops/#checkout"
-        },
-        "hasCourseInstance": [
-          {
-            "@type": "CourseInstance",
-            "courseMode": "Blended",
-            "location": "Dehradun, Uttarakhand"
-          },
-          {
-            "@type": "CourseInstance",
-            "courseMode": "Blended",
-            "location": "Noida, Uttar Pradesh"
-          },
-          {
-            "@type": "CourseInstance",
-            "courseMode": "Blended",
-            "location": "Delhi NCR"
-          },
-          {
-            "@type": "CourseInstance",
-            "courseMode": "Blended",
-            "location": "Gurugram, Haryana"
-          },
-          {
-            "@type": "CourseInstance",
-            "courseMode": "Blended",
-            "location": "Jaipur, Rajasthan"
-          },
-          {
-            "@type": "CourseInstance",
-            "courseMode": "Blended",
-            "location": "Chandigarh"
-          },
-          {
-            "@type": "CourseInstance",
-            "courseMode": "Blended",
-            "location": "Rishikesh, Uttarakhand"
-          },
-          {
-            "@type": "CourseInstance",
-            "courseMode": "Blended",
-            "location": "Haridwar, Uttarakhand"
-          }
-        ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Course",
+      "@id": "https://redsan.in/workshops/#course",
+      "name": "Digital Marketing with AI & MarTech Skill Mastery",
+      "description": "Comprehensive digital marketing and MarTech practical skill workshop. Learn AI marketing tools, SEO vs AEO vs GEO ranking, entrepreneurial setup, and high-ticket client sales pitching.",
+      "provider": {
+        "@type": [
+          "Corporation",
+          "MarketingAgency"
+        ],
+        "@id": "https://redsan.in/#agency",
+        "name": "RedSan Digitals",
+        "legalName": "RedSan Digitals Pvt. Ltd.",
+        "url": "https://redsan.in/",
+        "logo": "https://redsan.in/assets/redsan_logo.png"
       },
-      {
-        "@type": "EducationalOrganization",
-        "@id": "https://redsan.in/workshops/#organization",
-        "name": "Redsan Digitals Workshop Academy",
-        "url": "https://redsan.in/workshops/",
-        "description": "Recognized as the best MarTech skill workshop conductors in Dehradun, Noida, Delhi, Gurugram, Jaipur, Chandigarh, Rishikesh, and Haridwar."
-      }
-    ]
-  }
-  </script>
+      "offers": {
+        "@type": "Offer",
+        "price": "49",
+        "priceCurrency": "INR",
+        "category": "Paid",
+        "availability": "https://schema.org/InStock",
+        "url": "https://redsan.in/workshops/#checkout"
+      },
+      "hasCourseInstance": [
+        {
+          "@type": "CourseInstance",
+          "courseMode": "Blended",
+          "location": "Dehradun, Uttarakhand"
+        },
+        {
+          "@type": "CourseInstance",
+          "courseMode": "Blended",
+          "location": "Noida, Uttar Pradesh"
+        },
+        {
+          "@type": "CourseInstance",
+          "courseMode": "Blended",
+          "location": "Delhi NCR"
+        },
+        {
+          "@type": "CourseInstance",
+          "courseMode": "Blended",
+          "location": "Gurugram, Haryana"
+        },
+        {
+          "@type": "CourseInstance",
+          "courseMode": "Blended",
+          "location": "Jaipur, Rajasthan"
+        },
+        {
+          "@type": "CourseInstance",
+          "courseMode": "Blended",
+          "location": "Chandigarh"
+        },
+        {
+          "@type": "CourseInstance",
+          "courseMode": "Blended",
+          "location": "Rishikesh, Uttarakhand"
+        },
+        {
+          "@type": "CourseInstance",
+          "courseMode": "Blended",
+          "location": "Haridwar, Uttarakhand"
+        }
+      ]
+    },
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://redsan.in/workshops/#organization",
+      "name": "Redsan Digitals Workshop Academy",
+      "url": "https://redsan.in/workshops/",
+      "description": "Recognized as the best MarTech skill workshop conductors in Dehradun, Noida, Delhi, Gurugram, Jaipur, Chandigarh, Rishikesh, and Haridwar."
+    }
+  ]
+}
+</script>
 
   <!-- ===== ANALYTICS PLACEHOLDERS =====
   Drop in real IDs before launch:

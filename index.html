@@ -143,6 +143,14 @@
         { "@type": "City", "name": "Gurugram", "sameAs": "https://en.wikipedia.org/wiki/Gurgaon" },
         { "@type": "City", "name": "Chandigarh", "sameAs": "https://en.wikipedia.org/wiki/Chandigarh" }
       ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "52",
+        "reviewCount": "52"
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Full-Stack Digital Marketing & Growth Engineering Services",
@@ -236,9 +244,88 @@
       "@id": "https://redsan.in/#website",
       "url": "https://redsan.in/",
       "name": "RedSan Digitals",
-      "alternateName": "RedSan",
+      "alternateName": [
+        "RedSan",
+        "RedSan Digitals Pvt. Ltd."
+      ],
       "publisher": { "@id": "https://redsan.in/#agency" },
-      "inLanguage": "en-IN"
+      "inLanguage": "en-IN",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://redsan.in/blog/?s={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://redsan.in/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://redsan.in/"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://redsan.in/#sitenav",
+      "name": "RedSan Sitelinks Navigation",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "About RedSan",
+          "description": "About RedSan Digitals Pvt. Ltd., origin story, founder Sankalp Reddy, and growth engineering methodology.",
+          "url": "https://redsan.in/#about"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "AI Web Design and Development",
+          "description": "High-performance, conversion-focused websites and web applications.",
+          "url": "https://redsan.in/website-development/"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "SEO, AEO and GEO",
+          "description": "Search visibility across Google rankings, AI Overviews, and ChatGPT answer engines.",
+          "url": "https://redsan.in/seo-agency/"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "Performance Marketing",
+          "description": "High-ROAS paid acquisition funnels across Google Ads and Meta Ads.",
+          "url": "https://redsan.in/performance-marketing/"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 5,
+          "name": "The RedSan Journal",
+          "description": "Actionable marketing insights, commercial guides, news analysis, and case studies.",
+          "url": "https://redsan.in/blog/"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 6,
+          "name": "MarTech Masterclasses",
+          "description": "Flagship 2-day live workshop covering Digital Marketing with AI for ₹49.",
+          "url": "https://redsan.in/workshops/"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 7,
+          "name": "Contact & Growth Audit",
+          "description": "Direct communication channels for growth audits and client consultations.",
+          "url": "https://redsan.in/contact/"
+        }
+      ]
     },
     {
       "@type": "WebPage",
@@ -247,6 +334,7 @@
       "name": "RedSan Digitals Pvt. Ltd. | Full-Stack Growth Agency & Performance Partner",
       "isPartOf": { "@id": "https://redsan.in/#website" },
       "mainEntity": { "@id": "https://redsan.in/#agency" },
+      "breadcrumb": { "@id": "https://redsan.in/#breadcrumb" },
       "about": [
         { "@id": "https://redsan.in/#agency" },
         { "@id": "https://redsan.in/#founder" },
