@@ -38,6 +38,63 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Desktop Services dropdown persistent click and hover grace period
+  var desktopDropdowns = document.querySelectorAll('.nav-item-dropdown');
+  desktopDropdowns.forEach(function (container) {
+    var trigger = container.querySelector('.dropdown-trigger');
+    var closeTimer = null;
+    var isPinnedOpen = false;
+
+    function openMenu(pin) {
+      clearTimeout(closeTimer);
+      if (pin) isPinnedOpen = true;
+      container.classList.add('is-open');
+      if (trigger) trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMenu(force) {
+      clearTimeout(closeTimer);
+      if (force || !isPinnedOpen) {
+        isPinnedOpen = false;
+        container.classList.remove('is-open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    function scheduleClose() {
+      if (isPinnedOpen) return;
+      closeTimer = setTimeout(function () {
+        closeMenu(true);
+      }, 350);
+    }
+
+    if (trigger) {
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (container.classList.contains('is-open')) {
+          closeMenu(true);
+        } else {
+          openMenu(true);
+        }
+      });
+    }
+
+    container.addEventListener('mouseenter', function () {
+      openMenu(false);
+    });
+
+    container.addEventListener('mouseleave', function () {
+      scheduleClose();
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!container.contains(e.target)) {
+        closeMenu(true);
+      }
+    });
+  });
+
   // Sticky bottom bar: show after scrolling past the masthead
   var stickyBar = document.getElementById('stickyBar');
   if (stickyBar) {
