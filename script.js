@@ -1,3 +1,7 @@
+try {
+  sessionStorage.setItem('rsd_session_seen', '1');
+} catch (e) {}
+
 /* ============================================================
    COUNTDOWN: edit TARGET_DATE for each batch cycle
    ============================================================ */

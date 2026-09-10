@@ -4,6 +4,9 @@
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+  try {
+    sessionStorage.setItem('rsd_session_seen', '1');
+  } catch (e) {}
   initSpaceCanvas();
   initNavbars();
   initFaqAccordions();

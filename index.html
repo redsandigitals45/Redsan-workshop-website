@@ -350,6 +350,15 @@
   ]
 }
 </script>
+<script>
+(function(){
+  try {
+    if (sessionStorage.getItem('rsd_session_seen')) {
+      document.documentElement.classList.add('rsd-skip-cinema');
+    }
+  } catch(e) {}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -3455,6 +3464,10 @@
 
 /* --- CINEMATIC REVEAL --- */
 
+  html.rsd-skip-cinema #rsd-cinema {
+    display: none !important;
+  }
+
   #rsd-cinema{
     --rsd-black:#000;
     --rsd-red:#E2231A;
@@ -5797,12 +5810,25 @@ requestAnimationFrame(tick);
 <script>
 function initCinematicReveal() {
   const cinema = document.getElementById("rsd-cinema");
-  if (!cinema) {
-    if (typeof initGlobalSpaceBg === "function") initGlobalSpaceBg();
+  let hasSeen = false;
+  try {
+    hasSeen = !!sessionStorage.getItem('rsd_session_seen');
+  } catch (e) {}
+
+  if (!cinema || hasSeen) {
+    if (cinema) cinema.remove();
+    document.body.style.overflow = "";
+    if (typeof initGlobalSpaceBg === "function") {
+      initGlobalSpaceBg();
+    }
     return;
   }
 
-  // Ensure fully visible on start
+  try {
+    sessionStorage.setItem('rsd_session_seen', '1');
+  } catch (e) {}
+
+  // Ensure fully visible on start for fresh session
   cinema.style.display = "flex";
   cinema.style.opacity = "1";
   cinema.style.pointerEvents = "auto";
@@ -5828,7 +5854,9 @@ function initCinematicReveal() {
     cinema.style.pointerEvents = "none";
     document.body.style.overflow = "";
     setTimeout(function() {
-      cinema.style.display = "none";
+      if (cinema && cinema.parentNode) {
+        cinema.remove();
+      }
     }, 800);
   };
 
@@ -5845,6 +5873,18 @@ function initCinematicReveal() {
     dismiss();
   }, 6600);
 }
+
+// Ensure Back/Forward browser cache (BFCache) restores with reveal hidden and scrolling intact
+window.addEventListener("pageshow", function(e) {
+  if (e.persisted) {
+    const cinema = document.getElementById("rsd-cinema");
+    if (cinema) cinema.remove();
+    document.body.style.overflow = "";
+    if (typeof initGlobalSpaceBg === "function") {
+      initGlobalSpaceBg();
+    }
+  }
+});
 
 function initPageInteractions() {
   initCinematicReveal();

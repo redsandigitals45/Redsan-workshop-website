@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+  try {
+    sessionStorage.setItem('rsd_session_seen', '1');
+  } catch (e) {}
 
   // Mobile nav toggle & services dropdown
   var navToggle = document.getElementById('navToggle');
