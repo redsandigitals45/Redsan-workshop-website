@@ -25,44 +25,112 @@
 <meta name="twitter:description" content="Growth isn't luck. It's engineering. RedSan Digitals Pvt. Ltd. builds the systems behind brands that scale: SEO, AI search (AEO/GEO), performance marketing, websites, and MarTech infrastructure.">
 <meta name="twitter:image" content="https://redsan.in/assets/redsan_logo.png">
 
-<!-- JSON-LD LocalBusiness & MarketingAgency Schema -->
+<!-- JSON-LD LocalBusiness, Corporation & MarketingAgency Identity Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "MarketingAgency",
+      "@type": ["Corporation", "MarketingAgency"],
       "@id": "https://redsan.in/#agency",
       "name": "RedSan Digitals",
       "legalName": "RedSan Digitals Pvt. Ltd.",
-      "alternateName": "RedSan",
+      "alternateName": [
+        "RedSan",
+        "RedSan Digitals Pvt. Ltd.",
+        "RedSan Media"
+      ],
       "url": "https://redsan.in/",
-      "logo": "https://redsan.in/assets/redsan_logo.png",
-      "image": "https://redsan.in/assets/martech-character.webp",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://redsan.in/#logo",
+        "url": "https://redsan.in/assets/redsan_logo.png",
+        "contentUrl": "https://redsan.in/assets/redsan_logo.png",
+        "caption": "RedSan Digitals Pvt. Ltd. Logo",
+        "width": "512",
+        "height": "512"
+      },
+      "image": [
+        "https://redsan.in/assets/redsan_logo.png",
+        "https://redsan.in/assets/martech-character.webp",
+        "https://redsan.in/assets/sankalp-reddy.webp"
+      ],
       "slogan": "Growth isn't luck. It's engineering.",
       "foundingDate": "2019",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Dehradun, Uttarakhand, India"
+      },
       "description": "RedSan Digitals Pvt. Ltd. is a full-stack growth agency building systems behind brands that scale: SEO and AI search (AEO/GEO), performance marketing, content, websites, and MarTech infrastructure, powered by an AI-driven workflow.",
       "founder": {
         "@type": "Person",
+        "@id": "https://redsan.in/#founder",
         "name": "Sankalp Reddy",
         "jobTitle": "Founder, RedSan Digitals Pvt. Ltd.",
-        "image": "https://redsan.in/assets/sankalp-reddy.webp",
+        "worksFor": { "@id": "https://redsan.in/#agency" },
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://redsan.in/assets/sankalp-reddy.webp",
+          "caption": "Sankalp Reddy, Founder of RedSan Digitals Pvt. Ltd."
+        },
         "sameAs": [
           "https://www.linkedin.com/in/sankalp-reddy-redsan-building-startups-brand-marketing"
-        ]
+        ],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Uttaranchal University",
+          "sameAs": "https://uudoon.in/"
+        },
+        "description": "Founder of RedSan Digitals Pvt. Ltd., brand builder, entrepreneur, and digital growth strategist."
       },
+      "sameAs": [
+        "https://www.linkedin.com/company/redsan-digitals",
+        "https://www.instagram.com/redsandigitals",
+        "https://x.com/redsandigitals"
+      ],
       "award": [
-        "ISO 9001:2015 Certified Quality Management"
+        "ISO 9001:2015 Certified Quality Management System",
+        "Featured in Indian Startup Times for Startup Growth and Education",
+        "Recognized by Uttaranchal University Entrepreneurship Resource",
+        "SCERT Uttarakhand Innovators Program Contributor"
       ],
       "knowsAbout": [
         "Full-Stack Growth Engineering",
-        "SEO, AEO and GEO Strategy",
-        "Generative Engine Optimization",
-        "AI Search Optimization",
-        "Performance Marketing",
-        "AI Web Design and Development",
+        "Search Engine Optimization (SEO)",
+        "Answer Engine Optimization (AEO)",
+        "Generative Engine Optimization (GEO)",
+        "AI Search Engine Optimization",
+        "Performance Marketing & Paid Acquisition",
+        "Meta Ads & Google Ads Management",
+        "AI Web Design and Web Development",
         "MarTech Infrastructure & Marketing Automation",
-        "Brand Strategy & Scaling Systems"
+        "Brand Strategy & Digital Scaling Systems",
+        "Conversion Rate Optimization (CRO)",
+        "Startup Growth Consulting & Go-to-Market Strategy"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dehradun",
+        "addressRegion": "Uttarakhand",
+        "addressCountry": "IN"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-9664365954",
+          "contactType": "sales",
+          "email": "redsandigitals@gmail.com",
+          "availableLanguage": ["English", "Hindi"],
+          "areaServed": "IN"
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-9664365954",
+          "contactType": "customer support",
+          "email": "redsandigitals@gmail.com",
+          "availableLanguage": ["English", "Hindi"],
+          "areaServed": "IN"
+        }
       ],
       "email": "redsandigitals@gmail.com",
       "telephone": "+919664365954",
@@ -77,16 +145,89 @@
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Digital Marketing & Growth Agency Services",
+        "name": "Full-Stack Digital Marketing & Growth Engineering Services",
         "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Web Design and Development", "url": "https://redsan.in/website-development/" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO, AEO and GEO", "url": "https://redsan.in/seo-agency/" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Management", "url": "https://redsan.in/social-media-marketing/" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content Creation", "url": "https://redsan.in/content-creation/" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Product and Service Shoots", "url": "https://redsan.in/product-service-shoots/" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vibe Coding", "url": "https://redsan.in/vibe-coding/" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Startup Growth Consulting", "url": "https://redsan.in/startup-growth-consulting/" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Performance Marketing", "url": "https://redsan.in/performance-marketing/" } }
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Web Design and Development",
+              "url": "https://redsan.in/website-development/",
+              "description": "High-performance, conversion-focused websites and web apps built to turn attention into qualified customers."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "SEO, AEO and GEO",
+              "url": "https://redsan.in/seo-agency/",
+              "description": "Full-spectrum organic visibility across Google rankings, AI Overviews, Perplexity citations, and ChatGPT answer engines."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Performance Marketing",
+              "url": "https://redsan.in/performance-marketing/",
+              "description": "High-ROAS paid acquisition across Google Ads, YouTube, and Meta Ads engineered for measurable revenue."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Social Media Management",
+              "url": "https://redsan.in/social-media-marketing/",
+              "description": "Creative social strategy, founder branding, and engaged audience cultivation across major platforms."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Content Creation",
+              "url": "https://redsan.in/content-creation/",
+              "description": "Commercial written copy, graphic design, and short-form video that command commercial attention."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Product and Service Shoots",
+              "url": "https://redsan.in/product-service-shoots/",
+              "description": "Professional studio and on-location product photography, brand films, and high-ticket commercial videography."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Vibe Coding",
+              "url": "https://redsan.in/vibe-coding/",
+              "description": "Rapid AI-assisted web application development and software prototyping for immediate commercial launch."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Startup Growth Consulting",
+              "url": "https://redsan.in/startup-growth-consulting/",
+              "description": "Go-to-market strategy, CAC optimization, and growth infrastructure for early-stage and scaling founders."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Marketing & Automation",
+              "url": "https://redsan.in/ai-marketing/",
+              "description": "Custom AI workflows, automated lead routing, and MarTech retention infrastructure."
+            }
+          }
         ]
       }
     },
@@ -95,7 +236,9 @@
       "@id": "https://redsan.in/#website",
       "url": "https://redsan.in/",
       "name": "RedSan Digitals",
-      "publisher": { "@id": "https://redsan.in/#agency" }
+      "alternateName": "RedSan",
+      "publisher": { "@id": "https://redsan.in/#agency" },
+      "inLanguage": "en-IN"
     },
     {
       "@type": "WebPage",
@@ -103,8 +246,10 @@
       "url": "https://redsan.in/",
       "name": "RedSan Digitals Pvt. Ltd. | Full-Stack Growth Agency & Performance Partner",
       "isPartOf": { "@id": "https://redsan.in/#website" },
+      "mainEntity": { "@id": "https://redsan.in/#agency" },
       "about": [
         { "@id": "https://redsan.in/#agency" },
+        { "@id": "https://redsan.in/#founder" },
         {
           "@type": "Thing",
           "name": "About RedSan Digitals",
