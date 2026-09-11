@@ -1,0 +1,20 @@
+{
+  "name": "RedSan Digitals",
+  "short_name": "RedSan",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#F00000",
+  "icons": [
+    {
+      "src": "/assets/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
