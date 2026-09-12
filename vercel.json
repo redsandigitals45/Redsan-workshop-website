@@ -51,6 +51,16 @@
       "permanent": true
     },
     {
+      "source": "/blog/Redsan-international-client-base/(.*)",
+      "destination": "/blog/redsan-international-client-base/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/Redsan-international-client-base/",
+      "destination": "/blog/redsan-international-client-base/",
+      "permanent": true
+    },
+    {
       "source": "/blog/2nd-year-student-15000-retainer/(.*)",
       "destination": "/blog/how-redsan-helped-d2c-brand-scale-revenue/",
       "permanent": true

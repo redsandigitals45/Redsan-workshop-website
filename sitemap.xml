@@ -191,9 +191,21 @@
        ==================================================================== -->
   <url>
     <loc>https://redsan.in/blog/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/blog/redsan-international-client-base/</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://redsan.in/assets/redsan-international-client-experience.webp</image:loc>
+      <image:title>Before Redsan: The International Client Track Record Behind Our Founder's Experience</image:title>
+      <image:caption>Before founding Redsan Digitals, Sankalp Reddy managed social media, content, and digital PR for clients across Texas, London, and beyond.</image:caption>
+    </image:image>
   </url>
 
   <url>
