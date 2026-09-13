@@ -5,13 +5,22 @@
     <link>https://redsan.in/blog/</link>
     <description>Actionable teardowns, verified client playbooks, and strategic perspectives on Web Engineering, SEO, GEO, and Performance Marketing from RedSan Digitals.</description>
     <language>en-in</language>
-    <lastBuildDate>Sat, 12 Sep 2026 22:30:00 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 10:00:00 +0530</lastBuildDate>
     <atom:link href="https://redsan.in/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://redsan.in/assets/redsan_logo.png</url>
       <title>RedSan Digitals</title>
       <link>https://redsan.in/</link>
     </image>
+    <item>
+      <title><![CDATA[Redsan's Chandigarh Story: Before Dehradun, There Was Kharar]]></title>
+      <link>https://redsan.in/blog/redsan-chandigarh-story/</link>
+      <guid isPermaLink="true">https://redsan.in/blog/redsan-chandigarh-story/</guid>
+      <description><![CDATA[How Redsan Digitals started as an independent agency in Chandigarh in 2020, from a neighbourhood cafe to managing an entire business group.]]></description>
+      <category>Insights</category>
+      <pubDate>Mon, 14 Sep 2026 10:00:00 +0530</pubDate>
+      <enclosure url="https://redsan.in/assets/redsan-digitals-chandigarh-chapter.webp" type="image/webp" length="231780" />
+    </item>
     <item>
       <title><![CDATA[Before Redsan: The International Client Track Record Behind Our Founder's Experience]]></title>
       <link>https://redsan.in/blog/redsan-international-client-base/</link>
