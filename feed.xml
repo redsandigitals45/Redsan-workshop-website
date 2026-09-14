@@ -5,13 +5,22 @@
     <link>https://redsan.in/blog/</link>
     <description>Actionable teardowns, verified client playbooks, and strategic perspectives on Web Engineering, SEO, GEO, and Performance Marketing from RedSan Digitals.</description>
     <language>en-in</language>
-    <lastBuildDate>Mon, 14 Sep 2026 10:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 12:00:00 +0530</lastBuildDate>
     <atom:link href="https://redsan.in/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://redsan.in/assets/redsan_logo.png</url>
       <title>RedSan Digitals</title>
       <link>https://redsan.in/</link>
     </image>
+    <item>
+      <title><![CDATA[Redsan's Dehradun Chapter: How It All Began in 2023]]></title>
+      <link>https://redsan.in/blog/redsan-dehradun-story/</link>
+      <guid isPermaLink="true">https://redsan.in/blog/redsan-dehradun-story/</guid>
+      <description><![CDATA[From getting incubated at Uttaranchal University to managing Dehradun's cafe and restaurant scene, the early days of Redsan in Dehradun.]]></description>
+      <category>Insights</category>
+      <pubDate>Mon, 14 Sep 2026 12:00:00 +0530</pubDate>
+      <enclosure url="https://redsan.in/assets/redsan-digitals-dehradun-chapter.webp" type="image/webp" length="317576" />
+    </item>
     <item>
       <title><![CDATA[Redsan's Chandigarh Story: The Place Where Redsan Became Redsan]]></title>
       <link>https://redsan.in/blog/redsan-chandigarh-story/</link>
