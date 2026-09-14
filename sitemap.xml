@@ -316,5 +316,17 @@
     </image:image>
   </url>
 
+  <url>
+    <loc>https://redsan.in/blog/redsan-dehradun-story/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://redsan.in/assets/redsan-digitals-dehradun-chapter.webp</image:loc>
+      <image:title>Redsan's Dehradun Chapter: The Year We Learned to Build the Company</image:title>
+      <image:caption>How Redsan moved to Dehradun in 2023, earned startup incubation at Uttaranchal University, navigated early growing pains, and learned how to build an enduring company.</image:caption>
+    </image:image>
+  </url>
+
 </urlset>
 
