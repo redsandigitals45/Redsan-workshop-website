@@ -40,7 +40,7 @@ Redsan worked with Uttaranchal University on student-centric content campaigns, 
 
 Alongside some of the best faculty at Uttaranchal University and a group of good friends and colleagues at the Uttaranchal Institute of Management, Redsan helped establish and found [the UIM Instagram handle](https://www.instagram.com/official_uim/), now grown to more than 11,000 followers and currently run by the next generation of student contributors. Redsan's founder personally recorded and uploaded [the very first video](https://www.instagram.com/p/DBvBV_GvN8V/) on that page.
 
-The account was later handled by [Krrish Maindola](https://www.linkedin.com/in/krrishmaindola/), who has since gone on to run his own digital marketing agency, [Digitalurlife](https://digitalurlife.com/).
+The account was later handled by [Krrish Maindola](https://www.linkedin.com/in/krrishmaindola/), who was outsourced as an expert to assist the Redsan team while operating his own agency work, and has since established his own digital marketing company, [Digitalurlife](https://digitalurlife.com/).
 
 ---
 
@@ -72,7 +72,7 @@ Not everything in this phase went smoothly, and it's worth being direct about th
 
 That period is exactly what pushed the agency to build real standard operating procedures and get more deliberate about assigning work to people with the right specific skills, rather than spreading a small team thin across too many deliverables at once. The Redsan team operating today is more productive and more disciplined specifically because of what went wrong during this phase, not in spite of it.
 
-None of that growth would have been possible without the people who stuck with it through the hard parts. This phase of Redsan was built by a team that worked hard and never complained through the whole journey: Tushar, Ajay Raj Negi, Animesh Dabral, Krrish Maindola, Rohit Negi, Hussain Ahmed, and Umar Gaur. That kind of loyalty during a genuinely difficult growth period is worth naming, not just the client wins.
+None of that growth would have been possible without the people who stuck with it through the hard parts. This phase of Redsan was built by a core team that worked hard and never complained through the whole journey: Tushar, Ajay Raj Negi, Animesh Dabral, Rohit Negi, Hussain Ahmed, and Umar Gaur, alongside expert outsourced assistance from Krrish Maindola. That kind of commitment during a genuinely difficult growth period is worth naming, not just the client wins.
 
 ---
 
