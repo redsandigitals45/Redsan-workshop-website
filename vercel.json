@@ -51,13 +51,28 @@
       "permanent": true
     },
     {
+      "source": "/blog/redsan-education-industry/(.*)",
+      "destination": "/blog/redsan-in-education-industry/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/redsan-education-industry/",
+      "destination": "/blog/redsan-in-education-industry/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/redsan-education-industry.html",
+      "destination": "/blog/redsan-in-education-industry/",
+      "permanent": true
+    },
+    {
       "source": "/blog/Redsan-education-industry/(.*)",
-      "destination": "/blog/redsan-education-industry/",
+      "destination": "/blog/redsan-in-education-industry/",
       "permanent": true
     },
     {
       "source": "/blog/Redsan-education-industry/",
-      "destination": "/blog/redsan-education-industry/",
+      "destination": "/blog/redsan-in-education-industry/",
       "permanent": true
     },
     {
