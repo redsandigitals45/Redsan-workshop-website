@@ -247,14 +247,8 @@ function initContactForms() {
         const result = await response.json();
 
         if (result.success) {
-          if (statusBox && statusBox.classList.contains('form-status')) {
-            statusBox.style.display = 'block';
-            statusBox.style.background = 'rgba(34, 197, 94, 0.15)';
-            statusBox.style.border = '1px solid #22c55e';
-            statusBox.style.color = '#22c55e';
-            statusBox.innerHTML = '✓ Thank you! Your request has been received. Our team will connect within 2 hours.';
-          }
           form.reset();
+          window.location.href = '/thank-you/';
         } else {
           throw new Error(result.message || 'Submission failed');
         }

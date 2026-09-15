@@ -5169,6 +5169,15 @@
         </select>
       </div>
       <div class="form-field">
+        <label for="lead_budget">Approximate Budget</label>
+        <select id="lead_budget" name="budget_range">
+          <option value="< ₹20,000">&lt; ₹20,000</option>
+          <option value="₹20,000 - ₹40,000">₹20,000 - ₹40,000</option>
+          <option value="₹50,000+">₹50,000+</option>
+          <option value="₹1,00,000+">₹1,00,000+</option>
+        </select>
+      </div>
+      <div class="form-field">
         <label for="message">Message</label>
         <textarea id="message" name="message" placeholder="Tell us a bit about your project..."></textarea>
       </div>
@@ -5317,6 +5326,16 @@
             <option value="Meta & Google Ads">Meta &amp; Google Ads</option>
             <option value="Full-Stack Performance Marketing">Full-Stack Performance Marketing</option>
             <option value="Something Else">Something Else</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="modal-budget">Approximate Budget</label>
+          <select id="modal-budget" name="budget_range">
+            <option value="" disabled selected>Select Budget Range</option>
+            <option value="< ₹20,000">&lt; ₹20,000</option>
+            <option value="₹20,000 - ₹40,000">₹20,000 - ₹40,000</option>
+            <option value="₹50,000+">₹50,000+</option>
+            <option value="₹1,00,000+">₹1,00,000+</option>
           </select>
         </div>
         <div class="form-field">
@@ -6272,14 +6291,8 @@ function initCigaretteSmoke() {
           const result = await response.json();
 
           if (result.success) {
-            if (statusBox) {
-              statusBox.style.display = 'block';
-              statusBox.style.background = 'rgba(34, 197, 94, 0.15)';
-              statusBox.style.border = '1px solid #22c55e';
-              statusBox.style.color = '#22c55e';
-              statusBox.innerHTML = '✓ Thank you! Your details have been submitted. We will contact you shortly.';
-            }
             leadForm.reset();
+            window.location.href = '/thank-you/';
           } else {
             throw new Error(result.message || 'Submission failed');
           }
@@ -6497,18 +6510,8 @@ function initCigaretteSmoke() {
           });
           const result = await response.json();
           if (result.success) {
-            if (statusBox) {
-              statusBox.style.display = 'block';
-              statusBox.style.background = 'rgba(34, 197, 94, 0.15)';
-              statusBox.style.border = '1px solid #22c55e';
-              statusBox.style.color = '#22c55e';
-              statusBox.innerHTML = '✓ Thank you! Your details have been submitted. We will contact you shortly.';
-            }
             modalForm.reset();
-            setTimeout(() => {
-              closeModal();
-              if (statusBox) statusBox.style.display = 'none';
-            }, 2500);
+            window.location.href = '/thank-you/';
           } else {
             throw new Error(result.message || 'Submission failed');
           }
@@ -6680,10 +6683,10 @@ function initCigaretteSmoke() {
           <label for="audit_budget">8. Monthly Marketing Budget *</label>
           <select id="audit_budget" name="monthly_budget" required>
             <option value="" disabled selected>Select Budget Range</option>
-            <option value="Under ₹50k">&lt; ₹50,000 / month</option>
-            <option value="₹50k - ₹1.5L">₹50,000 - ₹1,50,000 / month</option>
-            <option value="₹1.5L - ₹5L">₹1,50,000 - ₹5,00,000 / month</option>
-            <option value="₹5L+">Above ₹5,00,000 / month</option>
+            <option value="< ₹20,000">&lt; ₹20,000 / month</option>
+            <option value="₹20,000 - ₹40,000">₹20,000 - ₹40,000 / month</option>
+            <option value="₹50,000+">₹50,000+ / month</option>
+            <option value="₹1,00,000+">₹1,00,000+ / month</option>
           </select>
         </div>
 
@@ -6785,19 +6788,8 @@ function initCigaretteSmoke() {
         const data = await res.json();
 
         if (data.success) {
-          if (statusBox) {
-            statusBox.style.display = 'block';
-            statusBox.style.background = 'rgba(34, 197, 94, 0.15)';
-            statusBox.style.border = '1px solid #22c55e';
-            statusBox.style.color = '#22c55e';
-            statusBox.innerHTML = '✓ Growth Audit Request Received! Our senior growth engineers will analyze your digital footprint and deliver your Growth Audit within 24-48 business hours.';
-          }
           auditForm.reset();
-          submitBtn.innerHTML = '✓ Submitted Successfully';
-          setTimeout(() => {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = origText;
-          }, 4000);
+          window.location.href = '/thank-you/';
         } else {
           throw new Error(data.message || 'Submission failed');
         }
