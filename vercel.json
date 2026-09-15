@@ -51,6 +51,16 @@
       "permanent": true
     },
     {
+      "source": "/blog/redsan-scaling-B2B-D2C-Brands-Online/(.*)",
+      "destination": "/blog/redsan-scaling-b2b-d2c-brands-online/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/redsan-scaling-B2B-D2C-Brands-Online/",
+      "destination": "/blog/redsan-scaling-b2b-d2c-brands-online/",
+      "permanent": true
+    },
+    {
       "source": "/blog/Redsan-international-client-base/(.*)",
       "destination": "/blog/redsan-international-client-base/",
       "permanent": true

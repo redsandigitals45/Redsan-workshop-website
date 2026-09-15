@@ -5,13 +5,22 @@
     <link>https://redsan.in/blog/</link>
     <description>Actionable teardowns, verified client playbooks, and strategic perspectives on Web Engineering, SEO, GEO, and Performance Marketing from RedSan Digitals.</description>
     <language>en-in</language>
-    <lastBuildDate>Tue, 15 Sep 2026 09:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 10:30:00 +0530</lastBuildDate>
     <atom:link href="https://redsan.in/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://redsan.in/assets/redsan_logo.png</url>
       <title>RedSan Digitals</title>
       <link>https://redsan.in/</link>
     </image>
+    <item>
+      <title><![CDATA[Beyond Dehradun: Redsan's Pan-India Growth Stories]]></title>
+      <link>https://redsan.in/blog/redsan-scaling-b2b-d2c-brands-online/</link>
+      <guid isPermaLink="true">https://redsan.in/blog/redsan-scaling-b2b-d2c-brands-online/</guid>
+      <description><![CDATA[From a 106-to-12 SERP jump to a 110K+ audience and a ₹50 lakh+ Ayurveda business, see how Redsan helps B2B and D2C brands scale online across India.]]></description>
+      <category>Case Studies</category>
+      <pubDate>Tue, 15 Sep 2026 10:30:00 +0530</pubDate>
+      <enclosure url="https://redsan.in/assets/redsan-blog-scaling-businesses-online.webp" type="image/webp" length="282210" />
+    </item>
     <item>
       <title><![CDATA[Redsan's Second Dehradun Chapter: From Digital Content to Red Carpets]]></title>
       <link>https://redsan.in/blog/redsan-dehradun-chapter-2/</link>
