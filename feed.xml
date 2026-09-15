@@ -5,13 +5,22 @@
     <link>https://redsan.in/blog/</link>
     <description>Actionable teardowns, verified client playbooks, and strategic perspectives on Web Engineering, SEO, GEO, and Performance Marketing from RedSan Digitals.</description>
     <language>en-in</language>
-    <lastBuildDate>Tue, 15 Sep 2026 10:30:00 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 12:30:00 +0530</lastBuildDate>
     <atom:link href="https://redsan.in/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://redsan.in/assets/redsan_logo.png</url>
       <title>RedSan Digitals</title>
       <link>https://redsan.in/</link>
     </image>
+    <item>
+      <title><![CDATA[From Robotics to Universities: Redsan's Journey Through the Education Industry]]></title>
+      <link>https://redsan.in/blog/redsan-education-industry/</link>
+      <guid isPermaLink="true">https://redsan.in/blog/redsan-education-industry/</guid>
+      <description><![CDATA[From a 2023 robotics education launch and school programs to managing digital growth for premier universities and supporting 450+ admissions.]]></description>
+      <category>Case Studies</category>
+      <pubDate>Tue, 15 Sep 2026 12:30:00 +0530</pubDate>
+      <enclosure url="https://redsan.in/assets/redsan-working-education-industry.webp" type="image/webp" length="216504" />
+    </item>
     <item>
       <title><![CDATA[Beyond Dehradun: Redsan's Pan-India Growth Stories]]></title>
       <link>https://redsan.in/blog/redsan-scaling-b2b-d2c-brands-online/</link>

@@ -82,6 +82,7 @@
 ---
 
 ## 5. The RedSan Journal: Commercial Insights & Case Studies (https://redsan.in/blog/)
+- *From Robotics to Universities: Redsan's Journey Through the Education Industry* (https://redsan.in/blog/redsan-education-industry/)
 - *Beyond Dehradun: Redsan's Pan-India Growth Stories* (https://redsan.in/blog/redsan-scaling-b2b-d2c-brands-online/)
 - *Before Redsan: The International Client Track Record Behind Our Founder's Experience* (https://redsan.in/blog/redsan-international-client-base/)
 - *SEO vs AEO vs GEO: What's the Difference in 2026?* (https://redsan.in/blog/seo-vs-geo-whats-the-difference/)
