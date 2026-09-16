@@ -1229,30 +1229,51 @@
   .about-card::after {
     content: "";
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 52%;
+    top: -50px;
+    right: 24px;
+    width: 440px;
+    height: 560px;
     background-image: url('/assets/hero-elements/homepage-about-dossier.webp');
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center top;
-    opacity: 0.22;
-    mask-image: radial-gradient(ellipse at 75% 35%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.4) 60%, transparent 85%);
-    -webkit-mask-image: radial-gradient(ellipse at 75% 35%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.4) 60%, transparent 85%);
+    opacity: 0.38;
+    mask-image: radial-gradient(ellipse at 50% 45%, rgba(0,0,0,1) 35%, rgba(0,0,0,0.5) 70%, transparent 95%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 45%, rgba(0,0,0,1) 35%, rgba(0,0,0,0.5) 70%, transparent 95%);
     pointer-events: none;
     z-index: 1;
     transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .about-card:hover::after {
-    opacity: 0.32;
+    opacity: 0.48;
     transform: scale(1.02);
+  }
+  .about-card.is-open::after {
+    top: 20px;
+    right: 24px;
+    width: 440px;
+    height: 560px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.28;
+    transform: none;
   }
   @media (max-width: 820px) {
     .about-card::after {
-      width: 100%;
-      opacity: 0.14;
-      mask-image: radial-gradient(circle at 50% 30%, rgba(0,0,0,0.9) 20%, transparent 80%);
-      -webkit-mask-image: radial-gradient(circle at 50% 30%, rgba(0,0,0,0.9) 20%, transparent 80%);
+      width: 280px;
+      height: 380px;
+      right: -30px;
+      top: -20px;
+      opacity: 0.18;
+      mask-image: radial-gradient(circle at 50% 40%, rgba(0,0,0,0.9) 25%, transparent 85%);
+      -webkit-mask-image: radial-gradient(circle at 50% 40%, rgba(0,0,0,0.9) 25%, transparent 85%);
+    }
+    .about-card.is-open::after {
+      top: 10px;
+      right: -20px;
+      width: 260px;
+      height: 360px;
+      opacity: 0.16;
     }
   }
   .about-card:hover {
