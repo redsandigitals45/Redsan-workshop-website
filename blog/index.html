@@ -288,19 +288,20 @@
 
 /* Hero Card Embedded Rules */
 .hero-card { position: relative !important; background: rgba(14, 14, 18, 0.85) !important; backdrop-filter: blur(18px) !important; -webkit-backdrop-filter: blur(18px) !important; border: 1px solid rgba(255, 255, 255, 0.12) !important; border-radius: 20px !important; padding: clamp(40px, 5.5vw, 68px) clamp(28px, 5vw, 60px) !important; overflow: hidden !important; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55) !important; isolation: isolate !important; }
-.hero-card::before { content: "" !important; position: absolute !important; top: -35% !important; right: -10% !important; width: 440px !important; height: 440px !important; background: radial-gradient(circle, rgba(226, 35, 26, 0.22), transparent 70%) !important; pointer-events: none !important; z-index: 0 !important; }
-.hero-card-bg { position: absolute !important; inset: 0 !important; pointer-events: none !important; overflow: hidden !important; z-index: 0 !important; mask-image: radial-gradient(ellipse 80% 80% at 75% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.45) 60%, transparent 90%) !important; -webkit-mask-image: radial-gradient(ellipse 80% 80% at 75% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.45) 60%, transparent 90%) !important; }
-.hero-card-bg-img { position: absolute !important; top: 50% !important; right: clamp(10px, 3vw, 40px) !important; transform: translateY(-50%) !important; width: min(520px, 48vw) !important; height: 90% !important; object-fit: contain !important; object-position: center right !important; mix-blend-mode: screen !important; opacity: 0.24 !important; pointer-events: none !important; transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important; }
-.hero-card:hover .hero-card-bg-img { opacity: 0.34 !important; transform: translateY(-50%) scale(1.02) !important; }
-.hero-card-content { position: relative !important; z-index: 2 !important; max-width: 640px !important; }
-.hero-card-content > * { position: relative !important; z-index: 2 !important; }
+.hero-card::before { content: "" !important; position: absolute !important; top: -20% !important; right: -10% !important; width: 520px !important; height: 520px !important; background: radial-gradient(circle, rgba(226, 35, 26, 0.22), transparent 70%) !important; pointer-events: none !important; z-index: 1 !important; }
+.hero-card::after { content: "" !important; position: absolute !important; inset: 0 !important; background: linear-gradient(90deg, rgba(14, 14, 18, 0.88) 0%, rgba(14, 14, 18, 0.65) 45%, rgba(14, 14, 18, 0) 75%) !important; pointer-events: none !important; z-index: 2 !important; }
+.hero-card-bg { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; pointer-events: none !important; overflow: hidden !important; border-radius: inherit !important; z-index: 1 !important; mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.04) 22%, rgba(0, 0, 0, 0.28) 42%, rgba(0, 0, 0, 0.72) 62%, rgba(0, 0, 0, 0.96) 82%, #000 100%) !important; -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.04) 22%, rgba(0, 0, 0, 0.28) 42%, rgba(0, 0, 0, 0.72) 62%, rgba(0, 0, 0, 0.96) 82%, #000 100%) !important; }
+.hero-card-bg-img { position: absolute !important; top: 0 !important; right: 0 !important; width: 72% !important; height: 100% !important; max-height: none !important; object-fit: cover !important; object-position: center right !important; opacity: 0.92 !important; filter: contrast(1.16) brightness(1.12) saturate(1.18) drop-shadow(0 0 50px rgba(226, 35, 26, 0.38)) drop-shadow(0 0 15px rgba(255, 255, 255, 0.12)) !important; pointer-events: none !important; transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease !important; }
+.hero-card:hover .hero-card-bg-img { opacity: 1.0 !important; transform: scale(1.03) !important; filter: contrast(1.22) brightness(1.18) saturate(1.25) drop-shadow(0 0 65px rgba(226, 35, 26, 0.55)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.20)) !important; }
+.hero-card-content { position: relative !important; z-index: 3 !important; max-width: 640px !important; }
+.hero-card-content > * { position: relative !important; z-index: 3 !important; }
 @media (max-width: 820px) {
-  .hero-card { padding: 36px 24px !important; }
-  .hero-card-bg { mask-image: radial-gradient(circle at 60% 40%, rgba(0,0,0,0.85) 15%, transparent 80%) !important; -webkit-mask-image: radial-gradient(circle at 60% 40%, rgba(0,0,0,0.85) 15%, transparent 80%) !important; }
-  .hero-card-bg-img { right: -20px !important; width: 280px !important; height: 75% !important; opacity: 0.16 !important; }
+  .hero-card { padding: 32px 20px !important; }
+  .hero-card::after { background: linear-gradient(180deg, rgba(14, 14, 18, 0.92) 0%, rgba(14, 14, 18, 0.78) 55%, rgba(14, 14, 18, 0.40) 100%) !important; }
+  .hero-card-bg { mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.10) 25%, rgba(0, 0, 0, 0.50) 65%, #000 100%) !important; -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.10) 25%, rgba(0, 0, 0, 0.50) 65%, #000 100%) !important; }
+  .hero-card-bg-img { width: 100% !important; height: 100% !important; opacity: 0.28 !important; object-position: center bottom !important; }
   .hero-card-content { max-width: 100% !important; }
 }
-
 </style>
 <style id="critical-nav-css">
 .nav { position: sticky !important; top: 0 !important; z-index: 99999 !important; background: rgba(0,0,0,0.88) !important; backdrop-filter: blur(18px) !important; -webkit-backdrop-filter: blur(18px) !important; border-bottom: 1px solid rgba(255,255,255,0.1) !important; }
@@ -386,7 +387,7 @@ ul.dropdown-menu > li > a:hover, ul.dropdown-menu > li > a.active, .dropdown-lin
       <span class="crosshair tl" style="position: absolute; top: 14px; left: 14px; width: 14px; height: 14px; z-index: 5;"></span>
       <span class="crosshair br" style="position: absolute; bottom: 14px; right: 14px; width: 14px; height: 14px; z-index: 5;"></span>
       <!-- Left Content Column -->
-      <div class="hero-card-content" style="position: relative; z-index: 2; max-width: 620px;">
+      <div class="hero-card-content" style="position: relative; z-index: 3; max-width: 640px;">
         <div class="eyebrow">Field Playbooks &amp; Growth Dispatches</div>
     <h1>The RedSan <span class="red">Journal</span></h1>
     <p class="masthead-sub">Marketing, search, advertising, technology and growth without the fluff. Actionable teardowns, verified client playbooks, and strategic perspectives from the RedSan growth team.</p>
@@ -396,8 +397,8 @@ ul.dropdown-menu > li > a:hover, ul.dropdown-menu > li > a.active, .dropdown-lin
       </div>
 
       <!-- Right Visual Column (Matching About Card CRT Monitor) -->
-      <div class="hero-card-bg" aria-hidden="true" style="position: absolute; top: 0; right: 24px; bottom: 0; width: clamp(320px, 42vw, 480px); pointer-events: none; z-index: 1; display: flex; align-items: center; justify-content: flex-end;">
-        <img src="/assets/hero-elements/hero-blog-journal.webp" alt="" class="hero-card-bg-img" width="1376" height="768" loading="eager" decoding="async" style="width: 100%; height: 100%; max-height: 520px; object-fit: contain; object-position: center right; opacity: 0.85; pointer-events: none;">
+      <div class="hero-card-bg" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; border-radius: inherit; mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.04) 22%, rgba(0,0,0,0.28) 42%, rgba(0,0,0,0.72) 62%, rgba(0,0,0,0.96) 82%, #000 100%); -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.04) 22%, rgba(0,0,0,0.28) 42%, rgba(0,0,0,0.72) 62%, rgba(0,0,0,0.96) 82%, #000 100%);">
+        <img src="/assets/hero-elements/hero-blog-journal.webp" alt="" class="hero-card-bg-img" width="1376" height="768" loading="eager" decoding="async" style="position: absolute; top: 0; right: 0; width: 72%; height: 100%; object-fit: cover; object-position: center right; opacity: 0.92; filter: contrast(1.16) brightness(1.12) saturate(1.18) drop-shadow(0 0 50px rgba(226, 35, 26, 0.38)) drop-shadow(0 0 15px rgba(255, 255, 255, 0.12)); pointer-events: none;">
       </div>
     </div>
   </div>
