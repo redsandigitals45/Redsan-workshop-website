@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=Roboto+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/pp-neue-montreal">
-<link rel="stylesheet" href="/assets/shared.css?v=2.2">
+<link rel="stylesheet" href="/assets/shared.css?v=3.5">
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -197,13 +197,13 @@ ul.dropdown-menu > li > a:hover, .dropdown-link:hover, .dropdown-link.active { b
 <!-- Page Hero -->
 <section class="page-hero">
   <div class="wrap">
-    <div class="hero-card">
+    <div class="hero-card" style="position: relative; overflow: hidden; isolation: isolate;">
       <span class="crosshair tl" style="z-index: 5;"></span>
       <span class="crosshair br" style="z-index: 5;"></span>
-      <div class="hero-card-bg" aria-hidden="true">
-        <img src="/assets/hero-elements/hero-website-development.webp" alt="" class="hero-card-bg-img" width="1376" height="768" loading="eager" decoding="async">
+      <div class="hero-card-bg" aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0;">
+        <img src="/assets/hero-elements/hero-website-development.webp" alt="" class="hero-card-bg-img" width="1376" height="768" loading="eager" decoding="async" style="position: absolute; top: 50%; right: clamp(10px, 3vw, 40px); transform: translateY(-50%); width: min(520px, 48vw); height: 90%; object-fit: contain; object-position: center right; mix-blend-mode: screen; opacity: 0.24; pointer-events: none;">
       </div>
-      <div class="hero-card-content">
+      <div class="hero-card-content" style="position: relative; z-index: 2; max-width: 640px;">
 <div class="breadcrumbs">
       <a href="/">Home</a>
       <span>/</span>
