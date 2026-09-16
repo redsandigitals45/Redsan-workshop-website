@@ -94,7 +94,18 @@
 
 ---
 
-## 6. Official Contact Channels
+## 6. Legal, Governance & Client Policies
+- **Legal & Compliance Hub**: https://redsan.in/legal/
+- **Terms of Service / Master Service Agreement**: https://redsan.in/terms-of-service/ (Standard commercial contract, IP ownership, milestone payments, Dehradun arbitration)
+- **Privacy Policy**: https://redsan.in/privacy-policy/ (Data fiduciary/processor roles, DPDP Act 2023 compliance, zero sale of personal data)
+- **Refund & Cancellation Policy**: https://redsan.in/refund-cancellation-policy/ (Milestone formulas, 3-day retainer onboarding grace window, non-refundable pass-through ad spend)
+- **AI Usage & Claims Policy**: https://redsan.in/ai-usage-policy/ (100% human-in-the-loop oversight, fact-checking verification, no synthetic deception)
+- **Service Limitations Policy**: https://redsan.in/service-limitations/ (Platform algorithm dependencies, client collaboration requisites, absence of rank guarantees)
+- **Service Pricing & Policy Guide**: https://redsan.in/pricing-policy/ (Base rate card for Dehradun/Uttarakhand, business-stage packages, committed term discounts)
+
+---
+
+## 7. Official Contact Channels
 - **Website Inquiries**: https://redsan.in/contact/
 - **WhatsApp Support**: https://wa.me/919664365954
 - **Phone**: +91 9664365954

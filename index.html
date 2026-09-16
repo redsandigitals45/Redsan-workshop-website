@@ -1473,6 +1473,372 @@
     }
   }
 
+  /* ===== ISO 9001:2015 BADGE & VERIFICATION MODAL ===== */
+  .badge-iso {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    text-decoration: none !important;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease !important;
+  }
+  .badge-iso:hover {
+    background: rgba(240, 0, 0, 0.16) !important;
+    border-color: rgba(240, 0, 0, 0.45) !important;
+    color: #F8F8F8 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 14px rgba(240, 0, 0, 0.25) !important;
+  }
+  .badge-iso::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--red, #F00000);
+    box-shadow: 0 0 8px var(--red, #F00000);
+  }
+  .badge-iso::after {
+    content: "· Verify ↗";
+    font-size: 10px;
+    color: var(--red, #F00000);
+    margin-left: 2px;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+  }
+  .badge-iso:hover::after {
+    opacity: 1;
+  }
+  .iso-verify-trigger {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(240, 0, 0, 0.5);
+    cursor: pointer;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+  .iso-verify-trigger:hover {
+    color: var(--red, #F00000);
+    text-decoration-color: var(--red, #F00000);
+  }
+  .iso-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    background: rgba(5, 5, 8, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s ease;
+  }
+  .iso-modal-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .iso-modal-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 980px;
+    max-height: calc(100vh - 48px);
+    background: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 18px;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(240, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.95) translateY(16px);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .iso-modal-backdrop.is-open .iso-modal-dialog {
+    transform: scale(1) translateY(0);
+  }
+  .iso-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    background: #161618;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .iso-modal-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono, monospace);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #F00000;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .iso-live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #F00000;
+    box-shadow: 0 0 8px #F00000;
+    animation: isoPulse 2s infinite ease-in-out;
+  }
+  .iso-modal-title {
+    font-family: var(--display, 'Syne', sans-serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: #F8F8F8;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin: 0;
+  }
+  .iso-modal-subtitle {
+    font-family: var(--mono, monospace);
+    font-size: 11.5px;
+    color: #AAAAAA;
+    margin: 4px 0 0;
+  }
+  .iso-modal-close {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    color: #EEEEEE;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .iso-modal-close:hover {
+    background: #F00000;
+    border-color: #F00000;
+    color: #FFFFFF;
+    transform: rotate(90deg);
+  }
+  .iso-modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 24px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .iso-modal-doc-col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .iso-cert-frame {
+    position: relative;
+    background: #08080a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.6);
+  }
+  .iso-cert-frame .crosshair {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .iso-cert-frame .crosshair.tl {
+    top: 8px;
+    left: 8px;
+    border-top: 2px solid #F00000;
+    border-left: 2px solid #F00000;
+  }
+  .iso-cert-frame .crosshair.br {
+    bottom: 8px;
+    right: 8px;
+    border-bottom: 2px solid #F00000;
+    border-right: 2px solid #F00000;
+  }
+  .iso-cert-img {
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+    display: block;
+  }
+  .iso-cert-actions {
+    display: flex;
+    gap: 10px;
+  }
+  .iso-btn-sub {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 14px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #EEEEEE;
+    font-family: var(--mono, monospace);
+    font-size: 11.5px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .iso-btn-sub:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #FFFFFF;
+  }
+  .iso-modal-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .iso-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 100px;
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.35);
+    color: #4ade80;
+    font-family: var(--mono, monospace);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    width: fit-content;
+  }
+  .iso-status-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #22c55e;
+    color: #000000;
+    font-size: 9.5px;
+    font-weight: 800;
+  }
+  .iso-dossier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .iso-dossier-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .iso-dossier-item.full {
+    grid-column: 1 / -1;
+  }
+  .iso-dossier-label {
+    font-family: var(--mono, monospace);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888888;
+    margin-bottom: 4px;
+  }
+  .iso-dossier-val {
+    font-size: 13px;
+    font-weight: 600;
+    color: #F8F8F8;
+    line-height: 1.35;
+  }
+  .iso-dossier-val.highlight {
+    color: #F00000;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .iso-dossier-val.mono {
+    font-family: var(--mono, monospace);
+    color: #EEEEEE;
+    font-size: 12.5px;
+  }
+  .iso-dossier-val.sm {
+    font-size: 12px;
+    font-weight: 400;
+    color: #CCCCCC;
+    line-height: 1.45;
+  }
+  .iso-verify-cta-box {
+    margin-top: auto;
+    background: linear-gradient(135deg, rgba(240, 0, 0, 0.12), rgba(204, 0, 0, 0.04));
+    border: 1px solid rgba(240, 0, 0, 0.28);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .iso-verify-note {
+    font-size: 12px;
+    color: #CCCCCC;
+    margin: 0 0 10px;
+    line-height: 1.4;
+  }
+  .iso-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 11px 18px;
+    border-radius: 8px;
+    background: #F00000;
+    color: #FFFFFF;
+    font-family: var(--mono, monospace);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(240, 0, 0, 0.35);
+  }
+  .iso-btn-primary:hover {
+    background: #CC0000;
+    box-shadow: 0 6px 20px rgba(240, 0, 0, 0.5);
+    transform: translateY(-1px);
+  }
+  @media (max-width: 768px) {
+    .iso-modal-body {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding: 18px;
+    }
+    .iso-dossier-grid {
+      grid-template-columns: 1fr;
+    }
+    .iso-modal-header {
+      padding: 16px 18px;
+    }
+    .iso-cert-img {
+      max-height: 320px;
+    }
+  }
+
   /* ===== FOOTER ===== */
   footer{background:rgba(6,6,8,0.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;padding:60px 0 30px;border-top:1px solid rgba(255,255,255,0.1);}
   .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;}
@@ -4229,7 +4595,7 @@
   <div class="rsd-glow"></div>
 
   <div class="rsd-stage">
-    <p class="rsd-kicker">Est. 2019 · ISO 9001:2015 Certified</p>
+    <p class="rsd-kicker">Est. 2019 · <button type="button" class="iso-verify-trigger" data-iso-verify title="Click to verify ISO 9001:2015 Certificate">ISO 9001:2015 Certified</button></p>
     <div class="rsd-word-wrap">
       <div class="rsd-word" data-text="Redsan Digitals">Redsan Digitals</div>
     </div>
@@ -4358,7 +4724,7 @@
 
         <!-- SCENE 0 : HERO -->
         <div class="rah-panel" data-index="0">
-          <p class="rah-eyebrow">Redsan Digitals · Dehradun · Est. 2019 · ISO 9001:2015 Certified</p>
+          <p class="rah-eyebrow">Redsan Digitals · Dehradun · Est. 2019 · <button type="button" class="iso-verify-trigger" data-iso-verify title="Click to verify ISO 9001:2015 Certificate">ISO 9001:2015 Certified</button></p>
           <h1 class="rah-h1">Growth isn't luck.<br>It's <span class="rah-accent">engineering.</span></h1>
           <p class="rah-body">Redsan Digitals is a full-stack growth agency building the systems behind brands that scale - SEO and AI search, performance marketing, content, websites, and the martech that ties it together, powered by an AI-driven workflow that moves at the speed the market actually demands.</p>
           <span class="rah-scroll-cue">Scroll to see how ↓</span>
@@ -5195,7 +5561,7 @@
       <div class="foot-col foot-brand">
         <a href="/" class="nav-logo" aria-label="Redsan Digitals Home"><img src="/assets/redsan_logo.webp" alt="Redsan Digitals Logo" class="brand-logo-img foot-logo-img" width="162" height="38" loading="lazy"></a>
         <p class="foot-tagline">Attention, Mined. Building high-performing brands, web infrastructure &amp; revenue engines since 2019.</p>
-        <div class="badge-iso" style="display:inline-block; font-family:var(--mono); font-size:11px; padding:4px 10px; border-radius:100px; background:rgba(226,35,26,0.12); color:var(--red); border:1px solid rgba(226,35,26,0.3); margin-top:12px; width:fit-content;">ISO 9001:2015 Certified Agency</div>
+        <button type="button" class="badge-iso" data-iso-verify aria-label="Verify ISO 9001:2015 Certificate" title="Click to verify ISO 9001:2015 Certificate">ISO 9001:2015 Certified Agency</button>
         <div class="foot-contact-quick">
           <a href="mailto:redsandigitals@gmail.com">✉️ redsandigitals@gmail.com</a>
           <a href="tel:+919664365954">📞 +91 9664365954</a>
@@ -5233,21 +5599,26 @@
 
       <!-- Col 4: Agency Ecosystem -->
       <div class="foot-col">
-        <div class="foot-col-title">Agency &amp; Insights</div>
+        <div class="foot-col-title">Agency &amp; Legal</div>
         <ul class="foot-links-list">
           <li><a href="/">Home</a></li>
           <li><a href="#about">About RedSan (Dossier)</a></li>
           <li><a href="/digital-marketing-agency/">Agency Capabilities</a></li>
           <li><a href="/workshops/">MarTech Masterclasses (₹49)</a></li>
           <li><a href="/blog/">The RedSan Journal (Blog)</a></li>
+          <li><a href="/legal/">Legal &amp; Policy Hub</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms-of-service/">Master Service Agreement</a></li>
+          <li><a href="/refund-cancellation-policy/">Refund &amp; Cancellation</a></li>
           <li><a href="#contact">Schedule Growth Session</a></li>
-          <li><a href="https://chat.whatsapp.com/FMjPO96CFewCnXEOwwRIF0?s=cl&amp;p=i&amp;mlu=0&amp;amv=2" target="_blank" rel="noopener">Private Founder Community</a></li>
         </ul>
       </div>
     </div>
 
     <div class="foot-bottom-bar">
-      <div class="foot-bottom-copy">© 2026 RedSan / RedSan Digitals Pvt. Ltd. All rights reserved.</div>
+      <div class="foot-bottom-copy">
+        © 2026 RedSan / RedSan Digitals Pvt. Ltd. All rights reserved. · <a href="/privacy-policy/" style="color:inherit; text-decoration:underline;">Privacy</a> · <a href="/terms-of-service/" style="color:inherit; text-decoration:underline;">Terms</a> · <a href="/refund-cancellation-policy/" style="color:inherit; text-decoration:underline;">Refunds</a> · <a href="/ai-usage-policy/" style="color:inherit; text-decoration:underline;">AI Policy</a> · <a href="/pricing-policy/" style="color:inherit; text-decoration:underline;">Pricing Guide</a> · <a href="/service-limitations/" style="color:inherit; text-decoration:underline;">Limitations</a>
+      </div>
       <div class="foot-bottom-meta">Enterprise Growth Engine · Built for High-Intent Commercial Dominance</div>
     </div>
   </div>
@@ -5345,6 +5716,83 @@
         <button type="submit" class="btn btn-primary">Send Message →</button>
         <div id="modalFormStatus" style="display:none; margin-top:14px; padding:12px 16px; border-radius:8px; font-family:var(--mono); font-size:13px; font-weight:600;"></div>
       </form>
+    </div>
+  </div>
+</div>
+
+<!-- ISO 9001:2015 CERTIFICATE VERIFICATION MODAL -->
+<div class="iso-modal-backdrop" id="isoCertificateModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="isoModalTitle">
+  <div class="iso-modal-dialog">
+    <div class="iso-modal-header">
+      <div class="iso-modal-title-wrap">
+        <div class="iso-modal-kicker"><span class="iso-live-dot"></span>OFFICIAL CREDENTIAL VERIFICATION</div>
+        <h3 id="isoModalTitle" class="iso-modal-title">ISO 9001:2015 Registration Certificate</h3>
+        <p class="iso-modal-subtitle">Quality Management System · Redsan Digitals Pvt. Ltd.</p>
+      </div>
+      <button type="button" class="iso-modal-close" id="isoModalClose" aria-label="Close certificate verification dialog">✕</button>
+    </div>
+
+    <div class="iso-modal-body">
+      <div class="iso-modal-doc-col">
+        <div class="iso-cert-frame">
+          <span class="crosshair tl"></span><span class="crosshair br"></span>
+          <picture>
+            <source srcset="/assets/ISO-registration-certificate.webp" type="image/webp">
+            <img src="/assets/ISO-registration-certificate.jpeg" alt="ISO 9001:2015 Registration Certificate for Redsan Digitals" class="iso-cert-img" width="890" height="1165" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="iso-cert-actions">
+          <a href="/assets/ISO-registration-certificate.jpeg" target="_blank" rel="noopener noreferrer" class="iso-btn-sub">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            Open Full Resolution
+          </a>
+          <a href="/assets/ISO-registration-certificate.jpeg" download="ISO-9001-2015-Redsan-Certificate.jpeg" class="iso-btn-sub">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <div class="iso-modal-info-col">
+        <div class="iso-status-pill">
+          <span class="iso-status-check">✓</span>
+          <span>Verified Active Certification</span>
+        </div>
+
+        <div class="iso-dossier-grid">
+          <div class="iso-dossier-item">
+            <div class="iso-dossier-label">Certified Entity</div>
+            <div class="iso-dossier-val">Redsan Digitals</div>
+          </div>
+          <div class="iso-dossier-item">
+            <div class="iso-dossier-label">Registration Standard</div>
+            <div class="iso-dossier-val highlight">ISO 9001:2015</div>
+          </div>
+          <div class="iso-dossier-item">
+            <div class="iso-dossier-label">Certificate Number</div>
+            <div class="iso-dossier-val mono">QMS/230620/9888</div>
+          </div>
+          <div class="iso-dossier-item">
+            <div class="iso-dossier-label">Validity Period</div>
+            <div class="iso-dossier-val">25 Dec 2025 to 24 Dec 2028</div>
+          </div>
+          <div class="iso-dossier-item full">
+            <div class="iso-dossier-label">Accreditation Body</div>
+            <div class="iso-dossier-val">Euro UK Accreditation Licensing Services (EUR-UK-ALS)</div>
+          </div>
+          <div class="iso-dossier-item full">
+            <div class="iso-dossier-label">Certified Scope</div>
+            <div class="iso-dossier-val sm">Information Technology Services, Digital Marketing, Advertising Solutions, Web Development, and Structured Coaching / Training Programs.</div>
+          </div>
+        </div>
+
+        <div class="iso-verify-cta-box">
+          <p class="iso-verify-note">To independently verify this registration status with the accreditation registry:</p>
+          <a href="http://euroukals.org.uk/check-certified-org.php" target="_blank" rel="noopener noreferrer" class="iso-btn-primary">
+            Verify at Registrar Portal (euroukals.org.uk) →
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -6532,9 +6980,66 @@ function initCigaretteSmoke() {
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initContactModal);
+    document.addEventListener('DOMContentLoaded', () => {
+      initContactModal();
+      initIsoVerificationModal();
+    });
   } else {
     initContactModal();
+    initIsoVerificationModal();
+  }
+
+  /* ISO 9001:2015 Registration Certificate Verification Modal Controller */
+  function initIsoVerificationModal() {
+    if (window.__isoModalInitialized) return;
+    window.__isoModalInitialized = true;
+
+    const modal = document.getElementById('isoCertificateModal');
+    if (!modal) return;
+    const closeBtn = document.getElementById('isoModalClose');
+    let lastActiveTrigger = null;
+
+    function openModal(triggerEl) {
+      lastActiveTrigger = triggerEl || document.activeElement;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal() {
+      if (!modal.classList.contains('is-open')) return;
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastActiveTrigger && typeof lastActiveTrigger.focus === 'function') {
+        try { lastActiveTrigger.focus(); } catch (e) {}
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('[data-iso-verify], .badge-iso, .iso-verify-trigger');
+      if (trigger) {
+        e.preventDefault();
+        openModal(trigger);
+        return;
+      }
+      if (e.target.closest('#isoModalClose, .iso-modal-close')) {
+        e.preventDefault();
+        closeModal();
+        return;
+      }
+      if (e.target === modal) {
+        e.preventDefault();
+        closeModal();
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
   }
 </script>
 

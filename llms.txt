@@ -60,6 +60,15 @@
 - [Google's AI Overviews: What Businesses Need to Know](https://redsan.in/blog/googles-ai-overviews-impact-on-search/): Marketing news analysis on surviving zero-click search behavior.
 - [10 Marketing Mistakes Indian Businesses Make (and How to Fix Them)](https://redsan.in/blog/10-marketing-mistakes-indian-businesses-make/): Practical guide for business owners to eliminate wasted marketing budget.
 
+## Legal, Governance & Client Policies
+- [Legal & Compliance Hub](https://redsan.in/legal/): Central portal for all commercial agreements and operational policies.
+- [Terms of Service / Master Service Agreement](https://redsan.in/terms-of-service/): Standard contract governing agency deliverables, IP transfer, milestone billing, and Dehradun legal jurisdiction.
+- [Privacy Policy](https://redsan.in/privacy-policy/): Data governance and privacy rights under India's Digital Personal Data Protection Act, 2023.
+- [Refund & Cancellation Policy](https://redsan.in/refund-cancellation-policy/): Transparent milestone assessment, 3-day retainer grace period, and non-refundable pass-through spend terms.
+- [AI Usage & Claims Policy](https://redsan.in/ai-usage-policy/): 100% human-in-the-loop oversight, strict fact verification, and ethical AI standards.
+- [Service Limitations Policy](https://redsan.in/service-limitations/): Clear operational boundaries regarding third-party platform algorithm dependencies and realistic growth disclaimers.
+- [Service Pricing & Policy Guide](https://redsan.in/pricing-policy/): Indicative base rate cards benchmarked for Dehradun and Uttarakhand, business-stage packages, and committed term discounts.
+
 ## Official Contact & Verification
 - Website: https://redsan.in/
 - About Dossier: https://redsan.in/#about

@@ -186,6 +186,13 @@
     <priority>0.85</priority>
   </url>
 
+  <url>
+    <loc>https://redsan.in/refund-cancellation-policy/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
   <!-- ====================================================================
        5. THE REDSAN JOURNAL & AGENCY DISPATCHES
        ==================================================================== -->
@@ -385,6 +392,55 @@
       <image:title>The ₹1.5Cr+ Growth Milestone Methodology &amp; Attribution Framework</image:title>
       <image:caption>The exact data tracking, CRM infrastructure, and multi-channel attribution model behind scaling client revenue past ₹1.5Cr+.</image:caption>
     </image:image>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/legal/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/terms-of-service/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/privacy-policy/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/refund-cancellation-policy/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/ai-usage-policy/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/service-limitations/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/pricing-policy/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
 
 </urlset>
