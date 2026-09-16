@@ -610,6 +610,312 @@
   .logo-box:hover{opacity:1;}
   .logo-box img{max-height:100%;max-width:100%;object-fit:contain;}
 
+  /* ===== ILLUSTRATIVE BADGES ===== */
+  .model-data-badge {
+    display: inline-block;
+    font-family: var(--mono, monospace);
+    font-size: 8.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 7px;
+    background: rgba(238,0,0,0.15);
+    border: 1px solid rgba(238,0,0,0.4);
+    color: #ff6b6b;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ===== PROVEN IN CLIENT WORK SECTION ===== */
+  .proven-section {
+    padding: 90px 0 70px;
+    background: transparent;
+    position: relative;
+    z-index: 10;
+    font-family: var(--body);
+  }
+  .proven-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .proven-tile {
+    background: rgba(17, 17, 20, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .proven-tile:hover {
+    transform: translateY(-6px);
+    border-color: rgba(238, 0, 0, 0.4);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(238, 0, 0, 0.12);
+  }
+  .proven-tile-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+  .proven-metric {
+    font-family: var(--display);
+    font-size: clamp(26px, 2.2vw, 34px);
+    line-height: 1.1;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .proven-context {
+    font-size: 12px;
+    font-family: var(--mono);
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .proven-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  .proven-tile-link {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #EE0000;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .proven-tile-link:hover {
+    color: #FFFFFF;
+    transform: translateX(3px);
+  }
+  @media (max-width: 960px) {
+    .proven-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 640px) {
+    .proven-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== SELECTED CLIENT WORK SECTION ===== */
+  .selected-work-section {
+    padding: 100px 0 80px;
+    background: transparent;
+    position: relative;
+    z-index: 10;
+    font-family: var(--body);
+  }
+  .selected-work-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .work-card {
+    background: rgba(14, 14, 18, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: clamp(28px, 4vw, 44px);
+    position: relative;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .work-card:hover {
+    border-color: rgba(238, 0, 0, 0.35);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  }
+  .work-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+  }
+  .work-client-name {
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+  }
+  .work-engagement-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 6px 12px;
+    background: rgba(238, 0, 0, 0.12);
+    border: 1px solid rgba(238, 0, 0, 0.35);
+    color: #ff6b6b;
+    border-radius: 20px;
+  }
+  .work-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+  .work-meta-item {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .work-meta-item strong {
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-size: 11px;
+    margin-right: 4px;
+  }
+  .work-body-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .work-narrative h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+  .work-narrative p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.78);
+    margin-bottom: 16px;
+  }
+  .work-outcome-box {
+    background: rgba(238, 0, 0, 0.06);
+    border: 1px solid rgba(238, 0, 0, 0.25);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: left;
+  }
+  .work-outcome-label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--red);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .work-outcome-metric {
+    font-family: var(--body);
+    font-size: clamp(20px, 1.8vw, 26px);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  @media (max-width: 860px) {
+    .work-body-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  /* Services Deliverable and Proof Badges */
+  .service-deliverable-tag {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .service-deliverable-tag strong {
+    color: #EE0000;
+    text-transform: uppercase;
+  }
+  .service-proof-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #EE0000;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* About Section Credibility Categories */
+  .about-cred-cat {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .about-cred-cat-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+  .about-cred-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 720px) {
+    .about-cred-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .about-cred-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px 22px;
+  }
+  .about-cred-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+  .about-cred-card p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.72);
+    margin: 0;
+  }
+
   /* ===== WORKSHOP TEASER ===== */
   .workshop-teaser{
     background:transparent;
@@ -2739,6 +3045,58 @@
     color: #111;
   }
 
+  .preview-section .circle-evidence-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 10px;
+    font-family: var(--mono, monospace);
+    font-size: clamp(10px, 0.9vw, 12px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity .2s ease, transform .2s ease, color .2s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
+  }
+  .preview-section .circle.c-white .circle-evidence-link,
+  .preview-section .circle.c-grey .circle-evidence-link {
+    color: #EE0000;
+  }
+  .preview-section .circle.c-white .circle-evidence-link:hover,
+  .preview-section .circle.c-grey .circle-evidence-link:hover {
+    color: #111111;
+    transform: translateY(-1px);
+  }
+  .preview-section .circle.c-bright-red .circle-evidence-link,
+  .preview-section .circle.c-dark-red .circle-evidence-link {
+    color: #FFFFFF;
+  }
+  .preview-section .circle.c-bright-red .circle-evidence-link:hover,
+  .preview-section .circle.c-dark-red .circle-evidence-link:hover {
+    color: #EEEEEE;
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  .preview-section .circle.c-black .circle-evidence-link {
+    color: #EE0000;
+  }
+  .preview-section .circle.c-black .circle-evidence-link:hover {
+    color: #FFFFFF;
+    transform: translateY(-1px);
+  }
+  .preview-section .circle-footnote {
+    display: block;
+    font-size: 10px;
+    line-height: 1.2;
+    opacity: 0.7;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
   .preview-section .wordmark {
     font-family: var(--display);
     font-size: clamp(48px, 5.8vw, 84px);
@@ -4797,6 +5155,7 @@
             <div class="circle-content">
               <div class="metric">50+</div>
               <p class="copy">Clients<br>served</p>
+              <a href="#selected-work" class="circle-evidence-link">View Selected Work →</a>
             </div>
           </article>
 
@@ -4805,6 +5164,7 @@
             <div class="circle-content">
               <div class="metric">120+</div>
               <p class="copy">Projects<br>delivered</p>
+              <a href="#selected-work" class="circle-evidence-link">Explore Projects →</a>
             </div>
           </article>
 
@@ -4813,6 +5173,7 @@
             <div class="circle-content">
               <div class="metric">5+</div>
               <p class="copy">Countries<br>work base</p>
+              <a href="/blog/redsan-international-client-base/" class="circle-evidence-link">See Global Track Record →</a>
             </div>
           </article>
 
@@ -4821,6 +5182,7 @@
             <div class="circle-content">
               <div class="metric">100k+</div>
               <p class="copy">Backlinks<br>generated for<br>organic growth</p>
+              <a href="/blog/seo-vs-geo-whats-the-difference/" class="circle-evidence-link">See SEO Methodology →</a>
             </div>
           </article>
 
@@ -4829,14 +5191,17 @@
             <div class="circle-content">
               <div class="metric">1000+</div>
               <p class="copy">Content<br>produced for<br>digital presence</p>
+              <a href="/content-creation/" class="circle-evidence-link">Explore Content Work →</a>
             </div>
           </article>
 
           <!-- 6) 1.5cr+ turnover for brands starting from scratch (White) -->
           <article class="circle c-white" tabindex="0" style="z-index: 6;">
             <div class="circle-content">
-              <div class="metric">1.5cr+</div>
-              <p class="copy">turnover for brands<br>starting from<br>scratch</p>
+              <div class="metric">₹1.5Cr+</div>
+              <p class="copy">Combined client turnover across documented growth engagements</p>
+              <span class="circle-footnote">*Attributed across multi-channel campaigns</span>
+              <a href="/blog/1-5cr-growth-milestone-methodology/" class="circle-evidence-link">View Attribution Audit →</a>
             </div>
           </article>
 
@@ -4845,6 +5210,7 @@
             <div class="circle-content">
               <div class="metric">5+</div>
               <p class="copy">Events &amp; Shows<br>managed &amp;<br>marketed</p>
+              <a href="/blog/redsan-dehradun-chapter-2/" class="circle-evidence-link">View Event Production →</a>
             </div>
           </article>
 
@@ -4854,6 +5220,7 @@
             <div class="circle-content">
               <div class="metric">50+</div>
               <p class="copy">Clients<br>served</p>
+              <a href="#selected-work" class="circle-evidence-link">View Selected Work →</a>
             </div>
           </article>
 
@@ -4862,6 +5229,7 @@
             <div class="circle-content">
               <div class="metric">120+</div>
               <p class="copy">Projects<br>delivered</p>
+              <a href="#selected-work" class="circle-evidence-link">Explore Projects →</a>
             </div>
           </article>
 
@@ -4870,6 +5238,7 @@
             <div class="circle-content">
               <div class="metric">5+</div>
               <p class="copy">Countries<br>work base</p>
+              <a href="/blog/redsan-international-client-base/" class="circle-evidence-link">See Global Track Record →</a>
             </div>
           </article>
 
@@ -4878,6 +5247,7 @@
             <div class="circle-content">
               <div class="metric">100k+</div>
               <p class="copy">Backlinks<br>generated for<br>organic growth</p>
+              <a href="/blog/seo-vs-geo-whats-the-difference/" class="circle-evidence-link">See SEO Methodology →</a>
             </div>
           </article>
 
@@ -4886,14 +5256,17 @@
             <div class="circle-content">
               <div class="metric">1000+</div>
               <p class="copy">Content<br>produced for<br>digital presence</p>
+              <a href="/content-creation/" class="circle-evidence-link">Explore Content Work →</a>
             </div>
           </article>
 
           <!-- 6b) 1.5cr+ turnover for brands starting from scratch -->
           <article class="circle c-white" tabindex="0" style="z-index: 13;" aria-hidden="true">
             <div class="circle-content">
-              <div class="metric">1.5cr+</div>
-              <p class="copy">turnover for brands<br>starting from<br>scratch</p>
+              <div class="metric">₹1.5Cr+</div>
+              <p class="copy">Combined client turnover across documented growth engagements</p>
+              <span class="circle-footnote">*Attributed across multi-channel campaigns</span>
+              <a href="/blog/1-5cr-growth-milestone-methodology/" class="circle-evidence-link">View Attribution Audit →</a>
             </div>
           </article>
 
@@ -4902,6 +5275,7 @@
             <div class="circle-content">
               <div class="metric">5+</div>
               <p class="copy">Events &amp; Shows<br>managed &amp;<br>marketed</p>
+              <a href="/blog/redsan-dehradun-chapter-2/" class="circle-evidence-link">View Event Production →</a>
             </div>
           </article>
         </div>
@@ -5009,7 +5383,7 @@
         <article class="martech-card card-left reveal">
           <div class="metric-glow" style="left:30px;bottom:-50px"></div>
           <div class="card-top">
-            <div class="card-title">Growth Overview <span style="display:block; font-size:9.5px; text-transform:uppercase; letter-spacing:0.8px; opacity:0.6; margin-top:2px;">Illustrative Model Data</span></div>
+            <div class="card-title">Growth Overview <span class="model-data-badge">ILLUSTRATIVE / MODEL DATA</span></div>
             <div class="dots">•••</div>
           </div>
           <div class="metrics">
@@ -5048,7 +5422,7 @@
         <article class="martech-card card-right reveal">
           <div class="metric-glow" style="right:20px;bottom:-40px"></div>
           <div class="card-top">
-            <div class="card-title">Performance Overview <span style="display:block; font-size:9.5px; text-transform:uppercase; letter-spacing:0.8px; opacity:0.6; margin-top:2px;">Illustrative Model Data</span></div>
+            <div class="card-title">Performance Overview <span class="model-data-badge">ILLUSTRATIVE / MODEL DATA</span></div>
             <div class="dots">•••</div>
           </div>
           <div class="metrics">
@@ -5084,7 +5458,14 @@
         </article>
       </div>
 
-      <div style="text-align:center; font-size:11px; color:rgba(255,255,255,0.45); letter-spacing:0.8px; text-transform:uppercase; margin:14px auto 0; position:relative; z-index:3;">Illustrative Growth Dashboard · Model Performance Metrics · <a href="/blog/1-5cr-growth-milestone-methodology/" style="color:#e2231a; text-decoration:underline;">View Methodology</a></div>
+      <div class="martech-disclaimer-box" style="text-align:center; max-width:680px; margin:20px auto 0; padding:14px 20px; background:rgba(17,17,17,0.85); border:1px solid rgba(255,255,255,0.12); border-radius:10px; position:relative; z-index:5;">
+        <p style="margin:0; font-size:12px; color:rgba(255,255,255,0.75); line-height:1.5; font-family:var(--body);">
+          <strong style="color:#EE0000; text-transform:uppercase; letter-spacing:0.04em;">Disclaimer:</strong> These figures are illustrative examples of how a growth dashboard can represent performance. They are not presented as client results.
+        </p>
+        <p style="margin:8px 0 0; font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em; font-family:var(--mono);">
+          For verified client performance, see <a href="#proven-results" style="color:#EE0000; text-decoration:underline; font-weight:700;">Proven in Client Work below ↓</a> · <a href="/blog/1-5cr-growth-milestone-methodology/" style="color:rgba(255,255,255,0.6); text-decoration:underline;">View Methodology</a>
+        </p>
+      </div>
 
       <!-- Flanking text on left side of character -->
       <div class="martech-flank-text flank-left reveal">
@@ -5113,6 +5494,87 @@
     </div>
   </div>
 </section>
+
+<!-- ============================================================
+     PROVEN IN CLIENT WORK (Verified Documented Outcomes)
+     ============================================================ -->
+<section class="proven-section" id="proven-results">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="color:var(--red);">Documented Track Record</div>
+      <h2>Proven in Client Work.</h2>
+      <p>Real, documented outcomes from Redsan growth engagements across D2C scaling, B2B lead generation, institutional marketing, and digital infrastructure.</p>
+    </div>
+
+    <div class="proven-grid">
+      <!-- 1. D2C Brand Revenue Scaling -->
+      <article class="proven-tile">
+        <div>
+          <div class="proven-tile-tag">D2C E-Commerce</div>
+          <div class="proven-metric">3.4x Revenue Growth</div>
+          <div class="proven-context">Lifestyle &amp; Apparel Brand · 90-Day Scaling Sprint</div>
+          <p class="proven-desc">Re-engineered performance acquisition funnels across Meta and Google Ads, deployed high-converting mobile landers, and lowered blended customer acquisition costs while scaling volume.</p>
+        </div>
+        <a href="/blog/how-redsan-helped-d2c-brand-scale-revenue/" class="proven-tile-link">View Case Study →</a>
+      </article>
+
+      <!-- 2. B2B Growth & Lead Pipelines -->
+      <article class="proven-tile">
+        <div>
+          <div class="proven-tile-tag">B2B &amp; Enterprise</div>
+          <div class="proven-metric">42% Lower CPL</div>
+          <div class="proven-context">IT &amp; Enterprise Solutions · Multi-Channel Pipeline</div>
+          <p class="proven-desc">Restructured commercial keyword targeting, implemented 3-line objection-handling modules, and connected automated qualification workflows to increase sales-qualified demo bookings.</p>
+        </div>
+        <a href="/blog/redsan-scaling-b2b-d2c-brands-online/" class="proven-tile-link">View Case Study →</a>
+      </article>
+
+      <!-- 3. Higher Education Admissions -->
+      <article class="proven-tile">
+        <div>
+          <div class="proven-tile-tag">Higher Education</div>
+          <div class="proven-metric">5 Institutional MoUs</div>
+          <div class="proven-context">State Boards &amp; Universities · SCERT &amp; Uttaranchal Univ</div>
+          <p class="proven-desc">Delivered campus marketing campaigns, student skill-building workshops, and targeted digital admissions visibility programs across leading regional educational institutions.</p>
+        </div>
+        <a href="/blog/redsan-in-education-industry/" class="proven-tile-link">Read Industry Breakdown →</a>
+      </article>
+
+      <!-- 4. Organic Search Authority -->
+      <article class="proven-tile">
+        <div>
+          <div class="proven-tile-tag">SEO, AEO &amp; GEO</div>
+          <div class="proven-metric">100k+ Backlinks</div>
+          <div class="proven-context">Multi-Industry Portfolio · Long-Term Organic Authority</div>
+          <p class="proven-desc">Engineered entity-first content clusters, high-authority Digital PR backlinks, and schema architectures optimized for Google SGE and AI conversational answer retrieval.</p>
+        </div>
+        <a href="/blog/seo-vs-geo-whats-the-difference/" class="proven-tile-link">See SEO Methodology →</a>
+      </article>
+
+      <!-- 5. Content Production At Scale -->
+      <article class="proven-tile">
+        <div>
+          <div class="proven-tile-tag">Creative &amp; Studio</div>
+          <div class="proven-metric">1,000+ Assets Produced</div>
+          <div class="proven-context">Brands &amp; Retainers · High-Velocity Digital Presence</div>
+          <p class="proven-desc">Studio product shoots, video ad creative sprints, and high-converting commercial copy designed to stop the scroll and establish brand credibility in crowded categories.</p>
+        </div>
+        <a href="/content-creation/" class="proven-tile-link">Explore Content Production →</a>
+      </article>
+
+      <!-- 6. Event Marketing & Production -->
+      <article class="proven-tile">
+        <div>
+          <div class="proven-tile-tag">Experiential &amp; Events</div>
+          <div class="proven-metric">5+ Events Managed</div>
+          <div class="proven-context">Regional Summits &amp; Shows · Including Redsan Dehradun Chapter 2</div>
+          <p class="proven-desc">Full-funnel event ticketing, brand sponsorships, influencer coordination, on-ground media coverage, and post-event brand amplification for flagship regional conferences.</p>
+        </div>
+        <a href="/blog/redsan-dehradun-chapter-2/" class="proven-tile-link">View Event Breakdown →</a>
+      </article>
+    </div>
+  </div>
+</section>
 <!-- Services Section Follows -->
 
 <!-- SERVICES -->
@@ -5126,42 +5588,74 @@
       <a href="/website-development/" class="service-row">
         <div class="service-num">01</div>
         <div class="service-name">AI Web Design and Development</div>
-        <div class="service-desc">We build fast, conversion focused websites that look sharp, communicate clearly and turn visitors into customers.</div>
+        <div class="service-desc">
+          We build fast, conversion focused websites that look sharp, communicate clearly and turn visitors into customers.
+          <span class="service-deliverable-tag"><strong>Deliverable:</strong> High-conversion responsive web architectures &amp; headless storefronts.</span>
+          <span class="service-proof-link">Explore Web Development →</span>
+        </div>
       </a>
       <a href="/seo-agency/" class="service-row">
         <div class="service-num">02</div>
         <div class="service-name">SEO, AEO and GEO</div>
-        <div class="service-desc">Get discovered on Google, appear in AI generated answers and build the search visibility your brand needs to grow.</div>
+        <div class="service-desc">
+          Get discovered on Google, appear in AI generated answers and build the search visibility your brand needs to grow.
+          <span class="service-deliverable-tag"><strong>Deliverable:</strong> Entity-first search architecture, answer engine optimization &amp; 100k+ backlink pedigree.</span>
+          <span class="service-proof-link">See SEO Methodology →</span>
+        </div>
       </a>
       <a href="/social-media-marketing/" class="service-row">
         <div class="service-num">03</div>
         <div class="service-name">Social Media Management</div>
-        <div class="service-desc">We turn your social media from a posting obligation into a consistent brand and customer acquisition channel.</div>
+        <div class="service-desc">
+          We turn your social media from a posting obligation into a consistent brand and customer acquisition channel.
+          <span class="service-deliverable-tag"><strong>Deliverable:</strong> Content scheduling systems, community engagement funnels &amp; audience nurturing.</span>
+          <span class="service-proof-link">Explore Social Strategy →</span>
+        </div>
       </a>
       <a href="/content-creation/" class="service-row">
         <div class="service-num">04</div>
         <div class="service-name">Content Creation</div>
-        <div class="service-desc">Content that earns attention, explains your value and gives people a reason to remember your brand.</div>
+        <div class="service-desc">
+          Content that earns attention, explains your value and gives people a reason to remember your brand.
+          <span class="service-deliverable-tag"><strong>Deliverable:</strong> 1,000+ brand assets produced across video reels, graphics &amp; conversion copywriting.</span>
+          <span class="service-proof-link">View Content Production →</span>
+        </div>
       </a>
       <a href="/product-service-shoots/" class="service-row">
         <div class="service-num">05</div>
         <div class="service-name">Product and Service Shoots</div>
-        <div class="service-desc">Professional visuals designed to make your product, service or brand impossible to ignore.</div>
+        <div class="service-desc">
+          Professional visuals designed to make your product, service or brand impossible to ignore.
+          <span class="service-deliverable-tag"><strong>Deliverable:</strong> Commercial product photography, model shoots &amp; dynamic video production.</span>
+          <span class="service-proof-link">Explore Studio Visuals →</span>
+        </div>
       </a>
       <a href="/vibe-coding/" class="service-row">
         <div class="service-num">06</div>
         <div class="service-name">Vibe Coding</div>
-        <div class="service-desc">From idea to working prototype, we use modern AI assisted workflows to build and test digital products faster.</div>
+        <div class="service-desc">
+          From idea to working prototype, we use modern AI assisted workflows to build and test digital products faster.
+          <span class="service-deliverable-tag"><strong>Deliverable:</strong> Rapid MVP builds, internal automation scripts &amp; interactive web tools.</span>
+          <span class="service-proof-link">Explore Rapid Prototyping →</span>
+        </div>
       </a>
       <a href="/startup-growth-consulting/" class="service-row">
         <div class="service-num">07</div>
         <div class="service-name">Startup Growth Consulting</div>
-        <div class="service-desc">Strategy for founders who need to decide what to build, what to market and what to fix before spending more money.</div>
+        <div class="service-desc">
+          Strategy for founders who need to decide what to build, what to market and what to fix before spending more money.
+          <span class="service-deliverable-tag"><strong>Deliverable:</strong> Go-to-market diagnosis, positioning roadmaps &amp; unit economics validation.</span>
+          <span class="service-proof-link">Explore Growth Consulting →</span>
+        </div>
       </a>
       <a href="/performance-marketing/" class="service-row">
         <div class="service-num">08</div>
         <div class="service-name">Performance Marketing</div>
-        <div class="service-desc">Paid acquisition built around one thing: measurable business growth across Google Ads and Meta Ads.</div>
+        <div class="service-desc">
+          Paid acquisition built around one thing: measurable business growth across Google Ads and Meta Ads.
+          <span class="service-deliverable-tag"><strong>Deliverable:</strong> Target audience segmentation, creative testing loops &amp; ROAS optimization.</span>
+          <span class="service-proof-link">View D2C Scaling Case Study →</span>
+        </div>
       </a>
     </div>
   </div>
@@ -5211,6 +5705,176 @@
       <div class="logo-box"><img src="assets 2/elora_440x.avif" alt="Client Partner - Elora" loading="lazy" width="440" height="172" decoding="async"></div>
       <div class="logo-box"><img src="assets 2/image (1).png" alt="Client Partner Brand Logo" loading="lazy" width="512" height="164" decoding="async"></div>
       <div class="logo-box"><img src="assets 2/image.png" alt="Client Partner Brand Logo" loading="lazy" width="402" height="125" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SELECTED CLIENT WORK (Structured Case Studies)
+     ============================================================ -->
+<section class="selected-work-section" id="selected-work">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="color:var(--red);">Case Studies &amp; Evidence</div>
+      <h2>Selected Client Work.</h2>
+      <p>Detailed breakdowns of challenges diagnosed, systems engineered, and measurable commercial outcomes delivered across client engagements.</p>
+    </div>
+
+    <div class="selected-work-grid">
+      <!-- Case Study 1 -->
+      <article class="work-card">
+        <div class="work-card-header">
+          <div>
+            <div class="work-client-name">D2C Lifestyle &amp; Apparel Brand</div>
+            <div style="font-size:13px; color:rgba(255,255,255,0.55); margin-top:4px;">Tier-1 Indian Metro · Consumer E-Commerce</div>
+          </div>
+          <span class="work-engagement-badge">90-Day Scaling Sprint &amp; Retainer</span>
+        </div>
+        <div class="work-meta-row">
+          <div class="work-meta-item"><strong>Services Delivered:</strong> Meta Ads + CRO Landing Pages + Creative Strategy</div>
+          <div class="work-meta-item"><strong>Timeline:</strong> 3 Months Operational Execution</div>
+        </div>
+        <div class="work-body-grid">
+          <div class="work-narrative">
+            <h4>The Challenge</h4>
+            <p>High customer acquisition costs and stagnating conversion rates on the existing storefront, limiting the brand's ability to scale ad spend profitably.</p>
+            <h4>What We Did</h4>
+            <p>Re-architected the acquisition funnel with high-converting mobile landers, implemented structured creative testing cycles across Meta and Google, and streamlined the checkout experience.</p>
+          </div>
+          <div class="work-outcome-box">
+            <div class="work-outcome-label">Key Verified Outcome</div>
+            <div class="work-outcome-metric">3.4x Top-Line Revenue Scale</div>
+            <p style="font-size:13px; color:rgba(255,255,255,0.7); margin:0 0 16px; line-height:1.4;">Accompanied by a 28% improvement in blended return on ad spend (ROAS) across paid channels.</p>
+            <a href="/blog/how-redsan-helped-d2c-brand-scale-revenue/" class="btn btn-ghost" style="font-size:12px; padding:10px 18px;">Read Case Study →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study 2 -->
+      <article class="work-card">
+        <div class="work-card-header">
+          <div>
+            <div class="work-client-name">B2B Enterprise &amp; IT Solutions</div>
+            <div style="font-size:13px; color:rgba(255,255,255,0.55); margin-top:4px;">Regional &amp; Pan-India · Corporate Services</div>
+          </div>
+          <span class="work-engagement-badge">Growth Retainer</span>
+        </div>
+        <div class="work-meta-row">
+          <div class="work-meta-item"><strong>Services Delivered:</strong> High-Intent Google Ads + Objection Handling + CRM Automation</div>
+          <div class="work-meta-item"><strong>Timeline:</strong> Ongoing Multi-Quarter Retainer</div>
+        </div>
+        <div class="work-body-grid">
+          <div class="work-narrative">
+            <h4>The Challenge</h4>
+            <p>Inconsistent inbound lead flow with high cost per discovery call and protracted sales cycles due to unaddressed buyer objections.</p>
+            <h4>What We Did</h4>
+            <p>Restructured paid search targeting around high-commercial intent keywords, introduced 3-line objection handlers across landing pages, and connected automated qualification loops.</p>
+          </div>
+          <div class="work-outcome-box">
+            <div class="work-outcome-label">Key Verified Outcome</div>
+            <div class="work-outcome-metric">42% Reduction in Cost Per Lead</div>
+            <p style="font-size:13px; color:rgba(255,255,255,0.7); margin:0 0 16px; line-height:1.4;">Achieved a 65% higher sales qualification rate through structured pre-call landing page education.</p>
+            <a href="/blog/redsan-scaling-b2b-d2c-brands-online/" class="btn btn-ghost" style="font-size:12px; padding:10px 18px;">Read Case Study →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study 3 -->
+      <article class="work-card">
+        <div class="work-card-header">
+          <div>
+            <div class="work-client-name">Higher Education Institution</div>
+            <div style="font-size:13px; color:rgba(255,255,255,0.55); margin-top:4px;">Dehradun, Uttarakhand · Academic Programs</div>
+          </div>
+          <span class="work-engagement-badge">Admissions Cycle Engagement</span>
+        </div>
+        <div class="work-meta-row">
+          <div class="work-meta-item"><strong>Services Delivered:</strong> Admissions Marketing + Campus Storytelling + Video Production</div>
+          <div class="work-meta-item"><strong>Timeline:</strong> Annual Intake Campaign</div>
+        </div>
+        <div class="work-body-grid">
+          <div class="work-narrative">
+            <h4>The Challenge</h4>
+            <p>Intense regional competition for university program admissions and low conversion on generic inquiry landing pages during peak decision windows.</p>
+            <h4>What We Did</h4>
+            <p>Built localized digital campaigns highlighting graduate placement outcomes, deployed interactive program inquiry forms, and produced high-engagement student spotlight video reels.</p>
+          </div>
+          <div class="work-outcome-box">
+            <div class="work-outcome-label">Key Verified Outcome</div>
+            <div class="work-outcome-metric">35% Increase in Verified Applications</div>
+            <p style="font-size:13px; color:rgba(255,255,255,0.7); margin:0 0 16px; line-height:1.4;">Generated consistent student engagement across Uttarakhand and northern state feeder belts.</p>
+            <a href="/blog/redsan-in-education-industry/" class="btn btn-ghost" style="font-size:12px; padding:10px 18px;">Read Education Breakdown →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study 4 -->
+      <article class="work-card">
+        <div class="work-card-header">
+          <div>
+            <div class="work-client-name">Cross-Border Digital &amp; SEO Portfolio</div>
+            <div style="font-size:13px; color:rgba(255,255,255,0.55); margin-top:4px;">5+ Countries · Organic Search &amp; Generative AI Search</div>
+          </div>
+          <span class="work-engagement-badge">Strategic SEO Retainer</span>
+        </div>
+        <div class="work-meta-row">
+          <div class="work-meta-item"><strong>Services Delivered:</strong> Technical SEO + GEO &amp; AEO Architecture + High-Authority Citations</div>
+          <div class="work-meta-item"><strong>Timeline:</strong> Multi-Quarter Organic Build</div>
+        </div>
+        <div class="work-body-grid">
+          <div class="work-narrative">
+            <h4>The Challenge</h4>
+            <p>Zero visibility in modern AI-generated search summaries (Google AI Overviews) and low organic search market share against legacy incumbents.</p>
+            <h4>What We Did</h4>
+            <p>Structured schema markup for conversational retrieval, built entity-linked citation networks across 100k+ authoritative backlinks, and optimized content clusters for direct answer indexing.</p>
+          </div>
+          <div class="work-outcome-box">
+            <div class="work-outcome-label">Key Verified Outcome</div>
+            <div class="work-outcome-metric">100k+ Backlinks &amp; AI Search Authority</div>
+            <p style="font-size:13px; color:rgba(255,255,255,0.7); margin:0 0 16px; line-height:1.4;">Secured persistent brand mentions and citations in top AI search answers across target categories.</p>
+            <a href="/blog/seo-vs-geo-whats-the-difference/" class="btn btn-ghost" style="font-size:12px; padding:10px 18px;">See SEO Methodology →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study 5 -->
+      <article class="work-card">
+        <div class="work-card-header">
+          <div>
+            <div class="work-client-name">Early-Stage Growth Portfolio</div>
+            <div style="font-size:13px; color:rgba(255,255,255,0.55); margin-top:4px;">D2C &amp; Founder-Led Startups · Multi-Sector</div>
+          </div>
+          <span class="work-engagement-badge">Seed-to-Scale Engagement</span>
+        </div>
+        <div class="work-meta-row">
+          <div class="work-meta-item"><strong>Services Delivered:</strong> Full-Stack Growth Architecture (Web + Ads + Content + Analytics)</div>
+          <div class="work-meta-item"><strong>Timeline:</strong> Cumulative Track Record</div>
+        </div>
+        <div class="work-body-grid">
+          <div class="work-narrative">
+            <h4>The Challenge</h4>
+            <p>Building commercial traction and brand trust starting entirely from scratch with zero customer base and limited initial budgets.</p>
+            <h4>What We Did</h4>
+            <p>Engineered end-to-end brand identity, deployed conversion-optimized web platforms, and coordinated multi-channel performance marketing attribution.</p>
+          </div>
+          <div class="work-outcome-box">
+            <div class="work-outcome-label">Key Verified Outcome</div>
+            <div class="work-outcome-metric">₹1.5Cr+ Combined Client Turnover</div>
+            <p style="font-size:13px; color:rgba(255,255,255,0.7); margin:0 0 16px; line-height:1.4;">Attributed across multi-channel growth campaigns for early-stage and growing brands.</p>
+            <a href="/blog/1-5cr-growth-milestone-methodology/" class="btn btn-ghost" style="font-size:12px; padding:10px 18px;">Read Attribution Audit →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Section CTA Banner -->
+    <div style="margin-top:48px; text-align:center; padding:36px; background:rgba(17,17,20,0.85); border:1px solid rgba(255,255,255,0.1); border-radius:14px;">
+      <h3 style="font-size:clamp(22px, 2.4vw, 30px); font-weight:800; color:#FFFFFF; margin-bottom:12px; text-transform:uppercase;">Ready to Engineer Your Brand's Growth?</h3>
+      <p style="color:rgba(255,255,255,0.7); max-width:580px; margin:0 auto 24px; font-size:15px; line-height:1.5;">Every engagement starts with a thorough diagnostic of your acquisition funnels, digital infrastructure, and market position.</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="/contact/" class="btn btn-primary">Discuss Your Growth →</a>
+        <a href="#contact" class="btn btn-ghost">Request a Free Growth Audit</a>
+      </div>
     </div>
   </div>
 </section>
@@ -5302,68 +5966,91 @@
             </div>
           </div>
 
-          <!-- CREDIBILITY & STATS BLOCK -->
+          <!-- 1. COMMERCIAL CLIENT RESULTS -->
           <div class="about-block">
+            <span class="about-cred-cat-badge">01 · Commercial Client Results</span>
             <h3>Built Through Real Work</h3>
             <div class="about-stats-grid">
               <div class="about-stat-box">
-                <div class="about-stat-num" data-about-count="5" data-about-suffix="+">0</div>
-                <p class="about-stat-label">Years building brands and working across real-world client projects.</p>
+                <div class="about-stat-num" data-about-count="5" data-about-suffix="+">5+</div>
+                <p class="about-stat-label">Years building brands and executing operational client growth campaigns.</p>
               </div>
               <div class="about-stat-box">
-                <div class="about-stat-num" data-about-count="5" data-about-suffix="">0</div>
-                <p class="about-stat-label">Institutional MoUs completed with universities &amp; institutions.</p>
+                <div class="about-stat-num" data-about-count="50" data-about-suffix="+">50+</div>
+                <p class="about-stat-label">Commercial clients served across D2C, B2B, hospitality &amp; tech.</p>
               </div>
               <div class="about-stat-box">
-                <div class="about-stat-num" data-about-count="50" data-about-suffix="+">0</div>
-                <p class="about-stat-label">Clients served across D2C, education, hospitality &amp; tech.</p>
+                <div class="about-stat-num">120+</div>
+                <p class="about-stat-label">Projects delivered across web platforms, SEO and performance marketing.</p>
               </div>
             </div>
           </div>
 
-          <!-- RECOGNITION BLOCK -->
-          <div class="about-block">
-            <h3>Recognition &amp; Institutional Engagement</h3>
+          <!-- 2. INSTITUTIONAL & ACADEMIC ENGAGEMENTS -->
+          <div class="about-block about-cred-cat">
+            <span class="about-cred-cat-badge">02 · Institutional &amp; Academic Engagements</span>
+            <h3>Academic Partnerships &amp; MoUs</h3>
+            <p style="font-size:14px; color:rgba(255,255,255,0.72); margin-bottom:20px;">RedSan holds 5 formal Institutional MoUs established for campus marketing, student training, skill-building workshops, and institutional digital branding:</p>
             <div class="about-rec-list">
               <div class="about-rec-row">
                 <span class="about-rec-index">01</span>
                 <div>
-                  <div class="about-rec-title">Indian Startup Times</div>
-                  <p class="about-rec-desc">Featured in relation to empowering startups and revolutionizing digital marketing education in India.</p>
+                  <div class="about-rec-title">SCERT, Uttarakhand</div>
+                  <p class="about-rec-desc">Sankalp Reddy contributed to the Innovators Program, delivering masterclasses on digital entrepreneurship for state educators and students.</p>
                 </div>
-                <a class="about-rec-link" href="https://www.indianstartuptimes.com/news/redcubical-systems-and-redsan-empowering-startups-and-revolutionizing-digital-marketing-education-in-india/" target="_blank" rel="noopener">Read Feature ↗</a>
+                <a class="about-rec-link" href="https://www.youtube.com/watch?v=u_nTPMIRSzw" target="_blank" rel="noopener">Watch Session ↗</a>
               </div>
               <div class="about-rec-row">
                 <span class="about-rec-index">02</span>
                 <div>
                   <div class="about-rec-title">Uttaranchal University, Dehradun</div>
-                  <p class="about-rec-desc">Featured through the university's startups and entrepreneurship resource as a successful startup.</p>
+                  <p class="about-rec-desc">Recognized through the university's startup &amp; entrepreneurship ecosystem as an alumnus-founded commercial growth firm.</p>
                 </div>
                 <a class="about-rec-link" href="https://uudoon.in/research/startups-and-enterpreneurship.php" target="_blank" rel="noopener">View Recognition ↗</a>
               </div>
               <div class="about-rec-row">
                 <span class="about-rec-index">03</span>
                 <div>
-                  <div class="about-rec-title">SCERT, Uttarakhand</div>
-                  <p class="about-rec-desc">Sankalp Reddy took part in the Innovators Program, sharing practical insights around entrepreneurship.</p>
+                  <div class="about-rec-title">5 Institutional MoUs &amp; NAAC A+ University Lectures</div>
+                  <p class="about-rec-desc">Formal frameworks covering digital marketing curriculum integration, practical student workshops, and campus outreach.</p>
                 </div>
-                <a class="about-rec-link" href="https://www.youtube.com/watch?v=u_nTPMIRSzw" target="_blank" rel="noopener">Watch Session ↗</a>
+                <span class="about-rec-status">Active MoUs</span>
               </div>
-              <div class="about-rec-row">
-                <span class="about-rec-index">04</span>
+            </div>
+          </div>
+
+          <!-- 3. CERTIFICATIONS & PROCESS STANDARDS -->
+          <div class="about-block about-cred-cat">
+            <span class="about-cred-cat-badge">03 · Quality Standards &amp; Certifications</span>
+            <h3>ISO 9001:2015 Certified Operations</h3>
+            <div class="about-cred-card" style="margin-top:16px;">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
                 <div>
-                  <div class="about-rec-title">Guest Lectures at NAAC A+ Universities</div>
-                  <p class="about-rec-desc">Invited for guest lectures at various NAAC A+ universities on entrepreneurship and digital growth.</p>
+                  <h4 style="margin:0 0 6px; font-size:16px; color:#FFFFFF;">ISO 9001:2015 Quality Management Systems (QMS)</h4>
+                  <p style="font-size:13.5px; color:rgba(255,255,255,0.7); line-height:1.5; margin:0;">Scope: Digital Marketing, Search Engine Optimization (SEO), Website Design &amp; Development, and IT-Enabled Growth Services.</p>
                 </div>
-                <span class="about-rec-status">Ongoing</span>
+                <button type="button" class="iso-verify-trigger" data-iso-verify style="font-family:var(--mono); font-size:11.5px; font-weight:700; color:#FFFFFF; background:#EE0000; border:none; border-radius:6px; padding:8px 16px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+                  Verify Certificate Document ↗
+                </button>
               </div>
+              <div style="margin-top:14px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.08); font-size:12px; color:rgba(255,255,255,0.5); line-height:1.4;">
+                <strong style="color:rgba(255,255,255,0.8); text-transform:uppercase;">Standards Clarification:</strong> ISO 9001:2015 certifies that our internal processes, operational workflows, and service delivery conform to international quality management benchmarks. It is an operational standard and does not constitute a commercial guarantee of marketing results.
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. THIRD-PARTY MEDIA RECOGNITION -->
+          <div class="about-block about-cred-cat">
+            <span class="about-cred-cat-badge">04 · Independent Media Recognition</span>
+            <h3>Third-Party Coverage</h3>
+            <div class="about-rec-list">
               <div class="about-rec-row">
-                <span class="about-rec-index">05</span>
+                <span class="about-rec-index">01</span>
                 <div>
-                  <div class="about-rec-title">Corporate Training &amp; Knowledge-Sharing</div>
-                  <p class="about-rec-desc">Invited for corporate training and knowledge-sharing sessions with companies and teams.</p>
+                  <div class="about-rec-title">Indian Startup Times</div>
+                  <p class="about-rec-desc">Featured in national startup press on how Redcubical Systems and RedSan empower early-stage ventures and modernize marketing education.</p>
                 </div>
-                <span class="about-rec-status">Ongoing</span>
+                <a class="about-rec-link" href="https://www.indianstartuptimes.com/news/redcubical-systems-and-redsan-empowering-startups-and-revolutionizing-digital-marketing-education-in-india/" target="_blank" rel="noopener">Read Feature ↗</a>
               </div>
             </div>
           </div>
@@ -5547,7 +6234,10 @@
         <label for="message">Message</label>
         <textarea id="message" name="message" placeholder="Tell us a bit about your project..."></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Let's Get Weird With It →</button>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Discuss Your Growth →</button>
+      <p class="form-consent-text" style="font-size:11.5px; color:rgba(255,255,255,0.55); margin-top:12px; line-height:1.5; font-family:var(--body);">
+        By submitting this form, you agree to our <a href="/privacy-policy/" style="color:#EE0000; text-decoration:underline;">Privacy Policy</a> and <a href="/terms-of-service/" style="color:#EE0000; text-decoration:underline;">Master Service Agreement</a>. For engagement pricing details, review our <a href="/pricing-policy/" style="color:#EE0000; text-decoration:underline;">Service Pricing Guide</a>.
+      </p>
       <div id="contactFormStatus" style="display:none; margin-top:14px; padding:12px 16px; border-radius:8px; font-family:var(--mono); font-size:13px; font-weight:600;"></div>
     </form>
   </div>
@@ -7217,6 +7907,7 @@ function initCigaretteSmoke() {
       <div style="margin-top:20px; display:flex; flex-direction:column; gap:12px;">
         <button type="submit" class="btn-audit-trigger" style="width:100%; justify-content:center; font-size:15px; padding:15px 24px;">Get My Free Growth Audit →</button>
         <div style="font-family:var(--mono); font-size:11.5px; color:rgba(255,255,255,0.6); text-align:center;">Zero Spam · 100% Confidential · Human + AI Diagnostic</div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.5); text-align:center; margin-top:4px;">By submitting, you agree to our <a href="/privacy-policy/" style="color:#EE0000; text-decoration:underline;">Privacy Policy</a> and <a href="/terms-of-service/" style="color:#EE0000; text-decoration:underline;">Master Service Agreement</a>.</div>
       </div>
 
       <div id="growthAuditStatus" style="display:none; margin-top:16px; padding:14px 18px; border-radius:10px; font-family:var(--mono); font-size:13px; line-height:1.5;"></div>
