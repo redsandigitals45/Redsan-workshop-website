@@ -291,6 +291,7 @@ h3, h4 {
   overflow: hidden;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  isolation: isolate;
 }
 .hero-card:hover {
   border-color: rgba(255, 255, 255, 0.22);
@@ -305,57 +306,57 @@ h3, h4 {
   height: 440px;
   background: radial-gradient(circle, rgba(226, 35, 26, 0.22), transparent 70%);
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
 .hero-card-bg {
   position: absolute;
-  top: 50%;
-  right: clamp(16px, 4vw, 48px);
-  transform: translateY(-50%);
-  width: clamp(340px, 48vw, 580px);
-  height: 90%;
+  inset: 0;
   pointer-events: none;
-  overflow: visible;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  overflow: hidden;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 80% 80% at 75% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.45) 60%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 75% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.45) 60%, transparent 90%);
 }
 .hero-card-bg-img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
+  position: absolute;
+  top: 50%;
+  right: clamp(10px, 3vw, 40px);
+  transform: translateY(-50%);
+  width: min(520px, 48vw);
+  height: 90%;
   object-fit: contain;
   object-position: center right;
-  opacity: 0.42;
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 25px rgba(226, 35, 26, 0.15));
-  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  mix-blend-mode: screen;
+  opacity: 0.24;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .hero-card:hover .hero-card-bg-img {
-  opacity: 0.58;
-  transform: scale(1.03);
-  filter: drop-shadow(0 14px 40px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 35px rgba(226, 35, 26, 0.25));
+  opacity: 0.34;
+  transform: translateY(-50%) scale(1.02);
 }
 .hero-card-content {
   position: relative;
   z-index: 2;
-  max-width: 760px;
+  max-width: 640px;
+}
+.hero-card-content > * {
+  position: relative;
+  z-index: 2;
 }
 @media (max-width: 820px) {
   .hero-card {
     padding: 36px 24px;
   }
   .hero-card-bg {
-    right: 50%;
-    transform: translate(50%, -50%);
-    width: 85%;
-    height: 80%;
-    justify-content: center;
+    mask-image: radial-gradient(circle at 60% 40%, rgba(0,0,0,0.85) 15%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at 60% 40%, rgba(0,0,0,0.85) 15%, transparent 80%);
   }
   .hero-card-bg-img {
-    opacity: 0.20;
-    object-position: center;
+    right: -20px;
+    width: 280px;
+    height: 75%;
+    opacity: 0.16;
   }
   .hero-card-content {
     max-width: 100%;
