@@ -271,8 +271,48 @@ h3, h4 {
 .masthead {
   padding: 72px 0 40px;
   border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
   background:
     radial-gradient(ellipse 900px 400px at 15% 0%, rgba(226,35,26,.14), transparent 60%);
+}
+.masthead .wrap {
+  position: relative;
+  z-index: 2;
+}
+.masthead .hero-visual-frame {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 58%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+  mask-image: radial-gradient(ellipse at 75% 50%, rgba(0,0,0,0.92) 20%, rgba(0,0,0,0.5) 60%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at 75% 50%, rgba(0,0,0,0.92) 20%, rgba(0,0,0,0.5) 60%, transparent 85%);
+}
+.masthead .hero-visual-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  opacity: 0.44;
+  transition: opacity 0.4s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.masthead:hover .hero-visual-bg {
+  opacity: 0.55;
+  transform: scale(1.03);
+}
+@media (max-width: 900px) {
+  .masthead .hero-visual-frame {
+    width: 100%;
+    opacity: 0.22;
+    mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.85) 30%, transparent 85%);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.85) 30%, transparent 85%);
+  }
 }
 .eyebrow {
   font-family: 'Roboto Mono', monospace;

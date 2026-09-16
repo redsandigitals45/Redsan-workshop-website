@@ -940,6 +940,44 @@
       transform: translateY(0);
     }
   }
+
+  /* Growth CTA Banner with Atmospheric Background */
+  .growth-cta-banner {
+    margin-top: 48px;
+    text-align: center;
+    padding: clamp(40px, 6vw, 60px) clamp(24px, 4vw, 48px);
+    position: relative;
+    background: linear-gradient(135deg, rgba(14, 14, 18, 0.92), rgba(10, 10, 13, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  }
+  .growth-cta-bg-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .growth-cta-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.36;
+    mix-blend-mode: screen;
+    transition: opacity 0.4s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .growth-cta-banner:hover .growth-cta-bg-img {
+    opacity: 0.48;
+    transform: scale(1.03);
+  }
+  .growth-cta-content {
+    position: relative;
+    z-index: 1;
+  }
+
   .work-card-header {
     display: flex;
     justify-content: space-between;
@@ -1114,7 +1152,7 @@
     background:transparent;
   }
   .workshop-card{
-    position:relative;background:rgba(14,14,16,0.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#fff;
+    position:relative;background:rgba(14,14,16,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#fff;
     border-radius:20px;padding:64px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;
     overflow:hidden;border:1px solid rgba(255,255,255,0.12);
     box-shadow:0 24px 60px rgba(0,0,0,0.5);
@@ -1122,11 +1160,34 @@
   .workshop-card::before{
     content:"";position:absolute;top:-40%;right:-10%;width:400px;height:400px;
     background:radial-gradient(circle, rgba(226,35,26,0.35), transparent 70%);
+    pointer-events:none;z-index:1;
   }
-  .workshop-card h2{font-family:var(--body);font-weight:800;letter-spacing:-0.02em;font-size:clamp(28px,3.6vw,44px);text-transform:uppercase;position:relative;z-index:1;color:#fff;}
-  .workshop-card p{color:rgba(255,255,255,0.72);font-size:16px;line-height:1.6;margin:20px 0 30px;max-width:460px;position:relative;z-index:1;}
+  .workshop-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/hero-elements/homepage-workshop-teaser.webp');
+    background-size: cover;
+    background-position: center right;
+    opacity: 0.24;
+    mask-image: radial-gradient(ellipse at 80% 50%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.4) 60%, transparent 85%);
+    -webkit-mask-image: radial-gradient(ellipse at 80% 50%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.4) 60%, transparent 85%);
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .workshop-card:hover::after {
+    opacity: 0.34;
+    transform: scale(1.02);
+  }
+  .workshop-card > div {
+    position: relative;
+    z-index: 2;
+  }
+  .workshop-card h2{font-family:var(--body);font-weight:800;letter-spacing:-0.02em;font-size:clamp(28px,3.6vw,44px);text-transform:uppercase;position:relative;z-index:2;color:#fff;}
+  .workshop-card p{color:rgba(255,255,255,0.72);font-size:16px;line-height:1.6;margin:20px 0 30px;max-width:460px;position:relative;z-index:2;}
   .workshop-side{
-    position:relative;z-index:1;border-left:1px solid var(--line-dark);padding-left:36px;
+    position:relative;z-index:2;border-left:1px solid var(--line-dark);padding-left:36px;
     display:flex;flex-direction:column;justify-content:center;gap:14px;
   }
   .workshop-side .quote-tag{font-family:var(--mono);font-size:12px;color:var(--red);text-transform:uppercase;letter-spacing:.08em;}
@@ -1145,7 +1206,7 @@
   }
   .about-card {
     position: relative;
-    background: rgba(14, 14, 18, 0.78);
+    background: rgba(14, 14, 18, 0.82);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1163,6 +1224,36 @@
     height: 420px;
     background: radial-gradient(circle, rgba(226, 35, 26, 0.18), transparent 70%);
     pointer-events: none;
+    z-index: 1;
+  }
+  .about-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 52%;
+    background-image: url('/assets/hero-elements/homepage-about-dossier.webp');
+    background-size: cover;
+    background-position: center top;
+    opacity: 0.22;
+    mask-image: radial-gradient(ellipse at 75% 35%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.4) 60%, transparent 85%);
+    -webkit-mask-image: radial-gradient(ellipse at 75% 35%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.4) 60%, transparent 85%);
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .about-card:hover::after {
+    opacity: 0.32;
+    transform: scale(1.02);
+  }
+  @media (max-width: 820px) {
+    .about-card::after {
+      width: 100%;
+      opacity: 0.14;
+      mask-image: radial-gradient(circle at 50% 30%, rgba(0,0,0,0.9) 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(circle at 50% 30%, rgba(0,0,0,0.9) 20%, transparent 80%);
+    }
   }
   .about-card:hover {
     border-color: rgba(255, 255, 255, 0.22);
@@ -1172,6 +1263,8 @@
     box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 30px rgba(226, 35, 26, 0.1);
   }
   .about-card-header {
+    position: relative;
+    z-index: 2;
     padding: clamp(32px, 5vw, 56px);
     cursor: pointer;
     display: grid;
@@ -6091,13 +6184,18 @@
       </button>
     </div>
 
-    <!-- Section CTA Banner -->
-    <div style="margin-top:48px; text-align:center; padding:36px; background:rgba(17,17,20,0.85); border:1px solid rgba(255,255,255,0.1); border-radius:14px;">
-      <h3 style="font-size:clamp(22px, 2.4vw, 30px); font-weight:800; color:#FFFFFF; margin-bottom:12px; text-transform:uppercase;">Ready to Engineer Your Brand's Growth?</h3>
-      <p style="color:rgba(255,255,255,0.7); max-width:580px; margin:0 auto 24px; font-size:15px; line-height:1.5;">Every engagement starts with a thorough diagnostic of your acquisition funnels, digital infrastructure, and market position.</p>
-      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a href="/contact/" class="btn btn-primary">Discuss Your Growth →</a>
-        <a href="#contact" class="btn btn-ghost">Request a Free Growth Audit</a>
+    <!-- Section CTA Banner with Atmospheric Background -->
+    <div class="growth-cta-banner">
+      <div class="growth-cta-bg-layer" aria-hidden="true">
+        <img src="/assets/hero-elements/homepage-growth-cta.webp" alt="" class="growth-cta-bg-img" width="1376" height="768" loading="lazy" decoding="async">
+      </div>
+      <div class="growth-cta-content">
+        <h3 style="font-size:clamp(22px, 2.4vw, 30px); font-weight:800; color:#FFFFFF; margin-bottom:12px; text-transform:uppercase;">Ready to Engineer Your Brand's Growth?</h3>
+        <p style="color:rgba(255,255,255,0.78); max-width:580px; margin:0 auto 24px; font-size:15px; line-height:1.5;">Every engagement starts with a thorough diagnostic of your acquisition funnels, digital infrastructure, and market position.</p>
+        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+          <a href="/contact/" class="btn btn-primary">Discuss Your Growth →</a>
+          <a href="#contact" class="btn btn-ghost">Request a Free Growth Audit</a>
+        </div>
       </div>
     </div>
   </div>
