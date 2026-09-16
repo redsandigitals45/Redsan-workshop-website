@@ -719,7 +719,7 @@
     }
   }
 
-  /* ===== SELECTED CLIENT WORK SECTION ===== */
+  /* ===== SELECTED CLIENT WORK SHOWCASE DECK & FLIP ANIMATION ===== */
   .selected-work-section {
     padding: 100px 0 80px;
     background: transparent;
@@ -727,12 +727,93 @@
     z-index: 10;
     font-family: var(--body);
   }
-  .selected-work-grid {
+
+  /* Deck Controls Bar */
+  .deck-controls-bar {
     display: flex;
-    flex-direction: column;
-    gap: 32px;
-    margin-top: 48px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 36px;
+    margin-bottom: 24px;
+    padding: 12px 18px;
+    background: rgba(14, 14, 18, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
   }
+  .deck-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .deck-tab-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 7px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .deck-tab-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .deck-tab-btn.is-active {
+    background: #EE0000;
+    color: #FFFFFF;
+    border-color: #EE0000;
+    box-shadow: 0 4px 14px rgba(238, 0, 0, 0.35);
+  }
+
+  .deck-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .deck-counter {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .deck-nav-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #FFFFFF;
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .deck-nav-btn:hover {
+    background: #EE0000;
+    border-color: #EE0000;
+    transform: translateY(-1px);
+  }
+
+  /* 3D Perspective Flip Stage */
+  .deck-stage {
+    perspective: 1400px;
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+  }
+
   .work-card {
     background: rgba(14, 14, 18, 0.82);
     backdrop-filter: blur(16px);
@@ -742,10 +823,122 @@
     padding: clamp(28px, 4vw, 44px);
     position: relative;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    backface-visibility: hidden;
   }
   .work-card:hover {
     border-color: rgba(238, 0, 0, 0.35);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Single Element Showcase Mode (Default) */
+  .selected-work-section:not(.is-expanded) .deck-stage .work-card {
+    display: none;
+    position: relative;
+    width: 100%;
+  }
+  .selected-work-section:not(.is-expanded) .deck-stage .work-card.is-active {
+    display: block;
+    transform: rotateX(0deg) scale(1);
+    opacity: 1;
+  }
+
+  /* Flipping up to down, then down to up keyframes */
+  .selected-work-section:not(.is-expanded) .deck-stage .work-card.flip-out-down {
+    display: block;
+    animation: flipUpDownOut 0.24s forwards cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .selected-work-section:not(.is-expanded) .deck-stage .work-card.flip-in-up {
+    display: block;
+    animation: flipDownUpIn 0.32s forwards cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes flipUpDownOut {
+    0% {
+      transform: perspective(1400px) rotateX(0deg) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: perspective(1400px) rotateX(-75deg) translateY(30px) scale(0.96);
+      opacity: 0;
+    }
+  }
+
+  @keyframes flipDownUpIn {
+    0% {
+      transform: perspective(1400px) rotateX(75deg) translateY(-30px) scale(0.96);
+      opacity: 0;
+    }
+    100% {
+      transform: perspective(1400px) rotateX(0deg) translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Expand Down Arrow Bar */
+  .deck-expand-bar {
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+  }
+  .deck-expand-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(18, 18, 22, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #FFFFFF;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 12px 26px;
+    border-radius: 100px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .deck-expand-btn:hover {
+    background: #EE0000;
+    border-color: #EE0000;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(238, 0, 0, 0.35);
+  }
+  .deck-expand-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .selected-work-section.is-expanded .deck-expand-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Expanded Mode: Show All Cards at Once */
+  .selected-work-section.is-expanded .deck-controls-bar {
+    display: none;
+  }
+  .selected-work-section.is-expanded .deck-stage {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    min-height: auto;
+  }
+  .selected-work-section.is-expanded .deck-stage .work-card {
+    display: block !important;
+    transform: none !important;
+    opacity: 1 !important;
+    animation: fadeInAllCards 0.4s ease forwards;
+  }
+  @keyframes fadeInAllCards {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   .work-card-header {
     display: flex;
@@ -5720,9 +5913,30 @@
       <p>Detailed breakdowns of challenges diagnosed, systems engineered, and measurable commercial outcomes delivered across client engagements.</p>
     </div>
 
-    <div class="selected-work-grid">
+    <!-- Interactive Deck Controls: Tab Selectors, Progress Counter, Prev/Next -->
+    <div class="deck-controls-bar" id="deckControlsBar">
+      <div class="deck-tabs" id="deckTabs">
+        <button type="button" class="deck-tab-btn is-active" data-deck-index="0">01 D2C E-Commerce</button>
+        <button type="button" class="deck-tab-btn" data-deck-index="1">02 B2B Enterprise</button>
+        <button type="button" class="deck-tab-btn" data-deck-index="2">03 Higher Ed</button>
+        <button type="button" class="deck-tab-btn" data-deck-index="3">04 SEO &amp; AI Search</button>
+        <button type="button" class="deck-tab-btn" data-deck-index="4">05 Seed-to-Scale</button>
+      </div>
+      <div class="deck-nav-actions">
+        <span class="deck-counter" id="deckCounter">01 / 05</span>
+        <button type="button" class="deck-nav-btn" id="deckPrevBtn" aria-label="Previous case study card" title="Previous Card">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        </button>
+        <button type="button" class="deck-nav-btn" id="deckNextBtn" aria-label="Next case study card" title="Next Card">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- 3D Perspective Flip Stage: Holds Cards in Single Element -->
+    <div class="deck-stage" id="deckStage">
       <!-- Case Study 1 -->
-      <article class="work-card">
+      <article class="work-card deck-card is-active" data-deck-index="0">
         <div class="work-card-header">
           <div>
             <div class="work-client-name">D2C Lifestyle &amp; Apparel Brand</div>
@@ -5751,7 +5965,7 @@
       </article>
 
       <!-- Case Study 2 -->
-      <article class="work-card">
+      <article class="work-card deck-card" data-deck-index="1">
         <div class="work-card-header">
           <div>
             <div class="work-client-name">B2B Enterprise &amp; IT Solutions</div>
@@ -5780,7 +5994,7 @@
       </article>
 
       <!-- Case Study 3 -->
-      <article class="work-card">
+      <article class="work-card deck-card" data-deck-index="2">
         <div class="work-card-header">
           <div>
             <div class="work-client-name">Higher Education Institution</div>
@@ -5809,7 +6023,7 @@
       </article>
 
       <!-- Case Study 4 -->
-      <article class="work-card">
+      <article class="work-card deck-card" data-deck-index="3">
         <div class="work-card-header">
           <div>
             <div class="work-client-name">Cross-Border Digital &amp; SEO Portfolio</div>
@@ -5838,7 +6052,7 @@
       </article>
 
       <!-- Case Study 5 -->
-      <article class="work-card">
+      <article class="work-card deck-card" data-deck-index="4">
         <div class="work-card-header">
           <div>
             <div class="work-client-name">Early-Stage Growth Portfolio</div>
@@ -5865,6 +6079,16 @@
           </div>
         </div>
       </article>
+    </div>
+
+    <!-- Down Arrow Expand / Collapse Toggle -->
+    <div class="deck-expand-bar">
+      <button type="button" class="deck-expand-btn" id="deckExpandBtn" aria-expanded="false" aria-controls="deckStage">
+        <span class="deck-expand-label" id="deckExpandLabel">View All 5 Case Studies</span>
+        <span class="deck-expand-arrow">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </span>
+      </button>
     </div>
 
     <!-- Section CTA Banner -->
@@ -7525,16 +7749,19 @@ function initCigaretteSmoke() {
     let isDragging = false;
     let startX = 0;
     let dragStartOffset = 0;
+    let dragDistance = 0;
 
     viewport.addEventListener('mousedown', (e) => {
       isDragging = true;
       startX = e.pageX;
       dragStartOffset = offset;
+      dragDistance = 0;
     });
 
     window.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
       const diff = e.pageX - startX;
+      dragDistance = Math.abs(diff);
       offset = dragStartOffset - diff;
       const setWidth = getSetWidth();
       if (setWidth > 0) {
@@ -7553,11 +7780,13 @@ function initCigaretteSmoke() {
       isDragging = true;
       startX = e.touches[0].pageX;
       dragStartOffset = offset;
+      dragDistance = 0;
     }, { passive: true });
 
     viewport.addEventListener('touchmove', (e) => {
       if (!isDragging) return;
       const diff = e.touches[0].pageX - startX;
+      dragDistance = Math.abs(diff);
       offset = dragStartOffset - diff;
       const setWidth = getSetWidth();
       if (setWidth > 0) {
@@ -7570,6 +7799,156 @@ function initCigaretteSmoke() {
     viewport.addEventListener('touchend', () => {
       isDragging = false;
     });
+
+    // When any circle card is clicked, smoothly scroll to #selected-work
+    track.querySelectorAll('.circle').forEach(circle => {
+      circle.addEventListener('click', (e) => {
+        if (dragDistance > 8) return; // Disregard drag/swipe
+        const link = e.target.closest('a');
+        if (link) {
+          const href = link.getAttribute('href') || '';
+          if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.getElementById(href.slice(1)) || document.getElementById('selected-work');
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+          }
+          // External/blog links proceed as standard navigation
+          return;
+        }
+        // Direct click on circle card body
+        e.preventDefault();
+        const selectedSec = document.getElementById('selected-work');
+        if (selectedSec) {
+          selectedSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+
+  /* ============================================================
+     SELECTED WORK: Flipping Showcase Deck & Expand Grid Controller
+     ============================================================ */
+  (function initCaseStudiesDeck() {
+    const section = document.getElementById('selected-work');
+    const stage = document.getElementById('deckStage');
+    const tabs = document.querySelectorAll('.deck-tab-btn');
+    const prevBtn = document.getElementById('deckPrevBtn');
+    const nextBtn = document.getElementById('deckNextBtn');
+    const counter = document.getElementById('deckCounter');
+    const expandBtn = document.getElementById('deckExpandBtn');
+    const expandLabel = document.getElementById('deckExpandLabel');
+
+    if (!section || !stage) return;
+    const cards = stage.querySelectorAll('.work-card');
+    if (cards.length === 0) return;
+
+    let currentIndex = 0;
+    let isAnimating = false;
+    let autoTimer = null;
+
+    function updateCounter(idx) {
+      if (counter) {
+        counter.textContent = `0${idx + 1} / 0${cards.length}`;
+      }
+    }
+
+    function goToCard(targetIndex) {
+      if (isAnimating || targetIndex === currentIndex) return;
+      if (targetIndex < 0) targetIndex = cards.length - 1;
+      if (targetIndex >= cards.length) targetIndex = 0;
+
+      isAnimating = true;
+      const currentCard = cards[currentIndex];
+      const nextCard = cards[targetIndex];
+
+      // Step 1: Flip current card down (rotateX down out of view)
+      currentCard.classList.remove('is-active', 'flip-in-up');
+      currentCard.classList.add('flip-out-down');
+
+      setTimeout(() => {
+        currentCard.classList.remove('flip-out-down');
+
+        // Step 2: Flip new card in from up to down (rotateX from up down into resting view)
+        nextCard.classList.add('is-active', 'flip-in-up');
+
+        currentIndex = targetIndex;
+        updateCounter(currentIndex);
+
+        // Update active tab button
+        tabs.forEach((tab, i) => {
+          tab.classList.toggle('is-active', i === currentIndex);
+        });
+
+        setTimeout(() => {
+          nextCard.classList.remove('flip-in-up');
+          isAnimating = false;
+        }, 340);
+      }, 230);
+    }
+
+    function startAutoCycle() {
+      stopAutoCycle();
+      autoTimer = setInterval(() => {
+        if (!section.classList.contains('is-expanded')) {
+          goToCard(currentIndex + 1);
+        }
+      }, 6500);
+    }
+
+    function stopAutoCycle() {
+      if (autoTimer) clearInterval(autoTimer);
+    }
+
+    // Tabs click
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const idx = parseInt(tab.getAttribute('data-deck-index'), 10);
+        goToCard(idx);
+        startAutoCycle();
+      });
+    });
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        goToCard(currentIndex - 1);
+        startAutoCycle();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        goToCard(currentIndex + 1);
+        startAutoCycle();
+      });
+    }
+
+    // Expand button: toggle all cards at once with down/up arrow
+    if (expandBtn) {
+      expandBtn.addEventListener('click', () => {
+        const isExpanded = section.classList.toggle('is-expanded');
+        expandBtn.setAttribute('aria-expanded', isExpanded);
+        if (expandLabel) {
+          expandLabel.textContent = isExpanded ? 'Collapse Showcase Deck' : 'View All 5 Case Studies';
+        }
+        if (isExpanded) {
+          stopAutoCycle();
+        } else {
+          startAutoCycle();
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
+
+    // Pause on hover
+    stage.addEventListener('mouseenter', stopAutoCycle);
+    stage.addEventListener('mouseleave', () => {
+      if (!section.classList.contains('is-expanded')) {
+        startAutoCycle();
+      }
+    });
+
+    startAutoCycle();
   })();
 
   /* ============================================================
