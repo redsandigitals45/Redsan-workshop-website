@@ -382,22 +382,25 @@ ul.dropdown-menu > li > a:hover, ul.dropdown-menu > li > a.active, .dropdown-lin
 <!-- MASTHEAD -->
 <section class="masthead">
  <div class="wrap">
-  <div class="hero-card" style="position: relative; overflow: hidden; isolation: isolate;">
-   <span class="crosshair tl" style="z-index: 5;"></span>
-   <span class="crosshair br" style="z-index: 5;"></span>
-   <div class="hero-card-bg" aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0;">
-    <img src="/assets/hero-elements/hero-blog-journal.webp" alt="" class="hero-card-bg-img" width="1376" height="768" loading="eager" decoding="async" style="position: absolute; top: 50%; right: clamp(10px, 3vw, 40px); transform: translateY(-50%); width: min(520px, 48vw); height: 90%; object-fit: contain; object-position: center right; mix-blend-mode: screen; opacity: 0.24; pointer-events: none;">
-   </div>
-   <div class="hero-card-content" style="position: relative; z-index: 2; max-width: 640px;">
-    <div class="eyebrow">Field Playbooks &amp; Growth Dispatches</div>
+  <div class="hero-card" style="position: relative; background: rgba(14, 14, 18, 0.82); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 20px; overflow: hidden; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55); padding: clamp(36px, 5vw, 56px); isolation: isolate;">
+      <span class="crosshair tl" style="position: absolute; top: 14px; left: 14px; width: 14px; height: 14px; z-index: 5;"></span>
+      <span class="crosshair br" style="position: absolute; bottom: 14px; right: 14px; width: 14px; height: 14px; z-index: 5;"></span>
+      <!-- Left Content Column -->
+      <div class="hero-card-content" style="position: relative; z-index: 2; max-width: 620px;">
+        <div class="eyebrow">Field Playbooks &amp; Growth Dispatches</div>
     <h1>The RedSan <span class="red">Journal</span></h1>
     <p class="masthead-sub">Marketing, search, advertising, technology and growth without the fluff. Actionable teardowns, verified client playbooks, and strategic perspectives from the RedSan growth team.</p>
     <div style="margin-top: 14px; position: relative; max-width: 440px;">
      <input type="text" id="blogSearchInput" placeholder="Search guides, case studies, topics..." style="width:100%; padding: 11px 20px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); color:#F8F8F8; font-size: 14px; font-family: inherit; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#F00000'" onblur="this.style.borderColor='rgba(255,255,255,0.18)'">
+      </div>
+      </div>
+
+      <!-- Right Visual Column (Matching About Card CRT Monitor) -->
+      <div class="hero-card-bg" aria-hidden="true" style="position: absolute; top: 0; right: 24px; bottom: 0; width: clamp(320px, 42vw, 480px); pointer-events: none; z-index: 1; display: flex; align-items: center; justify-content: flex-end;">
+        <img src="/assets/hero-elements/hero-blog-journal.webp" alt="" class="hero-card-bg-img" width="1376" height="768" loading="eager" decoding="async" style="width: 100%; height: 100%; max-height: 520px; object-fit: contain; object-position: center right; opacity: 0.85; pointer-events: none;">
+      </div>
     </div>
-   </div>
   </div>
- </div>
 </section>
 
 <!-- TRENDING & FEATURED HERO GRID -->

@@ -197,14 +197,12 @@ ul.dropdown-menu > li > a:hover, .dropdown-link:hover, .dropdown-link.active { b
 <!-- Page Hero -->
 <section class="page-hero">
   <div class="wrap">
-    <div class="hero-card" style="position: relative; overflow: hidden; isolation: isolate;">
-      <span class="crosshair tl" style="z-index: 5;"></span>
-      <span class="crosshair br" style="z-index: 5;"></span>
-      <div class="hero-card-bg" aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0;">
-        <img src="/assets/hero-elements/hero-startup-growth.webp" alt="" class="hero-card-bg-img" width="1376" height="768" loading="eager" decoding="async" style="position: absolute; top: 50%; right: clamp(10px, 3vw, 40px); transform: translateY(-50%); width: min(520px, 48vw); height: 90%; object-fit: contain; object-position: center right; mix-blend-mode: screen; opacity: 0.24; pointer-events: none;">
-      </div>
-      <div class="hero-card-content" style="position: relative; z-index: 2; max-width: 640px;">
-<div class="breadcrumbs">
+    <div class="hero-card" style="position: relative; background: rgba(14, 14, 18, 0.82); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 20px; overflow: hidden; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55); padding: clamp(36px, 5vw, 56px); isolation: isolate;">
+      <span class="crosshair tl" style="position: absolute; top: 14px; left: 14px; width: 14px; height: 14px; z-index: 5;"></span>
+      <span class="crosshair br" style="position: absolute; bottom: 14px; right: 14px; width: 14px; height: 14px; z-index: 5;"></span>
+      <!-- Left Content Column -->
+      <div class="hero-card-content" style="position: relative; z-index: 2; max-width: 620px;">
+        <div class="breadcrumbs">
       <a href="/">Home</a>
       <span>/</span>
       <a href="/digital-marketing-agency/">Services</a>
@@ -217,7 +215,12 @@ ul.dropdown-menu > li > a:hover, .dropdown-link:hover, .dropdown-link.active { b
     <div class="hero-actions">
       <a href="/contact/" class="btn btn-primary">Build My Growth Engine</a>
       <a href="https://wa.me/919664365954" target="_blank" rel="noopener" class="btn btn-ghost">Chat on WhatsApp</a>
-    </div>
+      </div>
+      </div>
+
+      <!-- Right Visual Column (Matching About Card CRT Monitor) -->
+      <div class="hero-card-bg" aria-hidden="true" style="position: absolute; top: 0; right: 24px; bottom: 0; width: clamp(320px, 42vw, 480px); pointer-events: none; z-index: 1; display: flex; align-items: center; justify-content: flex-end;">
+        <img src="/assets/hero-elements/hero-startup-growth.webp" alt="" class="hero-card-bg-img" width="1376" height="768" loading="eager" decoding="async" style="width: 100%; height: 100%; max-height: 520px; object-fit: contain; object-position: center right; opacity: 0.85; pointer-events: none;">
       </div>
     </div>
   </div>
