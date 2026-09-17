@@ -809,10 +809,10 @@
     text-decoration: none;
   }
   .proven-widget-box {
-    background: #F8F8F8;
-    border: 1px solid #EEEEEE;
+    background: linear-gradient(180deg, #1C1D24 0%, #111115 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
-    padding: 12px 14px;
+    padding: 14px 14px;
     margin-bottom: 14px;
     display: flex;
     flex-direction: column;
@@ -821,6 +821,7 @@
     width: 100%;
     box-sizing: border-box;
     gap: 8px;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08), 0 4px 12px rgba(0, 0, 0, 0.15);
   }
   .proven-widget-top {
     display: flex;
@@ -829,22 +830,23 @@
     gap: 14px;
     font-family: var(--mono);
     font-size: 10.5px;
-    color: #111111;
+    color: #FFFFFF;
     text-align: center;
     width: 100%;
+    font-weight: 500;
   }
   .proven-widget-bar {
     width: 100%;
     height: 4px;
     border-radius: 2px;
-    background: #EEEEEE;
+    background: rgba(255, 255, 255, 0.12);
     overflow: hidden;
   }
   .proven-widget-bar-fill {
     height: 100%;
     border-radius: 2px;
     background: linear-gradient(90deg, #CC0000 0%, #F00000 100%);
-    box-shadow: 0 0 6px rgba(240, 0, 0, 0.4);
+    box-shadow: 0 0 8px rgba(240, 0, 0, 0.6);
   }
   .proven-widget-chips {
     display: flex;
@@ -855,14 +857,15 @@
     width: 100%;
   }
   .proven-chip {
-    padding: 2px 7px;
+    padding: 3px 8px;
     border-radius: 6px;
-    background: #EEEEEE;
-    border: 1px solid rgba(17, 17, 17, 0.08);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     font-size: 10px;
     font-family: var(--mono);
-    color: #111111;
+    color: #FFFFFF;
     text-decoration: none;
+    font-weight: 500;
   }
   .proven-desc {
     font-size: 13.5px;
