@@ -1059,34 +1059,70 @@
     opacity: 1;
   }
 
-  /* Flipping up to down, then down to up keyframes */
-  .selected-work-section:not(.is-expanded) .deck-stage .work-card.flip-out-down {
-    display: block;
-    animation: flipUpDownOut 0.24s forwards cubic-bezier(0.4, 0, 0.2, 1);
+  /* Alternating left-to-right and right-to-left slide transitions */
+  .selected-work-section:not(.is-expanded) .deck-stage {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    min-height: 420px;
   }
-  .selected-work-section:not(.is-expanded) .deck-stage .work-card.flip-in-up {
+  .selected-work-section:not(.is-expanded) .deck-stage .work-card.slide-out-right {
     display: block;
-    animation: flipDownUpIn 0.32s forwards cubic-bezier(0.16, 1, 0.3, 1);
+    animation: cardSlideOutRight 0.28s forwards cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .selected-work-section:not(.is-expanded) .deck-stage .work-card.slide-in-right {
+    display: block;
+    animation: cardSlideInRight 0.35s forwards cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .selected-work-section:not(.is-expanded) .deck-stage .work-card.slide-out-left {
+    display: block;
+    animation: cardSlideOutLeft 0.28s forwards cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .selected-work-section:not(.is-expanded) .deck-stage .work-card.slide-in-left {
+    display: block;
+    animation: cardSlideInLeft 0.35s forwards cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  @keyframes flipUpDownOut {
+  @keyframes cardSlideOutRight {
     0% {
-      transform: perspective(1400px) rotateX(0deg) scale(1);
+      transform: translateX(0) scale(1);
       opacity: 1;
     }
     100% {
-      transform: perspective(1400px) rotateX(-75deg) translateY(30px) scale(0.96);
+      transform: translateX(80px) scale(0.96);
       opacity: 0;
     }
   }
 
-  @keyframes flipDownUpIn {
+  @keyframes cardSlideInRight {
     0% {
-      transform: perspective(1400px) rotateX(75deg) translateY(-30px) scale(0.96);
+      transform: translateX(-80px) scale(0.96);
       opacity: 0;
     }
     100% {
-      transform: perspective(1400px) rotateX(0deg) translateY(0) scale(1);
+      transform: translateX(0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes cardSlideOutLeft {
+    0% {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-80px) scale(0.96);
+      opacity: 0;
+    }
+  }
+
+  @keyframes cardSlideInLeft {
+    0% {
+      transform: translateX(80px) scale(0.96);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0) scale(1);
       opacity: 1;
     }
   }
@@ -3682,11 +3718,11 @@
   .preview-section .small-label {
     color: var(--red);
     font-family: var(--mono);
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 800;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin: 0 0 6px;
+    margin: 0 0 8px;
     text-align: center;
     display: block;
   }
@@ -3698,7 +3734,7 @@
     color: var(--red);
     font-family: var(--display);
     text-align: center;
-    font-size: clamp(48px, 5.6vw, 82px);
+    font-size: clamp(54px, 6.8vw, 92px);
     line-height: .88;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -3720,7 +3756,7 @@
     margin: 0;
     text-align: center;
     font-family: var(--display);
-    font-size: clamp(32px, 3.8vw, 56px);
+    font-size: clamp(38px, 5.5vw, 68px);
     line-height: 1.05;
     letter-spacing: 0.01em;
     text-transform: uppercase;
@@ -3947,7 +3983,7 @@
   @media(max-width: 850px){
     .preview-section { padding: 40px 18px 20px; }
     .preview-section .hero-title {
-      font-size: clamp(24px, 7.8vw, 48px);
+      font-size: clamp(36px, 10vw, 64px);
       letter-spacing: 0;
       white-space: nowrap;
       overflow: hidden;
@@ -3999,7 +4035,19 @@
       width: 24px;
       height: 24px;
     }
-    .preview-section .about-label { margin-bottom: 35px; }
+    .preview-section .small-label {
+      font-size: clamp(17px, 4.8vw, 22px);
+      letter-spacing: 0.16em;
+      margin-bottom: 6px;
+    }
+    .preview-section .about-label {
+      font-size: clamp(48px, 13vw, 76px);
+      margin-bottom: 24px;
+    }
+    .preview-section .headline {
+      font-size: clamp(32px, 8.5vw, 48px);
+      line-height: 1.08;
+    }
     .preview-section .about-grid {
       grid-template-columns: 1fr;
       gap: 30px;
@@ -4154,6 +4202,10 @@
   .martech-btn.primary:hover {
     background: #ff2831;
     box-shadow: 0 16px 45px rgba(255,0,18,0.55);
+  }
+
+  .martech-cards-row {
+    display: contents;
   }
 
   /* Floating analytics cards */
@@ -4663,12 +4715,78 @@
   @media(max-width: 990px) {
     .martech-hero-card { min-height: auto; border-radius: 24px; }
     .martech-content { min-height: auto; padding: 36px 14px 260px; }
+    .martech-cards-row {
+      display: flex !important;
+      flex-direction: row;
+      justify-content: center;
+      align-items: stretch;
+      gap: 10px;
+      width: 100%;
+      max-width: 580px;
+      margin: 18px auto 0;
+      position: relative;
+      z-index: 12;
+    }
     .martech-card.card-left, .martech-card.card-right {
       position: static;
       transform: none !important;
-      margin: 18px auto;
+      margin: 0 !important;
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: 50%;
+      width: auto;
+      min-height: auto;
+      padding: 12px 10px 10px;
+      border-radius: 14px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .martech-card .card-top {
+      margin-bottom: 8px;
+    }
+    .martech-card .card-title {
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .martech-card .model-data-badge {
+      display: none;
+    }
+    .martech-card .dots {
+      display: none;
+    }
+    .martech-card .metrics {
+      display: flex;
+      justify-content: space-between;
+      gap: 4px;
+      margin-bottom: 6px;
+    }
+    .martech-card .metric-label {
+      font-size: 8px;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: rgba(255,255,255,0.7);
+      white-space: nowrap;
+    }
+    .martech-card .metric-value {
+      font-size: 13.5px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 2px 0 1px;
+    }
+    .martech-card .metric-growth {
+      font-size: 8.5px;
+      font-weight: 700;
+    }
+    .martech-card .chart {
+      height: 36px;
+      margin-top: 6px;
+    }
+    .martech-card .chart svg {
+      height: 36px;
       width: 100%;
-      max-width: 340px;
     }
     #three-stage { height: 280px; }
     .bottom-glass-pill { padding: 9px 20px; }
@@ -5156,45 +5274,68 @@
     color: var(--red);
   }
 
-  /* --- FOOTER DIRECTORY DIRECTORY & GRID --- */
+  /* --- FOOTER DIRECTORY & GRID (Center-Aligned with Split Columns) --- */
   .foot-wrap {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 48px;
     padding: 60px 0 32px;
   }
   .foot-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1fr;
-    gap: 40px 32px;
+    grid-template-columns: 1.2fr 1.1fr 1fr 1.1fr;
+    gap: 40px 28px;
+    width: 100%;
+    text-align: center;
   }
-  @media (max-width: 960px) {
+  @media (max-width: 1024px) {
     .foot-grid {
       grid-template-columns: 1fr 1fr;
+      gap: 36px 24px;
     }
   }
-  @media (max-width: 600px) {
+  @media (max-width: 680px) {
     .foot-grid {
       grid-template-columns: 1fr;
+      gap: 36px;
     }
   }
   .foot-col {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .foot-brand {
+    align-items: center;
+    text-align: center;
+  }
+  .foot-brand .nav-logo {
+    display: inline-flex;
+    justify-content: center;
   }
   .foot-tagline {
     font-size: 13.5px;
     line-height: 1.6;
     color: var(--slate);
     max-width: 320px;
+    margin: 12px auto 0;
+    text-align: center;
+  }
+  .foot-brand .badge-iso {
+    margin: 14px auto 0;
   }
   .foot-contact-quick {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 8px;
     margin-top: 18px;
     font-family: var(--mono);
     font-size: 12.5px;
+    text-align: center;
   }
   .foot-contact-quick a {
     color: rgba(255, 255, 255, 0.75);
@@ -5211,6 +5352,24 @@
     color: var(--red);
     margin-bottom: 18px;
     font-weight: 600;
+    text-align: center;
+  }
+  .foot-split-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+  }
+  .foot-split-links .foot-links-list {
+    flex: 1;
+    min-width: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
   }
   .foot-links-list {
     list-style: none;
@@ -5219,34 +5378,35 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    text-align: center;
   }
   .foot-links-list li a {
     font-size: 13.5px;
     color: rgba(255, 255, 255, 0.72);
     transition: color 0.2s ease, transform 0.2s ease;
     display: inline-block;
+    text-align: center;
   }
   .foot-links-list li a:hover {
     color: #ffffff;
-    transform: translateX(3px);
+    transform: translateY(-2px);
   }
   .foot-bottom-bar {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding-top: 24px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
     font-family: var(--mono);
     font-size: 12px;
     color: var(--slate);
   }
-  @media (max-width: 768px) {
-    .foot-bottom-bar {
-      flex-direction: column;
-      text-align: center;
-    }
+  .foot-bottom-copy, .foot-bottom-meta {
+    text-align: center;
   }
 
   /* ===== GROWTH AUDIT CARD & MODAL ===== */
@@ -5903,8 +6063,9 @@
           <a href="/blog/how-redsan-helped-d2c-brand-scale-revenue/" class="martech-btn">See How We Did It →</a>
         </div>
 
-        <!-- Left analytics card (Upward Growth Slope & Vibrant Green Metrics) -->
-        <article class="martech-card card-left reveal">
+        <div class="martech-cards-row">
+          <!-- Left analytics card (Upward Growth Slope & Vibrant Green Metrics) -->
+          <article class="martech-card card-left reveal">
           <div class="metric-glow" style="left:30px;bottom:-50px"></div>
           <div class="card-top">
             <div class="card-title">Growth Overview <span class="model-data-badge">ILLUSTRATIVE / MODEL DATA</span></div>
@@ -5980,6 +6141,7 @@
             </svg>
           </div>
         </article>
+        </div><!-- /.martech-cards-row -->
       </div>
 
       <div class="martech-disclaimer-box" style="text-align:center; max-width:680px; margin:20px auto 0; padding:14px 20px; background:rgba(17,17,17,0.85); border:1px solid rgba(255,255,255,0.12); border-radius:10px; position:relative; z-index:5;">
@@ -6783,10 +6945,10 @@
       <div class="deck-nav-actions">
         <span class="deck-counter" id="deckCounter">01 / 05</span>
         <button type="button" class="deck-nav-btn" id="deckPrevBtn" aria-label="Previous case study card" title="Previous Card">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
         <button type="button" class="deck-nav-btn" id="deckNextBtn" aria-label="Next case study card" title="Next Card">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
       </div>
     </div>
@@ -7346,49 +7508,61 @@
         </div>
       </div>
 
-      <!-- Col 2: Growth Services -->
+      <!-- Col 2: Growth Services (4 Left / 4 Right) -->
       <div class="foot-col">
         <div class="foot-col-title">Growth Services</div>
-        <ul class="foot-links-list">
-          <li><a href="/website-development/">AI Web Design &amp; Development</a></li>
-          <li><a href="/seo-agency/">SEO, AEO &amp; GEO Strategy</a></li>
-          <li><a href="/social-media-marketing/">Social Media Management</a></li>
-          <li><a href="/content-creation/">Content Creation</a></li>
-          <li><a href="/product-service-shoots/">Product &amp; Service Shoots</a></li>
-          <li><a href="/vibe-coding/">Vibe Coding</a></li>
-          <li><a href="/startup-growth-consulting/">Startup Growth Consulting</a></li>
-          <li><a href="/performance-marketing/">Performance Marketing</a></li>
-        </ul>
+        <div class="foot-split-links">
+          <ul class="foot-links-list">
+            <li><a href="/website-development/">AI Web Design &amp; Development</a></li>
+            <li><a href="/seo-agency/">SEO, AEO &amp; GEO Strategy</a></li>
+            <li><a href="/social-media-marketing/">Social Media Management</a></li>
+            <li><a href="/content-creation/">Content Creation</a></li>
+          </ul>
+          <ul class="foot-links-list">
+            <li><a href="/product-service-shoots/">Product &amp; Service Shoots</a></li>
+            <li><a href="/vibe-coding/">Vibe Coding</a></li>
+            <li><a href="/startup-growth-consulting/">Startup Growth Consulting</a></li>
+            <li><a href="/performance-marketing/">Performance Marketing</a></li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Col 3: Regional Hubs -->
+      <!-- Col 3: Regional Hubs (3 Left / 3 Right) -->
       <div class="foot-col">
         <div class="foot-col-title">Locations We Serve</div>
-        <ul class="foot-links-list">
-          <li><a href="/digital-marketing-agency-dehradun/">📍 Dehradun Agency</a></li>
-          <li><a href="/digital-marketing-agency-rishikesh/">📍 Rishikesh Agency</a></li>
-          <li><a href="/digital-marketing-agency-noida/">📍 Noida Agency</a></li>
-          <li><a href="/digital-marketing-agency-delhi/">📍 Delhi NCR Agency</a></li>
-          <li><a href="/digital-marketing-agency-gurugram/">📍 Gurugram Agency</a></li>
-          <li><a href="/digital-marketing-agency-chandigarh/">📍 Chandigarh Agency</a></li>
-        </ul>
+        <div class="foot-split-links">
+          <ul class="foot-links-list">
+            <li><a href="/digital-marketing-agency-dehradun/">📍 Dehradun Agency</a></li>
+            <li><a href="/digital-marketing-agency-rishikesh/">📍 Rishikesh Agency</a></li>
+            <li><a href="/digital-marketing-agency-noida/">📍 Noida Agency</a></li>
+          </ul>
+          <ul class="foot-links-list">
+            <li><a href="/digital-marketing-agency-delhi/">📍 Delhi NCR Agency</a></li>
+            <li><a href="/digital-marketing-agency-gurugram/">📍 Gurugram Agency</a></li>
+            <li><a href="/digital-marketing-agency-chandigarh/">📍 Chandigarh Agency</a></li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Col 4: Agency Ecosystem -->
+      <!-- Col 4: Agency Ecosystem (5 Left / 5 Right) -->
       <div class="foot-col">
         <div class="foot-col-title">Agency &amp; Legal</div>
-        <ul class="foot-links-list">
-          <li><a href="/">Home</a></li>
-          <li><a href="#about">About RedSan (Dossier)</a></li>
-          <li><a href="/digital-marketing-agency/">Agency Capabilities</a></li>
-          <li><a href="/workshops/">MarTech Masterclasses (₹49)</a></li>
-          <li><a href="/blog/">The RedSan Journal (Blog)</a></li>
-          <li><a href="/legal/">Legal &amp; Policy Hub</a></li>
-          <li><a href="/privacy-policy/">Privacy Policy</a></li>
-          <li><a href="/terms-of-service/">Master Service Agreement</a></li>
-          <li><a href="/refund-cancellation-policy/">Refund &amp; Cancellation</a></li>
-          <li><a href="#contact">Schedule Growth Session</a></li>
-        </ul>
+        <div class="foot-split-links">
+          <ul class="foot-links-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about">About RedSan (Dossier)</a></li>
+            <li><a href="/digital-marketing-agency/">Agency Capabilities</a></li>
+            <li><a href="/workshops/">MarTech Masterclasses (₹49)</a></li>
+            <li><a href="/blog/">The RedSan Journal (Blog)</a></li>
+          </ul>
+          <ul class="foot-links-list">
+            <li><a href="/legal/">Legal &amp; Policy Hub</a></li>
+            <li><a href="/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="/terms-of-service/">Master Service Agreement</a></li>
+            <li><a href="/refund-cancellation-policy/">Refund &amp; Cancellation</a></li>
+            <li><a href="/#contact">Schedule Growth Session</a></li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -8707,6 +8881,7 @@ function initCigaretteSmoke() {
     if (cards.length === 0) return;
 
     let currentIndex = 0;
+    let transitionStep = 0;
     let isAnimating = false;
     let autoTimer = null;
 
@@ -8722,18 +8897,23 @@ function initCigaretteSmoke() {
       if (targetIndex >= cards.length) targetIndex = 0;
 
       isAnimating = true;
+      transitionStep++;
+      const isLeftToRight = (transitionStep % 2 !== 0);
+      const outClass = isLeftToRight ? 'slide-out-right' : 'slide-out-left';
+      const inClass = isLeftToRight ? 'slide-in-right' : 'slide-in-left';
+
       const currentCard = cards[currentIndex];
       const nextCard = cards[targetIndex];
 
-      // Step 1: Flip current card down (rotateX down out of view)
-      currentCard.classList.remove('is-active', 'flip-in-up');
-      currentCard.classList.add('flip-out-down');
+      // Remove any prior transition classes
+      currentCard.classList.remove('is-active', 'slide-in-right', 'slide-in-left');
+      currentCard.classList.add(outClass);
 
       setTimeout(() => {
-        currentCard.classList.remove('flip-out-down');
+        currentCard.classList.remove('slide-out-right', 'slide-out-left');
 
-        // Step 2: Flip new card in from up to down (rotateX from up down into resting view)
-        nextCard.classList.add('is-active', 'flip-in-up');
+        nextCard.classList.remove('slide-out-right', 'slide-out-left');
+        nextCard.classList.add('is-active', inClass);
 
         currentIndex = targetIndex;
         updateCounter(currentIndex);
@@ -8744,10 +8924,10 @@ function initCigaretteSmoke() {
         });
 
         setTimeout(() => {
-          nextCard.classList.remove('flip-in-up');
+          nextCard.classList.remove('slide-in-right', 'slide-in-left');
           isAnimating = false;
-        }, 340);
-      }, 230);
+        }, 360);
+      }, 240);
     }
 
     function startAutoCycle() {
