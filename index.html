@@ -7033,7 +7033,7 @@
                 <p class="about-stat-label">Commercial clients served across D2C, B2B, hospitality &amp; tech.</p>
               </div>
               <div class="about-stat-box">
-                <div class="about-stat-num">120+</div>
+                <div class="about-stat-num" data-about-count="120" data-about-suffix="+">120+</div>
                 <p class="about-stat-label">Projects delivered across web platforms, SEO and performance marketing.</p>
               </div>
             </div>
@@ -9227,8 +9227,10 @@ function initCigaretteSmoke() {
     if (statsTriggered) return;
     statsTriggered = true;
     document.querySelectorAll('.about-stat-num').forEach(el => {
-      const target = parseInt(el.getAttribute('data-about-count'), 10) || 0;
-      const suffix = el.getAttribute('data-about-suffix') || '';
+      const rawCount = el.getAttribute('data-about-count') || parseInt(el.textContent, 10);
+      const target = parseInt(rawCount, 10) || 0;
+      if (!target) return;
+      const suffix = el.getAttribute('data-about-suffix') || (el.textContent.includes('+') ? '+' : '');
       const duration = 1000;
       const start = performance.now();
       function step(now) {
