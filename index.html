@@ -713,24 +713,22 @@
     box-sizing: border-box;
   }
   .proven-tile {
-    background: linear-gradient(180deg, #18191E 0%, #111216 100%);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #FFFFFF;
+    border: 1px solid #EEEEEE;
     border-radius: 22px;
     padding: 24px 22px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+    box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.28), 0 2px 6px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
     box-sizing: border-box;
   }
   .proven-tile:hover {
     transform: translateY(-4px) scale(1.01);
-    border-color: rgba(240, 0, 0, 0.45);
-    box-shadow: 0 22px 48px -12px rgba(0, 0, 0, 0.85), 0 0 24px rgba(240, 0, 0, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    border-color: #F00000;
+    box-shadow: 0 24px 48px -10px rgba(0, 0, 0, 0.38), 0 0 24px rgba(240, 0, 0, 0.2);
   }
   .proven-tile-header {
     display: flex;
@@ -745,21 +743,21 @@
     gap: 6px;
     padding: 4px 10px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    background: #F8F8F8;
+    border: 1px solid #EEEEEE;
     font-family: var(--mono);
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #EEEEEE;
+    color: #111111;
   }
   .proven-tile-tag .dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
     background: #F00000;
-    box-shadow: 0 0 8px #F00000;
+    box-shadow: 0 0 6px rgba(240, 0, 0, 0.8);
     display: inline-block;
   }
   .proven-status-pill {
@@ -768,12 +766,12 @@
     gap: 4px;
     padding: 3px 9px;
     border-radius: 10px;
-    background: rgba(240, 0, 0, 0.12);
-    border: 1px solid rgba(240, 0, 0, 0.3);
+    background: rgba(240, 0, 0, 0.08);
+    border: 1px solid rgba(240, 0, 0, 0.25);
     font-family: var(--mono);
     font-size: 10px;
     font-weight: 700;
-    color: #FF6666;
+    color: #CC0000;
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
@@ -781,7 +779,7 @@
     font-family: var(--display);
     font-size: clamp(24px, 2vw, 30px);
     line-height: 1.15;
-    color: #FFFFFF;
+    color: #F00000;
     margin-bottom: 4px;
     letter-spacing: -0.01em;
     font-weight: 700;
@@ -789,13 +787,13 @@
   .proven-context {
     font-size: 12px;
     font-family: var(--mono);
-    color: rgba(255, 255, 255, 0.52);
+    color: rgba(17, 17, 17, 0.7);
     margin-bottom: 14px;
     line-height: 1.4;
   }
   .proven-widget-box {
-    background: #0D0E12;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: #F8F8F8;
+    border: 1px solid #EEEEEE;
     border-radius: 14px;
     padding: 12px 14px;
     margin-bottom: 14px;
@@ -809,20 +807,20 @@
     align-items: center;
     font-family: var(--mono);
     font-size: 10.5px;
-    color: rgba(255, 255, 255, 0.65);
+    color: #111111;
   }
   .proven-widget-bar {
     width: 100%;
     height: 4px;
     border-radius: 2px;
-    background: rgba(255, 255, 255, 0.08);
+    background: #EEEEEE;
     overflow: hidden;
   }
   .proven-widget-bar-fill {
     height: 100%;
     border-radius: 2px;
     background: linear-gradient(90deg, #CC0000 0%, #F00000 100%);
-    box-shadow: 0 0 8px rgba(240, 0, 0, 0.6);
+    box-shadow: 0 0 6px rgba(240, 0, 0, 0.4);
   }
   .proven-widget-chips {
     display: flex;
@@ -833,16 +831,16 @@
   .proven-chip {
     padding: 2px 7px;
     border-radius: 6px;
-    background: #181920;
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: #EEEEEE;
+    border: 1px solid rgba(17, 17, 17, 0.08);
     font-size: 10px;
     font-family: var(--mono);
-    color: rgba(255, 255, 255, 0.72);
+    color: #111111;
   }
   .proven-desc {
     font-size: 13.5px;
     line-height: 1.55;
-    color: rgba(255, 255, 255, 0.76);
+    color: #111111;
     margin-bottom: 18px;
     flex-grow: 1;
   }
@@ -853,9 +851,9 @@
     width: 100%;
     padding: 10px 16px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #EEEEEE;
+    background: #111111;
+    border: 1px solid #111111;
+    color: #FFFFFF;
     font-family: var(--mono);
     font-size: 11.5px;
     font-weight: 700;
@@ -873,7 +871,7 @@
     background: #F00000;
     border-color: #F00000;
     color: #FFFFFF;
-    box-shadow: 0 4px 18px rgba(240, 0, 0, 0.4);
+    box-shadow: 0 4px 18px rgba(240, 0, 0, 0.35);
   }
   .proven-tile-btn:hover .arrow-icon {
     transform: translateX(4px);
