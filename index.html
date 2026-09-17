@@ -712,6 +712,14 @@
     padding-bottom: 24px;
     box-sizing: border-box;
   }
+  .proven-section .section-head {
+    text-align: center;
+    margin: 0 auto 48px;
+    max-width: 680px;
+  }
+  .proven-section .section-head h2 {
+    text-decoration: none;
+  }
   .proven-tile {
     background: #FFFFFF;
     border: 1px solid #EEEEEE;
@@ -720,6 +728,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+    text-align: center;
     position: relative;
     box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.28), 0 2px 6px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
@@ -733,9 +743,10 @@
   .proven-tile-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 8px;
     margin-bottom: 12px;
+    width: 100%;
   }
   .proven-tile-tag {
     display: inline-flex;
@@ -751,6 +762,7 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: #111111;
+    text-decoration: none;
   }
   .proven-tile-tag .dot {
     width: 6px;
@@ -774,6 +786,7 @@
     color: #CC0000;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+    text-decoration: none;
   }
   .proven-metric {
     font-family: var(--display);
@@ -783,6 +796,8 @@
     margin-bottom: 4px;
     letter-spacing: -0.01em;
     font-weight: 700;
+    text-align: center;
+    text-decoration: none;
   }
   .proven-context {
     font-size: 12px;
@@ -790,6 +805,8 @@
     color: rgba(17, 17, 17, 0.7);
     margin-bottom: 14px;
     line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
   }
   .proven-widget-box {
     background: #F8F8F8;
@@ -799,15 +816,22 @@
     margin-bottom: 14px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
     gap: 8px;
   }
   .proven-widget-top {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 14px;
     font-family: var(--mono);
     font-size: 10.5px;
     color: #111111;
+    text-align: center;
+    width: 100%;
   }
   .proven-widget-bar {
     width: 100%;
@@ -825,8 +849,10 @@
   .proven-widget-chips {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 6px;
     margin-top: 2px;
+    width: 100%;
   }
   .proven-chip {
     padding: 2px 7px;
@@ -836,18 +862,22 @@
     font-size: 10px;
     font-family: var(--mono);
     color: #111111;
+    text-decoration: none;
   }
   .proven-desc {
     font-size: 13.5px;
     line-height: 1.55;
     color: #111111;
     margin-bottom: 18px;
+    text-align: center;
     flex-grow: 1;
+    text-decoration: none;
   }
   .proven-tile-btn {
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 8px;
     width: 100%;
     padding: 10px 16px;
     border-radius: 12px;
@@ -862,6 +892,7 @@
     text-decoration: none;
     transition: all 0.25s ease;
     box-sizing: border-box;
+    text-align: center;
   }
   .proven-tile-btn .arrow-icon {
     font-size: 14px;
@@ -5953,7 +5984,7 @@
           <strong style="color:#EE0000; text-transform:uppercase; letter-spacing:0.04em;">Disclaimer:</strong> These figures are illustrative examples of how a growth dashboard can represent performance. They are not presented as client results.
         </p>
         <p style="margin:8px 0 0; font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em; font-family:var(--mono);">
-          For verified client performance, see <a href="#proven-results" style="color:#EE0000; text-decoration:underline; font-weight:700;">Proven in Client Work below ↓</a> · <a href="/blog/1-5cr-growth-milestone-methodology/" style="color:rgba(255,255,255,0.6); text-decoration:underline;">View Methodology</a>
+          For verified client performance, see <a href="#proven-results" style="color:#EE0000; text-decoration:none; font-weight:700;">Proven in Client Work below ↓</a> · <a href="/blog/1-5cr-growth-milestone-methodology/" style="color:rgba(255,255,255,0.6); text-decoration:none;">View Methodology</a>
         </p>
       </div>
 
