@@ -627,95 +627,243 @@
     vertical-align: middle;
   }
 
-  /* ===== PROVEN IN CLIENT WORK SECTION ===== */
+  /* ===== PROVEN IN CLIENT WORK SECTION (Floating Space Marquee & Dark UI Reference Cards) ===== */
   .proven-section {
     padding: 90px 0 70px;
     background: transparent;
     position: relative;
     z-index: 10;
     font-family: var(--body);
+    overflow: hidden;
   }
-  .proven-grid {
+  .proven-scroller-wrap {
+    position: relative;
+    width: 100%;
+    max-height: 720px;
+    overflow: hidden;
+    margin-top: 36px;
+    padding: 24px 0;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 1) 12%, rgba(0, 0, 0, 1) 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 1) 12%, rgba(0, 0, 0, 1) 88%, transparent 100%);
+  }
+  .proven-marquee-track {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+    animation: scrollCardsUp 42s linear infinite;
+  }
+  .proven-scroller-wrap:hover .proven-marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes scrollCardsUp {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+  .proven-grid-group {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    margin-top: 40px;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px 24px;
+    box-sizing: border-box;
   }
   .proven-tile {
-    background: rgba(17, 17, 20, 0.78);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 14px;
-    padding: 32px 28px;
+    background: linear-gradient(180deg, #18191E 0%, #111216 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    padding: 24px 22px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
   }
   .proven-tile:hover {
-    transform: translateY(-6px);
-    border-color: rgba(238, 0, 0, 0.4);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(238, 0, 0, 0.12);
+    transform: translateY(-4px) scale(1.01);
+    border-color: rgba(240, 0, 0, 0.45);
+    box-shadow: 0 22px 48px -12px rgba(0, 0, 0, 0.85), 0 0 24px rgba(240, 0, 0, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  }
+  .proven-tile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
   }
   .proven-tile-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     font-family: var(--mono);
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--red);
-    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+    color: #EEEEEE;
+  }
+  .proven-tile-tag .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #F00000;
+    box-shadow: 0 0 8px #F00000;
+    display: inline-block;
+  }
+  .proven-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    border-radius: 10px;
+    background: rgba(240, 0, 0, 0.12);
+    border: 1px solid rgba(240, 0, 0, 0.3);
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: #FF6666;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
   .proven-metric {
     font-family: var(--display);
-    font-size: clamp(26px, 2.2vw, 34px);
-    line-height: 1.1;
+    font-size: clamp(24px, 2vw, 30px);
+    line-height: 1.15;
     color: #FFFFFF;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
     letter-spacing: -0.01em;
+    font-weight: 700;
   }
   .proven-context {
     font-size: 12px;
     font-family: var(--mono);
-    color: rgba(255, 255, 255, 0.55);
-    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.52);
+    margin-bottom: 14px;
     line-height: 1.4;
   }
+  .proven-widget-box {
+    background: #0D0E12;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .proven-widget-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.65);
+  }
+  .proven-widget-bar {
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+  .proven-widget-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #CC0000 0%, #F00000 100%);
+    box-shadow: 0 0 8px rgba(240, 0, 0, 0.6);
+  }
+  .proven-widget-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 2px;
+  }
+  .proven-chip {
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: #181920;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    font-size: 10px;
+    font-family: var(--mono);
+    color: rgba(255, 255, 255, 0.72);
+  }
   .proven-desc {
-    font-size: 14px;
+    font-size: 13.5px;
     line-height: 1.55;
-    color: rgba(255, 255, 255, 0.78);
-    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.76);
+    margin-bottom: 18px;
     flex-grow: 1;
   }
-  .proven-tile-link {
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #EE0000;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    transition: color 0.2s ease, transform 0.2s ease;
+  .proven-tile-btn {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #EEEEEE;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-sizing: border-box;
   }
-  .proven-tile-link:hover {
+  .proven-tile-btn .arrow-icon {
+    font-size: 14px;
+    transition: transform 0.25s ease;
+  }
+  .proven-tile-btn:hover {
+    background: #F00000;
+    border-color: #F00000;
     color: #FFFFFF;
-    transform: translateX(3px);
+    box-shadow: 0 4px 18px rgba(240, 0, 0, 0.4);
+  }
+  .proven-tile-btn:hover .arrow-icon {
+    transform: translateX(4px);
+  }
+  @media (min-width: 961px) {
+    .proven-grid-group .proven-tile:nth-child(3n + 2) {
+      transform: translateY(24px);
+    }
+    .proven-grid-group .proven-tile:nth-child(3n + 2):hover {
+      transform: translateY(20px) scale(1.01);
+    }
   }
   @media (max-width: 960px) {
-    .proven-grid {
+    .proven-grid-group {
       grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .proven-scroller-wrap {
+      max-height: 640px;
     }
   }
   @media (max-width: 640px) {
-    .proven-grid {
+    .proven-grid-group {
       grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 0 16px 20px;
+    }
+    .proven-scroller-wrap {
+      max-height: 580px;
     }
   }
 
@@ -5803,7 +5951,7 @@
 </section>
 
 <!-- ============================================================
-     PROVEN IN CLIENT WORK (Verified Documented Outcomes)
+     PROVEN IN CLIENT WORK (Verified Documented Outcomes - 9 Cards Floating Space Scroller)
      ============================================================ -->
 <section class="proven-section" id="proven-results">
   <div class="wrap">
@@ -5812,73 +5960,573 @@
       <h2>Proven in Client Work.</h2>
       <p>Real, documented outcomes from Redsan growth engagements across D2C scaling, B2B lead generation, institutional marketing, and digital infrastructure.</p>
     </div>
+  </div>
 
-    <div class="proven-grid">
-      <!-- 1. D2C Brand Revenue Scaling -->
-      <article class="proven-tile">
-        <div>
-          <div class="proven-tile-tag">D2C E-Commerce</div>
-          <div class="proven-metric">3.4x Revenue Growth</div>
-          <div class="proven-context">Lifestyle &amp; Apparel Brand · 90-Day Scaling Sprint</div>
-          <p class="proven-desc">Re-engineered performance acquisition funnels across Meta and Google Ads, deployed high-converting mobile landers, and lowered blended customer acquisition costs while scaling volume.</p>
-        </div>
-        <a href="/blog/how-redsan-helped-d2c-brand-scale-revenue/" class="proven-tile-link">View Case Study →</a>
-      </article>
+  <div class="proven-scroller-wrap" aria-label="Documented Track Record Floating Showcase">
+    <div class="proven-marquee-track">
+      <!-- SET 1: 9 Cards in Grid -->
+      <div class="proven-grid-group">
+        <!-- 1. D2C Brand Revenue Scaling -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> D2C E-Commerce</span>
+              <span class="proven-status-pill">Verified Sprint</span>
+            </div>
+            <div class="proven-metric">3.4x Revenue Growth</div>
+            <div class="proven-context">Lifestyle &amp; Apparel Brand · 90-Day Scaling Sprint</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>ROAS Efficiency: 4.1x</span>
+                <span>Blended CAC: -34%</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 92%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Meta Ads</span>
+                <span class="proven-chip">Google Shopping</span>
+                <span class="proven-chip">Mobile Landers</span>
+              </div>
+            </div>
+            <p class="proven-desc">Re-engineered performance acquisition funnels across Meta and Google Ads, deployed high-converting mobile landers, and lowered blended customer acquisition costs while scaling volume.</p>
+          </div>
+          <a href="/blog/how-redsan-helped-d2c-brand-scale-revenue/" class="proven-tile-btn">
+            <span>View Case Study</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
 
-      <!-- 2. B2B Growth & Lead Pipelines -->
-      <article class="proven-tile">
-        <div>
-          <div class="proven-tile-tag">B2B &amp; Enterprise</div>
-          <div class="proven-metric">42% Lower CPL</div>
-          <div class="proven-context">IT &amp; Enterprise Solutions · Multi-Channel Pipeline</div>
-          <p class="proven-desc">Restructured commercial keyword targeting, implemented 3-line objection-handling modules, and connected automated qualification workflows to increase sales-qualified demo bookings.</p>
-        </div>
-        <a href="/blog/redsan-scaling-b2b-d2c-brands-online/" class="proven-tile-link">View Case Study →</a>
-      </article>
+        <!-- 2. B2B Growth & Lead Pipelines -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> B2B &amp; Enterprise</span>
+              <span class="proven-status-pill">Pipeline Active</span>
+            </div>
+            <div class="proven-metric">42% Lower CPL</div>
+            <div class="proven-context">IT &amp; Enterprise Solutions · Multi-Channel Pipeline</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Demo Bookings: +64%</span>
+                <span>CR Target: 4.8%</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 86%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">High-Intent Search</span>
+                <span class="proven-chip">3-Line Objections</span>
+                <span class="proven-chip">CRM Automation</span>
+              </div>
+            </div>
+            <p class="proven-desc">Restructured commercial keyword targeting, implemented 3-line objection-handling modules, and connected automated qualification workflows to increase sales-qualified demo bookings.</p>
+          </div>
+          <a href="/blog/redsan-scaling-b2b-d2c-brands-online/" class="proven-tile-btn">
+            <span>View Case Study</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
 
-      <!-- 3. Higher Education Admissions -->
-      <article class="proven-tile">
-        <div>
-          <div class="proven-tile-tag">Higher Education</div>
-          <div class="proven-metric">5 Institutional MoUs</div>
-          <div class="proven-context">State Boards &amp; Universities · SCERT &amp; Uttaranchal Univ</div>
-          <p class="proven-desc">Delivered campus marketing campaigns, student skill-building workshops, and targeted digital admissions visibility programs across leading regional educational institutions.</p>
-        </div>
-        <a href="/blog/redsan-in-education-industry/" class="proven-tile-link">Read Industry Breakdown →</a>
-      </article>
+        <!-- 3. Higher Education Admissions -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> Higher Education</span>
+              <span class="proven-status-pill">MoU Verified</span>
+            </div>
+            <div class="proven-metric">5 Institutional MoUs</div>
+            <div class="proven-context">State Boards &amp; Universities · SCERT &amp; Uttaranchal Univ</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Student Reach: 45k+</span>
+                <span>Active Campuses: 8+</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 95%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">SCERT Partner</span>
+                <span class="proven-chip">Campus Campaigns</span>
+                <span class="proven-chip">Skill Workshops</span>
+              </div>
+            </div>
+            <p class="proven-desc">Delivered campus marketing campaigns, student skill-building workshops, and targeted digital admissions visibility programs across leading regional educational institutions.</p>
+          </div>
+          <a href="/blog/redsan-in-education-industry/" class="proven-tile-btn">
+            <span>Read Industry Breakdown</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
 
-      <!-- 4. Organic Search Authority -->
-      <article class="proven-tile">
-        <div>
-          <div class="proven-tile-tag">SEO, AEO &amp; GEO</div>
-          <div class="proven-metric">100k+ Backlinks</div>
-          <div class="proven-context">Multi-Industry Portfolio · Long-Term Organic Authority</div>
-          <p class="proven-desc">Engineered entity-first content clusters, high-authority Digital PR backlinks, and schema architectures optimized for Google SGE and AI conversational answer retrieval.</p>
-        </div>
-        <a href="/blog/seo-vs-geo-whats-the-difference/" class="proven-tile-link">See SEO Methodology →</a>
-      </article>
+        <!-- 4. Organic Search Authority -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> SEO, AEO &amp; GEO</span>
+              <span class="proven-status-pill">AI Search Ready</span>
+            </div>
+            <div class="proven-metric">100k+ Backlinks</div>
+            <div class="proven-context">Multi-Industry Portfolio · Long-Term Organic Authority</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Google SGE Citations: 94%</span>
+                <span>Entity Clusters: 18</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 90%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Digital PR</span>
+                <span class="proven-chip">Knowledge Graphs</span>
+                <span class="proven-chip">AEO Retrieval</span>
+              </div>
+            </div>
+            <p class="proven-desc">Engineered entity-first content clusters, high-authority Digital PR backlinks, and schema architectures optimized for Google SGE and AI conversational answer retrieval.</p>
+          </div>
+          <a href="/blog/seo-vs-geo-whats-the-difference/" class="proven-tile-btn">
+            <span>See SEO Methodology</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
 
-      <!-- 5. Content Production At Scale -->
-      <article class="proven-tile">
-        <div>
-          <div class="proven-tile-tag">Creative &amp; Studio</div>
-          <div class="proven-metric">1,000+ Assets Produced</div>
-          <div class="proven-context">Brands &amp; Retainers · High-Velocity Digital Presence</div>
-          <p class="proven-desc">Studio product shoots, video ad creative sprints, and high-converting commercial copy designed to stop the scroll and establish brand credibility in crowded categories.</p>
-        </div>
-        <a href="/content-creation/" class="proven-tile-link">Explore Content Production →</a>
-      </article>
+        <!-- 5. Content Production At Scale -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> Creative &amp; Studio</span>
+              <span class="proven-status-pill">High Velocity</span>
+            </div>
+            <div class="proven-metric">1,000+ Assets Produced</div>
+            <div class="proven-context">Brands &amp; Retainers · High-Velocity Digital Presence</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Commercial Reels: 600+</span>
+                <span>Conversion Copy: 400+</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 98%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Product Shoots</span>
+                <span class="proven-chip">Video Ad Creative</span>
+                <span class="proven-chip">Direct Copy</span>
+              </div>
+            </div>
+            <p class="proven-desc">Studio product shoots, video ad creative sprints, and high-converting commercial copy designed to stop the scroll and establish brand credibility in crowded categories.</p>
+          </div>
+          <a href="/content-creation/" class="proven-tile-btn">
+            <span>Explore Content Production</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
 
-      <!-- 6. Event Marketing & Production -->
-      <article class="proven-tile">
-        <div>
-          <div class="proven-tile-tag">Experiential &amp; Events</div>
-          <div class="proven-metric">5+ Events Managed</div>
-          <div class="proven-context">Regional Summits &amp; Shows · Including Redsan Dehradun Chapter 2</div>
-          <p class="proven-desc">Full-funnel event ticketing, brand sponsorships, influencer coordination, on-ground media coverage, and post-event brand amplification for flagship regional conferences.</p>
-        </div>
-        <a href="/blog/redsan-dehradun-chapter-2/" class="proven-tile-link">View Event Breakdown →</a>
-      </article>
+        <!-- 6. Event Marketing & Production -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> Experiential &amp; Events</span>
+              <span class="proven-status-pill">Flagship Summit</span>
+            </div>
+            <div class="proven-metric">5+ Events Managed</div>
+            <div class="proven-context">Regional Summits &amp; Shows · Including Redsan Dehradun Chapter 2</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Attendee Footfall: 2,500+</span>
+                <span>Sponsor ROI: 3.8x</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 94%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Ticketing Funnel</span>
+                <span class="proven-chip">Brand Sponsors</span>
+                <span class="proven-chip">Media Coverage</span>
+              </div>
+            </div>
+            <p class="proven-desc">Full-funnel event ticketing, brand sponsorships, influencer coordination, on-ground media coverage, and post-event brand amplification for flagship regional conferences.</p>
+          </div>
+          <a href="/blog/redsan-dehradun-chapter-2/" class="proven-tile-btn">
+            <span>View Event Breakdown</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
+
+        <!-- 7. AI & Vibe Coding Rapid Prototyping (New Card 1) -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> AI &amp; Vibe Coding</span>
+              <span class="proven-status-pill">Prototype Sprint</span>
+            </div>
+            <div class="proven-metric">14-Day MVP Launch</div>
+            <div class="proven-context">SaaS &amp; Internal Automations · Full-Stack AI Workflows</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Architecture: Next.js + Agents</span>
+                <span>Dev Velocity: 3.5x</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 100%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Claude 3.7 &amp; OpenAI</span>
+                <span class="proven-chip">Interactive UI</span>
+                <span class="proven-chip">Fast Deploy</span>
+              </div>
+            </div>
+            <p class="proven-desc">Converted high-level product concepts into functional, scalable AI-powered web applications and operational tools in fourteen days, slashing development overhead.</p>
+          </div>
+          <a href="/vibe-coding/" class="proven-tile-btn">
+            <span>Explore Rapid Prototyping</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
+
+        <!-- 8. Paid Media & ROAS Scaling (New Card 2) -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> Paid Acquisition</span>
+              <span class="proven-status-pill">Scale Verified</span>
+            </div>
+            <div class="proven-metric">4.8x Blended ROAS</div>
+            <div class="proven-context">D2C Fashion &amp; Retail · Omnichannel Ad Media Spend</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Spend Volume: 3.2x</span>
+                <span>CAC Efficiency: -29%</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 88%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Meta Ads</span>
+                <span class="proven-chip">Google Shopping</span>
+                <span class="proven-chip">Server-Side CAPI</span>
+              </div>
+            </div>
+            <p class="proven-desc">Restructured cross-channel budget allocation, deployed dynamic product catalog ad creatives, and unlocked predictable profitability during high-volume seasonal sale campaigns.</p>
+          </div>
+          <a href="/digital-marketing-agency-noida/" class="proven-tile-btn">
+            <span>Explore Performance Ads</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
+
+        <!-- 9. Brand Strategy & Visual Identity (New Card 3) -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> Brand &amp; Strategy</span>
+              <span class="proven-status-pill">Market Launch</span>
+            </div>
+            <div class="proven-metric">250k+ Organic Reach</div>
+            <div class="proven-context">Startup Rebrand &amp; Market Launch · Category Positioning</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>System: Complete Rollout</span>
+                <span>Engagement: +140%</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 95%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Design System</span>
+                <span class="proven-chip">Visual Identity</span>
+                <span class="proven-chip">Brand Guidelines</span>
+              </div>
+            </div>
+            <p class="proven-desc">Formulated an unmistakable brand identity, conversion-focused design language, and targeted founder-led narrative that established immediate market credibility.</p>
+          </div>
+          <a href="/social-media-marketing/" class="proven-tile-btn">
+            <span>Explore Brand Strategy</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
+      </div>
+
+      <!-- SET 2: Duplicate 9 Cards for Seamless Infinite Upward Loop -->
+      <div class="proven-grid-group" aria-hidden="true">
+        <!-- 1. D2C Brand Revenue Scaling Duplicate -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> D2C E-Commerce</span>
+              <span class="proven-status-pill">Verified Sprint</span>
+            </div>
+            <div class="proven-metric">3.4x Revenue Growth</div>
+            <div class="proven-context">Lifestyle &amp; Apparel Brand · 90-Day Scaling Sprint</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>ROAS Efficiency: 4.1x</span>
+                <span>Blended CAC: -34%</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 92%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Meta Ads</span>
+                <span class="proven-chip">Google Shopping</span>
+                <span class="proven-chip">Mobile Landers</span>
+              </div>
+            </div>
+            <p class="proven-desc">Re-engineered performance acquisition funnels across Meta and Google Ads, deployed high-converting mobile landers, and lowered blended customer acquisition costs while scaling volume.</p>
+          </div>
+          <a href="/blog/how-redsan-helped-d2c-brand-scale-revenue/" class="proven-tile-btn" tabindex="-1">
+            <span>View Case Study</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
+
+        <!-- 2. B2B Growth & Lead Pipelines Duplicate -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> B2B &amp; Enterprise</span>
+              <span class="proven-status-pill">Pipeline Active</span>
+            </div>
+            <div class="proven-metric">42% Lower CPL</div>
+            <div class="proven-context">IT &amp; Enterprise Solutions · Multi-Channel Pipeline</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Demo Bookings: +64%</span>
+                <span>CR Target: 4.8%</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 86%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">High-Intent Search</span>
+                <span class="proven-chip">3-Line Objections</span>
+                <span class="proven-chip">CRM Automation</span>
+              </div>
+            </div>
+            <p class="proven-desc">Restructured commercial keyword targeting, implemented 3-line objection-handling modules, and connected automated qualification workflows to increase sales-qualified demo bookings.</p>
+          </div>
+          <a href="/blog/redsan-scaling-b2b-d2c-brands-online/" class="proven-tile-btn" tabindex="-1">
+            <span>View Case Study</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
+
+        <!-- 3. Higher Education Admissions Duplicate -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> Higher Education</span>
+              <span class="proven-status-pill">MoU Verified</span>
+            </div>
+            <div class="proven-metric">5 Institutional MoUs</div>
+            <div class="proven-context">State Boards &amp; Universities · SCERT &amp; Uttaranchal Univ</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Student Reach: 45k+</span>
+                <span>Active Campuses: 8+</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 95%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">SCERT Partner</span>
+                <span class="proven-chip">Campus Campaigns</span>
+                <span class="proven-chip">Skill Workshops</span>
+              </div>
+            </div>
+            <p class="proven-desc">Delivered campus marketing campaigns, student skill-building workshops, and targeted digital admissions visibility programs across leading regional educational institutions.</p>
+          </div>
+          <a href="/blog/redsan-in-education-industry/" class="proven-tile-btn" tabindex="-1">
+            <span>Read Industry Breakdown</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
+
+        <!-- 4. Organic Search Authority Duplicate -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> SEO, AEO &amp; GEO</span>
+              <span class="proven-status-pill">AI Search Ready</span>
+            </div>
+            <div class="proven-metric">100k+ Backlinks</div>
+            <div class="proven-context">Multi-Industry Portfolio · Long-Term Organic Authority</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Google SGE Citations: 94%</span>
+                <span>Entity Clusters: 18</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 90%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Digital PR</span>
+                <span class="proven-chip">Knowledge Graphs</span>
+                <span class="proven-chip">AEO Retrieval</span>
+              </div>
+            </div>
+            <p class="proven-desc">Engineered entity-first content clusters, high-authority Digital PR backlinks, and schema architectures optimized for Google SGE and AI conversational answer retrieval.</p>
+          </div>
+          <a href="/blog/seo-vs-geo-whats-the-difference/" class="proven-tile-btn" tabindex="-1">
+            <span>See SEO Methodology</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
+
+        <!-- 5. Content Production At Scale Duplicate -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> Creative &amp; Studio</span>
+              <span class="proven-status-pill">High Velocity</span>
+            </div>
+            <div class="proven-metric">1,000+ Assets Produced</div>
+            <div class="proven-context">Brands &amp; Retainers · High-Velocity Digital Presence</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Commercial Reels: 600+</span>
+                <span>Conversion Copy: 400+</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 98%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Product Shoots</span>
+                <span class="proven-chip">Video Ad Creative</span>
+                <span class="proven-chip">Direct Copy</span>
+              </div>
+            </div>
+            <p class="proven-desc">Studio product shoots, video ad creative sprints, and high-converting commercial copy designed to stop the scroll and establish brand credibility in crowded categories.</p>
+          </div>
+          <a href="/content-creation/" class="proven-tile-btn" tabindex="-1">
+            <span>Explore Content Production</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
+
+        <!-- 6. Experiential & Events Duplicate -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> Experiential &amp; Events</span>
+              <span class="proven-status-pill">Flagship Summit</span>
+            </div>
+            <div class="proven-metric">5+ Events Managed</div>
+            <div class="proven-context">Regional Summits &amp; Shows · Including Redsan Dehradun Chapter 2</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Attendee Footfall: 2,500+</span>
+                <span>Sponsor ROI: 3.8x</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 94%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Ticketing Funnel</span>
+                <span class="proven-chip">Brand Sponsors</span>
+                <span class="proven-chip">Media Coverage</span>
+              </div>
+            </div>
+            <p class="proven-desc">Full-funnel event ticketing, brand sponsorships, influencer coordination, on-ground media coverage, and post-event brand amplification for flagship regional conferences.</p>
+          </div>
+          <a href="/blog/redsan-dehradun-chapter-2/" class="proven-tile-btn" tabindex="-1">
+            <span>View Event Breakdown</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
+
+        <!-- 7. AI & Vibe Coding Rapid Prototyping Duplicate -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> AI &amp; Vibe Coding</span>
+              <span class="proven-status-pill">Prototype Sprint</span>
+            </div>
+            <div class="proven-metric">14-Day MVP Launch</div>
+            <div class="proven-context">SaaS &amp; Internal Automations · Full-Stack AI Workflows</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Architecture: Next.js + Agents</span>
+                <span>Dev Velocity: 3.5x</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 100%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Claude 3.7 &amp; OpenAI</span>
+                <span class="proven-chip">Interactive UI</span>
+                <span class="proven-chip">Fast Deploy</span>
+              </div>
+            </div>
+            <p class="proven-desc">Converted high-level product concepts into functional, scalable AI-powered web applications and operational tools in fourteen days, slashing development overhead.</p>
+          </div>
+          <a href="/vibe-coding/" class="proven-tile-btn" tabindex="-1">
+            <span>Explore Rapid Prototyping</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
+
+        <!-- 8. Paid Media & ROAS Scaling Duplicate -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> Paid Acquisition</span>
+              <span class="proven-status-pill">Scale Verified</span>
+            </div>
+            <div class="proven-metric">4.8x Blended ROAS</div>
+            <div class="proven-context">D2C Fashion &amp; Retail · Omnichannel Ad Media Spend</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>Spend Volume: 3.2x</span>
+                <span>CAC Efficiency: -29%</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 88%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Meta Ads</span>
+                <span class="proven-chip">Google Shopping</span>
+                <span class="proven-chip">Server-Side CAPI</span>
+              </div>
+            </div>
+            <p class="proven-desc">Restructured cross-channel budget allocation, deployed dynamic product catalog ad creatives, and unlocked predictable profitability during high-volume seasonal sale campaigns.</p>
+          </div>
+          <a href="/digital-marketing-agency-noida/" class="proven-tile-btn" tabindex="-1">
+            <span>Explore Performance Ads</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
+
+        <!-- 9. Brand Strategy & Visual Identity Duplicate -->
+        <article class="proven-tile">
+          <div>
+            <div class="proven-tile-header">
+              <span class="proven-tile-tag"><span class="dot"></span> Brand &amp; Strategy</span>
+              <span class="proven-status-pill">Market Launch</span>
+            </div>
+            <div class="proven-metric">250k+ Organic Reach</div>
+            <div class="proven-context">Startup Rebrand &amp; Market Launch · Category Positioning</div>
+            <div class="proven-widget-box">
+              <div class="proven-widget-top">
+                <span>System: Complete Rollout</span>
+                <span>Engagement: +140%</span>
+              </div>
+              <div class="proven-widget-bar">
+                <div class="proven-widget-bar-fill" style="width: 95%;"></div>
+              </div>
+              <div class="proven-widget-chips">
+                <span class="proven-chip">Design System</span>
+                <span class="proven-chip">Visual Identity</span>
+                <span class="proven-chip">Brand Guidelines</span>
+              </div>
+            </div>
+            <p class="proven-desc">Formulated an unmistakable brand identity, conversion-focused design language, and targeted founder-led narrative that established immediate market credibility.</p>
+          </div>
+          <a href="/social-media-marketing/" class="proven-tile-btn" tabindex="-1">
+            <span>Explore Brand Strategy</span>
+            <span class="arrow-icon">→</span>
+          </a>
+        </article>
+      </div>
     </div>
   </div>
 </section>
