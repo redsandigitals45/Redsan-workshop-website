@@ -198,9 +198,21 @@
        ==================================================================== -->
   <url>
     <loc>https://redsan.in/blog/</loc>
-    <lastmod>2026-09-15</lastmod>
+    <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://redsan.in/blog/best-digital-marketing-agency-in-dehradun/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://redsan.in/assets/redsan-best-digital-marketing-agency-dehradun.webp</image:loc>
+      <image:title>Best Digital Marketing Agency in Dehradun: 2026 Guide</image:title>
+      <image:caption>Compare 8 Dehradun digital marketing agencies by services, evidence, and pricing, plus a transparent framework for choosing the right one.</image:caption>
+    </image:image>
   </url>
 
   <url>
