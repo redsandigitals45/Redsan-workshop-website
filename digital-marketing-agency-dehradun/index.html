@@ -173,16 +173,27 @@ ul.dropdown-menu > li > a:hover, ul.dropdown-menu > li > a:focus-visible, ul.dro
 }
 .mag-cover {
   position: relative;
-  height: 140px;
-  background: rgba(8, 8, 10, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 180px;
+  background: #0d0d10;
+  overflow: hidden;
+  display: block;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-.mag-cover.cover-sales { background: linear-gradient(135deg, rgba(240,0,0,0.12), rgba(8,8,10,0.95)); }
-.mag-cover.cover-ai { background: linear-gradient(135deg, rgba(204,0,0,0.12), rgba(8,8,10,0.95)); }
-.mag-cover .cover-icon { font-size: 34px; }
+.mag-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform .4s ease;
+}
+.mag-card:hover .mag-cover img {
+  transform: scale(1.05);
+}
 .crosshair { position: absolute; width: 14px; height: 14px; }
 .crosshair::before, .crosshair::after { content: ""; position: absolute; background: rgba(255, 255, 255, 0.4); }
 .crosshair::before { width: 100%; height: 1px; top: 50%; }
@@ -436,56 +447,56 @@ ul.dropdown-menu > li > a:hover, ul.dropdown-menu > li > a:focus-visible, ul.dro
     </div>
 
     <div class="blog-grid">
-      <!-- Dehradun Client Case Study 1: Doon Resort & Narayani Hospitality -->
-      <a href="/digital-marketing-agency-dehradun/#contact" class="mag-card">
-        <div class="mag-cover cover-sales">
-          <span class="crosshair tl"></span><span class="crosshair br"></span>
-          <div class="cover-icon">🏨</div>
-          <span class="flair">Case Study</span>
+      <!-- Card 1: Best Digital Marketing Agency in Dehradun -->
+      <a href="/blog/best-digital-marketing-agency-in-dehradun/" class="mag-card">
+        <div class="mag-cover">
+          <span class="crosshair tl" style="z-index:2;"></span><span class="crosshair br" style="z-index:2;"></span>
+          <img src="/assets/redsan-best-digital-marketing-agency-dehradun.webp" alt="Best Digital Marketing Agency in Dehradun 2026 Guide" width="600" height="400" loading="lazy" decoding="async">
+          <span class="flair" style="z-index:2;">Guide</span>
         </div>
         <div class="mag-body">
-          <div class="tag">Case Study · Dehradun Hub</div>
-          <h3>Case Study: Scaling Doon Resort &amp; Hospitality Inquiries by 280%</h3>
-          <p>How we cut 18% OTA commission dependence for a premier Dehradun resort through local Google Business Profile domination, high-speed mobile booking funnels, and cinematic Reels shoots.</p>
+          <div class="tag">Guide · Dehradun Marketing</div>
+          <h3>Best Digital Marketing Agency in Dehradun: How to Choose in 2026</h3>
+          <p>Compare 8 Dehradun digital marketing agencies by services, verified evidence, and pricing. Learn how to choose the right partner for your business in 2026.</p>
           <div style="margin-top:16px; font-family:var(--mono); font-size:11px; color:#EEEEEE; display:flex; justify-content:space-between; align-items:center;">
-            <span style="color:#F8F8F8; font-weight:600;">₹48L+ Direct Bookings</span>
-            <span style="color:#F00000; font-weight:600;">Inquire Framework →</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Dehradun Case Study 2: ₹1.5Cr+ Methodology & Attribution -->
-      <a href="/blog/1-5cr-growth-milestone-methodology/" class="mag-card">
-        <div class="mag-cover cover-sales">
-          <span class="crosshair tl"></span><span class="crosshair br"></span>
-          <div class="cover-icon">📊</div>
-          <span class="flair">Methodology</span>
-        </div>
-        <div class="mag-body">
-          <div class="tag">Attribution Framework · Dehradun</div>
-          <h3>The ₹1.5Cr+ Growth Milestone Methodology &amp; Attribution Framework</h3>
-          <p>The exact data architecture, CRM event tracking, and local cohort attribution model behind ₹1.5Cr+ in tracked pipeline for Uttarakhand businesses.</p>
-          <div style="margin-top:16px; font-family:var(--mono); font-size:11px; color:#EEEEEE; display:flex; justify-content:space-between; align-items:center;">
-            <span style="color:#F8F8F8; font-weight:600;">₹1.5Cr+ Milestone</span>
-            <span style="color:#F00000; font-weight:600;">Read Teardown →</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Dehradun Guide 3: SEO vs GEO Strategy -->
-      <a href="/blog/seo-vs-geo-whats-the-difference/" class="mag-card">
-        <div class="mag-cover cover-ai">
-          <span class="crosshair tl"></span><span class="crosshair br"></span>
-          <div class="cover-icon">🔍</div>
-          <span class="flair">Guide</span>
-        </div>
-        <div class="mag-body">
-          <div class="tag">Guide · SEO &amp; AI Search</div>
-          <h3>SEO vs GEO: What's the Difference and Why You Need Both</h3>
-          <p>Traditional search optimization isn't dead, but Generative Engine Optimization is transforming discovery across Google AI Overviews and ChatGPT Search for Dehradun brands.</p>
-          <div style="margin-top:16px; font-family:var(--mono); font-size:11px; color:#EEEEEE; display:flex; justify-content:space-between; align-items:center;">
-            <span style="color:#F8F8F8; font-weight:600;">Local 3-Pack &amp; AI</span>
+            <span style="color:#F8F8F8; font-weight:600;">8 Agencies Audited</span>
             <span style="color:#F00000; font-weight:600;">Read Guide →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2: Redsan's Dehradun Chapter 1 -->
+      <a href="/blog/redsan-dehradun-story/" class="mag-card">
+        <div class="mag-cover">
+          <span class="crosshair tl" style="z-index:2;"></span><span class="crosshair br" style="z-index:2;"></span>
+          <img src="/assets/redsan-digitals-dehradun-chapter.webp" alt="Redsan's Dehradun Chapter: How It All Began in 2023" width="600" height="400" loading="lazy" decoding="async">
+          <span class="flair" style="z-index:2;">Chapter 01</span>
+        </div>
+        <div class="mag-body">
+          <div class="tag">Redsan Origins · Dehradun</div>
+          <h3>Redsan's Dehradun Chapter: How It All Began in 2023</h3>
+          <p>From getting incubated at Uttaranchal University to navigating the cafe and restaurant circuit, the honest early days of Redsan in Dehradun and the lessons that built our agency SOPs.</p>
+          <div style="margin-top:16px; font-family:var(--mono); font-size:11px; color:#EEEEEE; display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#F8F8F8; font-weight:600;">Agency Origins</span>
+            <span style="color:#F00000; font-weight:600;">Read Chapter →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3: Redsan's Dehradun Chapter 2 -->
+      <a href="/blog/redsan-dehradun-chapter-2/" class="mag-card">
+        <div class="mag-cover">
+          <span class="crosshair tl" style="z-index:2;"></span><span class="crosshair br" style="z-index:2;"></span>
+          <img src="/assets/redsan-digitals-dehradun-chapter-2.webp" alt="Redsan's Second Dehradun Chapter: From Digital Content to Red Carpets" width="600" height="400" loading="lazy" decoding="async">
+          <span class="flair" style="z-index:2;">Chapter 02</span>
+        </div>
+        <div class="mag-body">
+          <div class="tag">Regional Scale · Dehradun</div>
+          <h3>Redsan's Second Dehradun Chapter: From Digital Content to Red Carpets</h3>
+          <p>How Himalayan Buzz became a major Redsan client, putting the agency on stage at Uttarakhand's biggest events, in print magazines, and in front of 50+ businesses.</p>
+          <div style="margin-top:16px; font-family:var(--mono); font-size:11px; color:#EEEEEE; display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#F8F8F8; font-weight:600;">Statewide Events</span>
+            <span style="color:#F00000; font-weight:600;">Read Chapter →</span>
           </div>
         </div>
       </a>
