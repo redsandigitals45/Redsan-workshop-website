@@ -1806,45 +1806,31 @@ header.hero, section, footer, .wa-float, #checkout {
 /* ============================================================
    SYNCHRONIZED FOOTER (4-COLUMN DIRECTORY)
    ============================================================ */
+/* Default Desktop / PC Footer: Clean 4-column directory, left-aligned */
 .foot-wrap {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   gap: 48px;
 }
 .foot-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1.1fr 1fr 1.1fr;
-  gap: 40px 28px;
-  width: 100%;
-  text-align: center;
-}
-@media (max-width: 1024px) {
-  .foot-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 36px 24px;
-  }
-}
-@media (max-width: 680px) {
-  .foot-grid {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px 32px;
+  text-align: left;
 }
 .foot-col {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 .foot-brand {
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 .foot-brand .nav-logo {
   display: inline-flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .foot-logo-img {
   height: 38px;
@@ -1857,21 +1843,21 @@ header.hero, section, footer, .wa-float, #checkout {
   line-height: 1.6;
   color: #A1A1A6;
   max-width: 320px;
-  margin: 12px auto 0;
-  text-align: center;
+  margin: 0;
+  text-align: left;
 }
 .foot-brand .badge-iso {
-  margin: 14px auto 0;
+  margin: 14px 0 0 0;
 }
 .foot-contact-quick {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   margin-top: 18px;
   font-family: var(--mono, monospace);
   font-size: 12.5px;
-  text-align: center;
+  text-align: left;
 }
 .foot-contact-quick a {
   color: rgba(255, 255, 255, 0.75);
@@ -1889,24 +1875,22 @@ header.hero, section, footer, .wa-float, #checkout {
   color: var(--red);
   margin-bottom: 18px;
   font-weight: 600;
-  text-align: center;
+  text-align: left;
 }
 .foot-split-links {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
 }
 .foot-split-links .foot-links-list {
-  flex: 1;
-  min-width: 0;
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  text-align: center;
+  text-align: left;
 }
 .foot-links-list {
   list-style: none;
@@ -1915,7 +1899,7 @@ header.hero, section, footer, .wa-float, #checkout {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  text-align: center;
+  text-align: left;
 }
 .foot-links-list li a {
   font-size: 13.5px;
@@ -1923,28 +1907,92 @@ header.hero, section, footer, .wa-float, #checkout {
   text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
   display: inline-block;
-  text-align: center;
+  text-align: left;
 }
 .foot-links-list li a:hover {
   color: #ffffff;
-  transform: translateY(-2px);
+  transform: translateX(3px);
 }
 .foot-bottom-bar {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 24px;
-  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 16px;
   font-family: var(--mono, monospace);
   font-size: 12px;
   color: #A1A1A6;
+  text-align: left;
 }
 .foot-bottom-copy, .foot-bottom-meta {
-  text-align: center;
+  text-align: left;
+}
+
+/* Mobile-Optimized Footer (<= 990px): Center-aligned with 4/4, 3/3, 5/5 parallel split columns */
+@media (max-width: 990px) {
+  .foot-wrap {
+    align-items: center;
+    text-align: center;
+  }
+  .foot-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+  }
+  .foot-col {
+    align-items: center;
+    text-align: center;
+  }
+  .foot-brand {
+    align-items: center;
+    text-align: center;
+  }
+  .foot-brand .nav-logo {
+    justify-content: center;
+  }
+  .foot-tagline {
+    margin: 12px auto 0;
+    text-align: center;
+  }
+  .foot-brand .badge-iso {
+    margin: 14px auto 0;
+  }
+  .foot-contact-quick {
+    align-items: center;
+    text-align: center;
+  }
+  .foot-col-title {
+    text-align: center;
+  }
+  .foot-split-links {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+  .foot-split-links .foot-links-list {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+  }
+  .foot-links-list li a {
+    text-align: center;
+  }
+  .foot-links-list li a:hover {
+    transform: translateY(-2px);
+  }
+  .foot-bottom-bar {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .foot-bottom-copy, .foot-bottom-meta {
+    text-align: center;
+  }
 }
 
 /* ============================================================
