@@ -7923,8 +7923,10 @@ window.addEventListener('pointermove', (e) => {
 /* ---- scroll progress (0..1 across the 500vh track) ---- */
 let targetProgress = 0;
 let progress = 0;
+let isStepping = false;
 
 function computeProgress() {
+  if (isStepping) return;
   const rect = track.getBoundingClientRect();
   const total = track.offsetHeight - window.innerHeight;
   const scrolled = -rect.top;
@@ -8252,7 +8254,8 @@ function tick(now) {
   const dt = Math.min((now - last) / 1000, 0.05);
   last = now;
 
-  progress += (targetProgress - progress) * 0.12;
+  // Slow, continuous cinematic interpolation (zero glitch, zero bounce)
+  progress += (targetProgress - progress) * 0.055;
   updatePanels(progress);
   progressEl.style.height = (progress * 100) + '%';
 
@@ -8282,7 +8285,6 @@ requestAnimationFrame(tick);
    Scroll 5 completes the animation and unlocks main-content.
    ============================================================ */
 let currentStage = 0;
-let isStepping = false;
 
 function getTotalScroll() {
   return Math.max(1, track.offsetHeight - window.innerHeight);
@@ -8308,8 +8310,8 @@ function smoothScrollTo(targetY, duration, callback) {
   function step(now) {
     const elapsed = now - startTime;
     const t = Math.min(elapsed / duration, 1);
-    // Smooth cubic ease-out for snappy, responsive feel
-    const ease = 1 - Math.pow(1 - t, 3);
+    // Pure cosine S-curve: slow, graceful acceleration and deceleration
+    const ease = 0.5 - 0.5 * Math.cos(Math.PI * t);
     window.scrollTo(0, startY + diff * ease);
     if (t < 1) {
       requestAnimationFrame(step);
@@ -8329,11 +8331,10 @@ function stepHero(direction) {
     if (currentStage < 4) {
       currentStage++;
       isStepping = true;
-      const targetP = currentStage / 4;
-      targetProgress = targetP;
-      const targetY = trackTop + (total * targetP);
-      smoothScrollTo(targetY, 520, () => {
-        setTimeout(() => { isStepping = false; }, 120);
+      targetProgress = currentStage / 4;
+      const targetY = trackTop + (total * targetProgress);
+      smoothScrollTo(targetY, 920, () => {
+        setTimeout(() => { isStepping = false; }, 220);
       });
     } else if (currentStage === 4) {
       // 5th SCROLL: Hero animation complete, transitions down into main-content
@@ -8345,8 +8346,8 @@ function stepHero(direction) {
         mainContent.style.opacity = '1';
         mainContent.style.pointerEvents = 'auto';
       }
-      smoothScrollTo(targetY, 600, () => {
-        setTimeout(() => { isStepping = false; }, 150);
+      smoothScrollTo(targetY, 1050, () => {
+        setTimeout(() => { isStepping = false; }, 220);
       });
     }
   } else if (direction < 0) {
@@ -8354,15 +8355,17 @@ function stepHero(direction) {
     if (currentStage > 0) {
       currentStage--;
       isStepping = true;
-      const targetP = currentStage / 4;
-      targetProgress = targetP;
-      const targetY = trackTop + (total * targetP);
-      smoothScrollTo(targetY, 520, () => {
-        setTimeout(() => { isStepping = false; }, 120);
+      targetProgress = currentStage / 4;
+      const targetY = trackTop + (total * targetProgress);
+      smoothScrollTo(targetY, 920, () => {
+        setTimeout(() => { isStepping = false; }, 220);
       });
     } else if (currentStage === 0) {
       if (window.scrollY > 0) {
-        smoothScrollTo(0, 350);
+        isStepping = true;
+        smoothScrollTo(0, 550, () => {
+          setTimeout(() => { isStepping = false; }, 150);
+        });
       }
     }
   }
