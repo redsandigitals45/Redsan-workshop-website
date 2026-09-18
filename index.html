@@ -8262,6 +8262,7 @@ requestAnimationFrame(tick);
    ============================================================ */
 let currentStage = 0;
 const STAGES = [0.0, 0.25, 0.50, 0.75, 1.0];
+const HERO_STEP_DURATION = 1400; // Slower, cinematic 3D camera sweep
 
 function animateProgressTo(targetP, duration) {
   isAnimating = true;
@@ -8288,7 +8289,7 @@ function animateProgressTo(targetP, duration) {
       if (progressEl) progressEl.style.height = (currentProgress * 100) + '%';
       setTimeout(() => {
         isAnimating = false;
-      }, 150);
+      }, 180);
     }
   }
 
@@ -8302,7 +8303,7 @@ function handleHeroStep(direction) {
     // Scrolling DOWN
     if (currentStage < 4) {
       currentStage++;
-      animateProgressTo(STAGES[currentStage], 850);
+      animateProgressTo(STAGES[currentStage], HERO_STEP_DURATION);
     } else if (currentStage === 4) {
       // 5th SCROLL: Hero animation complete, glide down into main-content
       currentStage = 5;
@@ -8315,7 +8316,7 @@ function handleHeroStep(direction) {
       }
       setTimeout(() => {
         isAnimating = false;
-      }, 950);
+      }, 1250);
     }
   } else if (direction < 0) {
     // Scrolling UP
@@ -8325,7 +8326,7 @@ function handleHeroStep(direction) {
       } else {
         currentStage--;
       }
-      animateProgressTo(STAGES[currentStage], 850);
+      animateProgressTo(STAGES[currentStage], HERO_STEP_DURATION);
     }
   }
 }
