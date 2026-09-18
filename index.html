@@ -3091,8 +3091,8 @@
 
   @media (max-width: 880px) {
     #preloader { display: none !important; }
-    .mobile-hero { display: none !important; }
-    #top { display: block !important; }
+    .mobile-hero { display: block !important; }
+    #top { display: none !important; }
     .mobile-hero .hero-main {
       padding: 24px 12px 16px !important;
       width: 100% !important;
@@ -3232,30 +3232,282 @@
     .logos-section {
       padding: 28px 0 !important;
     }
+
+    /* CASE STUDIES: Expanded card size on mobile */
+    .selected-work-section {
+      padding: 36px 0 !important;
+    }
+    .selected-work-section .wrap {
+      padding: 0 10px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .deck-controls-bar {
+      margin-top: 24px !important;
+      margin-bottom: 18px !important;
+      padding: 10px 12px !important;
+      gap: 12px !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+    }
+    .deck-tabs {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      gap: 6px !important;
+      padding-bottom: 4px !important;
+      scrollbar-width: none !important;
+      width: 100% !important;
+    }
+    .deck-tabs::-webkit-scrollbar {
+      display: none !important;
+    }
+    .deck-tab-btn {
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+      font-size: 11px !important;
+      padding: 6px 11px !important;
+    }
+    .deck-nav-actions {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      width: 100% !important;
+      padding-top: 6px !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    .deck-stage {
+      min-height: auto !important;
+      width: 100% !important;
+    }
+    .selected-work-section:not(.is-expanded) .deck-stage {
+      min-height: auto !important;
+    }
+    .work-card {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 26px 18px !important;
+      border-radius: 18px !important;
+    }
+    .work-card-header {
+      gap: 12px !important;
+      padding-bottom: 16px !important;
+      margin-bottom: 18px !important;
+    }
+    .work-client-name {
+      font-size: clamp(20px, 5.2vw, 24px) !important;
+    }
+    .work-engagement-badge {
+      font-size: 10.5px !important;
+      padding: 5px 10px !important;
+    }
+    .work-meta-row {
+      gap: 10px 16px !important;
+      margin-bottom: 16px !important;
+    }
+    .work-meta-item {
+      font-size: 11.5px !important;
+    }
+    .work-body-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 18px !important;
+    }
+    .work-narrative h4 {
+      font-size: 11px !important;
+      margin-bottom: 4px !important;
+    }
+    .work-narrative p {
+      font-size: 14px !important;
+      line-height: 1.55 !important;
+      margin-bottom: 14px !important;
+    }
+    .work-outcome-box {
+      width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 18px 16px !important;
+      border-radius: 14px !important;
+    }
+    .work-outcome-metric {
+      font-size: clamp(20px, 5vw, 24px) !important;
+      margin-bottom: 10px !important;
+    }
+
+    /* READY TO ENGINEER BANNER: Horizontal, expanded horizontally, scaled to fit in full size */
+    .growth-cta-banner {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      margin: 32px 0 0 !important;
+      padding: 22px 14px !important;
+      border-radius: 16px !important;
+      text-align: center !important;
+      overflow: hidden !important;
+      position: relative !important;
+    }
+    .growth-cta-bg-img {
+      opacity: 0.4 !important;
+      object-fit: cover !important;
+      object-position: center !important;
+    }
+    .growth-cta-content h3 {
+      font-size: clamp(17px, 4.4vw, 21px) !important;
+      line-height: 1.25 !important;
+      margin-bottom: 8px !important;
+    }
+    .growth-cta-content p {
+      font-size: 12.5px !important;
+      line-height: 1.45 !important;
+      margin: 0 auto 14px !important;
+      max-width: 100% !important;
+      color: rgba(255, 255, 255, 0.8) !important;
+    }
+    .growth-cta-content div {
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: center !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
+    }
+    .growth-cta-content .btn {
+      padding: 10px 14px !important;
+      font-size: 11.5px !important;
+      white-space: nowrap !important;
+      flex: 1 1 calc(50% - 8px) !important;
+      max-width: 220px !important;
+      text-align: center !important;
+      justify-content: center !important;
+    }
+
+    /* ABOUT SECTION: Expanded horizontally, sleek horizontal proportion scaled to fit in full size */
     .about-section {
-      padding: 32px 0 !important;
+      padding: 30px 0 !important;
     }
     .about-section .wrap {
-      padding: 0 12px !important;
+      padding: 0 10px !important;
       width: 100% !important;
       max-width: 100% !important;
     }
     .about-card {
       width: 100% !important;
-      border-radius: 28px !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
     }
+    .about-card::after {
+      width: 100% !important;
+      opacity: 0.18 !important;
+      mask-image: radial-gradient(circle at 60% 40%, rgba(0,0,0,0.9) 20%, transparent 85%) !important;
+      -webkit-mask-image: radial-gradient(circle at 60% 40%, rgba(0,0,0,0.9) 20%, transparent 85%) !important;
+    }
+    .about-card-header {
+      padding: 20px 14px !important;
+      gap: 12px !important;
+      grid-template-columns: 1fr !important;
+    }
+    .about-header-top {
+      margin-bottom: 10px !important;
+      gap: 12px !important;
+    }
+    .about-header-logo {
+      height: 22px !important;
+    }
+    .about-eyebrow {
+      font-size: 10px !important;
+      margin-bottom: 8px !important;
+      letter-spacing: .08em !important;
+    }
+    .about-card-title {
+      font-size: clamp(19px, 5vw, 24px) !important;
+      line-height: 1.15 !important;
+      margin-bottom: 10px !important;
+    }
+    .about-card-teaser {
+      font-size: 12.5px !important;
+      line-height: 1.45 !important;
+      margin-bottom: 14px !important;
+      color: rgba(255, 255, 255, 0.76) !important;
+    }
+    .about-founder-chip {
+      padding: 5px 10px !important;
+      gap: 8px !important;
+      border-radius: 100px !important;
+    }
+    .about-founder-avatar {
+      width: 30px !important;
+      height: 30px !important;
+    }
+    .about-founder-text {
+      font-size: 11px !important;
+    }
+    .about-expand-wrap {
+      padding-top: 12px !important;
+      margin-top: 4px !important;
+    }
+
+    /* LEARN TO LAUNCH SECTION: Expanded horizontally, scaled to fit in full size */
     .workshop-teaser {
-      padding: 32px 0 !important;
+      padding: 30px 0 !important;
     }
     .workshop-teaser .wrap {
-      padding: 0 12px !important;
+      padding: 0 10px !important;
       width: 100% !important;
       max-width: 100% !important;
     }
     .workshop-card {
       width: 100% !important;
-      border-radius: 28px !important;
-      padding: 36px 18px !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      border-radius: 16px !important;
+      padding: 22px 14px !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .workshop-card::after {
+      opacity: 0.26 !important;
+    }
+    .workshop-card .eyebrow {
+      font-size: 10.5px !important;
+    }
+    .workshop-card h2 {
+      font-size: clamp(18px, 4.8vw, 22px) !important;
+      line-height: 1.15 !important;
+      margin-top: 8px !important;
+      margin-bottom: 8px !important;
+    }
+    .workshop-card p {
+      font-size: 12.5px !important;
+      line-height: 1.45 !important;
+      margin: 8px 0 14px !important;
+      max-width: 100% !important;
+      color: rgba(255, 255, 255, 0.76) !important;
+    }
+    .workshop-card .btn {
+      padding: 10px 16px !important;
+      font-size: 12px !important;
+      display: inline-flex !important;
+      justify-content: center !important;
+      align-self: flex-start !important;
+    }
+    .workshop-side {
+      border-left: none !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+      padding-left: 0 !important;
+      padding-top: 14px !important;
+      margin-top: 14px !important;
+      gap: 8px !important;
+    }
+    .workshop-side .quote-tag {
+      font-size: 10.5px !important;
+    }
+    .workshop-side .quote {
+      font-size: 12.5px !important;
+      line-height: 1.45 !important;
     }
     #blog {
       padding: 36px 0 !important;
