@@ -110,71 +110,233 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Category & Location filter chips
+  // ==========================================
+  // BLOG ARCHIVE: 6-Card Pagination, Filter Chips & Hero Search Engine
+  // ==========================================
+  var blogGrid = document.getElementById('blogGrid');
+  var archiveCards = blogGrid ? Array.from(blogGrid.querySelectorAll('.ig-post-card')) : [];
   var topicChips = document.querySelectorAll('#blogFilter .chip');
   var locationChips = document.querySelectorAll('#locationFilter .chip');
-  var cards = document.querySelectorAll('.mag-card');
   var emptyState = document.getElementById('blogEmpty');
   var blogSearchInput = document.getElementById('blogSearchInput');
+  var searchClearBtn = document.getElementById('blogSearchClear');
+  var searchMatchBadge = document.getElementById('searchMatchCount');
+  var paginationWrap = document.getElementById('blogPaginationWrap');
+  var loadMoreBtn = document.getElementById('blogLoadMoreBtn');
 
-  function applyFilters() {
-    var activeTopic = document.querySelector('#blogFilter .chip.active');
-    var topicFilter = activeTopic ? activeTopic.getAttribute('data-filter') : 'all';
+  var PAGE_SIZE = 6;
+  var visibleLimit = PAGE_SIZE;
 
-    var activeLoc = document.querySelector('#locationFilter .chip.active');
-    var locFilter = activeLoc ? activeLoc.getAttribute('data-location') : 'all';
+  // Preserve initial card DOM order so clearing search restores original editorial flow
+  var initialCardOrder = archiveCards.slice();
 
-    var query = blogSearchInput ? blogSearchInput.value.trim().toLowerCase() : '';
-    var visible = 0;
+  function applyFiltersAndPagination(resetLimit) {
+    if (!blogGrid || archiveCards.length === 0) return;
 
-    cards.forEach(function (card) {
-      var cardCat = (card.getAttribute('data-category') || '').trim();
+    if (resetLimit) {
+      visibleLimit = PAGE_SIZE;
+    }
+
+    var activeTopicEl = document.querySelector('#blogFilter .chip.active');
+    var topicFilter = activeTopicEl ? activeTopicEl.getAttribute('data-filter') : 'all';
+
+    var activeLocEl = document.querySelector('#locationFilter .chip.active');
+    var locFilter = activeLocEl ? activeLocEl.getAttribute('data-location') : 'all';
+
+    var rawQuery = blogSearchInput ? blogSearchInput.value.trim().toLowerCase() : '';
+    var queryTerms = rawQuery ? rawQuery.split(/\s+/).filter(Boolean) : [];
+
+    // Toggle search clear button
+    if (searchClearBtn) {
+      searchClearBtn.style.display = rawQuery ? 'inline-flex' : 'none';
+    }
+
+    // Filter matching cards
+    var matchedCards = [];
+
+    archiveCards.forEach(function (card) {
+      var cardCat = (card.getAttribute('data-category') || '').toLowerCase().trim();
       var cardCats = cardCat.split(/\s+/);
 
-      var matchesTopic = (
-        topicFilter === 'all' ||
-        cardCats.indexOf(topicFilter) !== -1 ||
-        (topicFilter === 'ai-marketing-news' && (cardCats.indexOf('news') !== -1 || cardCats.indexOf('ai-marketing-news') !== -1)) ||
-        (topicFilter === 'news' && (cardCats.indexOf('news') !== -1 || cardCats.indexOf('ai-marketing-news') !== -1))
-      );
+      // 1. Topic Match
+      var matchesTopic = false;
+      if (topicFilter === 'all') {
+        matchesTopic = true;
+      } else if (topicFilter === 'ai-marketing-news') {
+        matchesTopic = cardCats.indexOf('ai-marketing-news') !== -1 || cardCats.indexOf('news') !== -1;
+      } else if (topicFilter === 'news') {
+        matchesTopic = cardCats.indexOf('news') !== -1 || cardCats.indexOf('ai-marketing-news') !== -1;
+      } else {
+        matchesTopic = cardCats.indexOf(topicFilter) !== -1;
+      }
 
-      var matchesLocation = (
-        locFilter === 'all' ||
-        cardCats.indexOf(locFilter) !== -1
-      );
+      // 2. Location Match
+      var matchesLocation = (locFilter === 'all' || cardCats.indexOf(locFilter) !== -1);
 
-      var textContent = card.innerText.toLowerCase();
-      var matchesSearch = !query || textContent.indexOf(query) !== -1;
+      // 3. Search Keyword Match (Prioritize Title Alignment)
+      var matchesSearch = true;
+      var titleScore = 0;
 
-      var show = matchesTopic && matchesLocation && matchesSearch;
-      card.style.display = show ? 'flex' : 'none';
-      if (show) visible++;
+      if (queryTerms.length > 0) {
+        var titleEl = card.querySelector('.ig-post-title');
+        var titleText = titleEl ? titleEl.innerText.toLowerCase() : '';
+        var excerptEl = card.querySelector('.ig-post-excerpt');
+        var excerptText = excerptEl ? excerptEl.innerText.toLowerCase() : '';
+        var locationEl = card.querySelector('.ig-sub-location');
+        var locationText = locationEl ? locationEl.innerText.toLowerCase() : '';
+        var combinedText = titleText + ' ' + excerptText + ' ' + locationText + ' ' + cardCat;
+
+        // Check if all search terms exist in the card
+        var hasAllTerms = queryTerms.every(function (term) {
+          return combinedText.indexOf(term) !== -1;
+        });
+
+        if (!hasAllTerms) {
+          matchesSearch = false;
+        } else {
+          // Calculate title alignment weight
+          if (titleText.indexOf(rawQuery) !== -1) {
+            titleScore = 100;
+          } else {
+            var matchedInTitle = queryTerms.filter(function (term) {
+              return titleText.indexOf(term) !== -1;
+            }).length;
+            titleScore = matchedInTitle * 20;
+          }
+        }
+      }
+
+      if (matchesTopic && matchesLocation && matchesSearch) {
+        matchedCards.push({
+          card: card,
+          titleScore: titleScore
+        });
+      } else {
+        card.style.display = 'none';
+      }
     });
 
-    if (emptyState) emptyState.style.display = visible === 0 ? 'block' : 'none';
+    // If searching, order cards so title matches appear first; otherwise restore original order
+    if (queryTerms.length > 0) {
+      matchedCards.sort(function (a, b) {
+        return b.titleScore - a.titleScore;
+      });
+      matchedCards.forEach(function (item) {
+        blogGrid.appendChild(item.card);
+      });
+    } else {
+      initialCardOrder.forEach(function (origCard) {
+        blogGrid.appendChild(origCard);
+      });
+    }
+
+    // Display cards up to visibleLimit
+    var totalMatched = matchedCards.length;
+    matchedCards.forEach(function (item, index) {
+      if (index < visibleLimit) {
+        item.card.style.display = 'flex';
+      } else {
+        item.card.style.display = 'none';
+      }
+    });
+
+    // Handle empty state message
+    if (emptyState) {
+      emptyState.style.display = totalMatched === 0 ? 'block' : 'none';
+      if (rawQuery && totalMatched === 0) {
+        emptyState.textContent = 'No dispatches found matching "' + rawQuery + '". Try another keyword or clear filters.';
+      } else {
+        emptyState.textContent = 'No dispatches in this category yet: check back soon.';
+      }
+    }
+
+    // Hero search result indicator
+    if (searchMatchBadge) {
+      if (rawQuery) {
+        searchMatchBadge.style.display = 'block';
+        if (totalMatched === 0) {
+          searchMatchBadge.innerHTML = 'No dispatches matching "' + rawQuery + '"';
+        } else {
+          searchMatchBadge.innerHTML = 'Found ' + totalMatched + ' matching ' + (totalMatched === 1 ? 'dispatch' : 'dispatches') + ' · <a href="#blogGrid" style="color:#EEEEEE; text-decoration:underline;">View in Grid ↓</a>';
+        }
+      } else {
+        searchMatchBadge.style.display = 'none';
+      }
+    }
+
+    // Update 6-card pagination grid line and expand arrow
+    if (paginationWrap && loadMoreBtn) {
+      if (totalMatched > visibleLimit) {
+        paginationWrap.style.display = 'flex';
+        var remaining = totalMatched - visibleLimit;
+        var nextBatch = Math.min(PAGE_SIZE, remaining);
+        var badge = loadMoreBtn.querySelector('.expand-btn-badge');
+        var text = loadMoreBtn.querySelector('.expand-btn-text');
+        if (badge) badge.textContent = nextBatch + ' MORE';
+        if (text) text.textContent = 'Open Next Dispatches (' + remaining + ' left)';
+      } else {
+        paginationWrap.style.display = 'none';
+      }
+    }
   }
 
+  // Topic filter click handler
   topicChips.forEach(function (chip) {
     chip.addEventListener('click', function () {
       topicChips.forEach(function (c) { c.classList.remove('active'); });
       chip.classList.add('active');
-      applyFilters();
+      applyFiltersAndPagination(true);
     });
   });
 
+  // Regional location filter click handler
   locationChips.forEach(function (chip) {
     chip.addEventListener('click', function () {
       locationChips.forEach(function (c) { c.classList.remove('active'); });
       chip.classList.add('active');
-      applyFilters();
+      applyFiltersAndPagination(true);
     });
   });
 
+  // Hero search input handler
   if (blogSearchInput) {
     blogSearchInput.addEventListener('input', function () {
-      applyFilters();
+      applyFiltersAndPagination(true);
+    });
+    blogSearchInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        var grid = document.getElementById('blogGrid');
+        if (grid) {
+          grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
     });
   }
+
+  // Search clear button
+  if (searchClearBtn) {
+    searchClearBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (blogSearchInput) {
+        blogSearchInput.value = '';
+        blogSearchInput.focus();
+      }
+      applyFiltersAndPagination(true);
+    });
+  }
+
+  // Expand next 6 cards on arrow click
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      visibleLimit += PAGE_SIZE;
+      applyFiltersAndPagination(false);
+    });
+  }
+
+  // Initialize on page load (shows first 6 cards)
+  applyFiltersAndPagination(true);
 
   // Instagram Like button interactive toggle
   document.querySelectorAll('.ig-like-btn').forEach(function (btn) {
@@ -250,14 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Load more (placeholder: wire to CMS pagination)
-  var loadMoreBtn = document.getElementById('loadMoreBtn');
-  if (loadMoreBtn) {
-    loadMoreBtn.addEventListener('click', function () {
-      loadMoreBtn.textContent = 'No More Dispatches (Yet)';
-      loadMoreBtn.disabled = true;
-    });
-  }
+
 
   initIsoVerificationModal();
 });

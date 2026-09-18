@@ -3091,11 +3091,8 @@
 
   @media (max-width: 880px) {
     #preloader { display: none !important; }
-    #top { display: none !important; } /* Hides the 3D hero wrapper */
-    .mobile-hero {
-      display: block !important;
-      padding: 20px 0 0 !important;
-    }
+    .mobile-hero { display: none !important; }
+    #top { display: block !important; }
     .mobile-hero .hero-main {
       padding: 24px 12px 16px !important;
       width: 100% !important;
@@ -7937,27 +7934,27 @@ window.addEventListener('scroll', computeProgress, { passive: true });
 window.addEventListener('resize', computeProgress);
 computeProgress();
 
-/* ---- panel crossfade driven purely by progress, no IntersectionObserver needed ---- */
+/* ---- panel crossfade driven purely by progress across the 5 stages ---- */
 let lastActiveIdx = -1;
 function updatePanels(p) {
   const n = panels.length;
   panels.forEach((panel, i) => {
-    const center = (i + 0.5) / n;
-    const band = 0.5 / n;
+    const stageP = i / (n - 1);
     let dist;
-    if (i === 0 && p <= center) {
+    if (i === 0 && p <= 0) {
       dist = 0;
-    } else if (i === n - 1 && p >= center) {
+    } else if (i === n - 1 && p >= 1) {
       dist = 0;
     } else {
-      dist = Math.abs(p - center);
+      dist = Math.abs(p - stageP);
     }
-    const fade = 1 - THREE.MathUtils.clamp((dist - band * 0.35) / (band * 0.65), 0, 1);
-    panel.style.opacity = fade;
-    panel.style.transform = `translateY(${(1 - fade) * 22}px)`;
-    panel.style.pointerEvents = fade > 0.5 ? 'auto' : 'none';
+    const rawFade = Math.max(0, Math.min(1, 1 - (dist / 0.22)));
+    const smoothFade = 0.5 - 0.5 * Math.cos(rawFade * Math.PI);
+    panel.style.opacity = smoothFade;
+    panel.style.transform = `translateY(${(1 - smoothFade) * 20}px)`;
+    panel.style.pointerEvents = smoothFade > 0.5 ? 'auto' : 'none';
   });
-  const activeIdx = Math.min(n - 1, Math.floor(p * n));
+  const activeIdx = Math.min(n - 1, Math.max(0, Math.round(p * (n - 1))));
   if (activeIdx !== lastActiveIdx) {
     lastActiveIdx = activeIdx;
     hudLabel.textContent = labels[activeIdx];
@@ -8246,13 +8243,7 @@ function spawnBurstSafe() {
 }
 
 
-const isMobile = window.innerWidth <= 880;
-if (isMobile) {
-  root.classList.add('rah-no-webgl');
-} else {
-  scene3d = buildScene();
-}
-
+scene3d = buildScene();
 if (!scene3d) root.classList.add('rah-no-webgl');
 
 /* ---- main loop ---- */
@@ -8261,14 +8252,14 @@ function tick(now) {
   const dt = Math.min((now - last) / 1000, 0.05);
   last = now;
 
-  progress += (targetProgress - progress) * 0.08;
+  progress += (targetProgress - progress) * 0.12;
   updatePanels(progress);
   progressEl.style.height = (progress * 100) + '%';
 
   if (scene3d) scene3d.render(progress, dt, now);
 
   // Trigger main content reveal at end of scroll
-  if (progress > 0.98) {
+  if (progress > 0.96) {
     const mainContent = document.getElementById('main-content');
     if (mainContent) {
       mainContent.style.opacity = '1';
@@ -8279,6 +8270,192 @@ function tick(now) {
   requestAnimationFrame(tick);
 }
 requestAnimationFrame(tick);
+
+/* ============================================================
+   5-SCROLL HERO STEPPER & SNAP ENGINE
+   5 Screens:
+     0: Redsan Digitals (Origin)
+     1: Stage 1 (Discover)
+     2: Stage 2 (Build)
+     3: Stage 3 (Perform)
+     4: The Outcome
+   Scroll 5 completes the animation and unlocks main-content.
+   ============================================================ */
+let currentStage = 0;
+let isStepping = false;
+
+function getTotalScroll() {
+  return Math.max(1, track.offsetHeight - window.innerHeight);
+}
+
+function getTrackBounds() {
+  const trackRect = track.getBoundingClientRect();
+  const trackTop = trackRect.top + window.scrollY;
+  const total = getTotalScroll();
+  const trackBottom = trackTop + total;
+  return { trackTop, total, trackBottom };
+}
+
+function smoothScrollTo(targetY, duration, callback) {
+  const startY = window.scrollY;
+  const diff = targetY - startY;
+  if (Math.abs(diff) < 2) {
+    window.scrollTo(0, targetY);
+    if (callback) callback();
+    return;
+  }
+  const startTime = performance.now();
+  function step(now) {
+    const elapsed = now - startTime;
+    const t = Math.min(elapsed / duration, 1);
+    // Smooth cubic ease-out for snappy, responsive feel
+    const ease = 1 - Math.pow(1 - t, 3);
+    window.scrollTo(0, startY + diff * ease);
+    if (t < 1) {
+      requestAnimationFrame(step);
+    } else {
+      window.scrollTo(0, targetY);
+      if (callback) callback();
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+function stepHero(direction) {
+  const { trackTop, total, trackBottom } = getTrackBounds();
+
+  if (direction > 0) {
+    // Scrolling DOWN
+    if (currentStage < 4) {
+      currentStage++;
+      isStepping = true;
+      const targetP = currentStage / 4;
+      targetProgress = targetP;
+      const targetY = trackTop + (total * targetP);
+      smoothScrollTo(targetY, 520, () => {
+        setTimeout(() => { isStepping = false; }, 120);
+      });
+    } else if (currentStage === 4) {
+      // 5th SCROLL: Hero animation complete, transitions down into main-content
+      currentStage = 5;
+      isStepping = true;
+      const targetY = trackBottom + 2;
+      const mainContent = document.getElementById('main-content');
+      if (mainContent) {
+        mainContent.style.opacity = '1';
+        mainContent.style.pointerEvents = 'auto';
+      }
+      smoothScrollTo(targetY, 600, () => {
+        setTimeout(() => { isStepping = false; }, 150);
+      });
+    }
+  } else if (direction < 0) {
+    // Scrolling UP
+    if (currentStage > 0) {
+      currentStage--;
+      isStepping = true;
+      const targetP = currentStage / 4;
+      targetProgress = targetP;
+      const targetY = trackTop + (total * targetP);
+      smoothScrollTo(targetY, 520, () => {
+        setTimeout(() => { isStepping = false; }, 120);
+      });
+    } else if (currentStage === 0) {
+      if (window.scrollY > 0) {
+        smoothScrollTo(0, 350);
+      }
+    }
+  }
+}
+
+// Mouse Wheel Navigation
+window.addEventListener('wheel', (e) => {
+  const { trackTop, total, trackBottom } = getTrackBounds();
+  const scrollY = window.scrollY;
+
+  // If inside the hero section
+  if (scrollY < trackBottom - 5) {
+    e.preventDefault();
+    if (isStepping) return;
+    if (Math.abs(e.deltaY) >= 15) {
+      stepHero(e.deltaY > 0 ? 1 : -1);
+    }
+  } else if (scrollY >= trackBottom - 5 && scrollY <= trackBottom + 60) {
+    // At the very top of main-content scrolling UP back into hero
+    if (e.deltaY < -20) {
+      e.preventDefault();
+      if (isStepping) return;
+      currentStage = 4;
+      isStepping = true;
+      targetProgress = 1.0;
+      smoothScrollTo(trackTop + total, 520, () => {
+        setTimeout(() => { isStepping = false; }, 120);
+      });
+    }
+  }
+}, { passive: false });
+
+// Keyboard navigation (Arrow keys, Space, PageDown/Up)
+window.addEventListener('keydown', (e) => {
+  const { trackBottom } = getTrackBounds();
+  if (window.scrollY < trackBottom - 5) {
+    if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
+      e.preventDefault();
+      if (!isStepping) stepHero(1);
+    } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
+      e.preventDefault();
+      if (!isStepping) stepHero(-1);
+    }
+  }
+});
+
+// Touch swipe navigation for mobile & tablets
+let touchStartY = 0;
+let touchStartX = 0;
+window.addEventListener('touchstart', (e) => {
+  if (e.touches.length === 1) {
+    touchStartY = e.touches[0].clientY;
+    touchStartX = e.touches[0].clientX;
+  }
+}, { passive: true });
+
+window.addEventListener('touchend', (e) => {
+  const { trackBottom } = getTrackBounds();
+  if (window.scrollY < trackBottom - 5 && e.changedTouches.length === 1) {
+    const diffY = touchStartY - e.changedTouches[0].clientY;
+    const diffX = Math.abs(touchStartX - e.changedTouches[0].clientX);
+    if (Math.abs(diffY) > 35 && Math.abs(diffY) > diffX) {
+      if (!isStepping) {
+        stepHero(diffY > 0 ? 1 : -1);
+      }
+    }
+  }
+}, { passive: true });
+
+// Sync currentStage with native scrollbar drags or anchor jumps
+window.addEventListener('scroll', () => {
+  const { trackTop, total, trackBottom } = getTrackBounds();
+  const scrollY = window.scrollY;
+  if (!isStepping) {
+    if (scrollY <= trackTop) {
+      currentStage = 0;
+    } else if (scrollY >= trackBottom) {
+      currentStage = 5;
+    } else {
+      const p = (scrollY - trackTop) / total;
+      currentStage = Math.min(4, Math.max(0, Math.round(p * 4)));
+    }
+  }
+}, { passive: true });
+
+// Interactive scroll cue click
+const scrollCue = document.querySelector('.rah-scroll-cue');
+if (scrollCue) {
+  scrollCue.style.cursor = 'pointer';
+  scrollCue.addEventListener('click', () => {
+    stepHero(1);
+  });
+}
 
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
