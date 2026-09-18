@@ -8263,7 +8263,24 @@ requestAnimationFrame(tick);
    ============================================================ */
 let currentStage = 0;
 const STAGES = [0.0, 0.25, 0.50, 0.75, 1.0];
-const HERO_STEP_DURATION = 1400; // Slower, cinematic 3D camera sweep
+const HERO_STEP_DURATION = 1200; // Speed ramp duration: deliberate slow start into rapid velocity surge
+
+// Cinematic Speed-Ramp Easing Engine:
+// Starts in slow motion (lingering anticipation), ramps into a high-velocity surge, then smoothly locks in
+function speedRampEase(t) {
+  if (t <= 0) return 0;
+  if (t >= 1) return 1;
+  const x1 = 0.78, y1 = 0.02, x2 = 0.18, y2 = 1.0;
+  let u = t;
+  for (let i = 0; i < 5; i++) {
+    const f = (3 * (1 - u) * (1 - u) * u * x1) + (3 * (1 - u) * u * u * x2) + (u * u * u) - t;
+    const df = 3 * (1 - u) * (1 - u) * x1 + 6 * (1 - u) * u * (x2 - x1) + 3 * u * u * (1 - x2);
+    if (Math.abs(f) < 0.0005 || Math.abs(df) < 0.00005) break;
+    u -= f / df;
+  }
+  u = Math.max(0, Math.min(1, u));
+  return (3 * (1 - u) * (1 - u) * u * y1) + (3 * (1 - u) * u * u * y2) + (u * u * u);
+}
 
 function animateProgressTo(targetP, duration) {
   isAnimating = true;
@@ -8273,8 +8290,8 @@ function animateProgressTo(targetP, duration) {
   function animStep(now) {
     const elapsed = now - startTime;
     const t = Math.min(elapsed / duration, 1);
-    // Pure cosine S-curve easing: gentle acceleration, smooth glide, gentle deceleration
-    const ease = 0.5 - 0.5 * Math.cos(Math.PI * t);
+    // Dynamic cinematic speed ramp: slow departure accelerating into high speed
+    const ease = speedRampEase(t);
     currentProgress = startP + (targetP - startP) * ease;
     window.__heroProgress = currentProgress;
 
@@ -8290,7 +8307,7 @@ function animateProgressTo(targetP, duration) {
       if (progressEl) progressEl.style.height = (currentProgress * 100) + '%';
       setTimeout(() => {
         isAnimating = false;
-      }, 180);
+      }, 160);
     }
   }
 
