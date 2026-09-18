@@ -2765,6 +2765,7 @@
     --rah-dim:#ffffff;
     --rah-line:rgba(255,255,255,.14);
     position:relative;
+    margin-top: -76px;
     background:transparent;
     color:var(--rah-white);
     font-family:'Manrope',sans-serif;
@@ -2802,7 +2803,7 @@
     z-index:3;
     pointer-events:none;
   }
-  #redsan-attention-hero .rah-bracket.tl{ top:24px; left:24px; border-right:none; border-bottom:none; }
+  #redsan-attention-hero .rah-bracket.tl{ top:96px; left:24px; border-right:none; border-bottom:none; }
   #redsan-attention-hero .rah-bracket.br{ bottom:24px; right:24px; border-left:none; border-top:none; }
 
   /* reticle */
@@ -2821,7 +2822,7 @@
   /* HUD */
   #redsan-attention-hero .rah-hud{
     position:absolute;
-    top:24px; right:24px;
+    top:96px; right:24px;
     z-index:3;
     text-align:right;
     font-family:'IBM Plex Mono',monospace;
@@ -2841,8 +2842,8 @@
   #redsan-attention-hero .rah-progress{
     position:absolute;
     right:24px;
-    top:96px;
-    bottom:96px;
+    top:124px;
+    bottom:80px;
     width:1px;
     background:var(--rah-line);
     z-index:3;
@@ -2867,7 +2868,7 @@
     display:flex;
     flex-direction:column;
     justify-content:center;
-    padding:0 7vw;
+    padding:60px 7vw 110px;
     max-width:920px;
     opacity:0;
     will-change:opacity, transform;
@@ -2952,7 +2953,7 @@
   @media (max-width: 680px){
     #redsan-attention-hero .rah-hud{ display:none; }
     #redsan-attention-hero .rah-progress{ display:none; }
-    #redsan-attention-hero .rah-panel{ padding:0 6vw; }
+    #redsan-attention-hero .rah-panel{ padding:60px 6vw 100px; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -2963,7 +2964,7 @@
   #redsan-attention-hero .rah-shirt-wrapper{
     position:absolute;
     right:3vw;
-    top:50%;
+    top:calc(50% - 25px);
     transform:translateY(-50%);
     z-index:4;
     display:flex;
@@ -8323,6 +8324,7 @@ function handleHeroStep(direction) {
     if (currentStage > 0) {
       if (currentStage === 5) {
         currentStage = 4;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         currentStage--;
       }
