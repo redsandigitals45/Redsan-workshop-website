@@ -1930,8 +1930,63 @@ footer { padding: 56px 0 32px; border-top: 1px solid var(--border); }
   .hero-subcards-row { grid-template-columns: 1fr; gap: 16px; }
   .hero-col-main, .hero-col-right { padding: 0; }
 }
+@media (max-width: 768px) {
+  .mag-grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+  .ig-post-card {
+    border-radius: 14px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /* Horizontal rectangle shaped cards with whole image appropriately visible */
+  .ig-media-cover {
+    width: 100% !important;
+    aspect-ratio: 16 / 10 !important;
+    max-height: 230px !important;
+    min-height: 180px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background: #0d0d10 !important;
+    padding: 0 !important;
+  }
+  .ig-media-cover img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+  }
+  .ig-header {
+    padding: 10px 14px !important;
+  }
+  .ig-metrics {
+    padding: 6px 14px 2px !important;
+  }
+  .ig-caption-container {
+    padding: 8px 14px 10px !important;
+  }
+  .ig-post-title {
+    font-size: 15px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 6px !important;
+  }
+  .ig-post-excerpt {
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  .ig-card-footer {
+    padding: 10px 14px 12px !important;
+  }
+}
 @media (max-width: 640px) {
-  .mag-grid { grid-template-columns: 1fr; }
   .newsletter-inner { flex-direction: column; align-items: flex-start; }
   .newsletter-form { width: 100%; }
   .newsletter-form input { min-width: 0; }

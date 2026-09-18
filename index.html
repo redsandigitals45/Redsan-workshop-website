@@ -3277,24 +3277,60 @@
       padding: 34px 0 60px !important;
     }
 
-    /* WHAT WE DO (SERVICES): Disable card popup jump & enable scroll popout description */
+    /* WHAT WE DO (SERVICES): Centre aligned on mobile */
+    #services .section-head {
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    #services .section-head .eyebrow {
+      justify-content: center !important;
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    #services .section-head h2 {
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
     #services .wrap {
-      padding: 0 12px !important;
+      padding: 0 16px !important;
       width: 100% !important;
       max-width: 100% !important;
     }
     #services .service-row {
-      padding: 20px 12px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      padding: 22px 14px !important;
       border-radius: 14px;
       transition: background 0.3s ease, border-color 0.3s ease !important;
       transform: none !important;
     }
     #services .service-row:hover {
-      padding-left: 12px !important;
+      padding-left: 14px !important;
       background: transparent !important;
       transform: none !important;
     }
-    #services .service-row .service-desc {
+    #services .service-num {
+      text-align: center !important;
+      margin: 0 auto 6px !important;
+      display: block !important;
+    }
+    #services .service-name {
+      text-align: center !important;
+      margin: 0 auto !important;
+      width: 100% !important;
+      font-size: 20px !important;
+    }
+    #services .service-desc {
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      max-width: 520px !important;
       max-height: 0;
       opacity: 0;
       overflow: hidden;
@@ -3302,14 +3338,54 @@
       transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, transform 0.35s ease, margin 0.35s ease;
       margin-top: 0 !important;
     }
+    #services .service-deliverable-tag {
+      text-align: center !important;
+      display: block !important;
+      margin: 10px auto 0 !important;
+    }
+    #services .service-proof-link {
+      text-align: center !important;
+      display: inline-flex !important;
+      justify-content: center !important;
+      margin: 10px auto 0 !important;
+    }
     #services .service-row.is-active {
       background: rgba(226, 35, 26, 0.05) !important;
     }
     #services .service-row.is-active .service-desc {
-      max-height: 220px;
+      max-height: 260px;
       opacity: 1;
       transform: translateY(0);
-      margin-top: 10px !important;
+      margin-top: 12px !important;
+    }
+
+    /* Mobile Blog Cards: Horizontal rectangle shaped cards with whole image visible */
+    .blog-grid {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+    .blog-grid .mag-card {
+      border-radius: 14px !important;
+      max-width: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .blog-grid .mag-cover {
+      width: 100% !important;
+      aspect-ratio: 16 / 10 !important;
+      min-height: 180px !important;
+      max-height: 230px !important;
+      position: relative !important;
+      overflow: hidden !important;
+      background: #0d0d10 !important;
+    }
+    .blog-grid .mag-cover img {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
     }
   }
 
