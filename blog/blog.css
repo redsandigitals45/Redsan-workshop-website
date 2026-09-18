@@ -852,8 +852,8 @@ h3, h4 {
 
 /* Instagram Post Card Frame - Prominently visible in default normal state */
 .mag-card, .ig-post-card {
-  display: flex !important;
-  flex-direction: column !important;
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   color: inherit;
   background: #121216 !important;
@@ -867,6 +867,10 @@ h3, h4 {
   position: relative;
   width: 100%;
   box-sizing: border-box;
+}
+
+.ig-post-card.is-hidden {
+  display: none !important;
 }
 
 .mag-card:hover, .ig-post-card:hover {
@@ -1303,10 +1307,20 @@ h3, h4 {
   color: #F00000;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, color 0.25s ease;
 }
+.blog-expand-btn .expand-btn-arrow svg {
+  animation: arrowBounce 1.8s ease-in-out infinite;
+}
 .blog-expand-btn:hover .expand-btn-arrow {
   transform: translateY(3px);
   background: #F00000;
   color: #FFFFFF;
+}
+.blog-expand-btn:hover .expand-btn-arrow svg {
+  animation: none;
+}
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
 }
 @media (max-width: 600px) {
   .blog-expand-btn {

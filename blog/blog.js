@@ -212,7 +212,8 @@ document.addEventListener('DOMContentLoaded', function () {
           titleScore: titleScore
         });
       } else {
-        card.style.display = 'none';
+        card.classList.add('is-hidden');
+        card.style.setProperty('display', 'none', 'important');
       }
     });
 
@@ -230,13 +231,15 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // Display cards up to visibleLimit
+    // Display cards up to visibleLimit (initial 6, then +6 on each expand)
     var totalMatched = matchedCards.length;
     matchedCards.forEach(function (item, index) {
       if (index < visibleLimit) {
-        item.card.style.display = 'flex';
+        item.card.classList.remove('is-hidden');
+        item.card.style.setProperty('display', 'flex', 'important');
       } else {
-        item.card.style.display = 'none';
+        item.card.classList.add('is-hidden');
+        item.card.style.setProperty('display', 'none', 'important');
       }
     });
 
