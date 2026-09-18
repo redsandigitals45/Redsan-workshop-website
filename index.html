@@ -2225,6 +2225,7 @@
   /* ===== CENTRAL ALIGNED HEADINGS (From What We Do till From The Blog) ===== */
   #services .section-head,
   .logos-head,
+  #selected-work .section-head,
   #blog .section-head {
     text-align: center !important;
     margin-left: auto !important;
@@ -2233,6 +2234,7 @@
 
   #services .section-head .eyebrow,
   .logos-head .eyebrow,
+  #selected-work .section-head .eyebrow,
   #blog .section-head .eyebrow,
   #proven-results .section-head .eyebrow {
     justify-content: center !important;
@@ -2240,8 +2242,15 @@
 
   #services .section-head h2,
   .logos-head h2,
+  #selected-work .section-head h2,
   #blog .section-head h2 {
     text-align: center !important;
+  }
+
+  #selected-work .section-head p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   /* Mobile version: ALSO center-align Get In Touch heading */
@@ -3019,18 +3028,27 @@
   }
   #redsan-attention-hero .rah-shirt-caption{
     font-family:'IBM Plex Mono',monospace;
-    font-size:clamp(10px, 1vw, 12px);
+    font-size:clamp(11px, 1.05vw, 13px);
+    font-weight:500;
     letter-spacing:0.04em;
-    color:rgba(255,255,255,0.5);
+    color:#FFFFFF;
     text-align:center;
-    max-width:clamp(300px, 26vw, 400px);
-    line-height:1.55;
+    max-width:clamp(320px, 28vw, 440px);
+    line-height:1.6;
     pointer-events:none;
+    background:rgba(18, 18, 22, 0.75);
+    border:1px solid rgba(255, 255, 255, 0.16);
+    border-radius:10px;
+    padding:8px 16px;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    box-shadow:0 4px 24px rgba(0, 0, 0, 0.5), 0 0 12px rgba(240, 0, 0, 0.12);
   }
   #redsan-attention-hero .rah-shirt-caption em{
     font-style:normal;
-    color:rgba(226,35,26,0.85);
-    font-weight:500;
+    color:#F00000;
+    font-weight:700;
+    text-shadow:0 0 14px rgba(240, 0, 0, 0.6);
   }
   @keyframes rah-shirt-fade-in{
     0%{ opacity:0; transform:translateY(-50%) translateX(30px); }
@@ -3055,20 +3073,29 @@
   }
   .mobile-shirt-container .rah-shirt-caption {
     font-family: var(--mono);
-    font-size: 11.5px;
+    font-size: 12.5px;
+    font-weight: 500;
     letter-spacing: 0.04em;
-    color: rgba(255,255,255,0.55);
+    color: #FFFFFF !important;
     text-align: center !important;
     margin: 14px auto 0 !important;
-    max-width: 310px !important;
+    max-width: 330px !important;
     width: 100% !important;
-    line-height: 1.55 !important;
+    line-height: 1.6 !important;
     display: block !important;
+    background: rgba(18, 18, 22, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 10px;
+    padding: 8px 14px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5), 0 0 12px rgba(240, 0, 0, 0.12);
   }
   .mobile-shirt-container .rah-shirt-caption em {
     font-style: normal;
-    color: rgba(226,35,26,0.9);
-    font-weight: 500;
+    color: #F00000;
+    font-weight: 700;
+    text-shadow: 0 0 14px rgba(240, 0, 0, 0.6);
   }
   .mobile-shirt-glass {
     width: 100%;
@@ -3479,7 +3506,11 @@
       flex-direction: column !important;
     }
     .workshop-card::after {
-      opacity: 0.26 !important;
+      opacity: 0.45 !important;
+      background-position: 60% center !important;
+      background-size: cover !important;
+      mask-image: radial-gradient(ellipse at 78% 60%, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0.6) 70%, transparent 98%) !important;
+      -webkit-mask-image: radial-gradient(ellipse at 78% 60%, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0.6) 70%, transparent 98%) !important;
     }
     .workshop-card .eyebrow {
       font-size: 10.5px !important;
@@ -4366,14 +4397,7 @@
     }
     .preview-section .circle:first-child { margin-left: 12px !important; }
     .preview-section .circle-arrow-btn {
-      width: 50px;
-      height: 50px;
-      right: 12px;
-      box-shadow: 0 6px 20px rgba(238,0,0,0.7);
-    }
-    .preview-section .circle-arrow-btn svg {
-      width: 24px;
-      height: 24px;
+      display: none !important;
     }
     .preview-section .small-label {
       font-size: clamp(17px, 4.8vw, 22px);
@@ -9237,12 +9261,15 @@ function initCigaretteSmoke() {
     const track = document.getElementById('circles-track');
     const arrowBtn = document.getElementById('circle-arrow-btn');
     const viewport = document.getElementById('circles-viewport');
-    if (!track || !arrowBtn || !viewport) return;
+    if (!track || !viewport) return;
 
-    let isMoving = false;
+    // On mobile screens (<= 880px), continuously autoplay the moving animation in an infinite loop
+    const isMobileQuery = window.matchMedia('(max-width: 880px)');
+    let isMoving = isMobileQuery.matches;
     let offset = 0;
     let animFrame = null;
     let isHovered = false;
+    let isTouching = false;
     const speed = 1.35; // smooth constant gliding speed (px per frame)
 
     function getSetWidth() {
@@ -9265,7 +9292,7 @@ function initCigaretteSmoke() {
     }
 
     function render() {
-      if (isMoving && !isHovered) {
+      if (isMoving && !isHovered && !isTouching) {
         offset += speed;
         const setWidth = getSetWidth();
         if (setWidth > 0 && offset >= setWidth) {
@@ -9276,27 +9303,46 @@ function initCigaretteSmoke() {
       animFrame = requestAnimationFrame(render);
     }
 
-    arrowBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (!isMoving) {
-        isMoving = true;
-        arrowBtn.classList.add('is-active');
-        arrowBtn.setAttribute('title', 'Moving in loop (Click to advance)');
-        if (!animFrame) {
-          animFrame = requestAnimationFrame(render);
-        }
-      } else {
-        // If already moving, click advances by 1 card smoothly
-        offset += 240;
-        const setWidth = getSetWidth();
-        if (setWidth > 0 && offset >= setWidth) {
-          offset -= setWidth;
-        }
-        track.style.transform = `translateX(-${offset}px)`;
-      }
-    });
+    // Immediately start loop on mobile
+    if (isMoving && !animFrame) {
+      animFrame = requestAnimationFrame(render);
+    }
 
-    // Pause on hover so user can read details
+    function handleMediaChange(e) {
+      if (e.matches) {
+        isMoving = true;
+        if (!animFrame) animFrame = requestAnimationFrame(render);
+      }
+    }
+    if (isMobileQuery.addEventListener) {
+      isMobileQuery.addEventListener('change', handleMediaChange);
+    } else if (isMobileQuery.addListener) {
+      isMobileQuery.addListener(handleMediaChange);
+    }
+
+    if (arrowBtn) {
+      arrowBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (!isMoving) {
+          isMoving = true;
+          arrowBtn.classList.add('is-active');
+          arrowBtn.setAttribute('title', 'Moving in loop (Click to advance)');
+          if (!animFrame) {
+            animFrame = requestAnimationFrame(render);
+          }
+        } else {
+          // If already moving, click advances by 1 card smoothly
+          offset += 240;
+          const setWidth = getSetWidth();
+          if (setWidth > 0 && offset >= setWidth) {
+            offset -= setWidth;
+          }
+          track.style.transform = `translateX(-${offset}px)`;
+        }
+      });
+    }
+
+    // Pause on hover so desktop user can read details
     viewport.addEventListener('mouseenter', () => { isHovered = true; });
     viewport.addEventListener('mouseleave', () => { isHovered = false; });
 
@@ -9330,8 +9376,9 @@ function initCigaretteSmoke() {
       if (isDragging) isDragging = false;
     });
 
-    // Touch support
+    // Touch support (does not stop loop upon release)
     viewport.addEventListener('touchstart', (e) => {
+      isTouching = true;
       isDragging = true;
       startX = e.touches[0].pageX;
       dragStartOffset = offset;
@@ -9353,6 +9400,12 @@ function initCigaretteSmoke() {
 
     viewport.addEventListener('touchend', () => {
       isDragging = false;
+      isTouching = false;
+    });
+
+    viewport.addEventListener('touchcancel', () => {
+      isDragging = false;
+      isTouching = false;
     });
 
     // When any circle card is clicked, smoothly scroll to #selected-work
