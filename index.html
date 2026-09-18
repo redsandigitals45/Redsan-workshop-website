@@ -2774,12 +2774,11 @@
 
   #redsan-attention-hero .rah-track{
     position:relative;
-    height:500vh;
+    height:100vh;
   }
 
   #redsan-attention-hero .rah-sticky{
-    position:sticky;
-    top:0;
+    position:relative;
     height:100vh;
     width:100%;
     overflow:hidden;
@@ -7920,21 +7919,10 @@ window.addEventListener('pointermove', (e) => {
   reticle.style.transform = `translate(${x}px, ${y}px)`;
 });
 
-/* ---- scroll progress (0..1 across the 500vh track) ---- */
-let targetProgress = 0;
-let progress = 0;
-let isStepping = false;
-
-function computeProgress() {
-  if (isStepping) return;
-  const rect = track.getBoundingClientRect();
-  const total = track.offsetHeight - window.innerHeight;
-  const scrolled = -rect.top;
-  targetProgress = THREE.MathUtils.clamp(total > 0 ? scrolled / total : 0, 0, 1);
-}
-window.addEventListener('scroll', computeProgress, { passive: true });
-window.addEventListener('resize', computeProgress);
-computeProgress();
+/* ---- progress state for the 5 stages ---- */
+let currentProgress = 0;
+let isAnimating = false;
+window.__heroProgress = 0;
 
 /* ---- panel crossfade driven purely by progress across the 5 stages ---- */
 let lastActiveIdx = -1;
@@ -8073,9 +8061,11 @@ function initGlobalSpaceBg() {
     targetRotX += (mouseY - targetRotX) * 0.05;
 
     const scrollY = window.scrollY;
+    const heroProgress = typeof window.__heroProgress === 'number' ? window.__heroProgress : 0;
+    const effectiveScroll = (heroProgress * 800) + scrollY;
     camera.position.x = targetRotY * 1.8;
-    camera.position.y = -targetRotX * 1.8 - (scrollY * 0.0008);
-    camera.lookAt(0, - (scrollY * 0.0008), 0);
+    camera.position.y = -targetRotX * 1.8 - (effectiveScroll * 0.0008);
+    camera.lookAt(0, - (effectiveScroll * 0.0008), 0);
 
     renderer.render(scene, camera);
   }
@@ -8254,209 +8244,146 @@ function tick(now) {
   const dt = Math.min((now - last) / 1000, 0.05);
   last = now;
 
-  // Slow, continuous cinematic interpolation (zero glitch, zero bounce)
-  progress += (targetProgress - progress) * 0.055;
-  updatePanels(progress);
-  progressEl.style.height = (progress * 100) + '%';
-
-  if (scene3d) scene3d.render(progress, dt, now);
-
-  // Trigger main content reveal at end of scroll
-  if (progress > 0.96) {
-    const mainContent = document.getElementById('main-content');
-    if (mainContent) {
-      mainContent.style.opacity = '1';
-      mainContent.style.pointerEvents = 'auto';
-    }
-  }
+  if (scene3d) scene3d.render(currentProgress, dt, now);
 
   requestAnimationFrame(tick);
 }
 requestAnimationFrame(tick);
 
 /* ============================================================
-   5-SCROLL HERO STEPPER & SNAP ENGINE
+   5-SCROLL HERO STEPPER ENGINE
    5 Screens:
      0: Redsan Digitals (Origin)
      1: Stage 1 (Discover)
      2: Stage 2 (Build)
      3: Stage 3 (Perform)
      4: The Outcome
-   Scroll 5 completes the animation and unlocks main-content.
+   Scroll 5 completes the animation and smoothly reveals main-content.
    ============================================================ */
 let currentStage = 0;
+const STAGES = [0.0, 0.25, 0.50, 0.75, 1.0];
 
-function getTotalScroll() {
-  return Math.max(1, track.offsetHeight - window.innerHeight);
-}
-
-function getTrackBounds() {
-  const trackRect = track.getBoundingClientRect();
-  const trackTop = trackRect.top + window.scrollY;
-  const total = getTotalScroll();
-  const trackBottom = trackTop + total;
-  return { trackTop, total, trackBottom };
-}
-
-function smoothScrollTo(targetY, duration, callback) {
-  const startY = window.scrollY;
-  const diff = targetY - startY;
-  if (Math.abs(diff) < 2) {
-    window.scrollTo(0, targetY);
-    if (callback) callback();
-    return;
-  }
+function animateProgressTo(targetP, duration) {
+  isAnimating = true;
+  const startP = currentProgress;
   const startTime = performance.now();
-  function step(now) {
+
+  function animStep(now) {
     const elapsed = now - startTime;
     const t = Math.min(elapsed / duration, 1);
-    // Pure cosine S-curve: slow, graceful acceleration and deceleration
+    // Pure cosine S-curve easing: gentle acceleration, smooth glide, gentle deceleration
     const ease = 0.5 - 0.5 * Math.cos(Math.PI * t);
-    window.scrollTo(0, startY + diff * ease);
+    currentProgress = startP + (targetP - startP) * ease;
+    window.__heroProgress = currentProgress;
+
+    updatePanels(currentProgress);
+    if (progressEl) progressEl.style.height = (currentProgress * 100) + '%';
+
     if (t < 1) {
-      requestAnimationFrame(step);
+      requestAnimationFrame(animStep);
     } else {
-      window.scrollTo(0, targetY);
-      if (callback) callback();
+      currentProgress = targetP;
+      window.__heroProgress = currentProgress;
+      updatePanels(currentProgress);
+      if (progressEl) progressEl.style.height = (currentProgress * 100) + '%';
+      setTimeout(() => {
+        isAnimating = false;
+      }, 150);
     }
   }
-  requestAnimationFrame(step);
+
+  requestAnimationFrame(animStep);
 }
 
-function stepHero(direction) {
-  const { trackTop, total, trackBottom } = getTrackBounds();
+function handleHeroStep(direction) {
+  if (isAnimating) return;
 
   if (direction > 0) {
     // Scrolling DOWN
     if (currentStage < 4) {
       currentStage++;
-      isStepping = true;
-      targetProgress = currentStage / 4;
-      const targetY = trackTop + (total * targetProgress);
-      smoothScrollTo(targetY, 920, () => {
-        setTimeout(() => { isStepping = false; }, 220);
-      });
+      animateProgressTo(STAGES[currentStage], 850);
     } else if (currentStage === 4) {
-      // 5th SCROLL: Hero animation complete, transitions down into main-content
+      // 5th SCROLL: Hero animation complete, glide down into main-content
       currentStage = 5;
-      isStepping = true;
-      const targetY = trackBottom + 2;
+      isAnimating = true;
       const mainContent = document.getElementById('main-content');
       if (mainContent) {
         mainContent.style.opacity = '1';
         mainContent.style.pointerEvents = 'auto';
+        mainContent.scrollIntoView({ behavior: 'smooth' });
       }
-      smoothScrollTo(targetY, 1050, () => {
-        setTimeout(() => { isStepping = false; }, 220);
-      });
+      setTimeout(() => {
+        isAnimating = false;
+      }, 950);
     }
   } else if (direction < 0) {
     // Scrolling UP
     if (currentStage > 0) {
-      currentStage--;
-      isStepping = true;
-      targetProgress = currentStage / 4;
-      const targetY = trackTop + (total * targetProgress);
-      smoothScrollTo(targetY, 920, () => {
-        setTimeout(() => { isStepping = false; }, 220);
-      });
-    } else if (currentStage === 0) {
-      if (window.scrollY > 0) {
-        isStepping = true;
-        smoothScrollTo(0, 550, () => {
-          setTimeout(() => { isStepping = false; }, 150);
-        });
+      if (currentStage === 5) {
+        currentStage = 4;
+      } else {
+        currentStage--;
       }
+      animateProgressTo(STAGES[currentStage], 850);
     }
   }
 }
 
 // Mouse Wheel Navigation
 window.addEventListener('wheel', (e) => {
-  const { trackTop, total, trackBottom } = getTrackBounds();
   const scrollY = window.scrollY;
 
-  // If inside the hero section
-  if (scrollY < trackBottom - 5) {
-    e.preventDefault();
-    if (isStepping) return;
-    if (Math.abs(e.deltaY) >= 15) {
-      stepHero(e.deltaY > 0 ? 1 : -1);
-    }
-  } else if (scrollY >= trackBottom - 5 && scrollY <= trackBottom + 60) {
-    // At the very top of main-content scrolling UP back into hero
-    if (e.deltaY < -20) {
+  // When at top of page in hero section
+  if (scrollY <= 25) {
+    if (currentStage < 5 || (currentStage === 5 && e.deltaY < -15)) {
       e.preventDefault();
-      if (isStepping) return;
-      currentStage = 4;
-      isStepping = true;
-      targetProgress = 1.0;
-      smoothScrollTo(trackTop + total, 520, () => {
-        setTimeout(() => { isStepping = false; }, 120);
-      });
+      if (isAnimating) return;
+      if (Math.abs(e.deltaY) >= 12) {
+        handleHeroStep(e.deltaY > 0 ? 1 : -1);
+      }
     }
   }
 }, { passive: false });
 
 // Keyboard navigation (Arrow keys, Space, PageDown/Up)
 window.addEventListener('keydown', (e) => {
-  const { trackBottom } = getTrackBounds();
-  if (window.scrollY < trackBottom - 5) {
+  if (window.scrollY <= 25) {
     if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
       e.preventDefault();
-      if (!isStepping) stepHero(1);
+      if (!isAnimating) handleHeroStep(1);
     } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
       e.preventDefault();
-      if (!isStepping) stepHero(-1);
+      if (!isAnimating) handleHeroStep(-1);
     }
   }
 });
 
 // Touch swipe navigation for mobile & tablets
 let touchStartY = 0;
-let touchStartX = 0;
 window.addEventListener('touchstart', (e) => {
   if (e.touches.length === 1) {
     touchStartY = e.touches[0].clientY;
-    touchStartX = e.touches[0].clientX;
   }
 }, { passive: true });
 
 window.addEventListener('touchend', (e) => {
-  const { trackBottom } = getTrackBounds();
-  if (window.scrollY < trackBottom - 5 && e.changedTouches.length === 1) {
+  if (window.scrollY <= 25 && e.changedTouches.length === 1) {
     const diffY = touchStartY - e.changedTouches[0].clientY;
-    const diffX = Math.abs(touchStartX - e.changedTouches[0].clientX);
-    if (Math.abs(diffY) > 35 && Math.abs(diffY) > diffX) {
-      if (!isStepping) {
-        stepHero(diffY > 0 ? 1 : -1);
+    if (Math.abs(diffY) > 35) {
+      if (!isAnimating) {
+        handleHeroStep(diffY > 0 ? 1 : -1);
       }
     }
   }
 }, { passive: true });
 
-// Sync currentStage with native scrollbar drags or anchor jumps
-window.addEventListener('scroll', () => {
-  const { trackTop, total, trackBottom } = getTrackBounds();
-  const scrollY = window.scrollY;
-  if (!isStepping) {
-    if (scrollY <= trackTop) {
-      currentStage = 0;
-    } else if (scrollY >= trackBottom) {
-      currentStage = 5;
-    } else {
-      const p = (scrollY - trackTop) / total;
-      currentStage = Math.min(4, Math.max(0, Math.round(p * 4)));
-    }
-  }
-}, { passive: true });
-
-// Interactive scroll cue click
+// Interactive scroll cue click ("Scroll to see how ↓")
 const scrollCue = document.querySelector('.rah-scroll-cue');
 if (scrollCue) {
   scrollCue.style.cursor = 'pointer';
   scrollCue.addEventListener('click', () => {
-    stepHero(1);
+    handleHeroStep(1);
   });
 }
 
