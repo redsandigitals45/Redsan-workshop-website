@@ -419,6 +419,18 @@
   </url>
 
   <url>
+    <loc>https://redsan.in/workshops/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://redsan.in/assets/hero-elements/images-1/homepage-about-dossier.webp</image:loc>
+      <image:title>Redsan Workshops - Learn Marketing. Build Projects. Start Earning.</image:title>
+      <image:caption>Practical MarTech, AI-powered marketing and digital business workshops for students and builders.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://redsan.in/legal/</loc>
     <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
