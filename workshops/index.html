@@ -198,36 +198,14 @@
   <link rel="stylesheet" href="/workshops/workshop.css">
 
   <style id="critical-nav-css">
-  /* Global Nav & Dropdown Critical Reset */
+  /* Nav Critical Header Styles */
   .nav { position: sticky !important; top: 0 !important; z-index: 99999 !important; background: rgba(7,7,9,0.92) !important; backdrop-filter: blur(18px) !important; -webkit-backdrop-filter: blur(18px) !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; }
   .nav-inner { display: flex !important; align-items: center !important; justify-content: space-between !important; height: 74px !important; }
   .nav-links { display: flex !important; align-items: center !important; gap: 28px !important; font-size: 14px !important; font-weight: 600 !important; }
-  .nav-links a { color: rgba(255, 255, 255, 0.8) !important; transition: color 0.2s ease !important; }
-  .nav-links a:hover, .nav-links a.active { color: #FFFFFF !important; }
-  .nav-item-dropdown { position: relative !important; display: inline-flex !important; align-items: center !important; background: transparent !important; border: none !important; box-shadow: none !important; }
-  .dropdown-trigger, .nav-item-dropdown > .dropdown-trigger, button.dropdown-trigger { all: unset !important; box-sizing: border-box !important; position: relative !important; display: inline-flex !important; align-items: center !important; gap: 6px !important; cursor: pointer !important; font-family: inherit !important; font-size: 14px !important; font-weight: 600 !important; padding: 8px 0 !important; color: rgba(255, 255, 255, 0.8) !important; background: transparent !important; border: none !important; outline: none !important; }
-  .dropdown-trigger:hover, .nav-item-dropdown:hover > .dropdown-trigger, .nav-item-dropdown.is-open > .dropdown-trigger { color: #FFFFFF !important; }
-  .dropdown-arrow { font-size: 10px !important; transition: transform 0.25s ease !important; display: inline-block !important; opacity: 0.7 !important; }
-  .nav-item-dropdown:hover .dropdown-arrow, .nav-item-dropdown.is-open .dropdown-arrow { transform: rotate(180deg) !important; opacity: 1 !important; color: #E2231A !important; }
-  ul.dropdown-menu, .dropdown-menu { position: absolute !important; top: calc(100% + 4px) !important; left: 0 !important; width: 250px !important; min-width: 250px !important; max-width: 280px !important; box-sizing: border-box !important; margin: 0 !important; padding: 8px !important; list-style: none !important; background: #0B0B0E !important; background: rgba(11, 11, 14, 0.98) !important; backdrop-filter: blur(24px) !important; -webkit-backdrop-filter: blur(24px) !important; border: 1px solid rgba(255, 255, 255, 0.12) !important; border-radius: 12px !important; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05) !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; transform: translateY(6px) !important; transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s !important; z-index: 100000 !important; display: flex !important; flex-direction: column !important; gap: 2px !important; text-align: left !important; }
-  .dropdown-menu::before { content: "" !important; position: absolute !important; top: -12px !important; left: 0 !important; right: 0 !important; height: 14px !important; background: transparent !important; }
-  .nav-item-dropdown:hover .dropdown-menu, .nav-item-dropdown.is-open .dropdown-menu { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; transform: translateY(0) !important; }
-  ul.dropdown-menu > li, .dropdown-menu li { list-style: none !important; margin: 0 !important; padding: 0 !important; display: block !important; width: 100% !important; box-sizing: border-box !important; }
-  ul.dropdown-menu > li > a, .dropdown-menu li a, .dropdown-link { display: block !important; width: 100% !important; box-sizing: border-box !important; padding: 9px 14px !important; font-size: 13.5px !important; font-weight: 500 !important; color: rgba(255, 255, 255, 0.82) !important; text-decoration: none !important; white-space: nowrap !important; border-radius: 8px !important; transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease !important; }
-  ul.dropdown-menu > li > a:hover, .dropdown-link:hover { background: rgba(226, 35, 26, 0.14) !important; color: #FFFFFF !important; padding-left: 18px !important; }
+  .nav-links a { color: rgba(255, 255, 255, 0.8) !important; transition: color 0.2s ease !important; text-decoration: none !important; }
+  .nav-links a:hover { color: #FFFFFF !important; }
   .nav-cta { background: #E2231A !important; color: #FFFFFF !important; font-weight: 700 !important; font-size: 13.5px !important; padding: 10px 22px !important; border-radius: 6px !important; border: 1px solid rgba(255,255,255,0.2) !important; transition: all 0.2s ease !important; text-decoration: none !important; }
   .nav-cta:hover { background: #F00000 !important; transform: translateY(-1px) !important; box-shadow: 0 4px 14px rgba(226,35,26,0.4) !important; }
-  
-  /* Mobile Navigation Drawer */
-  .mobile-nav { position: fixed; top: 0; right: 0; bottom: 0; width: 300px; background: rgba(11, 11, 14, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-left: 1px solid rgba(255,255,255,0.1); padding: 80px 24px 30px; display: flex; flex-direction: column; gap: 16px; transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); z-index: 99998; }
-  .mobile-nav.open, .mobile-nav.is-open { transform: translateX(0); }
-  .mobile-nav a { font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.85); text-decoration: none; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .mobile-nav a:hover, .mobile-nav a.active { color: #FFFFFF; }
-  .mobile-nav .mobile-dropdown-toggle { all: unset; box-sizing: border-box; font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.85); display: flex; align-items: center; justify-content: space-between; padding: 8px 0; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .mobile-nav .mobile-dropdown-menu { display: none; flex-direction: column; gap: 8px; padding: 10px 0 10px 14px; }
-  .mobile-nav .mobile-dropdown-menu.open { display: flex; }
-  .mobile-nav .mobile-dropdown-menu a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.7); border-bottom: none; padding: 4px 0; }
-  .mobile-nav a.cta { background: #E2231A; color: #FFFFFF; text-align: center; border-radius: 8px; padding: 12px; margin-top: 10px; border-bottom: none; font-weight: 700; }
   @media (max-width: 900px) {
     .nav-links, .nav-cta { display: none !important; }
     .nav-toggle { display: block !important; }
@@ -236,8 +214,6 @@
 </head>
 
 <body class="workshop-page">
-  <!-- Interactive Three.js Space Background Canvas -->
-  <canvas id="space-bg-canvas"></canvas>
 
   <!-- ============================================================
      1. TOP URGENCY ANNOUNCEMENT BAR (Be10x / GrowthSchool Style)
@@ -249,7 +225,7 @@
   </aside>
 
   <!-- ============================================================
-     2. GLOBAL REDSAN WEBSITE NAVIGATION
+     2. STICKY CLEAN NAVIGATION
   ============================================================ -->
   <header class="nav">
     <div class="wrap nav-inner">
@@ -257,25 +233,13 @@
         <img src="/assets/redsan_logo.webp" alt="Redsan Digitals Logo" class="brand-logo-img" width="162" height="38">
       </a>
       <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/#about">About</a>
-        <div class="nav-item-dropdown">
-          <button type="button" class="dropdown-trigger" aria-expanded="false" aria-haspopup="true">Services <span class="dropdown-arrow">▾</span></button>
-          <ul class="dropdown-menu" role="menu">
-            <li role="none"><a href="/website-development/" class="dropdown-link" role="menuitem">AI Web Design and Development</a></li>
-            <li role="none"><a href="/seo-agency/" class="dropdown-link" role="menuitem">SEO, AEO and GEO</a></li>
-            <li role="none"><a href="/social-media-marketing/" class="dropdown-link" role="menuitem">Social Media Management</a></li>
-            <li role="none"><a href="/content-creation/" class="dropdown-link" role="menuitem">Content Creation</a></li>
-            <li role="none"><a href="/product-service-shoots/" class="dropdown-link" role="menuitem">Product and Service Shoots</a></li>
-            <li role="none"><a href="/vibe-coding/" class="dropdown-link" role="menuitem">Vibe Coding</a></li>
-            <li role="none"><a href="/startup-growth-consulting/" class="dropdown-link" role="menuitem">Startup Growth Consulting</a></li>
-            <li role="none"><a href="/performance-marketing/" class="dropdown-link" role="menuitem">Performance Marketing</a></li>
-            <li role="none"><a href="/ai-marketing/" class="dropdown-link" role="menuitem">AI Marketing &amp; Automation</a></li>
-          </ul>
-        </div>
-        <a href="/workshops/" class="active">Workshop</a>
-        <a href="/blog/">Blog</a>
-        <a href="/contact/">Contact</a>
+        <a href="#why-martech">Why Martech</a>
+        <a href="#tools">Tools</a>
+        <a href="#projects">5 Projects</a>
+        <a href="#curriculum">Curriculum</a>
+        <a href="#mentor">Instructor</a>
+        <a href="#bonuses">Bonuses</a>
+        <a href="#faq">FAQ</a>
       </nav>
       <a href="#checkout" class="nav-cta">Enroll for ₹49</a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
@@ -284,48 +248,18 @@
 
   <!-- MOBILE NAV DRAWER -->
   <nav class="mobile-nav" id="mobileNav">
-    <a href="/">Home</a>
-    <a href="/#about">About</a>
-    <div class="mobile-dropdown">
-      <button class="mobile-dropdown-toggle" id="mobileServicesToggle" type="button" aria-expanded="false">Services <span>▾</span></button>
-      <div class="mobile-dropdown-menu" id="mobileServicesMenu">
-        <a href="/website-development/">AI Web Design and Development</a>
-        <a href="/seo-agency/">SEO, AEO and GEO</a>
-        <a href="/social-media-marketing/">Social Media Management</a>
-        <a href="/content-creation/">Content Creation</a>
-        <a href="/product-service-shoots/">Product and Service Shoots</a>
-        <a href="/vibe-coding/">Vibe Coding</a>
-        <a href="/startup-growth-consulting/">Startup Growth Consulting</a>
-        <a href="/performance-marketing/">Performance Marketing</a>
-        <a href="/ai-marketing/">AI Marketing &amp; Automation</a>
-      </div>
-    </div>
-    <a href="/workshops/" class="active">Workshop</a>
-    <a href="/blog/">Blog</a>
-    <a href="/contact/">Contact</a>
+    <a href="#why-martech">Why Martech</a>
+    <a href="#tools">Tools</a>
+    <a href="#projects">5 Projects</a>
+    <a href="#curriculum">Curriculum</a>
+    <a href="#mentor">Instructor</a>
+    <a href="#bonuses">Bonuses</a>
+    <a href="#faq">FAQ</a>
     <a href="#checkout" class="cta">Enroll for ₹49</a>
   </nav>
 
   <!-- ============================================================
-     3. SECONDARY IN-PAGE WORKSHOP SUBNAV RIBBON
-  ============================================================ -->
-  <nav class="ws-subnav" aria-label="Workshop quick jump navigation">
-    <div class="ws-container ws-subnav-inner">
-      <a href="#why-martech">Why Martech</a>
-      <a href="#tools">Tools</a>
-      <a href="#projects">5 Projects</a>
-      <a href="#curriculum">Curriculum</a>
-      <a href="#mentor">Instructor</a>
-      <a href="#proof">Social Proof</a>
-      <a href="#bonuses">Bonuses</a>
-      <a href="#value">Value Stack</a>
-      <a href="#faq">FAQ</a>
-      <a href="#checkout" class="subnav-cta">Pass ₹49 →</a>
-    </div>
-  </nav>
-
-  <!-- ============================================================
-     4. HERO SECTION (GrowthSchool & Outskill 2-Column Split)
+     3. HERO SECTION (GrowthSchool & Outskill 2-Column Split)
   ============================================================ -->
   <section class="ws-hero" id="top">
     <div class="ws-container">
@@ -432,7 +366,7 @@
   </section>
 
   <!-- ============================================================
-     5. SOCIAL PROOF & METRICS STRIP (Outskill & GrowthSchool)
+     4. SOCIAL PROOF & METRICS STRIP (Outskill & GrowthSchool)
   ============================================================ -->
   <section class="ws-proof-strip" aria-label="Credibility and track record">
     <div class="ws-container">
@@ -463,7 +397,7 @@
   </section>
 
   <!-- ============================================================
-     6. AUDIENCE FIT: WHO IS THIS FOR? (GrowthSchool 4-Grid)
+     5. AUDIENCE FIT: WHO IS THIS FOR? (GrowthSchool 4-Grid)
   ============================================================ -->
   <section class="ws-section" id="who-is-this-for">
     <div class="ws-container">
@@ -506,7 +440,7 @@
   </section>
 
   <!-- ============================================================
-     7. THEORY VS EXECUTION (Outskill Comparison Matrix)
+     6. THEORY VS EXECUTION (Outskill Comparison Matrix)
   ============================================================ -->
   <section class="ws-section section-alt" id="why-martech">
     <div class="ws-container">
@@ -577,7 +511,7 @@
   </section>
 
   <!-- ============================================================
-     8. 10+ MARTECH & AI TOOLS (Outskill Masterclass Style)
+     7. 10+ MARTECH & AI TOOLS (Outskill Masterclass Style)
   ============================================================ -->
   <section class="ws-section" id="tools">
     <div class="ws-container">
@@ -652,7 +586,7 @@
   </section>
 
   <!-- ============================================================
-     9. 5 HANDS-ON PORTFOLIO PROJECTS (GrowthSchool Showcase)
+     8. 5 HANDS-ON PORTFOLIO PROJECTS (GrowthSchool Showcase)
   ============================================================ -->
   <section class="ws-section section-alt" id="projects">
     <div class="ws-container">
@@ -722,7 +656,7 @@
   </section>
 
   <!-- ============================================================
-     10. 2-DAY CURRICULUM BREAKDOWN (GrowthSchool Day-by-Day)
+     9. 2-DAY CURRICULUM BREAKDOWN (GrowthSchool Day-by-Day)
   ============================================================ -->
   <section class="ws-section" id="curriculum">
     <div class="ws-container">
@@ -787,7 +721,7 @@
   </section>
 
   <!-- ============================================================
-     11. EXECUTIVE INSTRUCTOR PROFILE (GrowthSchool Mentor Card)
+     10. EXECUTIVE INSTRUCTOR PROFILE (GrowthSchool Mentor Card)
   ============================================================ -->
   <section class="ws-section section-alt" id="mentor">
     <div class="ws-container">
@@ -832,7 +766,7 @@
   </section>
 
   <!-- ============================================================
-     12. SOCIAL PROOF / AUTHORITY (Signature RedSan Element from Screenshot)
+     11. SOCIAL PROOF / AUTHORITY (Who's Behind This & Marquee)
   ============================================================ -->
   <section class="ws-section social-proof" id="proof">
     <div class="ws-container">
@@ -908,9 +842,9 @@
   </section>
 
   <!-- ============================================================
-     13. EXCLUSIVE BONUSES (Be10x Signature Free Bonuses Grid)
+     12. EXCLUSIVE BONUSES (Be10x Signature Free Bonuses Grid)
   ============================================================ -->
-  <section class="ws-section" id="bonuses">
+  <section class="ws-section section-alt" id="bonuses">
     <div class="ws-container">
       <div class="ws-sec-header">
         <span class="ws-sec-eyebrow">Free Add-ons</span>
@@ -973,51 +907,7 @@
   </section>
 
   <!-- ============================================================
-     14. SIGNATURE VALUE STACK & RECEIPT ELEMENT
-  ============================================================ -->
-  <section class="ws-section section-alt value-section" id="value">
-    <div class="ws-container" style="text-align:center;">
-      <div class="ws-sec-header">
-        <span class="ws-sec-eyebrow">Here's The Math</span>
-        <h2 class="ws-sec-title">₹10,000 Worth. Printed at ₹49.</h2>
-        <p class="ws-sec-sub">No catch. Just an intro price to get you in the room and building real systems.</p>
-      </div>
-
-      <div class="receipt-wrap">
-        <div class="receipt" id="receipt">
-          <div class="receipt-head">
-            <img src="/assets/redsan_logo.webp" alt="Redsan Digitals Logo" class="receipt-logo" width="800" height="187" decoding="async">
-            <div class="r-tag">Martech &amp; Growth Systems Workshop</div>
-          </div>
-          <div class="receipt-dash"></div>
-          <div class="receipt-row"><span class="item">Modern Martech &amp; Funnel Systems</span><span class="price">₹3,000</span></div>
-          <div class="receipt-row"><span class="item">5 Live Production Portfolio Projects</span><span class="price">₹3,000</span></div>
-          <div class="receipt-row"><span class="item">GA4 &amp; Conversion Attribution Setup</span><span class="price">₹2,500</span></div>
-          <div class="receipt-row"><span class="item">10+ AI Tools &amp; Prompt Engineering Vault</span><span class="price">₹2,000</span></div>
-          <div class="receipt-row free"><span class="item">Agency Pitch Deck &amp; Proposal Templates</span><span class="price">FREE</span></div>
-          <div class="receipt-row free"><span class="item">Private WhatsApp Growth Cohort</span><span class="price">FREE</span></div>
-          <div class="receipt-row free"><span class="item">Official ISO 9001:2015 Verified Certificate</span><span class="price">FREE</span></div>
-          <div class="receipt-dash"></div>
-          <div class="receipt-total-row"><span>Total Value</span><span>₹10,000+</span></div>
-          <div class="receipt-due">
-            <span>Amount Due Today</span>
-            <span><span class="old">₹10,000</span><span class="new">₹49</span></span>
-          </div>
-          <div class="receipt-barcode"></div>
-          <p class="receipt-thanks">Thank you for investing in yourself</p>
-        </div>
-      </div>
-
-      <div class="value-cta" style="margin-top:34px;">
-        <a href="#checkout" class="ws-btn-primary" style="display:inline-flex;">
-          Claim Everything for ₹49 <span class="arrow">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-     15. FINAL PRICING & CHECKOUT (Be10x Signature Card)
+     13. FINAL PRICING & CHECKOUT (Be10x Signature Card)
   ============================================================ -->
   <section class="ws-section" id="checkout">
     <div class="ws-container">
@@ -1083,7 +973,7 @@
   </section>
 
   <!-- ============================================================
-     16. FREQUENTLY ASKED QUESTIONS (Accordion)
+     14. FREQUENTLY ASKED QUESTIONS (Accordion)
   ============================================================ -->
   <section class="ws-section section-alt" id="faq">
     <div class="ws-container">
@@ -1186,7 +1076,7 @@
   </section>
 
   <!-- ============================================================
-     17. STICKY FLOATING BOTTOM BAR (Be10x / Outskill)
+     15. STICKY FLOATING BOTTOM BAR (Be10x / Outskill)
   ============================================================ -->
   <aside class="ws-sticky-bar" id="stickyBar" aria-label="Quick registration bar">
     <div class="ws-sticky-info">
@@ -1202,91 +1092,62 @@
     <a href="#checkout" class="ws-sticky-btn">Enroll for ₹49 →</a>
   </aside>
 
-  <!-- FLOATING WHATSAPP CTA -->
-  <a href="https://wa.me/919664365954" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Redsan on WhatsApp">💬</a>
-
   <!-- ============================================================
-     18. CANONICAL GLOBAL REDSAN AGENCY FOOTER
+     16. GLOBAL WORKSHOP FOOTER
   ============================================================ -->
-  <footer class="footer">
-    <div class="wrap foot-wrap">
-      <div class="foot-grid">
-        <!-- Col 1: Brand & Contact -->
-        <div class="foot-col foot-brand">
-          <a href="/" class="nav-logo" aria-label="Redsan Digitals Home"><img src="/assets/redsan_logo.webp" alt="Redsan Digitals Logo" class="brand-logo-img foot-logo-img" width="162" height="38" loading="lazy"></a>
-          <p class="foot-tagline">Attention, Mined. Building high-performing brands, web infrastructure &amp; revenue engines since 2019.</p>
-          <button type="button" class="badge-iso" data-iso-verify aria-label="Verify ISO 9001:2015 Certificate" title="Click to verify ISO 9001:2015 Certificate">ISO 9001:2015 Certified Agency</button>
-          <div class="foot-contact-quick">
-            <a href="mailto:redsandigitals@gmail.com">✉️ redsandigitals@gmail.com</a>
-            <a href="tel:+919664365954">📞 +91 9664365954</a>
-            <a href="https://wa.me/919664365954" target="_blank" rel="noopener" style="color:#25D366;">💬 WhatsApp Us Directly</a>
-          </div>
+  <footer class="footer" style="background:#050508; border-top:1px solid rgba(255,255,255,0.08); padding:60px 0 30px;">
+    <div class="wrap" style="max-width:1200px; margin:0 auto; padding:0 24px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:40px; margin-bottom:40px;">
+        <div>
+          <img src="/assets/redsan_logo.webp" alt="RedSan Logo" width="150" height="35" style="margin-bottom:16px;">
+          <p style="font-size:14px; color:#888; line-height:1.6;">
+            Redsan Workshops is an edtech learning initiative conducted by Redsan, informed by 5+ years of live agency execution at RedSan Digitals Pvt. Ltd. (ISO 9001:2015 Certified).
+          </p>
         </div>
-
-        <!-- Col 2: Growth Services -->
-        <div class="foot-col">
-          <div class="foot-col-title">Growth Services</div>
-          <ul class="foot-links-list">
-            <li><a href="/website-development/">AI Web Design &amp; Development</a></li>
-            <li><a href="/seo-agency/">SEO, AEO &amp; GEO Strategy</a></li>
-            <li><a href="/social-media-marketing/">Social Media Management</a></li>
-            <li><a href="/content-creation/">Content Creation</a></li>
-            <li><a href="/product-service-shoots/">Product &amp; Service Shoots</a></li>
-            <li><a href="/vibe-coding/">Vibe Coding</a></li>
-            <li><a href="/startup-growth-consulting/">Startup Growth Consulting</a></li>
-            <li><a href="/performance-marketing/">Performance Marketing</a></li>
-            <li><a href="/ai-marketing/">AI Marketing &amp; Automation</a></li>
+        <div>
+          <h4 style="font-size:15px; font-weight:700; color:#FFF; margin-bottom:16px; font-family:'Inter',sans-serif;">Quick Links</h4>
+          <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; font-size:14px; color:#888;">
+            <li><a href="/workshops/" style="color:#FFF;">Workshops Home</a></li>
+            <li><a href="#why-martech">Why Martech</a></li>
+            <li><a href="#curriculum">Curriculum</a></li>
+            <li><a href="#projects">5 Live Projects</a></li>
+            <li><a href="#bonuses">Free Bonuses</a></li>
+            <li><a href="#checkout">Enroll for ₹49</a></li>
           </ul>
         </div>
-
-        <!-- Col 3: Regional Hubs -->
-        <div class="foot-col">
-          <div class="foot-col-title">Locations We Serve</div>
-          <ul class="foot-links-list">
-            <li><a href="/digital-marketing-agency-dehradun/">📍 Dehradun Agency</a></li>
-            <li><a href="/digital-marketing-agency-rishikesh/">📍 Rishikesh Agency</a></li>
-            <li><a href="/digital-marketing-agency-noida/">📍 Noida Agency</a></li>
-            <li><a href="/digital-marketing-agency-delhi/">📍 Delhi NCR Agency</a></li>
-            <li><a href="/digital-marketing-agency-gurugram/">📍 Gurugram Agency</a></li>
-            <li><a href="/digital-marketing-agency-chandigarh/">📍 Chandigarh Agency</a></li>
+        <div>
+          <h4 style="font-size:15px; font-weight:700; color:#FFF; margin-bottom:16px; font-family:'Inter',sans-serif;">Agency Ecosystem</h4>
+          <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; font-size:14px; color:#888;">
+            <li><a href="/">RedSan Digitals Agency</a></li>
+            <li><a href="/services/">Services &amp; Capabilities</a></li>
+            <li><a href="/case-studies/">Client Case Studies</a></li>
+            <li><a href="/blog/">The RedSan Journal</a></li>
+            <li><a href="/contact/">Contact Headquarters</a></li>
           </ul>
         </div>
-
-        <!-- Col 4: Agency & Legal -->
-        <div class="foot-col">
-          <div class="foot-col-title">Agency &amp; Legal</div>
-          <ul class="foot-links-list">
-            <li><a href="/">Home</a></li>
-            <li><a href="/#about">About RedSan</a></li>
-            <li><a href="/digital-marketing-agency/">Agency Capabilities</a></li>
-            <li><a href="/workshops/">MarTech Masterclasses (₹49)</a></li>
-            <li><a href="/blog/">The RedSan Journal (Blog)</a></li>
-            <li><a href="/legal/">Legal &amp; Policy Hub</a></li>
-            <li><a href="/privacy-policy/">Privacy Policy</a></li>
-            <li><a href="/terms-of-service/">Master Service Agreement</a></li>
-            <li><a href="/refund-cancellation-policy/">Refund &amp; Cancellation</a></li>
-            <li><a href="/contact/">Schedule Growth Session</a></li>
-          </ul>
+        <div>
+          <h4 style="font-size:15px; font-weight:700; color:#FFF; margin-bottom:16px; font-family:'Inter',sans-serif;">Accreditation &amp; Trust</h4>
+          <p style="font-size:13.5px; color:#888; line-height:1.6; margin-bottom:12px;">
+            Certified under ISO 9001:2015 Quality Management Systems. Secure payment processing via Razorpay 256-bit SSL encryption.
+          </p>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#22C55E;">● 100% Live Workshop</span>
         </div>
       </div>
 
-      <div class="foot-bottom-bar">
-        <div class="foot-bottom-copy">
-          &copy; 2026 RedSan / RedSan Digitals Pvt. Ltd. All rights reserved. · <a href="/privacy-policy/" style="color:inherit; text-decoration:underline;">Privacy</a> · <a href="/terms-of-service/" style="color:inherit; text-decoration:underline;">Terms</a> · <a href="/refund-cancellation-policy/" style="color:inherit; text-decoration:underline;">Refunds</a> · <a href="/ai-usage-policy/" style="color:inherit; text-decoration:underline;">AI Policy</a> · <a href="/pricing-policy/" style="color:inherit; text-decoration:underline;">Pricing Guide</a> · <a href="/service-limitations/" style="color:inherit; text-decoration:underline;">Limitations</a>
+      <div style="border-top:1px solid rgba(255,255,255,0.06); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; font-size:13px; color:#666;">
+        <div>&copy; 2026 RedSan Digitals Pvt. Ltd. &amp; Redsan Workshops. All rights reserved.</div>
+        <div style="display:flex; gap:20px;">
+          <a href="/assets/Redsan_Digitals_Privacy_Policy.pdf" target="_blank" rel="noopener">Privacy Policy</a>
+          <a href="/assets/Redsan_Digitals_Refund_Cancellation_Policy.pdf" target="_blank" rel="noopener">Refund Policy</a>
+          <a href="/assets/Redsan_Digitals_Master_Service_Agreement.pdf" target="_blank" rel="noopener">Terms &amp; Conditions</a>
         </div>
-        <div class="foot-bottom-meta">Enterprise Growth Engine · Built for High-Intent Commercial Dominance</div>
       </div>
     </div>
   </footer>
 
   <!-- ============================================================
-     INTERACTIVE LOGIC: ACCORDION, COUNTDOWN TIMER, MOBILE NAV & THREE.JS
+     INTERACTIVE LOGIC: ACCORDION, COUNTDOWN TIMER, MOBILE NAV
   ============================================================ -->
-  <!-- THREE.JS & SPACE BACKGROUND -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="/assets/space-bg.js"></script>
-  <script src="/script.js"></script>
-
   <script>
     // FAQ Accordion Interaction
     document.querySelectorAll('.ws-faq-question').forEach(button => {
@@ -1312,33 +1173,13 @@
     const navToggle = document.getElementById('navToggle');
     const mobileNav = document.getElementById('mobileNav');
     if (navToggle && mobileNav) {
-      navToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        mobileNav.classList.toggle('open');
+      navToggle.addEventListener('click', () => {
+        mobileNav.classList.toggle('is-open');
       });
       mobileNav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-          mobileNav.classList.remove('open');
+          mobileNav.classList.remove('is-open');
         });
-      });
-      document.addEventListener('click', (e) => {
-        if (!mobileNav.contains(e.target) && e.target !== navToggle && !navToggle.contains(e.target)) {
-          mobileNav.classList.remove('open');
-        }
-      });
-    }
-
-    // Mobile Services Dropdown Submenu Toggle
-    const mobileServicesToggle = document.getElementById('mobileServicesToggle');
-    const mobileServicesMenu = document.getElementById('mobileServicesMenu');
-    if (mobileServicesToggle && mobileServicesMenu) {
-      mobileServicesToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const isOpen = mobileServicesMenu.classList.contains('open');
-        mobileServicesMenu.classList.toggle('open');
-        mobileServicesToggle.setAttribute('aria-expanded', !isOpen);
       });
     }
 
