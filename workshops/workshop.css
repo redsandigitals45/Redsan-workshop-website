@@ -1616,6 +1616,9 @@ body.workshop-page {
 }
 
 .founder-card {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
   background: #0E0E14;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
@@ -1668,6 +1671,9 @@ body.workshop-page {
 
 /* WhatsApp Thread Mockup */
 .wa-thread {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
   display: flex;
   flex-direction: column;
   gap: 12px;
