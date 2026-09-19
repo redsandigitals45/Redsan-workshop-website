@@ -54,16 +54,45 @@ document.querySelectorAll('.acc-item').forEach(item=>{
 });
 
 /* ============================================================
-   CHECKOUT FORM: front-end demo only.
-   Replace with real Razorpay/Instamojo/PayU checkout call.
+   CHECKOUT FORM: Razorpay Payment Integration
    ============================================================ */
-document.getElementById('checkoutForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  // TODO: trigger real payment gateway checkout here, then
-  // show successBox only after payment confirmation webhook/callback.
-  this.classList.add('hide');
-  document.getElementById('successBox').classList.add('show');
-});
+const checkoutForm = document.getElementById('checkoutForm');
+const paymentGatewayUrl = 'https://rzp.io/rzp/L3ZzMX0';
+
+if (checkoutForm) {
+  checkoutForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('cf-name') ? document.getElementById('cf-name').value.trim() : '';
+    const email = document.getElementById('cf-email') ? document.getElementById('cf-email').value.trim() : '';
+    const phone = document.getElementById('cf-phone') ? document.getElementById('cf-phone').value.trim() : '';
+    const message = document.getElementById('cf-message') ? document.getElementById('cf-message').value.trim() : '';
+
+    try {
+      if (window.localStorage) {
+        localStorage.setItem('redsan_workshop_lead', JSON.stringify({
+          name: name,
+          email: email,
+          phone: phone,
+          message: message,
+          timestamp: new Date().toISOString()
+        }));
+      }
+    } catch (err) {
+      console.warn('Unable to persist lead locally', err);
+    }
+
+    // Redirect to Razorpay payment page
+    window.location.href = paymentGatewayUrl;
+  });
+}
+
+// Auto-display success state if returned from payment with status flag
+const checkoutParams = new URLSearchParams(window.location.search);
+if (checkoutParams.get('payment') === 'success' || checkoutParams.get('status') === 'success' || window.location.hash === '#success') {
+  if (checkoutForm) checkoutForm.classList.add('hide');
+  const successBox = document.getElementById('successBox');
+  if (successBox) successBox.classList.add('show');
+}
 
 /* ============================================================
    STICKY BAR: hide when checkout section is in view
