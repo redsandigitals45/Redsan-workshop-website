@@ -623,6 +623,74 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .logo-box img{max-height:100%;max-width:100%;object-fit:contain;border-radius:6px;}
 
+  /* ===== INSTITUTIONAL MOUS SECTION ===== */
+  .mou-section{font-family:var(--body);background:rgba(11,11,12,0.4);backdrop-filter:blur(8px);padding:70px 0 80px;border-bottom:1px solid rgba(255,255,255,0.08);position:relative;}
+  .mou-head{color:#fff;margin-bottom:32px;}
+  .mou-head .eyebrow{color:var(--red);font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;}
+  .mou-head h2{font-family:var(--body);font-weight:800;letter-spacing:-0.02em;color:#fff;font-size:clamp(26px,3.4vw,38px);text-transform:uppercase;margin-top:10px;}
+  .mou-head p{color:rgba(255,255,255,0.65);font-size:15px;line-height:1.55;margin-top:10px;max-width:680px;}
+  .mou-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:24px;}
+  @media (max-width:768px){
+    .mou-grid{grid-template-columns:1fr;gap:16px;}
+  }
+  .mou-card{
+    background:rgba(17,17,20,0.7);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:12px;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    position:relative;
+    backdrop-filter:blur(8px);
+  }
+  .mou-card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(240,0,0,0.35);
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  }
+  .mou-logo-wrap{display:flex;align-items:center;}
+  .mou-logo-frame{
+    height:80px;
+    width:100%;
+    max-width:280px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 18px;
+  }
+  .mou-logo-frame.is-light{
+    background:#ffffff;
+    box-shadow:0 2px 10px rgba(0,0,0,0.25);
+  }
+  .mou-logo-frame.is-dark{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.1);
+  }
+  .mou-logo-frame img{
+    max-height:100%;
+    max-width:100%;
+    object-fit:contain;
+    display:block;
+  }
+  .mou-badge-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .mou-badge{
+    font-family:var(--mono);
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--red);
+    background:rgba(238,0,0,0.12);
+    border:1px solid rgba(238,0,0,0.35);
+    padding:3px 8px;
+    border-radius:4px;
+  }
+  .mou-status{font-family:var(--mono);font-size:10.5px;color:rgba(255,255,255,0.5);}
+  .mou-content h3{font-family:var(--body);font-size:20px;font-weight:700;color:#fff;margin:0 0 8px 0;letter-spacing:-0.01em;}
+  .mou-content p{color:rgba(255,255,255,0.65);font-size:14px;line-height:1.55;margin:0;}
+
   /* ===== ILLUSTRATIVE BADGES ===== */
   .model-data-badge {
     display: inline-block;
@@ -7305,18 +7373,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div class="logo-row r1">
     <div class="logo-track">
-      <div class="logo-box logo-highlight"><img src="assets 2/1 (2).png" alt="Partner Brand - Fitness and Lifestyle" loading="lazy" width="3521" height="717" decoding="async"></div>
       <div class="logo-box"><img src="assets 2/2025-10-31 (2).jpg" alt="Partner Brand - Corporate Client" loading="lazy" width="243" height="151" decoding="async"></div>
       <div class="logo-box"><img src="assets 2/Gym Fitness ( Instagram Post ) - 26.png" alt="Client Partner - Gym and Fitness Brand" loading="lazy" width="1080" height="1080" decoding="async"></div>
-      <div class="logo-box logo-highlight"><img src="assets 2/Narayani-Enterprises_logo_design-02.png" alt="Client Partner - Narayani Enterprises" loading="lazy" width="858" height="367" decoding="async"></div>
       <div class="logo-box"><img src="assets 2/Screenshot 2026-03-29 212900.png" alt="Partner Brand Client" loading="lazy" width="208" height="96" decoding="async"></div>
       <div class="logo-box logo-highlight"><img src="assets 2/Turkish_logo-removebg-preview.png" alt="Client Partner - Turkish Brand" loading="lazy" width="666" height="375" decoding="async"></div>
       <div class="logo-box logo-highlight"><img src="assets 2/WhatsApp_Image_2025-03-09_at_12.45.10_AM-removebg-preview.png" alt="Client Partner Brand" loading="lazy" width="500" height="500" decoding="async"></div>
       <div class="logo-box logo-highlight"><img src="assets 2/ZILF5-120157-Y89.png" alt="Client Partner - Hospitality Brand" loading="lazy" width="115" height="59" decoding="async"></div>
-      <div class="logo-box logo-highlight"><img src="assets 2/1 (2).png" alt="Partner Brand - Fitness and Lifestyle" loading="lazy" width="3521" height="717" decoding="async"></div>
       <div class="logo-box"><img src="assets 2/2025-10-31 (2).jpg" alt="Partner Brand - Corporate Client" loading="lazy" width="243" height="151" decoding="async"></div>
       <div class="logo-box"><img src="assets 2/Gym Fitness ( Instagram Post ) - 26.png" alt="Client Partner - Gym and Fitness Brand" loading="lazy" width="1080" height="1080" decoding="async"></div>
-      <div class="logo-box logo-highlight"><img src="assets 2/Narayani-Enterprises_logo_design-02.png" alt="Client Partner - Narayani Enterprises" loading="lazy" width="858" height="367" decoding="async"></div>
       <div class="logo-box"><img src="assets 2/Screenshot 2026-03-29 212900.png" alt="Partner Brand Client" loading="lazy" width="208" height="96" decoding="async"></div>
       <div class="logo-box logo-highlight"><img src="assets 2/Turkish_logo-removebg-preview.png" alt="Client Partner - Turkish Brand" loading="lazy" width="666" height="375" decoding="async"></div>
       <div class="logo-box logo-highlight"><img src="assets 2/WhatsApp_Image_2025-03-09_at_12.45.10_AM-removebg-preview.png" alt="Client Partner Brand" loading="lazy" width="500" height="500" decoding="async"></div>
@@ -7332,7 +7396,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="logo-box"><img src="assets 2/download.png" alt="Client Partner Brand Logo" loading="lazy" width="225" height="225" decoding="async"></div>
       <div class="logo-box"><img src="assets 2/elora_440x.avif" alt="Client Partner - Elora" loading="lazy" width="440" height="172" decoding="async"></div>
       <div class="logo-box"><img src="assets 2/image (1).png" alt="Client Partner Brand Logo" loading="lazy" width="512" height="164" decoding="async"></div>
-      <div class="logo-box"><img src="assets 2/image.png" alt="Client Partner Brand Logo" loading="lazy" width="402" height="125" decoding="async"></div>
       <div class="logo-box logo-highlight"><img src="assets 2/a074335543f08c7c5e55891d878c00dd.png" alt="Client Partner Logo" loading="lazy" width="479" height="65" decoding="async"></div>
       <div class="logo-box logo-highlight"><img src="assets 2/cropped-cropped-Redcubical-Logo-01-1-220x58.png" alt="Client Partner - Redcubical" loading="lazy" width="220" height="58" decoding="async"></div>
       <div class="logo-box logo-highlight"><img src="assets 2/dgu_logo__1_-removebg-preview.png" alt="Client Partner - DGU" loading="lazy" width="799" height="312" decoding="async"></div>
@@ -7340,7 +7403,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="logo-box"><img src="assets 2/download.png" alt="Client Partner Brand Logo" loading="lazy" width="225" height="225" decoding="async"></div>
       <div class="logo-box"><img src="assets 2/elora_440x.avif" alt="Client Partner - Elora" loading="lazy" width="440" height="172" decoding="async"></div>
       <div class="logo-box"><img src="assets 2/image (1).png" alt="Client Partner Brand Logo" loading="lazy" width="512" height="164" decoding="async"></div>
-      <div class="logo-box"><img src="assets 2/image.png" alt="Client Partner Brand Logo" loading="lazy" width="402" height="125" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<!-- REDSAN INSTITUTIONAL MOUS -->
+<section class="mou-section" id="mou-section">
+  <div class="wrap">
+    <div class="mou-head">
+      <div class="eyebrow">Institutional Alliances</div>
+      <h2>Redsan Institutional MoUs</h2>
+      <p>Formal Memorandums of Understanding and strategic frameworks driving incubation, academic partnerships, and brand infrastructure.</p>
+    </div>
+    <div class="mou-grid">
+      <!-- Uttaranchal University -->
+      <div class="mou-card">
+        <div class="mou-logo-wrap">
+          <div class="mou-logo-frame is-light">
+            <img src="assets 2/image.png" alt="Uttaranchal University - Institutional MoU Partner" loading="lazy" width="402" height="125" decoding="async">
+          </div>
+        </div>
+        <div class="mou-content">
+          <div class="mou-badge-row">
+            <span class="mou-badge">Institutional MoU</span>
+            <span class="mou-status">Active Partner</span>
+          </div>
+          <h3>Uttaranchal University</h3>
+          <p>Academic incubation and institutional MoU in Dehradun, fostering student entrepreneurship initiatives, campus workshops, and startup mentorship.</p>
+        </div>
+      </div>
+
+      <!-- Amayra Group -->
+      <div class="mou-card">
+        <div class="mou-logo-wrap">
+          <div class="mou-logo-frame is-dark">
+            <img src="assets 2/Amayra-logo.webp" alt="Amayra Real Estate Group - Institutional MoU Partner" loading="lazy" width="898" height="231" decoding="async">
+          </div>
+        </div>
+        <div class="mou-content">
+          <div class="mou-badge-row">
+            <span class="mou-badge">Institutional MoU</span>
+            <span class="mou-status">Active Partner</span>
+          </div>
+          <h3>Amayra Group</h3>
+          <p>Strategic corporate MoU for real estate brand systems, advanced marketing infrastructure, and high-performance customer acquisition workflows.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
