@@ -39,21 +39,58 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Blog",
-  "name": "The RedSan Journal: Marketing, Search & Growth Dispatches",
-  "url": "https://redsan.in/blog/",
-  "description": "Case studies, teardowns, and actionable playbooks on digital marketing, AI search (GEO), performance advertising, and revenue growth.",
-  "publisher": {
-    "@type": [
-      "Corporation",
-      "MarketingAgency"
-    ],
-    "@id": "https://redsan.in/#agency",
-    "name": "RedSan Digitals",
-    "legalName": "RedSan Digitals Pvt. Ltd.",
-    "url": "https://redsan.in/",
-    "logo": "https://redsan.in/assets/redsan_logo.png"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://redsan.in/blog/#webpage",
+      "url": "https://redsan.in/blog/",
+      "name": "The RedSan Journal | Marketing, Search & Growth Dispatches",
+      "description": "Case studies, teardowns, and actionable playbooks on digital marketing, AI search (GEO), performance advertising, and revenue growth.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://redsan.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "The RedSan Journal",
+            "item": "https://redsan.in/blog/"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Blog",
+      "@id": "https://redsan.in/blog/#blog",
+      "name": "The RedSan Journal: Marketing, Search & Growth Dispatches",
+      "url": "https://redsan.in/blog/",
+      "description": "Case studies, teardowns, and actionable playbooks on digital marketing, AI search (GEO), performance advertising, and revenue growth.",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@type": [
+          "Corporation",
+          "MarketingAgency"
+        ],
+        "@id": "https://redsan.in/#agency",
+        "name": "RedSan Digitals",
+        "legalName": "RedSan Digitals Pvt. Ltd.",
+        "url": "https://redsan.in/",
+        "logo": "https://redsan.in/assets/redsan_logo.png"
+      },
+      "about": [
+        "Search Engine Optimization (SEO)",
+        "Generative Engine Optimization (GEO)",
+        "Performance Marketing & Paid Ads",
+        "AI Web Design and Development",
+        "Startup Growth Strategy"
+      ]
+    }
+  ]
 }
 </script>
 
