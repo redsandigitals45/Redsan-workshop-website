@@ -143,19 +143,6 @@
   ],
   "headers": [
     {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "header",
-          "key": "Accept",
-          "value": "(.*text/html.*)"
-        }
-      ],
-      "headers": [
-        { "key": "Content-Type", "value": "text/html; charset=utf-8" }
-      ]
-    },
-    {
       "source": "/",
       "headers": [
         { "key": "Content-Type", "value": "text/html; charset=utf-8" }
@@ -163,6 +150,12 @@
     },
     {
       "source": "/(.*)/",
+      "headers": [
+        { "key": "Content-Type", "value": "text/html; charset=utf-8" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.html",
       "headers": [
         { "key": "Content-Type", "value": "text/html; charset=utf-8" }
       ]
@@ -203,6 +196,13 @@
     {
       "source": "/(.*)\\.(css|js|webp|png|jpg|jpeg|svg|ico|avif)",
       "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.pdf",
+      "headers": [
+        { "key": "Content-Type", "value": "application/pdf" },
         { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }
       ]
     }
