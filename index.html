@@ -604,8 +604,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .logos-head h2{font-family:var(--body);font-weight:800;letter-spacing:-0.02em;color:#fff;font-size:clamp(26px,3.4vw,38px);text-transform:uppercase;margin-top:10px;}
   .logo-row{overflow:hidden;white-space:nowrap;margin-top:20px;}
   .logo-track{display:inline-flex;align-items:center;gap:56px;padding-right:56px;}
-  .logo-row.r1 .logo-track{animation:scrollLeft 40s linear infinite;}
-  .logo-row.r2 .logo-track{animation:scrollRight 40s linear infinite;}
+  .logo-row.r1 .logo-track{animation:scrollLeft 55s linear infinite;}
+  .logo-row.r2 .logo-track{animation:scrollRight 55s linear infinite;}
   @keyframes scrollRight{from{transform:translateX(-50%);}to{transform:translateX(0);}}
   .logo-box{
     height:64px;width:150px;
@@ -625,13 +625,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* ===== INSTITUTIONAL MOUS SECTION ===== */
   .mou-section{font-family:var(--body);background:rgba(11,11,12,0.4);backdrop-filter:blur(8px);padding:70px 0 80px;border-bottom:1px solid rgba(255,255,255,0.08);position:relative;}
-  .mou-head{color:#fff;margin-bottom:32px;}
+  .mou-head{color:#fff;margin-bottom:36px;text-align:center;}
   .mou-head .eyebrow{color:var(--red);font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;}
   .mou-head h2{font-family:var(--body);font-weight:800;letter-spacing:-0.02em;color:#fff;font-size:clamp(26px,3.4vw,38px);text-transform:uppercase;margin-top:10px;}
-  .mou-head p{color:rgba(255,255,255,0.65);font-size:15px;line-height:1.55;margin-top:10px;max-width:680px;}
-  .mou-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:24px;}
+  .mou-head p{color:rgba(255,255,255,0.65);font-size:15px;line-height:1.55;margin:12px auto 0;max-width:680px;}
+  .mou-grid{display:grid;grid-template-columns:repeat(2, minmax(0, 440px));gap:24px;justify-content:center;margin:0 auto;max-width:920px;}
   @media (max-width:768px){
-    .mou-grid{grid-template-columns:1fr;gap:16px;}
+    .mou-grid{grid-template-columns:1fr;max-width:440px;}
   }
   .mou-card{
     background:rgba(17,17,20,0.7);
@@ -640,6 +640,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     padding:28px;
     display:flex;
     flex-direction:column;
+    align-items:center;
+    text-align:center;
     gap:20px;
     transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
     position:relative;
@@ -650,7 +652,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-color:rgba(240,0,0,0.35);
     box-shadow:0 10px 30px rgba(0,0,0,0.4);
   }
-  .mou-logo-wrap{display:flex;align-items:center;}
+  .mou-logo-wrap{display:flex;align-items:center;justify-content:center;width:100%;}
   .mou-logo-frame{
     height:80px;
     width:100%;
@@ -660,6 +662,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     align-items:center;
     justify-content:center;
     padding:10px 18px;
+    margin:0 auto;
   }
   .mou-logo-frame.is-light{
     background:#ffffff;
@@ -675,7 +678,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     object-fit:contain;
     display:block;
   }
-  .mou-badge-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .mou-badge-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px;}
   .mou-badge{
     font-family:var(--mono);
     font-size:10.5px;
@@ -688,8 +691,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-radius:4px;
   }
   .mou-status{font-family:var(--mono);font-size:10.5px;color:rgba(255,255,255,0.5);}
+  .mou-content{display:flex;flex-direction:column;align-items:center;text-align:center;}
   .mou-content h3{font-family:var(--body);font-size:20px;font-weight:700;color:#fff;margin:0 0 8px 0;letter-spacing:-0.01em;}
-  .mou-content p{color:rgba(255,255,255,0.65);font-size:14px;line-height:1.55;margin:0;}
+  .mou-content p{color:rgba(255,255,255,0.65);font-size:14px;line-height:1.55;margin:0;max-width:380px;}
 
   /* ===== ILLUSTRATIVE BADGES ===== */
   .model-data-badge {
@@ -7385,10 +7389,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="logo-box logo-highlight"><img src="assets 2/Turkish_logo-removebg-preview.png" alt="Client Partner - Turkish Brand" loading="lazy" width="666" height="375" decoding="async"></div>
       <div class="logo-box logo-highlight"><img src="assets 2/WhatsApp_Image_2025-03-09_at_12.45.10_AM-removebg-preview.png" alt="Client Partner Brand" loading="lazy" width="500" height="500" decoding="async"></div>
       <div class="logo-box logo-highlight"><img src="assets 2/ZILF5-120157-Y89.png" alt="Client Partner - Hospitality Brand" loading="lazy" width="115" height="59" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/2025-10-31 (2).jpg" alt="Partner Brand - Corporate Client" loading="lazy" width="243" height="151" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/Gym Fitness ( Instagram Post ) - 26.png" alt="Client Partner - Gym and Fitness Brand" loading="lazy" width="1080" height="1080" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/Screenshot 2026-03-29 212900.png" alt="Partner Brand Client" loading="lazy" width="208" height="96" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/Turkish_logo-removebg-preview.png" alt="Client Partner - Turkish Brand" loading="lazy" width="666" height="375" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/WhatsApp_Image_2025-03-09_at_12.45.10_AM-removebg-preview.png" alt="Client Partner Brand" loading="lazy" width="500" height="500" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/ZILF5-120157-Y89.png" alt="Client Partner - Hospitality Brand" loading="lazy" width="115" height="59" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/2025-10-31 (2).jpg" alt="Partner Brand - Corporate Client" loading="lazy" width="243" height="151" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/Gym Fitness ( Instagram Post ) - 26.png" alt="Client Partner - Gym and Fitness Brand" loading="lazy" width="1080" height="1080" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/Screenshot 2026-03-29 212900.png" alt="Partner Brand Client" loading="lazy" width="208" height="96" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/Turkish_logo-removebg-preview.png" alt="Client Partner - Turkish Brand" loading="lazy" width="666" height="375" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/WhatsApp_Image_2025-03-09_at_12.45.10_AM-removebg-preview.png" alt="Client Partner Brand" loading="lazy" width="500" height="500" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/ZILF5-120157-Y89.png" alt="Client Partner - Hospitality Brand" loading="lazy" width="115" height="59" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/2025-10-31 (2).jpg" alt="Partner Brand - Corporate Client" loading="lazy" width="243" height="151" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/Gym Fitness ( Instagram Post ) - 26.png" alt="Client Partner - Gym and Fitness Brand" loading="lazy" width="1080" height="1080" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/Screenshot 2026-03-29 212900.png" alt="Partner Brand Client" loading="lazy" width="208" height="96" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/Turkish_logo-removebg-preview.png" alt="Client Partner - Turkish Brand" loading="lazy" width="666" height="375" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/WhatsApp_Image_2025-03-09_at_12.45.10_AM-removebg-preview.png" alt="Client Partner Brand" loading="lazy" width="500" height="500" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/ZILF5-120157-Y89.png" alt="Client Partner - Hospitality Brand" loading="lazy" width="115" height="59" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/2025-10-31 (2).jpg" alt="Partner Brand - Corporate Client" loading="lazy" width="243" height="151" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/Gym Fitness ( Instagram Post ) - 26.png" alt="Client Partner - Gym and Fitness Brand" loading="lazy" width="1080" height="1080" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/Screenshot 2026-03-29 212900.png" alt="Partner Brand Client" loading="lazy" width="208" height="96" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/Turkish_logo-removebg-preview.png" alt="Client Partner - Turkish Brand" loading="lazy" width="666" height="375" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/WhatsApp_Image_2025-03-09_at_12.45.10_AM-removebg-preview.png" alt="Client Partner Brand" loading="lazy" width="500" height="500" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/ZILF5-120157-Y89.png" alt="Client Partner - Hospitality Brand" loading="lazy" width="115" height="59" decoding="async"></div>
     </div>
   </div>
   <div class="logo-row r2" style="margin-top:8px;">
     <div class="logo-track">
+      <div class="logo-box logo-highlight"><img src="assets 2/a074335543f08c7c5e55891d878c00dd.png" alt="Client Partner Logo" loading="lazy" width="479" height="65" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/cropped-cropped-Redcubical-Logo-01-1-220x58.png" alt="Client Partner - Redcubical" loading="lazy" width="220" height="58" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/dgu_logo__1_-removebg-preview.png" alt="Client Partner - DGU" loading="lazy" width="799" height="312" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/download (1).png" alt="Client Partner Brand Logo" loading="lazy" width="225" height="225" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/download.png" alt="Client Partner Brand Logo" loading="lazy" width="225" height="225" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/elora_440x.avif" alt="Client Partner - Elora" loading="lazy" width="440" height="172" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/image (1).png" alt="Client Partner Brand Logo" loading="lazy" width="512" height="164" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/a074335543f08c7c5e55891d878c00dd.png" alt="Client Partner Logo" loading="lazy" width="479" height="65" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/cropped-cropped-Redcubical-Logo-01-1-220x58.png" alt="Client Partner - Redcubical" loading="lazy" width="220" height="58" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/dgu_logo__1_-removebg-preview.png" alt="Client Partner - DGU" loading="lazy" width="799" height="312" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/download (1).png" alt="Client Partner Brand Logo" loading="lazy" width="225" height="225" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/download.png" alt="Client Partner Brand Logo" loading="lazy" width="225" height="225" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/elora_440x.avif" alt="Client Partner - Elora" loading="lazy" width="440" height="172" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/image (1).png" alt="Client Partner Brand Logo" loading="lazy" width="512" height="164" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/a074335543f08c7c5e55891d878c00dd.png" alt="Client Partner Logo" loading="lazy" width="479" height="65" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/cropped-cropped-Redcubical-Logo-01-1-220x58.png" alt="Client Partner - Redcubical" loading="lazy" width="220" height="58" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/dgu_logo__1_-removebg-preview.png" alt="Client Partner - DGU" loading="lazy" width="799" height="312" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/download (1).png" alt="Client Partner Brand Logo" loading="lazy" width="225" height="225" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/download.png" alt="Client Partner Brand Logo" loading="lazy" width="225" height="225" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/elora_440x.avif" alt="Client Partner - Elora" loading="lazy" width="440" height="172" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/image (1).png" alt="Client Partner Brand Logo" loading="lazy" width="512" height="164" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/a074335543f08c7c5e55891d878c00dd.png" alt="Client Partner Logo" loading="lazy" width="479" height="65" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/cropped-cropped-Redcubical-Logo-01-1-220x58.png" alt="Client Partner - Redcubical" loading="lazy" width="220" height="58" decoding="async"></div>
+      <div class="logo-box logo-highlight"><img src="assets 2/dgu_logo__1_-removebg-preview.png" alt="Client Partner - DGU" loading="lazy" width="799" height="312" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/download (1).png" alt="Client Partner Brand Logo" loading="lazy" width="225" height="225" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/download.png" alt="Client Partner Brand Logo" loading="lazy" width="225" height="225" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/elora_440x.avif" alt="Client Partner - Elora" loading="lazy" width="440" height="172" decoding="async"></div>
+      <div class="logo-box"><img src="assets 2/image (1).png" alt="Client Partner Brand Logo" loading="lazy" width="512" height="164" decoding="async"></div>
       <div class="logo-box logo-highlight"><img src="assets 2/a074335543f08c7c5e55891d878c00dd.png" alt="Client Partner Logo" loading="lazy" width="479" height="65" decoding="async"></div>
       <div class="logo-box logo-highlight"><img src="assets 2/cropped-cropped-Redcubical-Logo-01-1-220x58.png" alt="Client Partner - Redcubical" loading="lazy" width="220" height="58" decoding="async"></div>
       <div class="logo-box logo-highlight"><img src="assets 2/dgu_logo__1_-removebg-preview.png" alt="Client Partner - DGU" loading="lazy" width="799" height="312" decoding="async"></div>
