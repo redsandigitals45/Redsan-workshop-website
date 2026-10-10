@@ -177,18 +177,23 @@ body.workshop-page {
   }
 }
 
-/* Hero Left Column */
+/* Hero Left Column (Center Aligned) */
 .ws-hero-left {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .ws-hero-pill-cluster {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ws-chip-rating {
@@ -224,6 +229,9 @@ body.workshop-page {
   font-weight: 800;
   margin-bottom: 18px;
   color: #FFFFFF;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (min-width: 600px) {
@@ -244,7 +252,11 @@ body.workshop-page {
   line-height: 1.6;
   color: var(--ws-text-2);
   margin-bottom: 26px;
-  max-width: 620px;
+  width: 100%;
+  max-width: 580px;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (min-width: 768px) {
@@ -253,20 +265,26 @@ body.workshop-page {
   }
 }
 
-/* Bullet Checks */
+/* Bullet Checks (Left Justified) */
 .ws-hero-checks {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-bottom: 30px;
+  width: 100%;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
 }
 
 .ws-check-line {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 12px;
   font-size: 15px;
   color: var(--ws-text-2);
+  text-align: left;
 }
 
 .ws-check-line .chk-icon {
@@ -299,6 +317,11 @@ body.workshop-page {
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
   margin-bottom: 28px;
+  width: 100%;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 @media (max-width: 600px) {
@@ -312,6 +335,8 @@ body.workshop-page {
 .ws-snap-col {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .ws-snap-col .lbl {
@@ -321,6 +346,7 @@ body.workshop-page {
   letter-spacing: 0.05em;
   color: var(--ws-text-4);
   margin-bottom: 4px;
+  text-align: center;
 }
 
 .ws-snap-col .val {
@@ -328,11 +354,13 @@ body.workshop-page {
   font-size: 14px;
   font-weight: 700;
   color: #FFFFFF;
+  text-align: center;
 }
 
 .ws-snap-col .val.price-val {
   font-size: 16px;
   color: var(--ws-green);
+  text-align: center;
 }
 
 .ws-snap-col .val.price-val .strike {
@@ -348,6 +376,12 @@ body.workshop-page {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  width: 100%;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  text-align: center;
 }
 
 .ws-btn-primary {
@@ -386,11 +420,15 @@ body.workshop-page {
 .ws-trust-strip-hero {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 16px;
   font-size: 13px;
   color: var(--ws-text-3);
   font-family: 'IBM Plex Mono', monospace;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ws-trust-strip-hero span {
@@ -522,15 +560,29 @@ body.workshop-page {
 }
 
 .ws-card-live-tag {
-  background: var(--ws-red-tint);
-  border: 1px solid rgba(226, 35, 26, 0.4);
+  background: var(--ws-red);
+  border: 1px solid var(--ws-red);
   color: #FFFFFF;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 6px 14px;
   border-radius: 6px;
   text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--ws-transition);
+}
+
+.ws-card-live-tag:hover {
+  background: var(--ws-red-hover);
+  border-color: var(--ws-red-hover);
+  color: #FFFFFF;
+  box-shadow: 0 0 12px rgba(240, 0, 0, 0.5);
+  transform: translateY(-1px);
 }
 
 /* ============================================================
@@ -810,71 +862,82 @@ body.workshop-page {
 }
 
 /* ============================================================
-   6. 10+ MARTECH & AI TOOLS STRIP (Outskill Masterclass Style)
+   5. THE STACK: FLOATING AI & APP LOGO COLLAGE BACKGROUND
    ============================================================ */
-.ws-tools-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-}
-
-@media (min-width: 600px) {
-  .ws-tools-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 960px) {
-  .ws-tools-grid {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-  }
-}
-
-.ws-tool-pill {
-  background: var(--ws-bg-card);
-  border: 1px solid var(--ws-border);
-  border-radius: var(--ws-radius-md);
-  padding: 18px 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 6px;
-  transition: var(--ws-transition);
-}
-
-.ws-tool-pill:hover {
-  border-color: var(--ws-border-hover);
-  background: var(--ws-bg-card-hover);
-  transform: translateY(-3px);
-}
-
-.ws-tool-name {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: #FFFFFF;
+.ws-tools-section {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  min-height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  gap: 8px;
+  background-color: var(--ws-bg-main);
 }
 
-.ws-tool-tag {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--ws-text-4);
-  text-transform: uppercase;
-  text-align: center;
+.ws-tools-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.ws-tool-role {
-  font-size: 12px;
-  color: var(--ws-text-3);
-  line-height: 1.4;
+.ws-tools-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.36;
+  filter: contrast(1.1) brightness(0.95);
+  display: block;
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+/* Scrim to adjust transparency where text is visible */
+.ws-tools-bg-scrim {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 65% 70% at 50% 50%, rgba(7, 7, 9, 0.92) 0%, rgba(7, 7, 9, 0.45) 55%, rgba(7, 7, 9, 0.95) 100%),
+    linear-gradient(to bottom, rgba(7, 7, 9, 1) 0%, transparent 20%, transparent 80%, rgba(7, 7, 9, 1) 100%);
+  pointer-events: none;
+}
+
+.ws-tools-section .ws-container {
+  position: relative;
+  z-index: 1;
+}
+
+.ws-tools-content-box {
+  max-width: 820px;
+  margin: 0 auto;
   text-align: center;
+  padding: 24px 20px;
+  position: relative;
+}
+
+.ws-tools-content-box::before {
+  content: '';
+  position: absolute;
+  inset: -20px -30px;
+  background: radial-gradient(ellipse at center, rgba(7, 7, 9, 0.85) 0%, rgba(7, 7, 9, 0.35) 65%, transparent 100%);
+  border-radius: 24px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .ws-tools-section {
+    padding: 70px 0;
+    min-height: 340px;
+  }
+  .ws-tools-bg-img {
+    opacity: 0.30;
+  }
 }
 
 /* ============================================================
@@ -1187,23 +1250,49 @@ body.workshop-page {
 }
 
 /* ============================================================
-   10. EXCLUSIVE BONUSES (Be10x Signature Free Bonuses Grid)
+   10. EXCLUSIVE BONUSES (Included With Pass Grid)
    ============================================================ */
 .ws-bonuses-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 22px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 960px) {
+  /* 3 cards on top row, 2 centered on bottom row */
+  .ws-bonuses-grid .ws-bonus-card:nth-child(1) { grid-column: 1 / span 2; }
+  .ws-bonuses-grid .ws-bonus-card:nth-child(2) { grid-column: 3 / span 2; }
+  .ws-bonuses-grid .ws-bonus-card:nth-child(3) { grid-column: 5 / span 2; }
+  .ws-bonuses-grid .ws-bonus-card:nth-child(4) { grid-column: 2 / span 2; }
+  .ws-bonuses-grid .ws-bonus-card:nth-child(5) { grid-column: 4 / span 2; }
+}
+
+@media (max-width: 959px) and (min-width: 601px) {
   .ws-bonuses-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .ws-bonuses-grid .ws-bonus-card:nth-child(1),
+  .ws-bonuses-grid .ws-bonus-card:nth-child(2),
+  .ws-bonuses-grid .ws-bonus-card:nth-child(3),
+  .ws-bonuses-grid .ws-bonus-card:nth-child(4) { grid-column: span 1; }
+  .ws-bonuses-grid .ws-bonus-card:nth-child(5) {
+    grid-column: 1 / -1;
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
   }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 600px) {
   .ws-bonuses-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .ws-bonuses-grid .ws-bonus-card {
+    grid-column: 1 / -1;
   }
 }
 
@@ -1211,7 +1300,7 @@ body.workshop-page {
   background: var(--ws-bg-card);
   border: 1px solid var(--ws-border);
   border-radius: var(--ws-radius-md);
-  padding: 24px;
+  padding: 24px 22px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1221,29 +1310,50 @@ body.workshop-page {
 .ws-bonus-card:hover {
   border-color: rgba(245, 158, 11, 0.4);
   transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+
+.ws-bonus-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 14px;
+  width: 100%;
 }
 
 .ws-bonus-free-badge,
 .ws-bonus-included-badge {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  background: #F59E0B;
-  color: #000000;
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #FBBF24;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
-  font-weight: 800;
-  padding: 3px 8px;
-  border-radius: 4px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
   text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ws-bonus-included-badge .badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #F59E0B;
+  display: inline-block;
 }
 
 .ws-bonus-card h3 {
   font-size: 17px;
   font-weight: 700;
   margin-bottom: 10px;
-  padding-right: 70px;
+  padding-right: 0;
   color: #FFFFFF;
+  line-height: 1.35;
 }
 
 .ws-bonus-card p {
@@ -1908,20 +2018,88 @@ body.workshop-page {
    ============================================================ */
 .ws-pillars-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 24px;
+  row-gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+/* Olympic Rings Placement: 3 on Top Row, 2 on Bottom Row Interlaced */
+@media (min-width: 900px) {
+  /* Row 1: 3 cards covering cols 1-2, 3-4, 5-6 */
+  .ws-pillars-grid .ws-pillar-card:nth-child(1) {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+  .ws-pillars-grid .ws-pillar-card:nth-child(2) {
+    grid-column: 3 / span 2;
+    grid-row: 1;
+  }
+  .ws-pillars-grid .ws-pillar-card:nth-child(3) {
+    grid-column: 5 / span 2;
+    grid-row: 1;
+  }
+  /* Row 2: 2 cards centered beneath the top cards' gaps (cols 2-3, 4-5) */
+  .ws-pillars-grid .ws-pillar-card:nth-child(4) {
+    grid-column: 2 / span 2;
+    grid-row: 2;
+  }
+  .ws-pillars-grid .ws-pillar-card:nth-child(5) {
+    grid-column: 4 / span 2;
+    grid-row: 2;
+  }
+}
+
+/* Tablet (601px - 899px): 2 top, 2 middle, 1 centered */
+@media (max-width: 899px) and (min-width: 601px) {
+  .ws-pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+    max-width: 760px;
+  }
+  .ws-pillars-grid .ws-pillar-card:nth-child(1),
+  .ws-pillars-grid .ws-pillar-card:nth-child(2),
+  .ws-pillars-grid .ws-pillar-card:nth-child(3),
+  .ws-pillars-grid .ws-pillar-card:nth-child(4) {
+    grid-column: span 1;
+  }
+  .ws-pillars-grid .ws-pillar-card:nth-child(5) {
+    grid-column: 1 / -1;
+    max-width: 380px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile (<= 600px): Clean vertical stack */
+@media (max-width: 600px) {
+  .ws-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .ws-pillars-grid .ws-pillar-card {
+    grid-column: 1 / -1 !important;
+    min-height: auto;
+    padding: 28px 20px;
+  }
 }
 .ws-pillar-card {
   background: var(--ws-bg-card);
   border: 1px solid var(--ws-border);
   border-radius: var(--ws-radius-md);
-  padding: 28px 24px;
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   transition: var(--ws-transition);
   position: relative;
+  overflow: hidden;
+  min-height: 290px;
 }
 .ws-pillar-card:hover {
   border-color: var(--ws-border-hover);
@@ -1929,12 +2107,53 @@ body.workshop-page {
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
 }
 .ws-pillar-card-highlight {
-  background: linear-gradient(135deg, rgba(226, 35, 26, 0.12), rgba(14, 14, 20, 0.96));
-  border-color: rgba(226, 35, 26, 0.4);
+  background: linear-gradient(135deg, rgba(240, 0, 0, 0.12), rgba(14, 14, 20, 0.96));
+  border-color: rgba(240, 0, 0, 0.4);
 }
 .ws-pillar-card-highlight:hover {
   border-color: var(--ws-red);
-  box-shadow: 0 16px 40px rgba(226, 35, 26, 0.25);
+  box-shadow: 0 16px 40px rgba(240, 0, 0, 0.25);
+}
+
+/* Background Video Framing, Cropping & Transparency */
+.ws-pillar-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+  opacity: 0.35;
+  pointer-events: none;
+  border-radius: inherit;
+  transition: opacity 0.4s ease, transform 0.6s ease;
+}
+.ws-pillar-card:hover .ws-pillar-video-bg {
+  opacity: 0.46;
+  transform: scale(1.04);
+}
+.ws-pillar-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 15, 0.72) 0%, rgba(10, 10, 15, 0.88) 100%);
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Card Content Layering & Centering */
+.ws-pillar-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: auto 0;
 }
 .ws-pillar-num {
   font-family: 'IBM Plex Mono', monospace;
@@ -1945,6 +2164,7 @@ body.workshop-page {
   text-transform: uppercase;
   margin-bottom: 12px;
   text-align: center;
+  display: inline-block;
 }
 .ws-pillar-icon {
   display: none !important;
@@ -1953,29 +2173,54 @@ body.workshop-page {
   font-size: 19px;
   font-weight: 700;
   color: #FFFFFF;
-  margin-bottom: 10px;
-  line-height: 1.3;
+  margin-bottom: 12px;
+  line-height: 1.35;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 95%;
 }
 .ws-pillar-card p {
   font-size: 14px;
-  color: var(--ws-text-3);
+  color: #D2D2DC;
   line-height: 1.6;
   margin-bottom: 20px;
-  flex-grow: 1;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 95%;
 }
 .ws-pillar-tag {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   font-weight: 600;
   color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 6px 12px;
   border-radius: 6px;
   align-self: center;
   text-align: center;
+  margin: 0 auto;
+  backdrop-filter: blur(4px);
+}
+.ws-pillar-card-has-video .ws-pillar-num,
+.ws-pillar-card-has-video h3,
+.ws-pillar-card-has-video p,
+.ws-pillar-card-has-video .ws-pillar-tag {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+.ws-live-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #F00000;
+  display: inline-block;
+  box-shadow: 0 0 8px #F00000;
+  animation: wsPulseDot 1.4s infinite;
+  flex-shrink: 0;
+  vertical-align: middle;
 }
 
 /* ============================================================
@@ -1983,60 +2228,399 @@ body.workshop-page {
    ============================================================ */
 .martech-anim-container {
   width: 100%;
-  max-width: 1040px;
+  max-width: 1060px;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #FFFFFF;
+  flex-direction: column;
+  background: #14141A;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
-  height: 580px;
-  max-height: 580px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65);
+  height: 640px;
+  max-height: 640px;
 }
+
+/* PC Window Bar Header */
+.martech-window-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: #121217;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.ctrl-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.ctrl-dot.red { background: #FF5F56; }
+.ctrl-dot.yellow { background: #FFBD2E; }
+.ctrl-dot.green { background: #27C93F; }
+
+.window-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #EEEEEE;
+  font-size: 12px;
+}
+
+.window-title .sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.window-title .subtitle {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.window-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(240, 0, 0, 0.1);
+  border: 1px solid rgba(240, 0, 0, 0.3);
+  color: #F00000;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.window-pill .pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #F00000;
+  box-shadow: 0 0 6px #F00000;
+}
+
 .martech-anim-frame {
   width: 100%;
-  height: 580px;
+  flex: 1;
+  height: calc(100% - 42px);
   border: none;
   display: block;
   background: #F8F8F8;
 }
-@media (max-width: 650px) {
-  .martech-anim-container,
+@media (max-width: 768px) {
+  .martech-anim-container {
+    height: 520px;
+    max-height: 520px;
+    border-radius: 18px;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
   .martech-anim-frame {
-    height: 540px;
+    height: 520px;
+  }
+}
+@media (max-width: 480px) {
+  .martech-anim-container {
+    height: 480px;
+    max-height: 480px;
+    border-radius: 16px;
+  }
+  .martech-anim-frame {
+    height: 480px;
   }
 }
 
 /* ============================================================
-   PROOF OF WORK GRID: 6 LIVE PORTFOLIO PROJECTS
+   PROOF OF WORK: 6-CARD CONTINUOUS LOOP CAROUSEL (5s STAY)
    ============================================================ */
-.ws-olympic-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+.ws-projects-carousel-wrap {
   width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
-.ws-olympic-card-1,
-.ws-olympic-card-2,
-.ws-olympic-card-3,
-.ws-olympic-card-4,
-.ws-olympic-card-5,
-.ws-olympic-card-6 {
-  grid-column: auto;
+
+/* 5-Second Linear Progress Bar */
+.ws-carousel-progress-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
 }
-@media (max-width: 960px) {
-  .ws-olympic-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
+
+.ws-carousel-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #CC0000, #F00000);
+  box-shadow: 0 0 10px rgba(240, 0, 0, 0.6);
+  border-radius: 999px;
+  will-change: width;
 }
+
+/* Viewport & Sliding Track */
+.ws-carousel-viewport {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
+}
+
+.ws-carousel-track {
+  display: flex;
+  width: 100%;
+  will-change: transform;
+  transform: translateX(0);
+}
+
+/* Individual Project Card inside Carousel */
+.ws-carousel-track .ws-project-card {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  min-height: 290px;
+  padding: 38px 36px;
+  background: linear-gradient(145deg, rgba(20, 20, 24, 0.98), #111111);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ws-carousel-track .ws-project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(240, 0, 0, 0.6), transparent);
+  pointer-events: none;
+}
+
+.ws-carousel-track .ws-project-card:hover {
+  border-color: rgba(240, 0, 0, 0.4);
+  box-shadow: 0 12px 36px rgba(240, 0, 0, 0.12);
+  transform: none;
+}
+
+.ws-carousel-track .ws-project-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: #F00000;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(240, 0, 0, 0.08);
+  border: 1px solid rgba(240, 0, 0, 0.25);
+  padding: 4px 14px;
+  border-radius: 999px;
+}
+
+.ws-carousel-track .ws-project-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #F8F8F8;
+  line-height: 1.35;
+  max-width: 620px;
+}
+
+.ws-carousel-track .ws-project-card p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+  margin-bottom: 22px;
+  max-width: 600px;
+  flex-grow: 1;
+}
+
+.ws-carousel-track .ws-project-stack {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 580px;
+}
+
+.ws-carousel-track .ws-project-stack .stack-lbl {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.ws-carousel-track .ws-project-stack .stack-val {
+  font-size: 14px;
+  color: #EEEEEE;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Carousel Footer Controls: Prev, Dots, Counter, Next */
+.ws-carousel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+  padding: 0 4px;
+}
+
+.ws-carousel-nav-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #F8F8F8;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.ws-carousel-nav-btn:hover {
+  background: rgba(240, 0, 0, 0.15);
+  border-color: #F00000;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(240, 0, 0, 0.25);
+}
+
+.ws-carousel-indicators {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ws-carousel-dot {
+  all: unset;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.ws-carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.55);
+  transform: scale(1.2);
+}
+
+.ws-carousel-dot.active {
+  background: #F00000;
+  width: 28px;
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(240, 0, 0, 0.7);
+}
+
+.ws-carousel-counter {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ws-carousel-counter .current {
+  color: #F8F8F8;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.ws-carousel-counter .divider {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.ws-carousel-counter .total {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Mobile Responsiveness for Carousel */
 @media (max-width: 640px) {
-  .ws-olympic-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .ws-projects-carousel-wrap {
+    max-width: 100%;
+  }
+
+  .ws-carousel-track .ws-project-card {
+    padding: 26px 18px;
+    min-height: 310px;
+    border-radius: 16px;
+  }
+
+  .ws-carousel-track .ws-project-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .ws-carousel-track .ws-project-card p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+
+  .ws-carousel-track .ws-project-stack .stack-val {
+    font-size: 12.5px;
+  }
+
+  .ws-carousel-footer {
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .ws-carousel-nav-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .ws-carousel-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .ws-carousel-dot.active {
+    width: 20px;
   }
 }
 
@@ -2219,6 +2803,313 @@ ul.dropdown-menu > li {
 }
 .mobile-dropdown-menu a:hover {
   color: var(--ws-red) !important;
+}
+
+/* ============================================================
+   COMPREHENSIVE MOBILE-FIRST OPTIMIZATION SUITE (<= 768px & <= 480px)
+   Strictly mobile-only: Preserves PC layout 100% untouched
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Global Layout & Spacing */
+  body.workshop-page {
+    padding-bottom: 76px;
+    overflow-x: hidden;
+  }
+  .ws-section {
+    padding: 56px 0;
+  }
+  .ws-container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .ws-sec-header {
+    margin-bottom: 26px;
+  }
+  .ws-sec-eyebrow {
+    font-size: 10.5px;
+    margin-bottom: 8px;
+  }
+  .ws-sec-title {
+    font-size: clamp(23px, 6.2vw, 32px);
+    line-height: 1.22;
+  }
+  .ws-sec-sub {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
+
+  /* Navigation & Mobile Drawer */
+  .nav-inner {
+    padding: 12px 16px;
+  }
+  .brand-logo-img {
+    max-width: 130px;
+    height: auto;
+  }
+  .nav-cta {
+    display: none;
+  }
+
+  /* Hero Section */
+  .ws-hero {
+    padding: 28px 0 44px;
+  }
+  .ws-hero-pill-cluster {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .ws-chip-rating,
+  .ws-chip-live {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+  .ws-hero-h1 {
+    font-size: clamp(27px, 7.5vw, 38px);
+    line-height: 1.18;
+    margin-bottom: 14px;
+    word-break: break-word;
+  }
+  .ws-hero-sub {
+    font-size: 14px;
+    line-height: 1.52;
+    margin-bottom: 20px;
+    text-align: left;
+    width: 100%;
+  }
+  .ws-hero-checks {
+    gap: 12px;
+    margin-bottom: 22px;
+    text-align: left;
+    width: 100%;
+  }
+  .ws-check-line {
+    font-size: 13px;
+    line-height: 1.45;
+    gap: 10px;
+    text-align: left;
+  }
+  .ws-snapshot-card {
+    padding: 12px 14px;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .ws-hero-action {
+    gap: 12px;
+  }
+  .ws-hero-action .ws-btn-primary {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 16px;
+    justify-content: center;
+  }
+  .ws-trust-strip-hero {
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 11px;
+    gap: 6px;
+  }
+  .ws-masterclass-card {
+    margin-top: 24px;
+    border-radius: 16px;
+  }
+  .ws-card-pill {
+    font-size: 10px;
+    padding: 4px 10px;
+    max-width: 88%;
+  }
+
+  /* 5-Pillar Practical Engine */
+  .ws-pillar-card {
+    min-height: 250px;
+    padding: 24px 18px;
+    border-radius: 14px;
+  }
+  .ws-pillar-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .ws-pillar-card p {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .ws-pillar-tag {
+    font-size: 10.5px;
+    padding: 5px 10px;
+  }
+
+  /* Tools Grid */
+  .ws-tools-grid {
+    gap: 10px;
+  }
+  .ws-tool-pill {
+    padding: 14px 10px;
+    border-radius: 12px;
+  }
+  .ws-tool-name {
+    font-size: 13.5px;
+  }
+  .ws-tool-tag {
+    font-size: 9.5px;
+  }
+  .ws-tool-role {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  /* Portfolio Projects */
+  .ws-project-card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+  .ws-proj-metric {
+    font-size: 26px;
+  }
+  .ws-proj-metric-lbl {
+    font-size: 11px;
+  }
+
+  /* Curriculum Accordion */
+  .ws-day-header {
+    padding: 16px 14px;
+    gap: 10px;
+  }
+  .ws-day-title-group {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .ws-day-header h3 {
+    font-size: 16px;
+  }
+  .ws-day-modules {
+    padding: 8px 14px;
+  }
+  .ws-mod-title {
+    font-size: 14px;
+  }
+  .ws-mod-desc {
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+
+  /* Bonuses */
+  .ws-bonus-card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+  .ws-bonus-card h3 {
+    font-size: 16px;
+  }
+  .ws-bonus-card p {
+    font-size: 13px;
+  }
+
+  /* Final Checkout Card */
+  .ws-checkout-card {
+    padding: 28px 16px;
+    border-radius: 18px;
+  }
+  .ws-checkout-card h2 {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+  .ws-checkout-card .sub {
+    font-size: 13.5px;
+    margin-bottom: 22px;
+  }
+  .ws-countdown-box {
+    gap: 12px;
+    padding: 12px 14px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+  }
+  .ws-count-num {
+    font-size: 22px;
+  }
+  .ws-count-lbl {
+    font-size: 9px;
+  }
+  .ws-count-sep {
+    font-size: 18px;
+  }
+  .ws-price-hero {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .ws-price-hero .current-price {
+    font-size: 38px;
+  }
+  .ws-price-hero .original-price {
+    font-size: 18px;
+  }
+  .ws-checkout-includes {
+    padding: 16px 14px;
+    font-size: 13px;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  /* FAQs */
+  .ws-faq-question {
+    padding: 16px 14px;
+    font-size: 14.5px;
+  }
+  .ws-faq-answer {
+    padding: 0 14px;
+  }
+  .ws-faq-answer p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* Sticky Bottom Floating Bar */
+  .ws-sticky-bar {
+    padding: 10px 14px;
+    min-height: 56px;
+  }
+  .ws-sticky-price-box .price {
+    font-size: 18px;
+  }
+  .ws-sticky-btn {
+    padding: 10px 18px;
+    font-size: 13.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ws-container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .ws-hero-h1 {
+    font-size: 25px;
+  }
+  .ws-snapshot-card {
+    padding: 10px 12px;
+  }
+  .ws-snap-col .val {
+    font-size: 13px;
+  }
+  .ws-tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .ws-tool-pill {
+    padding: 12px 8px;
+  }
+  .ws-countdown-box {
+    gap: 8px;
+    padding: 10px 10px;
+  }
+  .ws-count-num {
+    font-size: 20px;
+  }
+  .ws-price-hero .current-price {
+    font-size: 34px;
+  }
 }
 
 
