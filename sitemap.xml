@@ -169,13 +169,13 @@
        ==================================================================== -->
   <url>
     <loc>https://redsan.in/workshops/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
     <image:image>
-      <image:loc>https://redsan.in/assets/Redsan_teaching_at_university.png</image:loc>
-      <image:title>Best Digital Marketing &amp; MarTech Skill Workshop - RedSan</image:title>
-      <image:caption>Practical MarTech skills, AI marketing tools, and entrepreneurship frameworks.</image:caption>
+      <image:loc>https://redsan.in/assets/hero-elements/images-1/homepage-about-dossier.webp</image:loc>
+      <image:title>Redsan Workshops - Learn Marketing. Build Projects. Start Earning.</image:title>
+      <image:caption>Practical MarTech, AI-powered marketing and digital business workshops for students and builders.</image:caption>
     </image:image>
   </url>
 
@@ -184,13 +184,6 @@
     <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://redsan.in/refund-cancellation-policy/</loc>
-    <lastmod>2026-09-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
   </url>
 
   <!-- ====================================================================
@@ -418,17 +411,6 @@
     </image:image>
   </url>
 
-  <url>
-    <loc>https://redsan.in/workshops/</loc>
-    <lastmod>2026-09-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-    <image:image>
-      <image:loc>https://redsan.in/assets/hero-elements/images-1/homepage-about-dossier.webp</image:loc>
-      <image:title>Redsan Workshops - Learn Marketing. Build Projects. Start Earning.</image:title>
-      <image:caption>Practical MarTech, AI-powered marketing and digital business workshops for students and builders.</image:caption>
-    </image:image>
-  </url>
 
   <url>
     <loc>https://redsan.in/legal/</loc>
