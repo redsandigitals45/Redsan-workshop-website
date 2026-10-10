@@ -89,7 +89,9 @@ function Handle-Request($context) {
         $contentType = if ($mimeTypes.ContainsKey($ext)) { $mimeTypes[$ext] } else { "application/octet-stream" }
         $res.ContentType = $contentType
         $res.AddHeader("Accept-Ranges", "bytes")
-        $res.AddHeader("Cache-Control", "no-cache, no-store, must-revalidate")
+        $res.AddHeader("Cache-Control", "no-cache, no-store, must-revalidate, max-age=0")
+        $res.AddHeader("Pragma", "no-cache")
+        $res.AddHeader("Expires", "0")
 
         $fileInfo = [System.IO.FileInfo]::new($filePath)
         $fileLen = $fileInfo.Length
