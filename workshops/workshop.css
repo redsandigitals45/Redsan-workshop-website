@@ -2320,26 +2320,52 @@ body.workshop-page {
   display: block;
   background: #F8F8F8;
 }
+
 @media (max-width: 768px) {
   .martech-anim-container {
-    height: 520px;
-    max-height: 520px;
+    height: 560px;
+    max-height: 560px;
     border-radius: 18px;
     box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.12);
   }
   .martech-anim-frame {
-    height: 520px;
+    height: calc(100% - 42px);
   }
 }
+
+@media (max-width: 600px) {
+  .martech-window-bar {
+    padding: 10px 14px;
+    gap: 8px;
+  }
+  .window-title .sep,
+  .window-title .subtitle {
+    display: none;
+  }
+  .window-title span:first-child {
+    font-size: 11px;
+    max-width: 170px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .window-pill {
+    font-size: 10px;
+    padding: 2px 8px;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+}
+
 @media (max-width: 480px) {
   .martech-anim-container {
-    height: 480px;
-    max-height: 480px;
+    height: 520px;
+    max-height: 520px;
     border-radius: 16px;
   }
   .martech-anim-frame {
-    height: 480px;
+    height: calc(100% - 38px);
   }
 }
 
@@ -2382,13 +2408,17 @@ body.workshop-page {
   border-radius: 20px;
   position: relative;
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .ws-carousel-track {
   display: flex;
   width: 100%;
+  align-items: stretch;
   will-change: transform;
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
 }
 
 /* Individual Project Card inside Carousel */
@@ -2583,30 +2613,42 @@ body.workshop-page {
     max-width: 100%;
   }
 
-  .ws-carousel-track .ws-project-card {
-    padding: 26px 18px;
-    min-height: 310px;
+  .ws-carousel-viewport {
     border-radius: 16px;
   }
 
+  .ws-carousel-track .ws-project-card {
+    padding: 24px 16px;
+    min-height: 290px;
+    border-radius: 16px;
+    justify-content: space-between;
+  }
+
   .ws-carousel-track .ws-project-card h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 17px;
+    line-height: 1.3;
+    margin-bottom: 8px;
   }
 
   .ws-carousel-track .ws-project-card p {
-    font-size: 13.5px;
-    line-height: 1.55;
-    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    flex-grow: 1;
+  }
+
+  .ws-carousel-track .ws-project-stack {
+    margin-top: auto;
+    padding-top: 12px;
   }
 
   .ws-carousel-track .ws-project-stack .stack-val {
-    font-size: 12.5px;
+    font-size: 12px;
   }
 
   .ws-carousel-footer {
-    gap: 10px;
-    margin-top: 18px;
+    gap: 8px;
+    margin-top: 16px;
   }
 
   .ws-carousel-nav-btn {
@@ -2971,17 +3013,32 @@ ul.dropdown-menu > li {
     font-size: 11px;
   }
 
+  /* Social Proof Metrics Strip */
+  .ws-metric-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
   /* Curriculum Accordion */
   .ws-day-header {
     padding: 16px 14px;
     gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
   }
   .ws-day-title-group {
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
+    width: 100%;
   }
   .ws-day-header h3 {
     font-size: 16px;
+    line-height: 1.35;
+  }
+  .ws-day-meta {
+    font-size: 11px;
+    align-self: flex-start;
   }
   .ws-day-modules {
     padding: 8px 14px;

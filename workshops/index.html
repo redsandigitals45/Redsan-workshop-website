@@ -1241,7 +1241,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
       }
 
+      function getSlideWidth() {
+        const vp = document.getElementById('carouselViewport') || carouselWrap;
+        return vp ? vp.getBoundingClientRect().width : carouselWrap.offsetWidth;
+      }
+
       function moveTo(index, smooth = true) {
+        const slideWidth = getSlideWidth();
         if (smooth) {
           track.style.transition = `transform ${SLIDE_DURATION}ms cubic-bezier(0.22, 1, 0.36, 1)`;
           isTransitioning = true;
@@ -1249,7 +1255,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           track.style.transition = 'none';
           isTransitioning = false;
         }
-        track.style.transform = `translateX(-${index * 100}%)`;
+        track.style.transform = `translate3d(-${index * slideWidth}px, 0, 0)`;
         currentIndex = index;
         updateUI(index);
       }
@@ -1279,6 +1285,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           moveTo(0, false);
         }
       });
+
+      window.addEventListener('resize', () => {
+        moveTo(currentIndex, false);
+      }, { passive: true });
 
       function startTimer(duration = HOLD_DURATION) {
         clearTimeout(timer);
@@ -1406,6 +1416,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     }
     initProjectsCarousel();
+
+    // Hide sticky bottom bar when checkout section is in view to prevent double CTAs
+    const checkoutSec = document.getElementById('checkout');
+    const stickyBarEl = document.getElementById('stickyBar');
+    if ('IntersectionObserver' in window && checkoutSec && stickyBarEl) {
+      const checkoutObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            stickyBarEl.style.transform = 'translateY(120%)';
+          } else {
+            stickyBarEl.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.12 });
+      checkoutObserver.observe(checkoutSec);
+    }
   </script>
 </body>
 
