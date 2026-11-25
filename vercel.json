@@ -139,6 +139,31 @@
       "source": "/blog/cold-dm-vs-warm-intro-vs-referral.html",
       "destination": "/blog/google-ads-vs-meta-ads/",
       "permanent": true
+    },
+    {
+      "source": "/workshops",
+      "destination": "/damn-school/",
+      "permanent": true
+    },
+    {
+      "source": "/workshops/",
+      "destination": "/damn-school/",
+      "permanent": true
+    },
+    {
+      "source": "/workshops.html",
+      "destination": "/damn-school/",
+      "permanent": true
+    },
+    {
+      "source": "/workshops/(.*)",
+      "destination": "/damn-school/",
+      "permanent": true
+    },
+    {
+      "source": "/damn-school/index.html",
+      "destination": "/damn-school/",
+      "permanent": true
     }
   ],
   "headers": [

@@ -165,17 +165,17 @@
   </url>
 
   <!-- ====================================================================
-       4. CONVERSION, WORKSHOPS & CONTACT
+       4. CONVERSION, DAMN-SCHOOL & CONTACT
        ==================================================================== -->
   <url>
-    <loc>https://redsan.in/workshops/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <loc>https://redsan.in/damn-school/</loc>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
     <image:image>
-      <image:loc>https://redsan.in/assets/Redsan_teaching_at_university.png</image:loc>
-      <image:title>Best Digital Marketing &amp; MarTech Skill Workshop - RedSan</image:title>
-      <image:caption>Practical MarTech skills, AI marketing tools, and entrepreneurship frameworks.</image:caption>
+      <image:loc>https://redsan.in/assets/damn-school-og.webp</image:loc>
+      <image:title>DAMN-SCHOOL - Digital. Automation. Marketing. Network.</image:title>
+      <image:caption>Learn. Automate. Create. Connect. Practical Martech, AI, automation, and digital growth workshops operated by RedSan Digitals Pvt. Ltd.</image:caption>
     </image:image>
   </url>
 
@@ -415,18 +415,6 @@
       <image:loc>https://redsan.in/assets/1-5cr-growth-milestone-methodology-attribution-redsan.webp</image:loc>
       <image:title>The ₹1.5Cr+ Growth Milestone Methodology &amp; Attribution Framework</image:title>
       <image:caption>The exact data tracking, CRM infrastructure, and multi-channel attribution model behind scaling client revenue past ₹1.5Cr+.</image:caption>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://redsan.in/workshops/</loc>
-    <lastmod>2026-09-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-    <image:image>
-      <image:loc>https://redsan.in/assets/hero-elements/images-1/homepage-about-dossier.webp</image:loc>
-      <image:title>Redsan Workshops - Learn Marketing. Build Projects. Start Earning.</image:title>
-      <image:caption>Practical MarTech, AI-powered marketing and digital business workshops for students and builders.</image:caption>
     </image:image>
   </url>
 

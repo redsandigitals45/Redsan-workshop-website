@@ -25,6 +25,7 @@ Allow: /digital-marketing-agency-noida/
 Allow: /digital-marketing-agency-delhi/
 Allow: /digital-marketing-agency-gurugram/
 Allow: /digital-marketing-agency-chandigarh/
+Allow: /damn-school/
 Allow: /workshops/
 Allow: /blog/
 Allow: /contact/
