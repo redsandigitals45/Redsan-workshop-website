@@ -52,7 +52,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body.damn-school-page {
@@ -63,38 +63,52 @@ body.damn-school-page {
   font-family: var(--ds-font-body);
   font-size: 16px;
   line-height: 1.65;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.damn-school-page h1,
-.damn-school-page h2,
-.damn-school-page h3,
-.damn-school-page h4 {
+.damn-school-page section[id] {
+  scroll-margin-top: 84px;
+}
+
+.ds-hero-grid > *,
+.ds-about-grid > *,
+.ws-pillars-grid > *,
+.ds-projects-grid > *,
+.ds-curriculum-timeline > *,
+.ds-addons-grid > *,
+.ds-footer-grid > * {
+  min-width: 0;
+}
+
+:where(.damn-school-page) h1,
+:where(.damn-school-page) h2,
+:where(.damn-school-page) h3,
+:where(.damn-school-page) h4 {
   font-family: var(--ds-font-display);
   letter-spacing: -0.025em;
   line-height: 1.15;
   margin: 0;
 }
 
-.damn-school-page p {
+:where(.damn-school-page) p {
   margin: 0;
 }
 
-.damn-school-page a {
+:where(.damn-school-page) a {
   color: inherit;
   text-decoration: none;
 }
 
-.damn-school-page ul {
+:where(.damn-school-page) ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.damn-school-page img,
-.damn-school-page svg {
+:where(.damn-school-page) img,
+:where(.damn-school-page) svg {
   display: block;
   max-width: 100%;
 }
@@ -142,19 +156,22 @@ body.damn-school-page {
   align-items: center;
   gap: 12px;
   padding: 4px 6px 4px 0;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .ds-nav-mark {
   width: 40px;
   height: 36px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .ds-nav-wordmark-group {
   display: flex;
   flex-direction: column;
   line-height: 1.05;
+  min-width: 0;
 }
 
 .ds-nav-wordmark {
@@ -163,6 +180,7 @@ body.damn-school-page {
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--ds-black);
+  white-space: nowrap;
 }
 
 .ds-nav-sub {
@@ -173,6 +191,18 @@ body.damn-school-page {
   text-transform: uppercase;
   color: var(--ds-grey);
   margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 460px) {
+  .ds-nav-sub {
+    display: none;
+  }
+  .ds-nav-wordmark {
+    font-size: 16px;
+  }
 }
 
 .ds-nav-links {
@@ -924,6 +954,11 @@ body.damn-school-page {
   justify-content: center;
 }
 
+.ds-sec-header.center .ds-eyebrow::before,
+.ws-tools-content-box .ds-eyebrow::before {
+  display: none;
+}
+
 .ds-sec-title {
   font-size: clamp(28px, 4vw, 42px);
   font-weight: 800;
@@ -936,7 +971,8 @@ body.damn-school-page {
 }
 
 .ds-section-dark .ds-sec-title,
-.ds-section-crimson .ds-sec-title {
+.ds-section-crimson .ds-sec-title,
+.ws-section .ds-sec-title {
   color: var(--ds-white);
 }
 
@@ -951,16 +987,18 @@ body.damn-school-page {
 }
 
 .ds-section-dark .ds-sec-sub,
-.ds-section-crimson .ds-sec-sub {
+.ds-section-crimson .ds-sec-sub,
+.ws-section .ds-sec-sub {
   color: #B4B4BC;
 }
 
 /* ============================================================
-   03. BRAND INTRODUCTION & METRICS PROOF
+   03. METRICS BAR & BRAND INTRODUCTION (Light / Off-White)
    ============================================================ */
-.ds-metrics-strip {
-  padding-bottom: 52px;
-  margin-bottom: 52px;
+.ds-metrics-band {
+  background: var(--ds-black);
+  color: var(--ds-offwhite);
+  padding: 40px 0;
   border-bottom: 1px solid var(--ds-border-dark);
 }
 
@@ -969,21 +1007,21 @@ body.damn-school-page {
   font-size: 11.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ds-grey);
-  margin-bottom: 24px;
+  color: #9A9AA3;
+  margin-bottom: 22px;
   text-align: center;
 }
 
 .ds-metrics-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 14px;
 }
 
 @media (min-width: 768px) {
   .ds-metrics-grid {
     grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
+    gap: 18px;
   }
 }
 
@@ -991,8 +1029,14 @@ body.damn-school-page {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--ds-border-dark);
   border-radius: var(--ds-radius-md);
-  padding: 20px 14px;
+  padding: 18px 14px;
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .ds-metric-box:last-child {
+    grid-column: 1 / -1;
+  }
 }
 
 .ds-metric-val {
@@ -1014,7 +1058,6 @@ body.damn-school-page {
   grid-template-columns: 1fr;
   gap: 36px;
   align-items: start;
-  margin-bottom: 48px;
 }
 
 @media (min-width: 900px) {
@@ -1027,8 +1070,12 @@ body.damn-school-page {
 .ds-intro-copy p {
   font-size: 16px;
   line-height: 1.7;
-  color: #C9C9D1;
+  color: var(--ds-ink-body);
   margin-bottom: 16px;
+}
+
+.ds-intro-copy strong {
+  color: var(--ds-black);
 }
 
 .ds-intro-pill-row {
@@ -1041,15 +1088,15 @@ body.damn-school-page {
 .ds-intro-pill {
   font-family: var(--ds-font-mono);
   font-size: 11.5px;
-  font-weight: 600;
-  color: var(--ds-offwhite);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--ds-border-dark);
+  font-weight: 700;
+  color: var(--ds-black);
+  background: var(--ds-white);
+  border: 1px solid var(--ds-border-light);
   padding: 6px 12px;
   border-radius: 6px;
 }
 
-/* 4 Core Concepts Grid */
+/* 4 Core Concepts Grid (Light Architectural Cards) */
 .ds-concepts-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1063,25 +1110,27 @@ body.damn-school-page {
 }
 
 .ds-concept-card {
-  background: var(--ds-surface-dark);
-  border: 1px solid var(--ds-border-dark);
+  background: var(--ds-white);
+  border: 1px solid var(--ds-border-light);
   border-radius: var(--ds-radius-md);
   padding: 24px 20px;
+  box-shadow: var(--ds-shadow-sm);
   transition: var(--ds-transition);
 }
 
 .ds-concept-card:hover {
-  border-color: rgba(229, 9, 32, 0.55);
+  border-color: var(--ds-red);
   transform: translateY(-2px);
+  box-shadow: var(--ds-shadow-md);
 }
 
 .ds-concept-icon {
   width: 38px;
   height: 38px;
   border-radius: 9px;
-  background: rgba(229, 9, 32, 0.12);
-  border: 1px solid rgba(229, 9, 32, 0.28);
-  color: var(--ds-red-accent);
+  background: var(--ds-red-tint);
+  border: 1px solid rgba(229, 9, 32, 0.22);
+  color: var(--ds-red);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1101,21 +1150,21 @@ body.damn-school-page {
 .ds-concept-card h3 {
   font-size: 17px;
   font-weight: 700;
-  color: var(--ds-white);
+  color: var(--ds-black);
   margin-bottom: 8px;
 }
 
 .ds-concept-card p {
   font-size: 13.5px;
   line-height: 1.55;
-  color: #A5A5AE;
+  color: var(--ds-ink-muted);
 }
 
 /* ============================================================
    04. 5-PILLAR PRACTICAL ENGINE (Preserved 3+2 Olympic Grid & Video Cards)
    ============================================================ */
 .ws-section {
-  padding: 80px 0;
+  padding: 68px 0;
   position: relative;
 }
 
@@ -1409,6 +1458,13 @@ body.damn-school-page {
   background: #F5F5F5;
 }
 
+@media (min-width: 960px) {
+  .martech-anim-container {
+    height: 785px;
+    max-height: 785px;
+  }
+}
+
 @media (max-width: 768px) {
   .martech-anim-container {
     height: 560px;
@@ -1474,7 +1530,6 @@ body.damn-school-page {
   opacity: 0.36;
   filter: contrast(1.1) brightness(0.95);
   display: block;
-  transform: scale(1.02);
   pointer-events: none;
 }
 
@@ -1503,11 +1558,15 @@ body.damn-school-page {
 .ws-tools-content-box::before {
   content: "";
   position: absolute;
-  inset: -20px -30px;
-  background: radial-gradient(ellipse at center, rgba(8, 9, 11, 0.85) 0%, rgba(8, 9, 11, 0.35) 65%, transparent 100%);
+  inset: -24px -36px;
+  background: radial-gradient(ellipse at center, rgba(8, 9, 11, 0.92) 0%, rgba(8, 9, 11, 0.52) 65%, transparent 100%);
   border-radius: 24px;
   z-index: -1;
   pointer-events: none;
+}
+
+.ws-tools-content-box .ds-eyebrow {
+  color: var(--ds-red-accent);
 }
 
 .ws-tools-h2 {
@@ -1537,7 +1596,7 @@ body.damn-school-page {
 }
 
 /* ============================================================
-   07. SIX LIVE PROJECTS (Dark Showcase)
+   07. SIX LIVE PROJECTS (Light Showcase)
    ============================================================ */
 .ds-projects-grid {
   display: grid;
@@ -1558,19 +1617,21 @@ body.damn-school-page {
 }
 
 .ds-project-card {
-  background: var(--ds-surface-dark);
-  border: 1px solid var(--ds-border-dark);
+  background: var(--ds-white);
+  border: 1px solid var(--ds-border-light);
   border-radius: var(--ds-radius-md);
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 14px;
+  box-shadow: var(--ds-shadow-sm);
   transition: var(--ds-transition);
 }
 
 .ds-project-card:hover {
   border-color: var(--ds-red);
   transform: translateY(-3px);
+  box-shadow: var(--ds-shadow-md);
 }
 
 .ds-project-top {
@@ -1586,13 +1647,13 @@ body.damn-school-page {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ds-red-accent);
+  color: var(--ds-red);
 }
 
 .ds-project-diagram {
   height: 54px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--ds-border-dark);
+  background: var(--ds-black);
+  border: 1px solid var(--ds-border-light);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -1608,20 +1669,20 @@ body.damn-school-page {
 .ds-project-card h3 {
   font-size: 18.5px;
   font-weight: 700;
-  color: var(--ds-white);
+  color: var(--ds-black);
   line-height: 1.25;
 }
 
 .ds-project-card p {
   font-size: 14px;
   line-height: 1.6;
-  color: #AEAEB7;
+  color: var(--ds-ink-muted);
   flex-grow: 1;
 }
 
 .ds-project-deliverable {
   padding-top: 14px;
-  border-top: 1px solid var(--ds-border-dark);
+  border-top: 1px solid var(--ds-border-light);
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -1639,7 +1700,24 @@ body.damn-school-page {
 .ds-project-deliverable .val {
   font-size: 13.5px;
   font-weight: 600;
-  color: var(--ds-white);
+  color: var(--ds-black);
+}
+
+@media (max-width: 480px) {
+  .ds-hero-media-overlay {
+    padding: 8px 10px;
+    inset: auto 8px 8px 8px;
+  }
+  .ds-hero-media-quote {
+    font-size: 11.5px;
+  }
+  .ds-countdown {
+    gap: 12px;
+    padding: 12px 16px;
+  }
+  .ds-count-num {
+    font-size: 22px;
+  }
 }
 
 /* ============================================================
@@ -1655,6 +1733,16 @@ body.damn-school-page {
   .ds-curriculum-timeline {
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
+  }
+  .ds-day-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .ds-day-head {
+    min-height: 132px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
 
@@ -1801,7 +1889,7 @@ body.damn-school-page {
 }
 
 .ds-addon-card {
-  background: var(--ds-white);
+  background: var(--ds-offwhite);
   border: 1px solid var(--ds-border-light);
   border-radius: var(--ds-radius-md);
   padding: 24px;
@@ -1813,8 +1901,10 @@ body.damn-school-page {
 }
 
 .ds-addon-card:hover {
+  background: var(--ds-white);
   border-color: var(--ds-black);
   transform: translateY(-2px);
+  box-shadow: var(--ds-shadow-md);
 }
 
 .ds-addon-badge {
@@ -2082,7 +2172,7 @@ body.damn-school-page {
 }
 
 .ds-faq-card {
-  background: var(--ds-white);
+  background: var(--ds-offwhite);
   border: 1px solid var(--ds-border-light);
   border-radius: var(--ds-radius-md);
   overflow: hidden;
@@ -2094,7 +2184,9 @@ body.damn-school-page {
 }
 
 .ds-faq-card.open {
+  background: var(--ds-white);
   border-color: var(--ds-red);
+  box-shadow: var(--ds-shadow-sm);
 }
 
 .ds-faq-q {

@@ -431,6 +431,7 @@ body::-webkit-scrollbar-thumb:hover{
     line-height: 1.15;
   }
   .branch{
+    display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
     width: 100%;
@@ -901,18 +902,26 @@ const observer=new IntersectionObserver((entries)=>{
       entry.target.classList.add('visible');
     }
   });
-},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+},{threshold:.01,rootMargin:'0px 0px 40px 0px'});
 
-reveals.forEach(el=>observer.observe(el));
+reveals.forEach((el, idx)=>{
+  if(idx < 9){
+    el.classList.add('visible');
+  }else{
+    setTimeout(()=>{ el.classList.add('visible'); }, Math.min((idx - 8) * 35, 320));
+  }
+  observer.observe(el);
+});
 
 /* Interactive card glow following the cursor */
 document.querySelectorAll('.stage').forEach(card=>{
+  if(card.classList.contains('growth')) return;
   card.addEventListener('mousemove',e=>{
     const r=card.getBoundingClientRect();
     const x=((e.clientX-r.left)/r.width)*100;
     const y=((e.clientY-r.top)/r.height)*100;
     card.style.backgroundImage=
-      `radial-gradient(circle at ${x}% ${y}%, rgba(238,0,0,.10), transparent 32%), linear-gradient(135deg, rgba(255,255,255,.98), rgba(248,248,248,.96))`;
+      `radial-gradient(circle at ${x}% ${y}%, rgba(229,9,32,.10), transparent 34%), linear-gradient(135deg, rgba(255,255,255,.98), rgba(245,245,245,.96))`;
   });
 
   card.addEventListener('mouseleave',()=>{
